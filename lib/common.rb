@@ -1,47 +1,51 @@
 module TheCityAdmin
 
+  # This needs to be moved into a config file.
+  ######################################################
   if Rails.env == 'production'
     raise 'Admin API path not set for production' # Delete this exception when set
     THE_CITY_ADMIN_PATH = ''
+    THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.v1+json'
   
   elsif Rails.env == 'development'
-    THE_CITY_ADMIN_PATH = 'http://system.devthecity.org:3000'
+    THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:3000'
+    THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.v1+json'
   
   elsif Rails.env == 'staging'
     raise 'Admin API path not set for testing' # Delete this exception when set
     THE_CITY_ADMIN_PATH = ''
+    THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.v1+json'
 
   elsif Rails.env == 'test'
     raise 'Admin API path not set for testing' # Delete this exception when set
     THE_CITY_ADMIN_PATH = ''
+    THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.v1+json'
   end
+  ######################################################
 
 
-  def self.admin_headers
-    {'X_EPISTLE_SERVER_KEY' => 'asdfasdf'} # TODO: This needs to be moved to config
-  end
-
-  def self.admin_load_path(method, city_account_id, city_user_id, extended_path, params = {})
+  def self.admin_load_path(method, api_key, api_token, params = {})
     path = "#{THE_CITY_ADMIN_PATH}/accounts/#{city_account_id}/users/#{city_user_id}/#{extended_path}.json"
     self.typhoeus_request(method, path, params)
   end
 
 
   def self.typhoeus_request(method, path, params)
+    headers = self._build_admin_headers(api_key, api_token, method, path) 
     case method 
     when :post
-      Typhoeus::Request.post(path, {:headers => self.epistle_headers, :params => self.flatten_params(params)}).body
+      Typhoeus::Request.post(path, {:headers => headers, :params => self._flatten_params(params)}).body
     when :get
-      Typhoeus::Request.get(path, {:headers => self.epistle_headers, :params => self.flatten_params(params)}).body
+      Typhoeus::Request.get(path, {:headers => headers, :params => self._flatten_params(params)}).body
     when :put
-      Typhoeus::Request.put(path, {:headers => self.epistle_headers, :params => self.flatten_params(params)}).body
+      Typhoeus::Request.put(path, {:headers => headers, :params => self._flatten_params(params)}).body
     when :delete
-      Typhoeus::Request.delete(path, {:headers => self.epistle_headers, :params => self.flatten_params(params)}).body
+      Typhoeus::Request.delete(path, {:headers => headers, :params => self._flatten_params(params)}).body
     end
   end
 
 
-  def self.flatten_params(params)
+  def self._flatten_params(params)
     retval = {}
     params.each do |key, value|
       if value.instance_of?(Array)
@@ -52,6 +56,22 @@ module TheCityAdmin
     end
     retval
   end
+
+
+  def self._build_admin_headers(api_key, api_token, method, path) 
+    method_request = method.to_s.upcase
+    url = THE_CITY_ADMIN_PATH + path
+    current_time = Time.now.to_i.to_s
+    string_to_sign = current_time.to_s + method_request + url
+    unencoded_hmac = OpenSSL::HMAC.digest('sha256', api_key, string_to_sign)
+    unescaped_hmac = Base64.encode64(unencoded_hmac).chomp
+    hmac_signature = CGI.escape(unescaped_hmac)
+
+    {'X-City-Sig' => hmac_signature,
+     'X-City-User-Token' => api_token,
+     'X-City-Time' => current_time,
+     'Accept' => 'application/vnd.thecity.v1+json'}
+  end  
 
 end
 
