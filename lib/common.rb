@@ -1,6 +1,6 @@
 module TheCityAdmin
 
-  # This needs to be moved into a config file.
+  # TODO: This needs to be moved into a config file.
   ######################################################
   if Rails.env == 'production'
     raise 'Admin API path not set for production' # Delete this exception when set

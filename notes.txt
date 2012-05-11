@@ -1,0 +1,21 @@
+UserList
+  - initialize
+  - attributes...
+  - Operations (ex. next_page returns the next UserList object)
+  - Users
+  - Load data
+    - URL
+    - Cache
+      - File (JSON)
+      - Database
+      - Memcache
+
+User
+  - attributes...
+  - Crud operations
+  - Load data
+    - URL
+    - Cache
+      - File (JSON)
+      - Database
+      - Memcache
