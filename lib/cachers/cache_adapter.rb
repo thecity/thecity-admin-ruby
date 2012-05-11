@@ -1,15 +1,4 @@
-# Project::    Plaza-Ruby 
-# File::       cache_adapter.rb
-#
-# Author:: Wes Hays <wes@onthecity.org> 
-# Link:: https://github.com/thecity/plaza-ruby
-# Version:: 0.1
-# Package:: TheCity
-
-
 # This adapter is the standard for all caching objects.
-#
-# @package TheCity
 class CacheAdapter
 
   # Constructor
