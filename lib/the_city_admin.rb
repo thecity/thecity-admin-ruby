@@ -1,3 +1,55 @@
+require 'rubygems'
+require 'openssl'
+require 'CGI'
+require 'Base64'
+require 'openssl'
+require 'net/http'
+require 'net/https'
+require 'typhoeus'
+require 'json'
+
+
+
+TCA_ENV = 'development'
+
+# The path to the lib directory.
+THECITY_LIB_DIR = File.dirname(__FILE__)
+
+# The path to the storage directory that will be used for caching data to disk.
+THECITY_STORAGE_DIR = File.dirname(__FILE__) + '/../storage/'
+
+
+
+# TODO: This needs to be moved into a config file.
+######################################################
+if TCA_ENV == 'production'
+  raise 'Admin API path not set for production' # Delete this exception when set
+  THE_CITY_ADMIN_PATH = ''
+  THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.admin.v1+json'
+
+elsif TCA_ENV == 'development'
+  THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:9292'
+  THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.admin.v1+json'
+
+elsif TCA_ENV == 'staging'
+  raise 'Admin API path not set for testing' # Delete this exception when set
+  THE_CITY_ADMIN_PATH = ''
+  THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.admin.v1+json'
+
+elsif TCA_ENV == 'test'
+  raise 'Admin API path not set for testing' # Delete this exception when set
+  THE_CITY_ADMIN_PATH = ''
+  THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.admin.v1+json'
+end
+######################################################
+
+
+
+require File.dirname(__FILE__) + '/auto_load.rb'
+
+require File.dirname(__FILE__) + '/common.rb'
+
+
 # This class is meant to be a wrapper TheCity Admin API (OnTheCity.org).
 module TheCity
 

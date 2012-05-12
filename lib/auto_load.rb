@@ -15,5 +15,4 @@ module TheCity
   require loaders_path + 'api_loader.rb'
   require loaders_path + 'user_list_loader.rb'
 
-
 end
