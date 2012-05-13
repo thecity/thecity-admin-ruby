@@ -6,7 +6,6 @@ module TheCity
     #
     # @param loader The object that loaded the data.
     def initialize(loader) 
-      super
       @total_entries = loader.total_entries
       @total_pages = loader.total_pages
       @per_page = loader.per_page

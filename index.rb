@@ -15,5 +15,11 @@ token = 'e43ab88416b3b5b7'
 the_city = TheCity::AdminApi.new(key, token)
 
 
-puts the_city.users.names
+user = the_city.users[1]
+
+require 'ruby-debug'
+debugger
+asdf=234
+
+puts user.full_name
 

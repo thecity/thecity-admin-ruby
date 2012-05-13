@@ -6,6 +6,7 @@ module TheCity
   loaders_path = THECITY_LIB_DIR + '/loaders/'
 
 
+  require api_path + 'api_object.rb'
   require api_path + 'user.rb'
   require api_path + 'user_list.rb'
 
