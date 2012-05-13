@@ -14,6 +14,7 @@ module TheCity
   require cache_file_path + 'json_cache.rb'
 
   require loaders_path + 'api_loader.rb'
+  require loaders_path + 'user_loader.rb'
   require loaders_path + 'user_list_loader.rb'
 
 end

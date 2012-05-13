@@ -4,14 +4,23 @@ module TheCity
   class ApiLoader
 
     # Constructor
-    def initialize()
+    def initialize
     end
 
-    # Loads the data.
+    # Loads the list
     #
-    # Returns true on success or a string error message on false.
+    # Returns the data loaded in a JSON object.
     def load_feed
-      raise 'The load_feed method must be implemented'
+      unless @cacher.nil? or @cacher.is_cache_expired?( @class_key )
+        return @cacher.get_data( @class_key )
+      end   
+
+      json = TheCity::admin_request(:get, @url_data_path)
+      data = JSON.parse(json)    
+
+      @cacher.save_data(@class_key, data) unless @cacher.nil?      
+
+      return data
     end
 
   end

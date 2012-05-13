@@ -4,7 +4,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param loader The object that loaded the data.
+    # @param UserListLoader loader The object that loaded the data.
     def initialize(loader) 
       @total_entries = loader.total_entries
       @total_pages = loader.total_pages
