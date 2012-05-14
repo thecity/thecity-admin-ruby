@@ -33,6 +33,7 @@ puts user.roles[0].group_name
 puts user.skills[0].name
 
 #puts user.processes[0].name
+#puts user.invitations[0].source
 
-puts user.invitations.inspect
+puts user.admin_privileges[0].title
 
