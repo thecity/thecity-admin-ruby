@@ -64,6 +64,7 @@ module TheCity
       end
 
       @family_list = nil
+      @note_list = nil
     end
     
     # The first and last name of the user.
@@ -82,6 +83,17 @@ module TheCity
       @family_list = FamilyList.new(loader);
       return @family_list
     end
+
+
+    # The notes for this user.
+    def notes
+      return @note_list unless @note_list.nil?  
+      return nil unless self.id
+
+      loader = NoteListLoader.new(self.id)    
+      @note_list = NoteList.new(loader);
+      return @note_list
+    end    
 
   end
 
