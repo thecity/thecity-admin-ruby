@@ -30,4 +30,5 @@ puts user.full_name
 
 puts user.notes[0].author
 puts user.roles[0].group_name
+puts user.skills[0].name
 

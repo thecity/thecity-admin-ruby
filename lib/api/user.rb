@@ -66,6 +66,7 @@ module TheCity
       @family_list = nil
       @note_list = nil
       @role_list = nil
+      @skill_list = nil
     end
     
     # The first and last name of the user.
@@ -105,7 +106,18 @@ module TheCity
       loader = RoleListLoader.new(self.id)    
       @role_list = RoleList.new(loader)
       return @role_list
-    end       
+    end      
+
+
+    # The roles for this user.
+    def skills
+      return @skill_list unless @skill_list.nil?  
+      return nil unless self.id
+
+      loader = SkillListLoader.new(self.id)    
+      @skill_list = SkillList.new(loader)
+      return @skill_list
+    end     
 
   end
 
