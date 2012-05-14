@@ -8,12 +8,6 @@ module TheCity
     # <b>per_page</b> The number of items to show.  Default is 10.
     # <b>CacheAdapter cacher</b> (optional) The cacher to be used to cache data.
     def initialize(page = 1, per_page = 10, cacher = nil) 
-      # defaults
-      @total_entries = 0
-      @total_pages = 0
-      @per_page = 0
-      @current_page = 0
-
       @class_key = "user_list_#{page}_#{per_page}"   
       @url_data_path = '/users'
       
