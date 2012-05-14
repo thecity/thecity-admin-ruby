@@ -21,7 +21,7 @@ module TheCity
     #
     # @param index The index of the note to get.
     #
-    # @return User
+    # @return Note
     def [](index)
       Note.new( @json_data['notes'][index] ) if @json_data['notes'][index]
     end

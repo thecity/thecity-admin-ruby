@@ -67,6 +67,7 @@ module TheCity
       @note_list = nil
       @role_list = nil
       @skill_list = nil
+      @process_list = nil
     end
     
     # The first and last name of the user.
@@ -118,6 +119,17 @@ module TheCity
       @skill_list = SkillList.new(loader)
       return @skill_list
     end     
+
+
+    # The processes for this user.
+    def processes
+      return @process_list unless @process_list.nil?  
+      return nil unless self.id
+
+      loader = ProcessListLoader.new(self.id)    
+      @process_list = ProcessList.new(loader)
+      return @process_list
+    end
 
   end
 

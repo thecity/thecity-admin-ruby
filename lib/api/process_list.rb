@@ -1,6 +1,6 @@
 module TheCity
 
-  class RoleList 
+  class ProcessList 
 
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
@@ -17,13 +17,13 @@ module TheCity
     end
     
     
-    # Get the specified role.
+    # Get the specified processes.
     #
-    # @param index The index of the role to get.
+    # @param index The index of the process to get.
     #
-    # @return Role
-    def [](index)
-      Role.new( @json_data['roles'][index] ) if @json_data['roles'][index]
+    # @return Processes
+    def [](index)   
+      Process.new( @json_data['processes'][index] ) if @json_data['processes'][index]
     end
   
   end

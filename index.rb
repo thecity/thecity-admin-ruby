@@ -32,3 +32,5 @@ puts user.notes[0].author
 puts user.roles[0].group_name
 puts user.skills[0].name
 
+#puts user.processes[0].name
+

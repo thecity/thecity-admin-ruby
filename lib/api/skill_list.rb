@@ -21,7 +21,7 @@ module TheCity
     #
     # @param index The index of the skill to get.
     #
-    # @return User
+    # @return Skill
     def [](index)
       Skill.new( @json_data['skills'][index] ) if @json_data['skills'][index]
     end
