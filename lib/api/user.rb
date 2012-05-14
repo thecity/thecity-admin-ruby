@@ -62,6 +62,8 @@ module TheCity
       elsif loader.is_a?(Hash)
         initialize_from_json_object(loader)
       end
+
+      @family_list = nil
     end
     
     # The first and last name of the user.
@@ -69,6 +71,18 @@ module TheCity
       use_name = self.nickname || self.first
       [use_name, self.last].compact.join(' ')
     end
+
+
+    # The family information.
+    def family
+      return @family_list unless @user_list.nil?  
+      return nil unless self.id
+
+      loader = FamilyListLoader.new(self.id)    
+      @family_list = FamilyList.new(loader);
+      return @family_list
+    end
+
   end
 
 end

@@ -11,14 +11,13 @@ module TheCity
     #
     # Returns the data loaded in a JSON object.
     def load_feed
-      unless @cacher.nil? or @cacher.is_cache_expired?( @class_key )
-        return @cacher.get_data( @class_key )
+      if !@cacher.nil? and !@cacher.is_cache_expired?( @class_key )
+        data = @cacher.get_data( @class_key )
+      else
+        json = TheCity::admin_request(:get, @url_data_path)
+        data = JSON.parse(json)    
+        @cacher.save_data(@class_key, data) unless @cacher.nil?  
       end   
-
-      json = TheCity::admin_request(:get, @url_data_path)
-      data = JSON.parse(json)    
-
-      @cacher.save_data(@class_key, data) unless @cacher.nil?      
 
       return data
     end

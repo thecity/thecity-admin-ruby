@@ -2,16 +2,18 @@ module TheCity
 
   class UserList 
 
+    attr_reader :total_entries, :total_pages, :per_page, :current_page
+
     # Constructor.
     #
     # @param UserListLoader loader The object that loaded the data.
     def initialize(loader) 
-      @total_entries = loader.total_entries
-      @total_pages = loader.total_pages
-      @per_page = loader.per_page
-      @current_page = loader.current_page
-
       @json_data = loader.load_feed
+
+      @total_entries = @json_data['total_entries']
+      @total_pages = @json_data['total_pages']
+      @per_page = @json_data['per_page']
+      @current_page = @json_data['current_page']      
     end
     
     

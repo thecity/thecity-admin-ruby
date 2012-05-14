@@ -1,6 +1,8 @@
 module TheCity
 
-  class UserListLoader < ApiLoader
+  class GroupListLoader < ApiLoader
+
+    attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
     #
@@ -14,8 +16,8 @@ module TheCity
       @per_page = 0
       @current_page = 0
 
-      @class_key = "user_list_#{page}_#{per_page}"   
-      @url_data_path = '/users'
+      @class_key = "group_list_#{page}_#{per_page}"   
+      @url_data_path = '/groups'
       
       # The object to store and load the cache.
       @cacher = cacher unless cacher.nil?    
