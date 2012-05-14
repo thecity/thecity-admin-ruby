@@ -1,6 +1,6 @@
 module TheCity
 
-  class NoteList 
+  class RoleList 
 
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
@@ -17,13 +17,13 @@ module TheCity
     end
     
     
-    # Get the specified note.
+    # Get the specified role.
     #
-    # @param index The index of the note to get.
+    # @param index The index of the role to get.
     #
     # @return User
     def [](index)
-      Note.new( @json_data['notes'][index] ) if @json_data['notes'][index]
+      Role.new( @json_data['roles'][index] ) if @json_data['roles'][index]
     end
   
   end

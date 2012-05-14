@@ -16,9 +16,9 @@ module TheCity
     end
     
     
-    # All the users in the list.
+    # All the famly member names in the list.
     #
-    # @return array of names (first last).
+    # @return array of names.
     def all_names
       @json_data['family_members'].collect { |user| user['name'] }
     end
@@ -27,7 +27,7 @@ module TheCity
     
     # Get the specified family member.
     #
-    # @param index The index of the user to get.
+    # @param index The index of the family member to get.
     #
     # @return FamilyMember
     def [](index)      

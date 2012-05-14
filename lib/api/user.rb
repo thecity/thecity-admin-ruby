@@ -65,6 +65,7 @@ module TheCity
 
       @family_list = nil
       @note_list = nil
+      @role_list = nil
     end
     
     # The first and last name of the user.
@@ -80,7 +81,7 @@ module TheCity
       return nil unless self.id
 
       loader = FamilyListLoader.new(self.id)    
-      @family_list = FamilyList.new(loader);
+      @family_list = FamilyList.new(loader)
       return @family_list
     end
 
@@ -91,9 +92,20 @@ module TheCity
       return nil unless self.id
 
       loader = NoteListLoader.new(self.id)    
-      @note_list = NoteList.new(loader);
+      @note_list = NoteList.new(loader)
       return @note_list
     end    
+
+
+    # The roles for this user.
+    def roles
+      return @role_list unless @role_list.nil?  
+      return nil unless self.id
+
+      loader = RoleListLoader.new(self.id)    
+      @role_list = RoleList.new(loader)
+      return @role_list
+    end       
 
   end
 

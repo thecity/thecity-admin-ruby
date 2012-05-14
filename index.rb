@@ -29,4 +29,5 @@ puts user.full_name
 #puts user.family[0].name
 
 puts user.notes[0].author
+puts user.roles[0].group_name
 
