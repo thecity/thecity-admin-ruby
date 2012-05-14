@@ -68,6 +68,7 @@ module TheCity
       @role_list = nil
       @skill_list = nil
       @process_list = nil
+      @invitation_list = nil
     end
     
     # The first and last name of the user.
@@ -129,6 +130,17 @@ module TheCity
       loader = ProcessListLoader.new(self.id)    
       @process_list = ProcessList.new(loader)
       return @process_list
+    end   
+
+
+    # The invitations for this user.
+    def invitations
+      return @invitation_list unless @invitation_list.nil?  
+      return nil unless self.id
+
+      loader = InvitationListLoader.new(self.id)    
+      @invitation_list = InvitationList.new(loader)
+      return @invitation_list
     end
 
   end

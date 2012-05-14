@@ -34,3 +34,5 @@ puts user.skills[0].name
 
 #puts user.processes[0].name
 
+puts user.invitations.inspect
+
