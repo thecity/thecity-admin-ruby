@@ -1,12 +1,12 @@
 module TheCity
 
-  class UserRoleList 
+  class GroupRoleList 
 
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
     #
-    # @param UserRoleListLoader loader The object that loaded the data.
+    # @param GroupRoleListLoader loader The object that loaded the data.
     def initialize(loader) 
       @json_data = loader.load_feed
 
@@ -17,13 +17,13 @@ module TheCity
     end
     
     
-    # Get the specified user role.
+    # Get the specified group role.
     #
-    # @param index The index of the user role to get.
+    # @param index The index of the group role to get.
     #
-    # @return UserRole
+    # @return GroupRole
     def [](index)
-      UserRole.new( @json_data['roles'][index] ) if @json_data['roles'][index]
+      GroupRole.new( @json_data['roles'][index] ) if @json_data['roles'][index]
     end
   
   end

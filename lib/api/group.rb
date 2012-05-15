@@ -39,6 +39,7 @@ module TheCity
       end
 
       @address_list = nil
+      @role_list = nil
     end
 
 
@@ -51,6 +52,17 @@ module TheCity
       @address_list = GroupAddressList.new(loader)
       return @address_list
     end
+
+
+    # The roles for this user.
+    def roles
+      return @role_list unless @role_list.nil?  
+      return nil unless self.id
+
+      loader = GroupRoleListLoader.new(self.id)    
+      @role_list = GroupRoleList.new(loader)
+      return @role_list
+    end         
 
   end
 

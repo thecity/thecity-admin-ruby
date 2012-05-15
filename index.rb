@@ -49,3 +49,4 @@ puts group.name
 # Fails with 500 error
 #puts group.addresses[0].location_type
 
+puts group.roles[0].user_name
