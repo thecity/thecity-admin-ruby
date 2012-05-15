@@ -39,6 +39,7 @@ module TheCity
       end
 
       @address_list = nil
+      @invitations = nil
       @role_list = nil
       @tag_list = nil
     end
@@ -52,6 +53,17 @@ module TheCity
       loader = GroupAddressListLoader.new(self.id)    
       @address_list = GroupAddressList.new(loader)
       return @address_list
+    end
+    
+
+    # The invitations for this group.
+    def invitations
+      return @invitation_list unless @invitation_list.nil?  
+      return nil unless self.id
+
+      loader = GroupInvitationListLoader.new(self.id)    
+      @invitation_list = GroupInvitationList.new(loader)
+      return @invitation_list
     end
 
 

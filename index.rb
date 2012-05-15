@@ -52,3 +52,5 @@ puts group.id
 
 puts group.roles[0].user_name
 #puts group.tags[0].name
+
+# puts group.invitations[0].source

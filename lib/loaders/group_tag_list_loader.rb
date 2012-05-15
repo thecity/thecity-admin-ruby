@@ -10,7 +10,7 @@ module TheCity
     def initialize(group_id, page = 1, cacher = nil)
       @class_key = "groups_#{group_id}_tags_#{page}"   
       @url_data_path = "/groups/#{group_id}/tags"
-      @user_data_params = {:page => page}
+      @url_data_params = {:page => page}
       
       # The object to store and load the cache.
       @cacher = cacher unless cacher.nil?    

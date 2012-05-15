@@ -1,12 +1,12 @@
 module TheCity
 
-  class UserInvitationList 
+  class GroupInvitationList 
 
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
     #
-    # @param UserInvitationListLoader loader The object that loaded the data.
+    # @param GroupListLoader loader The object that loaded the data.
     def initialize(loader) 
       @json_data = loader.load_feed
 
@@ -21,9 +21,9 @@ module TheCity
     #
     # @param index The index of the invitation to get.
     #
-    # @return UserInvitation
+    # @return GroupInvitation
     def [](index)
-      UserInvitation.new( @json_data['invitations'][index] ) if @json_data['invitations'][index]
+      GroupInvitation.new( @json_data['invitations'][index] ) if @json_data['invitations'][index]
     end
   
   end

@@ -10,7 +10,7 @@ module TheCity
     def initialize(user_id, page = 1, cacher = nil)
       @class_key = "users_#{user_id}_addresses"   
       @url_data_path = "/users/#{user_id}/addresses"
-      @user_data_params = {:page => page}
+      @url_data_params = {:page => page}
       
       # The object to store and load the cache.
       @cacher = cacher unless cacher.nil?    

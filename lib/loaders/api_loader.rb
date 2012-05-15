@@ -14,8 +14,8 @@ module TheCity
       if !@cacher.nil? and !@cacher.is_cache_expired?( @class_key )
         data = @cacher.get_data( @class_key )
       else
-        @user_data_params = {} if @user_data_params.nil?
-        json = TheCity::admin_request(:get, @url_data_path, @user_data_params)        
+        @url_data_params = {} if @url_data_params.nil?
+        json = TheCity::admin_request(:get, @url_data_path, @url_data_params)        
         data = JSON.parse(json)    
         @cacher.save_data(@class_key, data) unless @cacher.nil?  
       end   
