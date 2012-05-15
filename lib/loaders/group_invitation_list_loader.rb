@@ -8,7 +8,7 @@ module TheCity
     # <b>page</b> The page number to get.  Default is 1.  
     # <b>CacheAdapter cacher</b> (optional) The cacher to be used to cache data.
     def initialize(group_id, page = 1, cacher = nil)
-      @class_key = "groupss_#{group_id}_invitations_#{page}"   
+      @class_key = "groups_#{group_id}_invitations_#{page}"   
       @url_data_path = "/groups/#{group_id}/invitations"
       @url_data_params = {:page => page}
       
