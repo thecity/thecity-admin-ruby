@@ -40,6 +40,7 @@ module TheCity
 
       @address_list = nil
       @role_list = nil
+      @tag_list = nil
     end
 
 
@@ -54,7 +55,7 @@ module TheCity
     end
 
 
-    # The roles for this user.
+    # The roles for this group.
     def roles
       return @role_list unless @role_list.nil?  
       return nil unless self.id
@@ -62,7 +63,18 @@ module TheCity
       loader = GroupRoleListLoader.new(self.id)    
       @role_list = GroupRoleList.new(loader)
       return @role_list
-    end         
+    end     
+
+
+    # The tags for this group.
+    def tags
+      return @tag_list unless @tag_list.nil?  
+      return nil unless self.id
+
+      loader = GroupTagListLoader.new(self.id)    
+      @tag_list = GroupTagList.new(loader)
+      return @tag_list
+    end     
 
   end
 
