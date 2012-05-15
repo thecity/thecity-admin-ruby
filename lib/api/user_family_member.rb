@@ -1,6 +1,6 @@
 module TheCity
 
-  class FamilyMember < ApiObject
+  class UserFamilyMember < ApiObject
 
     attr_accessor :external_id_1, 
                   :active, 

@@ -1,6 +1,6 @@
 module TheCity
 
-  class FamilyList 
+  class UserFamilyList 
 
     attr_reader :id, :created_at, :external_id
 
@@ -31,7 +31,7 @@ module TheCity
     #
     # @return FamilyMember
     def [](index)      
-      FamilyMember.new( @json_data['family_members'][index] ) if @json_data['family_members'][index]
+      UserFamilyMember.new( @json_data['family_members'][index] ) if @json_data['family_members'][index]
     end
   
   end

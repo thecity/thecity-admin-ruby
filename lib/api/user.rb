@@ -95,8 +95,8 @@ module TheCity
       return @family_list unless @user_list.nil?  
       return nil unless self.id
 
-      loader = FamilyListLoader.new(self.id)    
-      @family_list = FamilyList.new(loader)
+      loader = UserFamilyListLoader.new(self.id)    
+      @family_list = UserFamilyList.new(loader)
       return @family_list
     end
 

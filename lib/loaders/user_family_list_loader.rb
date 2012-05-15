@@ -1,6 +1,6 @@
 module TheCity
 
-  class FamilyListLoader < ApiLoader
+  class UserFamilyListLoader < ApiLoader
     
     # Constructor.
     #
