@@ -1,6 +1,6 @@
 module TheCity
 
-  class ProcessListLoader < ApiLoader
+  class UserProcessListLoader < ApiLoader
 
     # Constructor.
     #

@@ -139,8 +139,8 @@ module TheCity
       return @process_list unless @process_list.nil?  
       return nil unless self.id
 
-      loader = ProcessListLoader.new(self.id)    
-      @process_list = ProcessList.new(loader)
+      loader = UserProcessListLoader.new(self.id)    
+      @process_list = UserProcessList.new(loader)
       return @process_list
     end   
 

@@ -1,6 +1,6 @@
 module TheCity
 
-  class Process < ApiObject
+  class UserProcess < ApiObject
 
     attr_accessor :id, 
                   :name, 

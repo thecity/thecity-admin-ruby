@@ -1,6 +1,6 @@
 module TheCity
 
-  class ProcessList 
+  class UserProcessList 
 
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
@@ -23,7 +23,7 @@ module TheCity
     #
     # @return Processes
     def [](index)   
-      Process.new( @json_data['processes'][index] ) if @json_data['processes'][index]
+      UserProcess.new( @json_data['processes'][index] ) if @json_data['processes'][index]
     end
   
   end
