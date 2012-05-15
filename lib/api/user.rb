@@ -161,8 +161,8 @@ module TheCity
       return @admin_privilege_list unless @admin_privilege_list.nil?  
       return nil unless self.id
 
-      loader = AdminPrivilegeListLoader.new(self.id)    
-      @admin_privilege_list = AdminPrivilegeList.new(loader)
+      loader = UserAdminPrivilegeListLoader.new(self.id)    
+      @admin_privilege_list = UserAdminPrivilegeList.new(loader)
       return @admin_privilege_list
     end
 
