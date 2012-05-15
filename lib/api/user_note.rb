@@ -1,6 +1,6 @@
 module TheCity
 
-  class Note < ApiObject
+  class UserNote < ApiObject
 
     attr_accessor :author, 
                   :author_id, 

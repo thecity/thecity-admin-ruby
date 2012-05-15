@@ -1,6 +1,6 @@
 module TheCity
 
-  class NoteListLoader < ApiLoader
+  class UserNoteListLoader < ApiLoader
 
     # Constructor.
     #

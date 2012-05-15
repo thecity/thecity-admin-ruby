@@ -106,8 +106,8 @@ module TheCity
       return @note_list unless @note_list.nil?  
       return nil unless self.id
 
-      loader = NoteListLoader.new(self.id)    
-      @note_list = NoteList.new(loader)
+      loader = UserNoteListLoader.new(self.id)    
+      @note_list = UserNoteList.new(loader)
       return @note_list
     end    
 

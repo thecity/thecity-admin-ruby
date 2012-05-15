@@ -1,6 +1,6 @@
 module TheCity
 
-  class NoteList 
+  class UserNoteList 
 
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
@@ -23,7 +23,7 @@ module TheCity
     #
     # @return Note
     def [](index)
-      Note.new( @json_data['notes'][index] ) if @json_data['notes'][index]
+      UserNote.new( @json_data['notes'][index] ) if @json_data['notes'][index]
     end
   
   end
