@@ -117,8 +117,8 @@ module TheCity
       return @role_list unless @role_list.nil?  
       return nil unless self.id
 
-      loader = RoleListLoader.new(self.id)    
-      @role_list = RoleList.new(loader)
+      loader = UserRoleListLoader.new(self.id)    
+      @role_list = UserRoleList.new(loader)
       return @role_list
     end      
 

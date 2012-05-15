@@ -1,6 +1,6 @@
 module TheCity
 
-  class Role < ApiObject
+  class UserRole < ApiObject
 
     attr_accessor :active, 
                   :created_at, 

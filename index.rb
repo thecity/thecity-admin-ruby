@@ -33,7 +33,7 @@ user = the_city.users[1]
 
 # puts user.addresses[0].location_type
 # puts user.notes[0].author
-# puts user.roles[0].group_name
+puts user.roles[0].group_name
 # puts user.skills[0].name
 # puts user.processes[0].name
 # puts user.invitations[0].source

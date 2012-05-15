@@ -1,6 +1,6 @@
 module TheCity
 
-  class RoleList 
+  class UserRoleList 
 
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
@@ -23,7 +23,7 @@ module TheCity
     #
     # @return Role
     def [](index)
-      Role.new( @json_data['roles'][index] ) if @json_data['roles'][index]
+      UserRole.new( @json_data['roles'][index] ) if @json_data['roles'][index]
     end
   
   end

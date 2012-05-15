@@ -1,6 +1,6 @@
 module TheCity
 
-  class RoleListLoader < ApiLoader
+  class UserRoleListLoader < ApiLoader
 
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
