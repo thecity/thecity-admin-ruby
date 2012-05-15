@@ -1,6 +1,6 @@
 module TheCity
 
-  class AdminPrivilegeListLoader < ApiLoader
+  class UserAdminPrivilegeListLoader < ApiLoader
 
     # Constructor.
     #

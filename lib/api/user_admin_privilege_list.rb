@@ -1,6 +1,6 @@
 module TheCity
 
-  class AdminPrivilegeList 
+  class UserAdminPrivilegeList 
 
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
@@ -23,7 +23,7 @@ module TheCity
     #
     # @return String
     def [](index)
-      AdminPrivilege.new( @json_data['acct_roles'][index] ) if @json_data['acct_roles'][index]
+      UserAdminPrivilege.new( @json_data['acct_roles'][index] ) if @json_data['acct_roles'][index]
     end
   
   end

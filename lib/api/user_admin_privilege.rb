@@ -1,6 +1,6 @@
 module TheCity
 
-  class AdminPrivilege < ApiObject
+  class UserAdminPrivilege < ApiObject
 
     attr_accessor :title
 
