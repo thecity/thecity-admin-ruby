@@ -1,6 +1,6 @@
 module TheCity
 
-  class SkillListLoader < ApiLoader
+  class UserSkillListLoader < ApiLoader
 
     # Constructor.
     #

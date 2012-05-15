@@ -128,8 +128,8 @@ module TheCity
       return @skill_list unless @skill_list.nil?  
       return nil unless self.id
 
-      loader = SkillListLoader.new(self.id)    
-      @skill_list = SkillList.new(loader)
+      loader = UserSkillListLoader.new(self.id)    
+      @skill_list = UserSkillList.new(loader)
       return @skill_list
     end     
 

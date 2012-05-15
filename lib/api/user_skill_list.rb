@@ -1,12 +1,12 @@
 module TheCity
 
-  class SkillList 
+  class UserSkillList 
 
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
     #
-    # @param NoteListLoader loader The object that loaded the data.
+    # @param UserSkillListLoader loader The object that loaded the data.
     def initialize(loader) 
       @json_data = loader.load_feed
 
@@ -21,9 +21,9 @@ module TheCity
     #
     # @param index The index of the skill to get.
     #
-    # @return Skill
+    # @return UserSkill
     def [](index)
-      Skill.new( @json_data['skills'][index] ) if @json_data['skills'][index]
+      UserSkill.new( @json_data['skills'][index] ) if @json_data['skills'][index]
     end
   
   end
