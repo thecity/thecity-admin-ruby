@@ -1,6 +1,6 @@
 module TheCity
 
-  class InvitationList 
+  class UserInvitationList 
 
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
@@ -23,7 +23,7 @@ module TheCity
     #
     # @return Invitation
     def [](index)
-      Note.new( @json_data['invitations'][index] ) if @json_data['invitations'][index]
+      UserInvitation.new( @json_data['invitations'][index] ) if @json_data['invitations'][index]
     end
   
   end

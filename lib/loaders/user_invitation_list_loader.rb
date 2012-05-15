@@ -1,6 +1,6 @@
 module TheCity
 
-  class InvitationListLoader < ApiLoader
+  class UserInvitationListLoader < ApiLoader
 
     # Constructor.
     #

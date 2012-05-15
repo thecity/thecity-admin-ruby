@@ -1,6 +1,6 @@
 module TheCity
 
-  class Note < ApiObject
+  class UserInvitation < ApiObject
 
     attr_accessor :created_at, 
                   :custom_message,

@@ -150,8 +150,8 @@ module TheCity
       return @invitation_list unless @invitation_list.nil?  
       return nil unless self.id
 
-      loader = InvitationListLoader.new(self.id)    
-      @invitation_list = InvitationList.new(loader)
+      loader = UserInvitationListLoader.new(self.id)    
+      @invitation_list = UserInvitationList.new(loader)
       return @invitation_list
     end
 
