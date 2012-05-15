@@ -1,7 +1,7 @@
 module TheCity
 
   def self.admin_request(method, path, params = {})
-    headers = self._build_admin_headers(method, path) 
+    headers = self._build_admin_headers(method, path, params) 
     url = THE_CITY_ADMIN_PATH+path
 
     case method 
@@ -30,9 +30,11 @@ module TheCity
   end
 
 
-  def self._build_admin_headers(method, path) 
+  def self._build_admin_headers(method, path, params) 
+    get_vars = '?' + params.collect { |key, value| "#{key}=#{value}" }.join('&')
+    get_vars = '' if get_vars == '?'
     method_request = method.to_s.upcase
-    url = THE_CITY_ADMIN_PATH + path
+    url = THE_CITY_ADMIN_PATH + path + get_vars
     current_time = Time.now.to_i.to_s
     string_to_sign = current_time.to_s + method_request + url
     unencoded_hmac = OpenSSL::HMAC.digest('sha256', TheCity::AdminApi::API_KEY, string_to_sign)

@@ -31,7 +31,7 @@ module TheCity
     # @param index The index of the user to get.
     #
     # @return User
-    def [](index)
+    def [](index)  
       User.new( @json_data['users'][index] ) if @json_data['users'][index]
     end
   

@@ -69,44 +69,40 @@ module TheCity
       TheCity::AdminApi::const_set(:API_TOKEN, api_token)
 
       # User list usage variables
-      @users_page_requested = 0
-      @users_per_page_requested = 0    
+      @users_page_requested = 0   
       @user_list = nil
 
       # Group list usage variables
       @groups_page_requested = 0
-      @groups_per_page_requested = 0    
       @group_list = nil      
     end
 
 
     # Get a list of users.
+    #
     # <b>page</b> The page number to get.  Default 1.
-    # <b>per_page</b> The number of items to show.  Default 20.
     # <b>options</b>
     #
     # Return UserList based on the specified params.
-    def users(page = 1, per_page = 20, options = {})
-      return @user_list if @users_page_requested == page and @users_per_page_requested == per_page and !@user_list.nil?  
+    def users(page = 1, options = {})
+      return @user_list if @users_page_requested == page and !@user_list.nil?  
       @users_page_requested = page
-      @users_per_page_requested = per_page
-      loader = UserListLoader.new(page, per_page)    
+      loader = UserListLoader.new(page)    
       @user_list = UserList.new(loader)
       return @user_list
     end  
 
 
     # Get a list of groups.
+    #
     # <b>page</b> The page number to get.  Default 1.
-    # <b>per_page</b> The number of items to show.  Default 20.
     # <b>options</b>
     #
     # Return GroupList based on the specified params.
-    def groups(page = 1, per_page = 20, options = {})
-      return @group_list if @groups_page_requested == page and @groups_per_page_requested == per_page and !@group_list.nil?  
+    def groups(page = 1, options = {})
+      return @group_list if @groups_page_requested == page and !@group_list.nil?  
       @groups_page_requested = page
-      @groups_per_page_requested = per_page
-      loader = GroupListLoader.new(page, per_page)    
+      loader = GroupListLoader.new(page)    
       @group_list = GroupList.new(loader)
       return @group_list
     end  

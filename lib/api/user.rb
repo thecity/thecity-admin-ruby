@@ -56,7 +56,7 @@ module TheCity
     # Constructor.
     #
     # @param Mixed loader (optional) The object that has the data.  This can be a UserLoader or Hash object.
-    def initialize(loader = nil)
+    def initialize(loader = nil)    
       if loader.is_a?(UserLoader)
         initialize_from_json_object(loader.load_feed) 
       elsif loader.is_a?(Hash)

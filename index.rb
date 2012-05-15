@@ -18,26 +18,26 @@ the_city = TheCity::AdminApi.new(key, token)
 
 ###### USERS #######
 
-user = the_city.users[1]
+# user = the_city.users[0]
 # puts user.full_name
 
 
 # user2 = TheCity::User.load_user_by_id(564114313)
 # puts user2.full_name
 
-# user = the_city.users[1]
-# puts user.full_name
+user = the_city.users[1]
+puts user.full_name
 
 # This is currenly returning a 404 if no family members are found
 #puts user.family[0].name
 
-# puts user.addresses[0].location_type
-# puts user.notes[0].author
+puts user.addresses[0].location_type
+puts user.notes[0].author
 puts user.roles[0].group_name
-# puts user.skills[0].name
-# puts user.processes[0].name
-# puts user.invitations[0].source
-# puts user.admin_privileges[0].title
+puts user.skills[0].name
+#puts user.processes[0].name
+#puts user.invitations[0].source
+puts user.admin_privileges[0].title
 
 
 
