@@ -63,6 +63,7 @@ module TheCity
         initialize_from_json_object(loader)
       end
 
+      @address_list = nil
       @family_list = nil
       @note_list = nil
       @role_list = nil
@@ -76,6 +77,16 @@ module TheCity
     def full_name
       use_name = self.nickname || self.first
       [use_name, self.last].compact.join(' ')
+    end
+
+    # Address information
+    def addresses
+      return @address_list unless @address_list.nil?  
+      return nil unless self.id
+
+      loader = UserAddressListLoader.new(self.id)    
+      @address_list = UserAddressList.new(loader)
+      return @address_list
     end
 
 
