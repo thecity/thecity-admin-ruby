@@ -46,3 +46,6 @@ user = the_city.users[1]
 group = the_city.groups[0]
 puts group.name
 
+# Fails with 500 error
+#puts group.addresses[0].location_type
+
