@@ -4,16 +4,21 @@ module TheCity
     headers = self._build_admin_headers(method, path, params) 
     url = THE_CITY_ADMIN_PATH+path
 
+    response = 
     case method 
     when :post
-      Typhoeus::Request.post(url, {:headers => headers, :params => self._flatten_params(params)}).body
+      Typhoeus::Request.post(url, {:headers => headers, :params => self._flatten_params(params)})
     when :get  
-      Typhoeus::Request.get(url, {:headers => headers, :params => self._flatten_params(params)}).body
-    when :put
-      Typhoeus::Request.put(url, {:headers => headers, :params => self._flatten_params(params)}).body
+      Typhoeus::Request.get(url, {:headers => headers, :params => self._flatten_params(params)})
+    when :put  
+      Typhoeus::Request.put(url, {:headers => headers, :params => self._flatten_params(params)})
     when :delete
-      Typhoeus::Request.delete(url, {:headers => headers, :params => self._flatten_params(params)}).body
+      Typhoeus::Request.delete(url, {:headers => headers, :params => self._flatten_params(params)})
     end
+
+    # TODO: Add check for errors here
+
+    response.body
   end
 
 
@@ -41,13 +46,19 @@ module TheCity
     unescaped_hmac = Base64.encode64(unencoded_hmac).chomp
     hmac_signature = CGI.escape(unescaped_hmac)
 
-    {'X-City-Sig' => hmac_signature,
-     'X-City-User-Token' => TheCity::AdminApi::API_TOKEN,
-     'X-City-Time' => current_time,
-     'Accept' => 'application/vnd.thecity.admin.v1+json'}
+    headers = {'X-City-Sig' => hmac_signature,
+               'X-City-User-Token' => TheCity::AdminApi::API_TOKEN,
+               'X-City-Time' => current_time,
+               'Accept' => 'application/vnd.thecity.admin.v1+json'}
 
 
-     raise 'Still need to add the length'
+    # This is causing issues.... not sure if it is needed (docs might be lieing)
+    # if [:post, :put].include?(method)
+    #   headers['Content-Type'] = 'application/json'
+    #   headers['Content-Length'] = params.to_json.length
+    # end
+
+    headers
   end  
 
 end

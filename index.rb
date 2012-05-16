@@ -66,9 +66,11 @@ puts user.full_name
 user.first = 'Wes'
 #group.name = 'Wes Group'
 
+puts user.first
+
 user.save
 #group.save
 
 
-user2 = TheCity::User.load_user_by_id(user.id)
-puts user2.full_name
+# user2 = TheCity::User.load_user_by_id(user.id)
+# puts user2.full_name
