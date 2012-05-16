@@ -14,4 +14,8 @@ module TheCity
   require loaders_path + 'api_loader.rb'
   Dir["#{loaders_path}/*.rb"].each { |f| require(f) }
 
+  savers_path = THECITY_LIB_DIR + '/savers/'
+  require savers_path + 'api_saver.rb'
+  Dir["#{savers_path}/*.rb"].each { |f| require(f) }
+
 end

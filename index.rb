@@ -40,17 +40,35 @@ the_city = TheCity::AdminApi.new(key, token)
 # puts user.admin_privileges[0].title
 
 
-
 ###### GROUPS #######
 
-group = the_city.groups[0]
-puts group.name
-puts group.id
+# group = the_city.groups[0]
+# puts group.name
+# puts group.id
 
 # Fails with 500 error
-#puts group.addresses[0].location_type
+# puts group.addresses[0].location_type
 
-puts group.roles[0].user_name
-#puts group.tags[0].name
+# puts group.roles[0].user_name
+# puts group.tags[0].name
 
 # puts group.invitations[0].source
+
+
+
+###### USERS / GROUPS #######
+
+
+user = the_city.users[0]
+#group = the_city.groups[0]
+
+puts user.full_name
+user.first = 'Wes'
+#group.name = 'Wes Group'
+
+user.save
+#group.save
+
+
+user2 = TheCity::User.load_user_by_id(user.id)
+puts user2.full_name

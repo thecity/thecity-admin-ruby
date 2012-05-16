@@ -1,44 +1,44 @@
 module TheCity
 
   class User < ApiObject
-    attr_accessor :active,
-                  :admin_url,
-                  :api_url,
-                  :birthdate,
-                  :contact_updated_at,
-                  :created_at,
-                  :email,
-                  :email_bouncing,
-                  :external_id_1,
-                  :external_id_2,
-                  :external_id_3,
-                  :first,
-                  :gender,
-                  :head_of_household,
-                  :id,
-                  :in_community,
-                  :in_connect,
-                  :in_service,
-                  :last,
-                  :last_attendance_date,
-                  :last_checkin_date,
-                  :last_donation_date,
-                  :last_engaged,
-                  :last_logged_in,
-                  :marital_status,
-                  :member_since,
-                  :middle,
-                  :nickname,
-                  :primary_phone,
-                  :primary_phone_type,
-                  :secondary_phone,
-                  :secondary_phone_type,
-                  :spouse_id,
-                  :spouse_name,
-                  :staff,
-                  :title,
-                  :type,
-                  :updated_at            
+    tc_attr_accessor :active,
+                     :admin_url,
+                     :api_url,
+                     :birthdate,
+                     :contact_updated_at,
+                     :created_at,
+                     :email,
+                     :email_bouncing,
+                     :external_id_1,
+                     :external_id_2,
+                     :external_id_3,
+                     :first,
+                     :gender,
+                     :head_of_household,
+                     :id,
+                     :in_community,
+                     :in_connect,
+                     :in_service,
+                     :last,
+                     :last_attendance_date,
+                     :last_checkin_date,
+                     :last_donation_date,
+                     :last_engaged,
+                     :last_logged_in,
+                     :marital_status,
+                     :member_since,
+                     :middle,
+                     :nickname,
+                     :primary_phone,
+                     :primary_phone_type,
+                     :secondary_phone,
+                     :secondary_phone_type,
+                     :spouse_id,
+                     :spouse_name,
+                     :staff,
+                     :title,
+                     :type,
+                     :updated_at            
 
 
     # Loads the user by the specified ID
@@ -164,6 +164,13 @@ module TheCity
       loader = UserAdminPrivilegeListLoader.new(self.id)    
       @admin_privilege_list = UserAdminPrivilegeList.new(loader)
       return @admin_privilege_list
+    end
+
+
+    # Save this object.
+    def save
+      saver = UserSaver.new(self.to_json) 
+      saver.save_feed
     end
 
   end

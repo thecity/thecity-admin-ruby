@@ -45,6 +45,9 @@ module TheCity
      'X-City-User-Token' => TheCity::AdminApi::API_TOKEN,
      'X-City-Time' => current_time,
      'Accept' => 'application/vnd.thecity.admin.v1+json'}
+
+
+     raise 'Still need to add the length'
   end  
 
 end

@@ -1,19 +1,19 @@
 module TheCity
 
   class Group < ApiObject
-    attr_accessor :admin_url, 
-                  :api_url, 
-                  :created_at, 
-                  :external_description, 
-                  :group_type, 
-                  :id, 
-                  :internal_url, 
-                  :name, 
-                  :nickname, 
-                  :parent_id, 
-                  :plaza_url, 
-                  :smart_large_profile_pic, 
-                  :started_as_seed
+    tc_attr_accessor :admin_url, 
+                     :api_url, 
+                     :created_at, 
+                     :external_description, 
+                     :group_type, 
+                     :id, 
+                     :internal_url, 
+                     :name, 
+                     :nickname, 
+                     :parent_id, 
+                     :plaza_url, 
+                     :smart_large_profile_pic, 
+                     :started_as_seed
 
 
     # Loads the group by the specified ID.
@@ -87,6 +87,14 @@ module TheCity
       @tag_list = GroupTagList.new(loader)
       return @tag_list
     end     
+
+
+
+    # Save this object.
+    def save
+      saver = GroupSaver.new(self.to_json) 
+      saver.save_feed
+    end
 
   end
 
