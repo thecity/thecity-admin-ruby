@@ -2,8 +2,8 @@ module TheCity
 
   class UserSkill < ApiObject
 
-    attr_accessor :name, 
-                  :skill_id
+    tc_attr_accessor :name, 
+                     :skill_id
 
 
     # Constructor.

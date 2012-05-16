@@ -2,18 +2,18 @@ module TheCity
 
   class UserAddress < ApiObject
 
-    attr_accessor :city, 
-                  :created_at, 
-                  :id, 
-                  :latitude, 
-                  :location_type, 
-                  :longitude, 
-                  :privacy, 
-                  :state, 
-                  :street, 
-                  :updated_at, 
-                  :user_id, 
-                  :zipcode
+    tc_attr_accessor :city, 
+                     :created_at, 
+                     :id, 
+                     :latitude, 
+                     :location_type, 
+                     :longitude, 
+                     :privacy, 
+                     :state, 
+                     :street, 
+                     :updated_at, 
+                     :user_id, 
+                     :zipcode
 
 
     # Constructor.

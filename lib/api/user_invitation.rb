@@ -2,13 +2,13 @@ module TheCity
 
   class UserInvitation < ApiObject
 
-    attr_accessor :created_at, 
-                  :custom_message,
-                  :email,
-                  :group_id,
-                  :id,
-                  :pending_approval,
-                  :source
+    tc_attr_accessor :created_at, 
+                     :custom_message,
+                     :email,
+                     :group_id,
+                     :id,
+                     :pending_approval,
+                     :source
 
 
     # Constructor.

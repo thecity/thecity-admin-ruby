@@ -2,12 +2,12 @@ module TheCity
 
   class UserNote < ApiObject
 
-    attr_accessor :author, 
-                  :author_id, 
-                  :created_at, 
-                  :id, 
-                  :updated_at, 
-                  :visible_to
+    tc_attr_accessor :author, 
+                     :author_id, 
+                     :created_at, 
+                     :id, 
+                     :updated_at, 
+                     :visible_to
 
 
     # Constructor.

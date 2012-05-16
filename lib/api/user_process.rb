@@ -2,9 +2,9 @@ module TheCity
 
   class UserProcess < ApiObject
 
-    attr_accessor :id, 
-                  :name, 
-                  :state
+    tc_attr_accessor :id, 
+                     :name, 
+                     :state
 
 
     # Constructor.

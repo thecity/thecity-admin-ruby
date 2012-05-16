@@ -2,15 +2,15 @@ module TheCity
 
   class UserFamilyMember < ApiObject
 
-    attr_accessor :external_id_1, 
-                  :active, 
-                  :admin_url, 
-                  :api_url, 
-                  :birthdate, 
-                  :email, 
-                  :family_role, 
-                  :name, 
-                  :user_id
+    tc_attr_accessor :external_id_1, 
+                     :active, 
+                     :admin_url, 
+                     :api_url, 
+                     :birthdate, 
+                     :email, 
+                     :family_role, 
+                     :name, 
+                     :user_id
 
 
     # Constructor.

@@ -2,7 +2,7 @@ module TheCity
 
   class UserAdminPrivilege < ApiObject
 
-    attr_accessor :title
+    tc_attr_accessor :title
 
 
     # Constructor.

@@ -2,8 +2,8 @@ module TheCity
 
   class GroupTag < ApiObject
 
-    attr_accessor :name,
-                  :tag_id
+    tc_attr_accessor :name,
+                     :tag_id
 
 
     # Constructor.
