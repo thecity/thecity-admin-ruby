@@ -10,7 +10,7 @@ require 'json'
 
 
 
-TCA_ENV = 'development'
+TCA_ENV = 'staging'
 
 # The path to the lib directory.
 THECITY_LIB_DIR = File.dirname(__FILE__)
@@ -32,8 +32,7 @@ elsif TCA_ENV == 'development'
   THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.admin.v1+json'
 
 elsif TCA_ENV == 'staging'
-  raise 'Admin API path not set for testing' # Delete this exception when set
-  THE_CITY_ADMIN_PATH = ''
+  THE_CITY_ADMIN_PATH = 'https://api.stagethecity.org'
   THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.admin.v1+json'
 
 elsif TCA_ENV == 'test'

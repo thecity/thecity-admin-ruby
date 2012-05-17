@@ -17,6 +17,7 @@ module TheCity
     end
 
     # TODO: Add check for errors here
+    # {"error_code"=>403, "error_message"=>"API access: disabled"}
 
     response.body
   end

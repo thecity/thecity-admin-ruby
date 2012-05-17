@@ -16,7 +16,14 @@ module TheCity
 
     def initialize_from_json_object(object_attributes)
       if object_attributes.is_a?( Hash )
-        object_attributes.each { |key, value| self.send("#{key.downcase.gsub(' ', '_')}=", value) }
+        object_attributes.each do |key, value| 
+          method_to_call = "#{key.downcase.gsub(' ', '_')}="
+          if respond_to?(method_to_call)
+            self.send(method_to_call, value) 
+          else
+            # puts method_to_call  # Show the missing methods
+          end
+        end
       end     
     end
     

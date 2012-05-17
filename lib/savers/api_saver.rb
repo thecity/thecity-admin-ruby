@@ -13,8 +13,8 @@ module TheCity
 
       response = TheCity::admin_request(@url_action, @url_data_path, @url_data_params)   
 
-      debugger
-      asdf='save_feed'
+      # debugger
+      # asdf='save_feed'
 
       # Build up errors or return true.
 

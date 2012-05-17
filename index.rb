@@ -16,6 +16,30 @@ token = '853d87fbcebb81f6'
 the_city = TheCity::AdminApi.new(key, token)
 
 
+###### USERS / GROUPS #######
+
+
+user = the_city.users[0]
+puts user.full_name
+user.first = 'Adam'
+puts user.full_name
+user.save
+puts user.id
+user2 = TheCity::User.load_user_by_id(user.id)
+puts user2.full_name
+
+
+# group = the_city.groups[0]
+# puts group.name
+# group.name = 'Wes Group'
+# puts group.name
+# group.save
+# group2 = TheCity::Group.load_group_by_id(group.id)
+# puts group2.name
+
+
+
+
 ###### USERS #######
 
 # user = the_city.users[0]
@@ -54,23 +78,3 @@ the_city = TheCity::AdminApi.new(key, token)
 
 # puts group.invitations[0].source
 
-
-
-###### USERS / GROUPS #######
-
-
-user = the_city.users[0]
-#group = the_city.groups[0]
-
-puts user.full_name
-user.first = 'Wes'
-#group.name = 'Wes Group'
-
-puts user.first
-
-user.save
-#group.save
-
-
-# user2 = TheCity::User.load_user_by_id(user.id)
-# puts user2.full_name

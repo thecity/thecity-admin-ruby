@@ -75,7 +75,7 @@ module TheCity
     
     # The first and last name of the user.
     def full_name
-      use_name = self.nickname || self.first
+      use_name = self.nickname.empty? ? self.first : self.nickname
       [use_name, self.last].compact.join(' ')
     end
 
