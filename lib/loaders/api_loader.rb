@@ -9,7 +9,7 @@ module TheCity
 
     # Loads the list
     #
-    # Returns the data loaded in a JSON object.
+    # @return the data loaded in a JSON object.
     def load_feed
       if !@cacher.nil? and !@cacher.is_cache_expired?( @class_key )
         data = @cacher.get_data( @class_key )

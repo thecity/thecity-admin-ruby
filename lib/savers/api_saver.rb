@@ -3,11 +3,9 @@ module TheCity
   # This adapter is the standard for all saving objects.
   class ApiSaver
 
-    # Constructor
-    # def initialize
-    # end
-
     # saves this object.
+    #
+    # @return True on success, otherwise false.
     def save_feed
       @url_data_params ||= {}
 

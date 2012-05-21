@@ -4,9 +4,9 @@ module TheCity
 
     # Constructor.
     #
-    # <b>user_id</b> The user ID to load the invitations for.
-    # <b>page</b> The page number to get.  Default is 1.  
-    # <b>CacheAdapter cacher</b> (optional) The cacher to be used to cache data.
+    # @param user_id The user ID to load the invitations for.
+    # @param page The page number to get.  Default is 1.  
+    # @param [CacheAdapter] cacher (optional) The cacher to be used to cache data.
     def initialize(user_id, page = 1, cacher = nil)
       @class_key = "users_#{user_id}_invitations_#{page}"   
       @url_data_path = "/users/#{user_id}/invitations"

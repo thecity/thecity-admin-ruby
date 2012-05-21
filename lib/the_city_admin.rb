@@ -79,8 +79,8 @@ module TheCity
 
     # Get a list of users.
     #
-    # <b>page</b> The page number to get.  Default 1.
-    # <b>options</b>
+    # @param page The page number to get.  Default 1.
+    # @param options The options to specify for the user list.
     #
     # Return UserList based on the specified params.
     def users(page = 1, options = {})
@@ -94,8 +94,8 @@ module TheCity
 
     # Get a list of groups.
     #
-    # <b>page</b> The page number to get.  Default 1.
-    # <b>options</b>
+    # @param page The page number to get.  Default 1.
+    # @param options The options to specify for the group list.
     #
     # Return GroupList based on the specified params.
     def groups(page = 1, options = {})

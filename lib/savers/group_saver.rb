@@ -4,7 +4,7 @@ module TheCity
 
     # Constructor.
     #
-    # <b>data</b> The json data to save.
+    # @param data The json data to save.
     def initialize(data)
       if data[:id]
         @url_action = :put
