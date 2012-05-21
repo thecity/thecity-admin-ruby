@@ -102,7 +102,7 @@ module TheCity
     #
     # @return True on success, otherwise false.
     def save
-      saver = GroupSaver.new(self.to_json) 
+      saver = GroupSaver.new(self.to_attributes) 
       saver.save_feed
     end
 

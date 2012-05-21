@@ -58,8 +58,8 @@ module TheCity
 
     # Constructor.
     #
-    # <b>api_key</b> The API key for the church.
-    # <b>api_token</b> The API token for the church.
+    # @param api_key The API key for the church.
+    # @param api_token The API token for the church.
     def initialize(api_key, api_token)
       # Create a constant for the churches API key.
       TheCity::AdminApi::const_set(:API_KEY, api_key)
@@ -79,14 +79,14 @@ module TheCity
 
     # Get a list of users.
     #
-    # @param page The page number to get.  Default 1.
+    # @param page The page number to get.  Default is 1.
     # @param options The options to specify for the user list.
     #
-    # Return UserList based on the specified params.
+    # @return [UserList] based on the specified params.
     def users(page = 1, options = {})
       return @user_list if @users_page_requested == page and !@user_list.nil?  
       @users_page_requested = page
-      loader = UserListLoader.new(page)    
+      loader = UserListLoader.new(page, options)    
       @user_list = UserList.new(loader)
       return @user_list
     end  
@@ -94,14 +94,14 @@ module TheCity
 
     # Get a list of groups.
     #
-    # @param page The page number to get.  Default 1.
+    # @param page The page number to get.  Default is 1.
     # @param options The options to specify for the group list.
     #
-    # Return GroupList based on the specified params.
+    # @return [GroupList] based on the specified params.
     def groups(page = 1, options = {})
       return @group_list if @groups_page_requested == page and !@group_list.nil?  
       @groups_page_requested = page
-      loader = GroupListLoader.new(page)    
+      loader = GroupListLoader.new(page, options)    
       @group_list = GroupList.new(loader)
       return @group_list
     end  
