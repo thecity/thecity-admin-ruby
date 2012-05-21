@@ -6,9 +6,15 @@ module TheCity
 
     # Constructor.
     #
-    # @param UserListLoader loader The object that loaded the data.
-    def initialize(loader) 
-      @json_data = loader.load_feed
+    # @param [UserListLoader] loader The object that loaded the data.
+    # @param options A hash of filters for loading the user list.
+    # 
+    # Options:
+    #   :page - The page number to get
+    #   :created_within - A string specifying the period of time to look back for users created.
+    #   :contact_updated_within - A string specifying the period of time to look back for users created.
+    def initialize(loader, options = {}) 
+      @json_data = loader.load_feed(options)
 
       @total_entries = @json_data['total_entries']
       @total_pages = @json_data['total_pages']
@@ -30,7 +36,7 @@ module TheCity
     #
     # @param index The index of the user to get.
     #
-    # @return User
+    # @return [User]
     def [](index)  
       User.new( @json_data['users'][index] ) if @json_data['users'][index]
     end

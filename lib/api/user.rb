@@ -41,21 +41,20 @@ module TheCity
                      :updated_at            
 
 
-    # Loads the user by the specified ID
+    # Loads the user by the specified ID.
     #
-    # <b>user_id</b> The ID of the user to load.
+    # @param user_id The ID of the user to load.
     #
-    # Returns a new TheCity::User object.
+    # Returns a new {User} object.
     def self.load_user_by_id(user_id)
       user_loader = UserLoader.new(user_id)
       self.new(user_loader)
     end       
 
 
-
     # Constructor.
     #
-    # @param Mixed loader (optional) The object that has the data.  This can be a UserLoader or Hash object.
+    # @param loader (optional) The object that has the data.  This can be a {UserLoader} or Hash object.
     def initialize(loader = nil)    
       if loader.is_a?(UserLoader)
         initialize_from_json_object(loader.load_feed) 
@@ -73,13 +72,19 @@ module TheCity
       @admin_privilege_list = nil
     end
     
+
     # The first and last name of the user.
+    #
+    # @return A string of the full name
     def full_name
       use_name = self.nickname.empty? ? self.first : self.nickname
       [use_name, self.last].compact.join(' ')
     end
 
-    # Address information
+
+    # Address information.
+    #
+    # @return [UserAddressList]
     def addresses
       return @address_list unless @address_list.nil?  
       return nil unless self.id
@@ -91,6 +96,8 @@ module TheCity
 
 
     # The family information.
+    #
+    # @return [UserFamilyList]
     def family
       return @family_list unless @user_list.nil?  
       return nil unless self.id
@@ -102,6 +109,8 @@ module TheCity
 
 
     # The notes for this user.
+    #
+    # @return [UserNoteList]
     def notes
       return @note_list unless @note_list.nil?  
       return nil unless self.id
@@ -113,6 +122,8 @@ module TheCity
 
 
     # The roles for this user.
+    #
+    # @return [UserRoleList]
     def roles
       return @role_list unless @role_list.nil?  
       return nil unless self.id
@@ -123,7 +134,9 @@ module TheCity
     end      
 
 
-    # The roles for this user.
+    # The skills for this user.
+    #
+    # @return [UserSkillList]
     def skills
       return @skill_list unless @skill_list.nil?  
       return nil unless self.id
@@ -135,6 +148,8 @@ module TheCity
 
 
     # The processes for this user.
+    #
+    # @return [UserProcessList]
     def processes
       return @process_list unless @process_list.nil?  
       return nil unless self.id
@@ -146,6 +161,8 @@ module TheCity
 
 
     # The invitations for this user.
+    #
+    # @return [UserInvitationList]
     def invitations
       return @invitation_list unless @invitation_list.nil?  
       return nil unless self.id
@@ -157,6 +174,8 @@ module TheCity
 
 
     # The invitations for this user.
+    #
+    # @return [UserAdminPrivilegeList]
     def admin_privileges
       return @admin_privilege_list unless @admin_privilege_list.nil?  
       return nil unless self.id
@@ -168,8 +187,10 @@ module TheCity
 
 
     # Save this object.
+    #
+    # @return True on success, otherwise false.
     def save
-      saver = UserSaver.new(self.to_json) 
+      saver = UserSaver.new(self.to_attributes) 
       saver.save_feed
     end
 

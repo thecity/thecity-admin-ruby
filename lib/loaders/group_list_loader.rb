@@ -4,8 +4,8 @@ module TheCity
 
     # Constructor.
     #
-    # <b>page</b> The page number to get.  Default is 1.
-    # <b>CacheAdapter cacher</b> (optional) The cacher to be used to cache data.
+    # @param page The page number to get.  Default is 1.
+    # @param [CacheAdapter] cacher (optional) The cacher to be used to cache data.
     def initialize(page = 1, cacher = nil) 
       @class_key = "group_list_#{page}"   
       @url_data_path = '/groups'

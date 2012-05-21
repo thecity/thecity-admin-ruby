@@ -6,7 +6,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param GroupTagListLoader loader The object that loaded the data.
+    # @param [GroupTagListLoader] loader The object that loaded the data.
     def initialize(loader) 
       @json_data = loader.load_feed
 
@@ -21,7 +21,7 @@ module TheCity
     #
     # @param index The index of the group tag to get.
     #
-    # @return GroupTag
+    # @return [GroupTag]
     def [](index)
       GroupTag.new( @json_data['tags'][index] ) if @json_data['tags'][index]
     end

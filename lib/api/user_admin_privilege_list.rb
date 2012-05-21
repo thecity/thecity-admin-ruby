@@ -6,7 +6,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param NoteListLoader loader The object that loaded the data.
+    # @param [UserAdminPrivilegeListLoader] loader The object that loaded the data.
     def initialize(loader) 
       @json_data = loader.load_feed
 
@@ -21,7 +21,7 @@ module TheCity
     #
     # @param index The index of the admin privilege to get.
     #
-    # @return String
+    # @return [UserAdminPrivilege]
     def [](index)
       UserAdminPrivilege.new( @json_data['acct_roles'][index] ) if @json_data['acct_roles'][index]
     end

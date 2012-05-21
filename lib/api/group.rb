@@ -18,9 +18,9 @@ module TheCity
 
     # Loads the group by the specified ID.
     #
-    # <b>group_id</b> The ID of the group to load.
+    # @param group_id The ID of the group to load.
     #
-    # Returns a new TheCity::Group object.
+    # Returns a new {Group} object.
     def self.load_group_by_id(group_id)
       group_loader = GroupLoader.new(group_id)
       self.new(group_loader)
@@ -30,7 +30,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param Mixed loader (optional) The object that has the data.  This can be a GroupLoader or Hash object.
+    # @param loader (optional) The object that has the data.  This can be a {GroupLoader} or Hash object.
     def initialize(loader = nil)
       if loader.is_a?(GroupLoader)
         initialize_from_json_object(loader.load_feed) 
@@ -46,6 +46,8 @@ module TheCity
 
 
     # The address information.
+    #
+    # @return [AddressList]
     def addresses
       return @address_list unless @address_list.nil?  
       return nil unless self.id
@@ -57,6 +59,8 @@ module TheCity
     
 
     # The invitations for this group.
+    #
+    # @return [GroupInvitationList]
     def invitations
       return @invitation_list unless @invitation_list.nil?  
       return nil unless self.id
@@ -68,6 +72,8 @@ module TheCity
 
 
     # The roles for this group.
+    #
+    # @return [GroupRoleList]
     def roles
       return @role_list unless @role_list.nil?  
       return nil unless self.id
@@ -79,6 +85,8 @@ module TheCity
 
 
     # The tags for this group.
+    #
+    # @return [GroupTagList]
     def tags
       return @tag_list unless @tag_list.nil?  
       return nil unless self.id
@@ -91,6 +99,8 @@ module TheCity
 
 
     # Save this object.
+    #
+    # @return True on success, otherwise false.
     def save
       saver = GroupSaver.new(self.to_json) 
       saver.save_feed

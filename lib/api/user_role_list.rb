@@ -6,7 +6,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param UserRoleListLoader loader The object that loaded the data.
+    # @param [UserRoleListLoader] loader The object that loaded the data.
     def initialize(loader) 
       @json_data = loader.load_feed
 
@@ -21,7 +21,7 @@ module TheCity
     #
     # @param index The index of the user role to get.
     #
-    # @return UserRole
+    # @return [UserRole]
     def [](index)
       UserRole.new( @json_data['roles'][index] ) if @json_data['roles'][index]
     end

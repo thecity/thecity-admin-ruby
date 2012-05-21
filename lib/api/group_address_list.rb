@@ -6,7 +6,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param UserAddressListLoader loader The object that loaded the data.
+    # @param [UserAddressListLoader] loader The object that loaded the data.
     def initialize(loader) 
       @json_data = loader.load_feed
 
@@ -21,10 +21,8 @@ module TheCity
     #
     # @param index The index of the note to get.
     #
-    # @return Note
+    # @return [UserAddress]
     def [](index)
-      debugger
-      asdf=234
       GroupAddress.new( @json_data['addresses'][index] ) if @json_data['addresses'][index]
     end
   

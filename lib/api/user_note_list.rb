@@ -6,7 +6,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param NoteListLoader loader The object that loaded the data.
+    # @param [UserNoteListLoader] loader The object that loaded the data.
     def initialize(loader) 
       @json_data = loader.load_feed
 
@@ -21,7 +21,7 @@ module TheCity
     #
     # @param index The index of the note to get.
     #
-    # @return Note
+    # @return [UserNote]
     def [](index)
       UserNote.new( @json_data['notes'][index] ) if @json_data['notes'][index]
     end

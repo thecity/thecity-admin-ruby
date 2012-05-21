@@ -6,7 +6,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param UserInvitationListLoader loader The object that loaded the data.
+    # @param [UserInvitationListLoader] loader The object that loaded the data.
     def initialize(loader) 
       @json_data = loader.load_feed
 
@@ -21,7 +21,7 @@ module TheCity
     #
     # @param index The index of the invitation to get.
     #
-    # @return UserInvitation
+    # @return [UserInvitation]
     def [](index)
       UserInvitation.new( @json_data['invitations'][index] ) if @json_data['invitations'][index]
     end

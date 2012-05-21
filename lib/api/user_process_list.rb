@@ -6,7 +6,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param NoteListLoader loader The object that loaded the data.
+    # @param [UserProcessListLoader] loader The object that loaded the data.
     def initialize(loader) 
       @json_data = loader.load_feed
 
@@ -21,7 +21,7 @@ module TheCity
     #
     # @param index The index of the process to get.
     #
-    # @return Processes
+    # @return [UserProcesses]
     def [](index)   
       UserProcess.new( @json_data['processes'][index] ) if @json_data['processes'][index]
     end

@@ -1,5 +1,7 @@
 module TheCity
 
+  require THECITY_LIB_DIR + '/exceptions.rb'
+
   api_path = THECITY_LIB_DIR + '/api/'
   require api_path + 'api_object.rb'
   Dir["#{api_path}/*.rb"].each { |f| require(f) }

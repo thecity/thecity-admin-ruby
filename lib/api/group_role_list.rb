@@ -6,7 +6,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param GroupRoleListLoader loader The object that loaded the data.
+    # @param [GroupRoleListLoader] loader The object that loaded the data.
     def initialize(loader) 
       @json_data = loader.load_feed
 
@@ -21,7 +21,7 @@ module TheCity
     #
     # @param index The index of the group role to get.
     #
-    # @return GroupRole
+    # @return [GroupRole]
     def [](index)
       GroupRole.new( @json_data['roles'][index] ) if @json_data['roles'][index]
     end

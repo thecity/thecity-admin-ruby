@@ -16,9 +16,14 @@ module TheCity
       Typhoeus::Request.delete(url, {:headers => headers, :params => self._flatten_params(params)})
     end
 
-    # TODO: Add check for errors here
-    # {"error_code"=>403, "error_message"=>"API access: disabled"}
-
+    unless response.success?
+      if response.curl_error_message != 'No error'
+        raise TheCityExceptions::UnableToConnectToTheCity.new(response.curl_error_message)
+      else
+        raise TheCityExceptions::TheCityResponseError.new(response.status_message)
+      end
+    end
+    
     response.body
   end
 

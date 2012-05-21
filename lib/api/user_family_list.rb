@@ -6,7 +6,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param FamilyListLoader loader The object that loaded the data.
+    # @param [FamilyListLoader] loader The object that loaded the data.
     def initialize(loader)
       @json_data = loader.load_feed
 
@@ -29,7 +29,7 @@ module TheCity
     #
     # @param index The index of the family member to get.
     #
-    # @return FamilyMember
+    # @return [UserFamilyMember]
     def [](index)      
       UserFamilyMember.new( @json_data['family_members'][index] ) if @json_data['family_members'][index]
     end
