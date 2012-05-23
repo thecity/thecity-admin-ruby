@@ -2,6 +2,8 @@ module TheCity
 
   class UserNoteList 
 
+    include Enumerable
+
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
@@ -25,6 +27,12 @@ module TheCity
     def [](index)
       UserNote.new( @json_data['notes'][index] ) if @json_data['notes'][index]
     end
+
+
+    # This method is needed for Enumerable.
+    def each &block
+      @json_data['notes'].each{ |note| yield( UserNote.new(note) )}
+    end    
   
   end
   

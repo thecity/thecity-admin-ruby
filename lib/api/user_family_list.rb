@@ -2,6 +2,8 @@ module TheCity
 
   class UserFamilyList 
 
+    include Enumerable
+
     attr_reader :id, :created_at, :external_id
 
     # Constructor.
@@ -33,6 +35,12 @@ module TheCity
     def [](index)      
       UserFamilyMember.new( @json_data['family_members'][index] ) if @json_data['family_members'][index]
     end
+
+
+    # This method is needed for Enumerable.
+    def each &block
+      @json_data['family_members'].each{ |member| yield( UserFamilyMember.new(member) )}
+    end    
   
   end
   

@@ -2,6 +2,8 @@ module TheCity
 
   class UserAddressList 
 
+    include Enumerable
+
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
@@ -25,6 +27,12 @@ module TheCity
     def [](index)
       UserAddress.new( @json_data['addresses'][index] ) if @json_data['addresses'][index]
     end
+
+
+    # This method is needed for Enumerable.
+    def each &block
+      @json_data['addresses'].each{ |address| yield( UserAddress.new(address) )}
+    end    
   
   end
   

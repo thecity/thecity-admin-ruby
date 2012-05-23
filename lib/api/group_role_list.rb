@@ -2,6 +2,8 @@ module TheCity
 
   class GroupRoleList 
 
+    include Enumerable    
+
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
@@ -25,6 +27,12 @@ module TheCity
     def [](index)
       GroupRole.new( @json_data['roles'][index] ) if @json_data['roles'][index]
     end
+
+
+    # This method is needed for Enumerable.
+    def each &block
+      @json_data['roles'].each{ |role| yield( GroupRole.new(role) )}
+    end    
   
   end
   

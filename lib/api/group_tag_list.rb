@@ -2,6 +2,8 @@ module TheCity
 
   class GroupTagList 
 
+    include Enumerable
+
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
@@ -25,6 +27,12 @@ module TheCity
     def [](index)
       GroupTag.new( @json_data['tags'][index] ) if @json_data['tags'][index]
     end
+
+
+    # This method is needed for Enumerable.
+    def each &block
+      @json_data['tags'].each{ |tag| yield( GroupTag.new(tag) )}
+    end    
   
   end
   

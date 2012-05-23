@@ -2,6 +2,8 @@ module TheCity
 
   class UserProcessList 
 
+    include Enumerable
+
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
@@ -25,6 +27,12 @@ module TheCity
     def [](index)   
       UserProcess.new( @json_data['processes'][index] ) if @json_data['processes'][index]
     end
+
+
+    # This method is needed for Enumerable.
+    def each &block
+      @json_data['processes'].each{ |process| yield( UserProcess.new(process) )}
+    end    
   
   end
   

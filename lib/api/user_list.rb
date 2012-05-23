@@ -2,6 +2,8 @@ module TheCity
 
   class UserList 
 
+    include Enumerable
+
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
@@ -35,7 +37,7 @@ module TheCity
       @total_entries = @json_data['total_entries']
       @total_pages = @json_data['total_pages']
       @per_page = @json_data['per_page']
-      @current_page = @json_data['current_page']      
+      @current_page = @json_data['current_page'] 
     end
     
     
@@ -56,6 +58,12 @@ module TheCity
     def [](index)  
       User.new( @json_data['users'][index] ) if @json_data['users'][index]
     end
+
+
+    # This method is needed for Enumerable.
+    def each &block
+      @json_data['users'].each{ |user| yield( User.new(user) )}
+    end    
   
   end
   

@@ -2,6 +2,8 @@ module TheCity
 
   class UserAdminPrivilegeList 
 
+    include Enumerable
+
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
@@ -25,6 +27,12 @@ module TheCity
     def [](index)
       UserAdminPrivilege.new( @json_data['acct_roles'][index] ) if @json_data['acct_roles'][index]
     end
+
+
+    # This method is needed for Enumerable.
+    def each &block
+      @json_data['acct_roles'].each{ |acct_role| yield( UserAdminPrivilege.new(acct_role) )}
+    end    
   
   end
   

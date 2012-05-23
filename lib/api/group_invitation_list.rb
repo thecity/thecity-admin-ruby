@@ -2,6 +2,8 @@ module TheCity
 
   class GroupInvitationList 
 
+    include Enumerable
+
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
@@ -25,6 +27,12 @@ module TheCity
     def [](index)
       GroupInvitation.new( @json_data['invitations'][index] ) if @json_data['invitations'][index]
     end
+
+
+    # This method is needed for Enumerable.
+    def each &block
+      @json_data['invitations'].each{ |invitation| yield( GroupInvitation.new(invitation) )}
+    end    
   
   end
   

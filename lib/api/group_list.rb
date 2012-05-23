@@ -2,6 +2,8 @@ module TheCity
 
   class GroupList 
 
+    include Enumerable
+
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
@@ -46,6 +48,12 @@ module TheCity
     def [](index)
       Group.new( @json_data['groups'][index] ) if @json_data['groups'][index]
     end
+
+
+    # This method is needed for Enumerable.
+    def each &block
+      @json_data['groups'].each{ |group| yield( Group.new(group) )}
+    end    
   
   end
   

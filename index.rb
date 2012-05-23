@@ -18,19 +18,19 @@ the_city = TheCity::AdminApi.new(key, token)
 
 ###### USERS / GROUPS #######
 
-# the_city.users.each do |user|
-#   puts user
-# end
+the_city.users.each do |user|
+  puts user.full_name
+end
 
 
-user = the_city.users[0]
-puts user.full_name
-user.first = 'Wes'
-puts user.full_name
-user.save
-puts user.id
-user2 = TheCity::User.load_user_by_id(user.id)
-puts user2.full_name
+# user = the_city.users[0]
+# puts user.full_name
+# user.first = 'Wes'
+# puts user.full_name
+# user.save
+# puts user.id
+# user2 = TheCity::User.load_user_by_id(user.id)
+# puts user2.full_name
 
 
 #group = the_city.groups[0]

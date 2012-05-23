@@ -2,6 +2,8 @@ module TheCity
 
   class MetricList 
 
+    include Enumerable
+
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
@@ -46,6 +48,12 @@ module TheCity
     def [](index)  
       Metric.new( @json_data['metrics'][index] ) if @json_data['metrics'][index]
     end
+
+
+    # This method is needed for Enumerable.
+    def each &block
+      @json_data['metrics'].each{ |metric| yield( Metric.new(metric) )}
+    end    
   
   end
   
