@@ -42,7 +42,7 @@ module TheCity
 
 
   def self._build_admin_headers(method, path, params) 
-    get_vars = '?' + params.collect { |key, value| "#{key}=#{value}" }.join('&')
+    get_vars = '?' + params.to_a.sort.collect { |kv_pair| "#{kv_pair[0]}=#{kv_pair[1]}" }.join('&')
     get_vars = '' if get_vars == '?'
     method_request = method.to_s.upcase
     url = THE_CITY_ADMIN_PATH + path + get_vars
