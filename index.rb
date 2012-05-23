@@ -18,14 +18,19 @@ the_city = TheCity::AdminApi.new(key, token)
 
 ###### USERS / GROUPS #######
 
-# user = the_city.users(1)[0]
-# puts user.full_name
-# user.first = 'Adam'
-# puts user.full_name
-# user.save
-# puts user.id
-# user2 = TheCity::User.load_user_by_id(user.id)
-# puts user2.full_name
+# the_city.users.each do |user|
+#   puts user
+# end
+
+
+user = the_city.users[0]
+puts user.full_name
+user.first = 'Wes'
+puts user.full_name
+user.save
+puts user.id
+user2 = TheCity::User.load_user_by_id(user.id)
+puts user2.full_name
 
 
 #group = the_city.groups[0]
@@ -77,13 +82,13 @@ the_city = TheCity::AdminApi.new(key, token)
 
 # puts group.invitations[0].source
 
-metric = the_city.metrics[0]
+# metric = the_city.metrics[0]
 
-puts metric.name
-metric.measurements.total_entries.times do |i|
-  puts "#{metric.measurements[i].created_at}: #{metric.measurements[i].value}"
-end
-new_measurement = TheCity::MetricMeasurement.new(:id => metric.id, :value => 999)
-new_measurement.save
+# puts metric.name
+# metric.measurements.total_entries.times do |i|
+#   puts "#{metric.measurements[i].created_at}: #{metric.measurements[i].value}"
+# end
+# new_measurement = TheCity::MetricMeasurement.new(:id => metric.id, :value => 999)
+# new_measurement.save
 
 

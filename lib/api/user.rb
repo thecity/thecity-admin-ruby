@@ -77,7 +77,7 @@ module TheCity
     #
     # @return A string of the full name
     def full_name
-      use_name = self.nickname.empty? ? self.first : self.nickname
+      use_name = self.nickname.to_s.empty? ? self.first : self.nickname
       [use_name, self.last].compact.join(' ')
     end
 
