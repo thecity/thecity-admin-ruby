@@ -9,8 +9,8 @@ require 'ruby-debug'
 require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 
 
-key = 'b82bd21e00bfad9bc86168ccca0d7ced2f0af308'
-token = '1f14468fcb531b03' 
+key = '6db4c76b5e8fb6ef09055eeaa4b977326c70c371'
+token = 'e43ab88416b3b5b7' 
 
 
 the_city = TheCity::AdminApi.new(key, token)
@@ -83,7 +83,7 @@ puts metric.name
 metric.measurements.total_entries.times do |i|
   puts "#{metric.measurements[i].created_at}: #{metric.measurements[i].value}"
 end
-new_measurement = MetricMeasurement.new(metric.id, :value => 999)
+new_measurement = TheCity::MetricMeasurement.new(:id => metric.id, :value => 999)
 new_measurement.save
 
 
