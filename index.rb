@@ -9,15 +9,14 @@ require 'ruby-debug'
 require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 
 
-key = 'a345c682210a29b80c227573303674fce900650d'
-token = '853d87fbcebb81f6' 
+key = 'b82bd21e00bfad9bc86168ccca0d7ced2f0af308'
+token = '1f14468fcb531b03' 
 
 
 the_city = TheCity::AdminApi.new(key, token)
 
 
 ###### USERS / GROUPS #######
-
 
 # user = the_city.users(1)[0]
 # puts user.full_name
@@ -29,13 +28,13 @@ the_city = TheCity::AdminApi.new(key, token)
 # puts user2.full_name
 
 
-group = the_city.groups[0]
-puts group.name
-group.name = 'Wes Group'
-puts group.name
-group.save
-group2 = TheCity::Group.load_group_by_id(group.id)
-puts group2.name
+#group = the_city.groups[0]
+#puts group.name
+#group.name = 'Wes Group'
+#puts group.name
+#group.save
+#group2 = TheCity::Group.load_group_by_id(group.id)
+#puts group2.name
 
 
 
@@ -77,4 +76,14 @@ puts group2.name
 # puts group.tags[0].name
 
 # puts group.invitations[0].source
+
+metric = the_city.metrics[0]
+
+puts metric.name
+metric.measurements.total_entries.times do |i|
+  puts "#{metric.measurements[i].created_at}: #{metric.measurements[i].value}"
+end
+new_measurement = MetricMeasurement.new(metric.id, :value => 999)
+new_measurement.save
+
 

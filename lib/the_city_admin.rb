@@ -28,7 +28,7 @@ if TCA_ENV == 'production'
   THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.admin.v1+json'
 
 elsif TCA_ENV == 'development'
-  THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:9292'
+  THE_CITY_ADMIN_PATH = 'http://0.0.0.0:9292'
   THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.admin.v1+json'
 
 elsif TCA_ENV == 'staging'
@@ -73,7 +73,11 @@ module TheCity
 
       # Group list usage variables
       @groups_page_requested = 0
-      @group_list = nil      
+      @group_list = nil
+
+      # Group list usage variables
+      @metrics_page_requested = 0
+      @metric_list = nil  
     end
 
 
@@ -83,7 +87,8 @@ module TheCity
     # @param options The options to specify for the user list.
     #
     # @return [UserList] based on the specified params.
-    def users(page = 1, options = {})
+    def users(options = {})
+      page = options[:page] || 1
       return @user_list if @users_page_requested == page and !@user_list.nil?  
       @users_page_requested = page
       loader = UserListLoader.new(page, options)    
@@ -104,7 +109,20 @@ module TheCity
       loader = GroupListLoader.new(page, options)    
       @group_list = GroupList.new(loader)
       return @group_list
-    end  
+    end
+
+    def metrics(options = {})
+      page = options[:page] || 1
+      return @metric_list if @metrics_page_requested == page and !@metric_list.nil?  
+      @metrics_page_requested = page
+      loader = MetricListLoader.new(page, options)    
+      @metric_list = MetricList.new(loader)
+      return @metric_list
+    end
+
+    def metric(metric_id)
+      return Metric.load_metric_by_id(metric_id)
+    end
 
   end
 
