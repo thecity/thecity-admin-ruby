@@ -1,6 +1,6 @@
 module TheCity
 
-  class GroupAddressListLoader < ApiLoader
+  class GroupAddressListReader < ApiReader
 
     # Constructor.
     #

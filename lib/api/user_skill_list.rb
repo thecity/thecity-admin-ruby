@@ -8,9 +8,9 @@ module TheCity
 
     # Constructor.
     #
-    # @param [UserSkillListLoader] loader The object that loaded the data.
-    def initialize(loader) 
-      @json_data = loader.load_feed
+    # @param [UserSkillListReader] reader The object that loaded the data.
+    def initialize(reader) 
+      @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']
       @total_pages = @json_data['total_pages']

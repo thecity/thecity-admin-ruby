@@ -1,6 +1,6 @@
 module TheCity
 
-  class UserSaver < ApiSaver
+  class UserWriter < ApiWriter
 
     # Constructor.
     #

@@ -1,7 +1,7 @@
 module TheCity
 
   # This adapter is the standard for all saving objects.
-  class ApiSaver
+  class ApiWriter
 
     # saves this object.
     #

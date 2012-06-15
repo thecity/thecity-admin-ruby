@@ -14,19 +14,19 @@ module TheCity
     #
     # Returns a new {User} object.
     def self.load_metric_by_id(metric_id)
-      metric_loader = MetricLoader.new(metric_id)
-      self.new(metric_loader)
+      metric_reader = MetricReader.new(metric_id)
+      self.new(metric_reader)
     end       
 
 
     # Constructor.
     #
-    # @param loader (optional) The object that has the data.  This can be a {UserLoader} or Hash object.
-    def initialize(loader = nil)    
-      if loader.is_a?(MetricLoader)
-        initialize_from_json_object(loader.load_feed) 
-      elsif loader.is_a?(Hash)
-        initialize_from_json_object(loader)
+    # @param reader (optional) The object that has the data.  This can be a {UserReader} or Hash object.
+    def initialize(reader = nil)    
+      if reader.is_a?(MetricReader)
+        initialize_from_json_object(reader.load_feed) 
+      elsif reader.is_a?(Hash)
+        initialize_from_json_object(reader)
       end
 
       @measurement_list = nil
@@ -40,8 +40,8 @@ module TheCity
       return @measurement_list unless @measurement_list.nil?  
       return nil unless self.id
 
-      loader = MetricMeasurementListLoader.new(self.id)    
-      @measurement_list = MetricMeasurementList.new(loader)
+      reader = MetricMeasurementListReader.new(self.id)    
+      @measurement_list = MetricMeasurementList.new(reader)
       return @measurement_list
     end
 
@@ -50,8 +50,8 @@ module TheCity
     #
     # @return True on success, otherwise false.
     def save
-      saver = MetricSaver.new(self.to_attributes) 
-      saver.save_feed
+      writer = MetricWriter.new(self.to_attributes) 
+      writer.save_feed
     end
 
   end

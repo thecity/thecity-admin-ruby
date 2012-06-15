@@ -8,7 +8,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param [UserListLoader] loader The object that loaded the data.
+    # @param [UserListReader] reader The object that loaded the data.
     # @param options A hash of filters for loading the user list.
     # 
     # Options:
@@ -17,12 +17,12 @@ module TheCity
     #
     #
     # Examples:
-    #   GroupList.new(loader, {:page => 3, :search => 'Bobby Grossi'})
+    #   GroupList.new(reader, {:page => 3, :search => 'Bobby Grossi'})
     #
-    #   GroupList.new(loader, {:page => 2, :search => 'Pub and Sub'})
+    #   GroupList.new(reader, {:page => 2, :search => 'Pub and Sub'})
     #    
-    def initialize(loader, options = {}) 
-      @json_data = loader.load_feed
+    def initialize(reader, options = {}) 
+      @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']
       @total_pages = @json_data['total_pages']

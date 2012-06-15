@@ -1,6 +1,6 @@
 module TheCity
 
-  class MetricListLoader < ApiLoader
+  class MetricListReader < ApiReader
 
     # Constructor.
     #

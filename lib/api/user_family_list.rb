@@ -8,9 +8,9 @@ module TheCity
 
     # Constructor.
     #
-    # @param [FamilyListLoader] loader The object that loaded the data.
-    def initialize(loader)
-      @json_data = loader.load_feed
+    # @param [FamilyListReader] reader The object that loaded the data.
+    def initialize(reader)
+      @json_data = reader.load_feed
 
       @id = @json_data['id']
       @created_at = @json_data['created_at']

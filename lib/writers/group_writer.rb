@@ -1,6 +1,6 @@
 module TheCity
 
-  class GroupSaver < ApiSaver
+  class GroupWriter < ApiWriter
 
     # Constructor.
     #

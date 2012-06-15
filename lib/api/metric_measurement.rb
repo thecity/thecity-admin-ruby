@@ -18,8 +18,8 @@ module TheCity
     #
     # @return True on success, otherwise false.
     def save
-      saver = MetricMeasurementSaver.new(self.to_attributes) 
-      saver.save_feed
+      writer = MetricMeasurementWriter.new(self.to_attributes) 
+      writer.save_feed
     end
     
   end

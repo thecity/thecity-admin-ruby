@@ -47,19 +47,19 @@ module TheCity
     #
     # Returns a new {User} object.
     def self.load_user_by_id(user_id)
-      user_loader = UserLoader.new(user_id)
-      self.new(user_loader)
+      user_reader = UserReader.new(user_id)
+      self.new(user_reader)
     end       
 
 
     # Constructor.
     #
-    # @param loader (optional) The object that has the data.  This can be a {UserLoader} or Hash object.
-    def initialize(loader = nil)    
-      if loader.is_a?(UserLoader)
-        initialize_from_json_object(loader.load_feed) 
-      elsif loader.is_a?(Hash)
-        initialize_from_json_object(loader)
+    # @param reader (optional) The object that has the data.  This can be a {UserReader} or Hash object.
+    def initialize(reader = nil)    
+      if reader.is_a?(UserReader)
+        initialize_from_json_object(reader.load_feed) 
+      elsif reader.is_a?(Hash)
+        initialize_from_json_object(reader)
       end
 
       @address_list = nil
@@ -89,8 +89,8 @@ module TheCity
       return @address_list unless @address_list.nil?  
       return nil unless self.id
 
-      loader = UserAddressListLoader.new(self.id)    
-      @address_list = UserAddressList.new(loader)
+      reader = UserAddressListReader.new(self.id)    
+      @address_list = UserAddressList.new(reader)
       return @address_list
     end
 
@@ -102,8 +102,8 @@ module TheCity
       return @family_list unless @user_list.nil?  
       return nil unless self.id
 
-      loader = UserFamilyListLoader.new(self.id)    
-      @family_list = UserFamilyList.new(loader)
+      reader = UserFamilyListReader.new(self.id)    
+      @family_list = UserFamilyList.new(reader)
       return @family_list
     end
 
@@ -115,8 +115,8 @@ module TheCity
       return @note_list unless @note_list.nil?  
       return nil unless self.id
 
-      loader = UserNoteListLoader.new(self.id)    
-      @note_list = UserNoteList.new(loader)
+      reader = UserNoteListReader.new(self.id)    
+      @note_list = UserNoteList.new(reader)
       return @note_list
     end    
 
@@ -128,8 +128,8 @@ module TheCity
       return @role_list unless @role_list.nil?  
       return nil unless self.id
 
-      loader = UserRoleListLoader.new(self.id)    
-      @role_list = UserRoleList.new(loader)
+      reader = UserRoleListReader.new(self.id)    
+      @role_list = UserRoleList.new(reader)
       return @role_list
     end      
 
@@ -141,8 +141,8 @@ module TheCity
       return @skill_list unless @skill_list.nil?  
       return nil unless self.id
 
-      loader = UserSkillListLoader.new(self.id)    
-      @skill_list = UserSkillList.new(loader)
+      reader = UserSkillListReader.new(self.id)    
+      @skill_list = UserSkillList.new(reader)
       return @skill_list
     end     
 
@@ -154,8 +154,8 @@ module TheCity
       return @process_list unless @process_list.nil?  
       return nil unless self.id
 
-      loader = UserProcessListLoader.new(self.id)    
-      @process_list = UserProcessList.new(loader)
+      reader = UserProcessListReader.new(self.id)    
+      @process_list = UserProcessList.new(reader)
       return @process_list
     end   
 
@@ -167,8 +167,8 @@ module TheCity
       return @invitation_list unless @invitation_list.nil?  
       return nil unless self.id
 
-      loader = UserInvitationListLoader.new(self.id)    
-      @invitation_list = UserInvitationList.new(loader)
+      reader = UserInvitationListReader.new(self.id)    
+      @invitation_list = UserInvitationList.new(reader)
       return @invitation_list
     end
 
@@ -180,8 +180,8 @@ module TheCity
       return @admin_privilege_list unless @admin_privilege_list.nil?  
       return nil unless self.id
 
-      loader = UserAdminPrivilegeListLoader.new(self.id)    
-      @admin_privilege_list = UserAdminPrivilegeList.new(loader)
+      reader = UserAdminPrivilegeListReader.new(self.id)    
+      @admin_privilege_list = UserAdminPrivilegeList.new(reader)
       return @admin_privilege_list
     end
 
@@ -190,8 +190,8 @@ module TheCity
     #
     # @return True on success, otherwise false.
     def save
-      saver = UserSaver.new(self.to_attributes) 
-      saver.save_feed
+      writer = UserWriter.new(self.to_attributes) 
+      writer.save_feed
     end
 
   end

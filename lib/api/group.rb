@@ -22,20 +22,20 @@ module TheCity
     #
     # Returns a new {Group} object.
     def self.load_group_by_id(group_id)
-      group_loader = GroupLoader.new(group_id)
-      self.new(group_loader)
+      group_reader = GroupReader.new(group_id)
+      self.new(group_reader)
     end       
 
 
 
     # Constructor.
     #
-    # @param loader (optional) The object that has the data.  This can be a {GroupLoader} or Hash object.
-    def initialize(loader = nil)
-      if loader.is_a?(GroupLoader)
-        initialize_from_json_object(loader.load_feed) 
-      elsif loader.is_a?(Hash)
-        initialize_from_json_object(loader)
+    # @param reader (optional) The object that has the data.  This can be a {GroupReader} or Hash object.
+    def initialize(reader = nil)
+      if reader.is_a?(GroupReader)
+        initialize_from_json_object(reader.load_feed) 
+      elsif reader.is_a?(Hash)
+        initialize_from_json_object(reader)
       end
 
       @address_list = nil
@@ -52,8 +52,8 @@ module TheCity
       return @address_list unless @address_list.nil?  
       return nil unless self.id
 
-      loader = GroupAddressListLoader.new(self.id)    
-      @address_list = GroupAddressList.new(loader)
+      reader = GroupAddressListReader.new(self.id)    
+      @address_list = GroupAddressList.new(reader)
       return @address_list
     end
     
@@ -65,8 +65,8 @@ module TheCity
       return @invitation_list unless @invitation_list.nil?  
       return nil unless self.id
 
-      loader = GroupInvitationListLoader.new(self.id)    
-      @invitation_list = GroupInvitationList.new(loader)
+      reader = GroupInvitationListReader.new(self.id)    
+      @invitation_list = GroupInvitationList.new(reader)
       return @invitation_list
     end
 
@@ -78,8 +78,8 @@ module TheCity
       return @role_list unless @role_list.nil?  
       return nil unless self.id
 
-      loader = GroupRoleListLoader.new(self.id)    
-      @role_list = GroupRoleList.new(loader)
+      reader = GroupRoleListReader.new(self.id)    
+      @role_list = GroupRoleList.new(reader)
       return @role_list
     end     
 
@@ -91,8 +91,8 @@ module TheCity
       return @tag_list unless @tag_list.nil?  
       return nil unless self.id
 
-      loader = GroupTagListLoader.new(self.id)    
-      @tag_list = GroupTagList.new(loader)
+      reader = GroupTagListReader.new(self.id)    
+      @tag_list = GroupTagList.new(reader)
       return @tag_list
     end     
 
@@ -102,8 +102,8 @@ module TheCity
     #
     # @return True on success, otherwise false.
     def save
-      saver = GroupSaver.new(self.to_attributes) 
-      saver.save_feed
+      writer = GroupWriter.new(self.to_attributes) 
+      writer.save_feed
     end
 
   end

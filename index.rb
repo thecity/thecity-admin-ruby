@@ -9,8 +9,8 @@ require 'ruby-debug'
 require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 
 
-key = '6db4c76b5e8fb6ef09055eeaa4b977326c70c371'
-token = 'e43ab88416b3b5b7' 
+key = 'bc6b57204b0ee4818bb4b3befd0f3292e93a2d0a'
+token = '7cfed59b037125d3' 
 
 
 the_city = TheCity::AdminApi.new(key, token)
@@ -23,14 +23,14 @@ the_city.users.each do |user|
 end
 
 
-# user = the_city.users[0]
-# puts user.full_name
-# user.first = 'Wes'
-# puts user.full_name
-# user.save
-# puts user.id
-# user2 = TheCity::User.load_user_by_id(user.id)
-# puts user2.full_name
+user = the_city.users[0]
+puts user.full_name
+user.first = 'Wes'
+puts user.full_name
+user.save
+puts user.id
+user2 = TheCity::User.load_user_by_id(user.id)
+puts user2.full_name
 
 
 #group = the_city.groups[0]

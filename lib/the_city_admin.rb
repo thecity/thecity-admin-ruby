@@ -10,7 +10,7 @@ require 'json'
 
 
 
-TCA_ENV = 'development'
+TCA_ENV = 'staging'
 
 # The path to the lib directory.
 THECITY_LIB_DIR = File.dirname(__FILE__)
@@ -91,8 +91,8 @@ module TheCity
       page = options[:page] || 1
       return @user_list if @users_page_requested == page and !@user_list.nil?  
       @users_page_requested = page
-      loader = UserListLoader.new(page, options)    
-      @user_list = UserList.new(loader)
+      reader = UserListReader.new(page, options)    
+      @user_list = UserList.new(reader)
       return @user_list
     end  
 
@@ -106,8 +106,8 @@ module TheCity
     def groups(page = 1, options = {})
       return @group_list if @groups_page_requested == page and !@group_list.nil?  
       @groups_page_requested = page
-      loader = GroupListLoader.new(page, options)    
-      @group_list = GroupList.new(loader)
+      reader = GroupListReader.new(page, options)    
+      @group_list = GroupList.new(reader)
       return @group_list
     end
 
@@ -115,8 +115,8 @@ module TheCity
       page = options[:page] || 1
       return @metric_list if @metrics_page_requested == page and !@metric_list.nil?  
       @metrics_page_requested = page
-      loader = MetricListLoader.new(page, options)    
-      @metric_list = MetricList.new(loader)
+      reader = MetricListReader.new(page, options)    
+      @metric_list = MetricList.new(reader)
       return @metric_list
     end
 

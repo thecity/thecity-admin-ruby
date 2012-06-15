@@ -1,6 +1,6 @@
 module TheCity
 
-  class UserAddressListLoader < ApiLoader
+  class UserAddressListReader < ApiReader
 
     # Constructor.
     #

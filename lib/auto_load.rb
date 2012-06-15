@@ -12,12 +12,12 @@ module TheCity
   cache_file_path = THECITY_LIB_DIR + '/cachers/file/'
   Dir["#{cache_file_path}/*.rb"].each { |f| require(f) }
 
-  loaders_path = THECITY_LIB_DIR + '/loaders/'
-  require loaders_path + 'api_loader.rb'
-  Dir["#{loaders_path}/*.rb"].each { |f| require(f) }
+  readers_path = THECITY_LIB_DIR + '/readers/'
+  require readers_path + 'api_reader.rb'
+  Dir["#{readers_path}/*.rb"].each { |f| require(f) }
 
-  savers_path = THECITY_LIB_DIR + '/savers/'
-  require savers_path + 'api_saver.rb'
-  Dir["#{savers_path}/*.rb"].each { |f| require(f) }
+  writers_path = THECITY_LIB_DIR + '/writers/'
+  require writers_path + 'api_writer.rb'
+  Dir["#{writers_path}/*.rb"].each { |f| require(f) }
 
 end

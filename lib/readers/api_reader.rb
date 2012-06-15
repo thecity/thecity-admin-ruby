@@ -1,7 +1,7 @@
 module TheCity
 
   # This adapter is the standard for all loading objects.
-  class ApiLoader
+  class ApiReader
 
     # Constructor
     # def initialize
