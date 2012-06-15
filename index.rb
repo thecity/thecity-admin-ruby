@@ -23,23 +23,22 @@ the_city.users.each do |user|
 end
 
 
-user = the_city.users[0]
-puts user.full_name
-user.first = 'Wes'
-puts user.full_name
-user.save
-puts user.id
-user2 = TheCity::User.load_user_by_id(user.id)
-puts user2.full_name
+# user = the_city.users[0]
+# puts user.full_name
+# user.first = 'Wes'
+# puts user.full_name
+# user.save
+# puts user.id
+# user2 = TheCity::User.load_user_by_id(user.id)
+# puts user2.full_name
 
-
-#group = the_city.groups[0]
-#puts group.name
-#group.name = 'Wes Group'
-#puts group.name
-#group.save
-#group2 = TheCity::Group.load_group_by_id(group.id)
-#puts group2.name
+# group = the_city.groups[0]
+# puts group.name
+# group.name = 'Wes Group'
+# puts group.name
+# group.save
+# group2 = TheCity::Group.load_group_by_id(group.id)
+# puts group2.name
 
 
 
@@ -56,15 +55,15 @@ puts user2.full_name
 # user = the_city.users[1]
 # puts user.full_name
 
-# # This is currenly returning a 404 if no family members are found
-# #puts user.family[0].name
+# This is currenly returning a 404 if no family members are found
+# puts user.family[0].name
 
 # puts user.addresses[0].location_type
 # puts user.notes[0].author
 # puts user.roles[0].group_name
 # puts user.skills[0].name
-# #puts user.processes[0].name
-# #puts user.invitations[0].source
+# puts user.processes[0].name
+# puts user.invitations[0].source
 # puts user.admin_privileges[0].title
 
 
