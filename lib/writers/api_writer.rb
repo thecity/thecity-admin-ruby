@@ -2,21 +2,23 @@ module TheCity
 
   # This adapter is the standard for all saving objects.
   class ApiWriter
+    attr_reader :error_messages
 
     # saves this object.
     #
     # @return True on success, otherwise false.
     def save_feed
       @url_data_params ||= {}
+      success = true
 
-      response = TheCity::admin_request(@url_action, @url_data_path, @url_data_params)   
+      begin
+        response = TheCity::admin_request(@url_action, @url_data_path, @url_data_params)   
+      rescue Exception => e  
+        @error_messages = e.message.split(',')
+        success = false
+      end 
 
-      # debugger
-      # asdf='save_feed'
-
-      # Build up errors or return true.
-
-      return true # or false
+      return success
     end
 
   end

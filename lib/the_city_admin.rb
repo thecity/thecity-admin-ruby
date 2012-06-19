@@ -9,8 +9,8 @@ require 'typhoeus'
 require 'json'
 
 
-#TCA_ENV = 'development'
-TCA_ENV = 'staging'
+TCA_ENV = 'development'
+#TCA_ENV = 'staging'
 
 # The path to the lib directory.
 THECITY_LIB_DIR = File.dirname(__FILE__)

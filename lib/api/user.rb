@@ -63,7 +63,8 @@ module TheCity
     # Constructor.
     #
     # @param reader (optional) The object that has the data.  This can be a {UserReader} or Hash object.
-    def initialize(reader = nil)    
+    # @param options (optional) Options for including more information.
+    def initialize(reader = nil, options = {})    
       if reader.is_a?(UserReader)
         initialize_from_json_object(reader.load_feed) 
       elsif reader.is_a?(Hash)
@@ -199,7 +200,9 @@ module TheCity
     # @return True on success, otherwise false.
     def save
       writer = UserWriter.new(self.to_attributes) 
-      writer.save_feed
+      result = writer.save_feed
+      @error_messages = writer.error_messages unless result
+      result
     end
 
   end

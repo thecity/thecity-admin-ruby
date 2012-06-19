@@ -3,6 +3,8 @@ module TheCity
   # This class is the base class for all TheCity objects and is meant to be inherited.
   #
   class ApiObject
+    attr_reader :error_messages
+    
 
     # Used to specify a list of getters and setters.
     def self.tc_attr_accessor(*vars)

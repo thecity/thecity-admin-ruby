@@ -1,28 +1,29 @@
 module TheCity
+  require 'cgi'
 
   def self.admin_request(method, path, params = {})
     headers = self._build_admin_headers(method, path, params) 
     url = THE_CITY_ADMIN_PATH+path
 
-    #data_params = params #.inject({}) {|h, (k,v)| h.update({k => v.nil? ? v : CGI.escape(v)})}
+    data_params = params.inject({}) {|h, (k,v)| h.update({k => v.nil? ? v : CGI.escape(v.to_s)})}
 
     response = 
     case method 
     when :post
-      Typhoeus::Request.post(url, {:headers => headers, :params => self._flatten_params(params)})
+      Typhoeus::Request.post(url, {:headers => headers, :params => self._flatten_params(data_params)})
     when :get  
-      Typhoeus::Request.get(url, {:headers => headers, :params => self._flatten_params(params)})
+      Typhoeus::Request.get(url, {:headers => headers, :params => self._flatten_params(data_params)})
     when :put  
-      Typhoeus::Request.put(url, {:headers => headers, :params => self._flatten_params(params)})
+      Typhoeus::Request.put(url, {:headers => headers, :params => self._flatten_params(data_params)})
     when :delete
-      Typhoeus::Request.delete(url, {:headers => headers, :params => self._flatten_params(params)})
+      Typhoeus::Request.delete(url, {:headers => headers, :params => self._flatten_params(data_params)})
     end
 
     unless response.success?
       if response.curl_error_message != 'No error'
         raise TheCityExceptions::UnableToConnectToTheCity.new(response.curl_error_message)
       else
-        raise TheCityExceptions::TheCityResponseError.new(response.status_message)
+        raise TheCityExceptions::TheCityResponseError.new( JSON.parse(response.body)['error_message'] )
       end
     end
     
