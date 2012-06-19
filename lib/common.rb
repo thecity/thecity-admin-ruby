@@ -4,6 +4,8 @@ module TheCity
     headers = self._build_admin_headers(method, path, params) 
     url = THE_CITY_ADMIN_PATH+path
 
+    #data_params = params #.inject({}) {|h, (k,v)| h.update({k => v.nil? ? v : CGI.escape(v)})}
+
     response = 
     case method 
     when :post

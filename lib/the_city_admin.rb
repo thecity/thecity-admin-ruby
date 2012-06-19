@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'openssl'
-require 'CGI'
+require 'cgi'
 require 'Base64'
 require 'openssl'
 require 'net/http'
@@ -9,7 +9,7 @@ require 'typhoeus'
 require 'json'
 
 
-
+#TCA_ENV = 'development'
 TCA_ENV = 'staging'
 
 # The path to the lib directory.
@@ -62,10 +62,10 @@ module TheCity
     # @param api_token The API token for the church.
     def initialize(api_key, api_token)
       # Create a constant for the churches API key.
-      TheCity::AdminApi::const_set(:API_KEY, api_key)
+      TheCity::AdminApi::const_set(:API_KEY, api_key) unless defined?(API_KEY)
 
       # Create a constant for the churches API Token.
-      TheCity::AdminApi::const_set(:API_TOKEN, api_token)
+      TheCity::AdminApi::const_set(:API_TOKEN, api_token) unless defined?(API_TOKEN)
 
       # User list usage variables
       @users_page_requested = 0   

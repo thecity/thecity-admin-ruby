@@ -1,6 +1,14 @@
 module TheCity
 
   class User < ApiObject
+    Gender = {:male => 'Male', :female => 'Female'}
+    PhoneType = {:home => 'Home', :work => 'Work', :mobile => 'Mobile'}
+    MaritalStatus = {:never_married => 'Never Married', :engaged => 'Engaged', 
+                     :married => 'Married', :separated => 'Separated', 
+                     :divorced => 'Divorced', :remarried => 'Re-Married',
+                     :widowed => 'Widowed', :cohabiting => 'Cohabiting'}
+
+    
     tc_attr_accessor :active,
                      :admin_url,
                      :api_url,
