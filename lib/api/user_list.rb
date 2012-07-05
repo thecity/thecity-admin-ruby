@@ -45,6 +45,7 @@ module TheCity
     #
     # @return array of names (first last).
     def all_names
+      return [] unless @json_data['users']
       @json_data['users'].collect { |user| [user['first'], user['last']].join(' ') }
     end
     alias :names :all_names
@@ -56,7 +57,7 @@ module TheCity
     #
     # @return [User]
     def [](index)  
-      User.new( @json_data['users'][index] ) if @json_data['users'][index]
+      User.new( @json_data['users'][index] ) if @json_data['users'] and @json_data['users'][index]
     end
 
 

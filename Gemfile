@@ -6,4 +6,5 @@ gem 'json'
 group :development, :test do
   gem 'rspec'
   gem 'ruby-debug19'
+  gem 'factory_girl'
 end

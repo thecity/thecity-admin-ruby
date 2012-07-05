@@ -1,37 +1,22 @@
-require 'spec_helper'
+require File.join(Dir.pwd, 'spec', 'spec_helper')
 
 describe 'User' do
 
   before do
-    
+    simulate_connection_to_server
   end
 
   after do
 
   end
 
-  it 'should create successfully' do
-    # user = TheCity::User.new
-    # user.title = 'Deacon'
-    # user.first = 'James'
-    # user.middle = 'Wesley'
-    # user.last = 'Hays'
-    # user.nickname = 'Wes'
-    # user.gender = TheCity::User::Gender[:male]
-    # user.email = 'weshays+tc2@gbdev.com'
-    # user.staff = false
-    # #user.primary_campus_id
-    # user.member_since = Time.now.strftime("%Y-%m-%d")
-    # user.birthdate = '1980-09-27'
-    # user.primary_phone = '775-745-3013'
-    # user.primary_phone_type = TheCity::User::PhoneType[:mobile]
-    # user.secondary_phone = '775-677-7707'
-    # user.secondary_phone_type = TheCity::User::PhoneType[:home]
-    # user.marital_status = TheCity::User::MaritalStatus[:married]
-    # #user.external_id_1
-    # #user.external_id_2
-    # #user.external_id_3
-    # user.save
+  it 'should not fail retrieving user from list' do
+    request_data = FactoryGirl.attributes_for(:user_list, {:users => [FactoryGirl.attributes_for(:user)]}).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
+    reader = TheCity::UserListReader.new
+    user_list = TheCity::UserList.new(reader)
+
+    user_list.names.should == []
   end
 
 end
