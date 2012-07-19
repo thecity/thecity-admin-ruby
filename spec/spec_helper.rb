@@ -18,6 +18,7 @@ Dir.glob(File.dirname(__FILE__) + "/factories/*").each { |f| require f }
 
 
 RSpec.configure do |config|
+  config.tty = true
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
 end
