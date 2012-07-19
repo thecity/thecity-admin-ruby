@@ -21,11 +21,8 @@ describe 'User' do
     reader = TheCity::UserListReader.new
     user_list = TheCity::UserList.new(reader)
 
-    user_list.total_entries.should == 1
-    user_list.total_pages.should == 1
-    user_list.per_page.should == 15
-    user_list.current_page.should == 1
-    user_list.names.should == ["Sam Shepherd"]
+    user = user_list[0]
+    user.full_name.should == "Sammy Shepherd"
   end
 
 end
