@@ -1,6 +1,6 @@
 module TheCity
 
-  class UserAddress < ApiObject
+  class GroupAddress < ApiObject
 
     tc_attr_accessor :city, 
                      :created_at, 
