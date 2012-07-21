@@ -3,7 +3,7 @@ module TheCity
   # This class is the base class for all TheCity objects and is meant to be inherited.
   #
   class ApiObject
-    attr_reader :error_messages
+    attr_reader :error_messages, :marked_for_destruction
     
 
     # Used to specify a list of getters and setters.
@@ -37,11 +37,27 @@ module TheCity
     end
     
 
+    # Checks if the current object is marked for destruction.
+    #
+    # @return True or False.
+    def marked_for_destruction?
+      @marked_for_destruction ||= false
+    end
+
+
+    # Deletes the current object.
+    def delete
+      @marked_for_destruction = true
+      nil
+    end
+
+
     # Gets the current object's attributes in a Hash.
     #
     # @return A hash of all the attributes.
     def to_attributes 
       vals = {}
+      vals = {:marked_for_destruction => self.marked_for_destruction?} if self.marked_for_destruction?
       self.class.__tc_attributes.each { |tca| vals[tca] = self.send(tca) }
       vals
     end

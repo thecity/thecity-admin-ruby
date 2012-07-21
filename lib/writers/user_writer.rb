@@ -6,7 +6,10 @@ module TheCity
     #
     # @param data The json object data to save.
     def initialize(data)
-      if data[:id]
+      if data[:id] and data[:marked_for_destruction]
+        @url_action = :delete
+        @url_data_path = "/users/#{data[:id]}"   
+      elsif data[:id]
         @url_action = :put
         @url_data_path = "/users/#{data[:id]}"   
       else

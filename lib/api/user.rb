@@ -201,8 +201,12 @@ module TheCity
     def save
       writer = UserWriter.new(self.to_attributes) 
       result = writer.save_feed
-      @error_messages = writer.error_messages unless result
-      result
+      if result === false
+        @error_messages = writer.error_messages
+      else
+        self.id = result
+      end
+      result === false ? false : true
     end
 
   end

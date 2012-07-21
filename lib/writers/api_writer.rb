@@ -6,13 +6,15 @@ module TheCity
 
     # saves this object.
     #
-    # @return True on success, otherwise false.
+    # @return True or ID on success, otherwise false.
     def save_feed
       @url_data_params ||= {}
       success = true
 
       begin
-        response = TheCity::admin_request(@url_action, @url_data_path, @url_data_params)   
+        json = TheCity::admin_request(@url_action, @url_data_path, @url_data_params)   
+        data = JSON.parse(json)   
+        success = data['id'] if data['id']
       rescue Exception => e  
         @error_messages = e.message.split(',')
         success = false
