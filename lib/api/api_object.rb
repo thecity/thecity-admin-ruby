@@ -19,7 +19,6 @@ module TheCity
       @__tc_attributes
     end
 
-
     # Initializes the current object from the JSON data that was loaded into the Hash
     #
     # @param object_attributes A Hash of values to load into the current object.
@@ -35,29 +34,19 @@ module TheCity
         end
       end     
     end
+
+
+    # Returns the status of the current object.
+    def is_deleted?
+      @_deleted ||= false
+    end
     
-
-    # Checks if the current object is marked for destruction.
-    #
-    # @return True or False.
-    def marked_for_destruction?
-      @marked_for_destruction ||= false
-    end
-
-
-    # Deletes the current object.
-    def delete
-      @marked_for_destruction = true
-      nil
-    end
-
-
     # Gets the current object's attributes in a Hash.
     #
     # @return A hash of all the attributes.
     def to_attributes 
       vals = {}
-      vals = {:marked_for_destruction => self.marked_for_destruction?} if self.marked_for_destruction?
+      vals = {:marked_for_destruction => self.is_deleted?} if self.is_deleted?
       self.class.__tc_attributes.each { |tca| vals[tca] = self.send(tca) }
       vals
     end

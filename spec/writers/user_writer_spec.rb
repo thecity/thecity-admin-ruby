@@ -7,7 +7,7 @@ describe 'UserWriter' do
     user_data = FactoryGirl.attributes_for(:user, {:id => nil})
     user = TheCity::User.new(user_data)
     user.id.should be_nil
-    user.save.should be_false
+    user.save.should === false
     user.id.should be_nil
     user.error_messages.should == ['Unable to connect to server']
   end  
@@ -18,7 +18,7 @@ describe 'UserWriter' do
     user_data = FactoryGirl.attributes_for(:user, {:id => nil})
     user = TheCity::User.new(user_data)
     user.id.should be_nil
-    user.save.should be_true
+    user.save.should === true
     user.id.should == 12345
   end
 
@@ -28,7 +28,7 @@ describe 'UserWriter' do
     user_data = FactoryGirl.attributes_for(:user, {:id => nil})
     user = TheCity::User.new(user_data)
     user.id.should be_nil
-    user.save.should be_false
+    user.save.should === false
     user.id.should be_nil
     user.error_messages.should == ['email address already exists']
   end  
@@ -39,7 +39,7 @@ describe 'UserWriter' do
     user_data = FactoryGirl.attributes_for(:user, {:id => 12345})
     user = TheCity::User.new(user_data)
     user.id.should == 12345
-    user.save.should be_true
+    user.save.should === true
     user.id.should == 12345
   end
 
@@ -49,19 +49,19 @@ describe 'UserWriter' do
     user_data = FactoryGirl.attributes_for(:user, {:id => 12345})
     user = TheCity::User.new(user_data)
     user.id.should == 12345
-    user.save.should be_false
+    user.save.should === false
     user.id.should == 12345
     user.error_messages.should == ['something bad happened']
   end  
 
 
   it 'should delete if data ID exists for the existing user' do
-    TheCity.stub(:admin_request) { true }
+    TheCity.stub(:admin_request) { {:success => true}.to_json }
     user_data = FactoryGirl.attributes_for(:user, {:id => 12345})
     user = TheCity::User.new(user_data)
-    user.marked_for_destruction?.should be_false
+    user.is_deleted?.should === false
     user.delete
-    user.marked_for_destruction?.should be_true
+    user.is_deleted?.should === true
   end
 
 
@@ -69,9 +69,9 @@ describe 'UserWriter' do
     TheCity.stub(:admin_request) { raise TheCityExceptions::TheCityResponseError.new('something bad happened') }
     user_data = FactoryGirl.attributes_for(:user, {:id => 12345})
     user = TheCity::User.new(user_data)
-    user.marked_for_destruction?.should be_false
+    user.is_deleted?.should === false
     user.delete
-    user.marked_for_destruction?.should be_true
+    user.is_deleted?.should === false
     user.error_messages.should == ['something bad happened']
   end  
 

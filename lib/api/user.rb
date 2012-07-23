@@ -200,7 +200,7 @@ module TheCity
     # @return True on success, otherwise false.
     def save
       writer = UserWriter.new(self.to_attributes) 
-      result = writer.save_feed
+      result = writer.save_object
       if result === false
         @error_messages = writer.error_messages
       else
@@ -208,6 +208,22 @@ module TheCity
       end
       result === false ? false : true
     end
+
+
+    # Delete this object.
+    #
+    # @return True on success, otherwise false.
+    def delete
+      writer = UserWriter.new(self.to_attributes) 
+      result = writer.delete_object
+      if result === false
+        @error_messages = writer.error_messages
+      else
+        @_deleted = true
+      end
+      result === false ? false : true
+    end
+
 
   end
 
