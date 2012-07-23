@@ -28,11 +28,12 @@ module TheCity
     #
     # @return True or ID on success, otherwise false.
     def delete_object
-      @url_data_params ||= {}
       success = true
 
       begin
-        json = TheCity::admin_request(@url_action, @url_data_path, @url_data_params)   
+        # @url_data_path should be the same as :put if this object is already
+        # setup and mapped to an object that exists
+        json = TheCity::admin_request(:delete, @url_data_path)   
         data = JSON.parse(json)   
         success = data['id'] if data['id']
       rescue Exception => e  

@@ -15,7 +15,7 @@ module TheCity
       Typhoeus::Request.get(url, {:headers => headers, :params => self._flatten_params(data_params)})
     when :put  
       Typhoeus::Request.put(url, {:headers => headers, :params => self._flatten_params(data_params)})
-    when :delete
+    when :delete      
       Typhoeus::Request.delete(url, {:headers => headers, :params => self._flatten_params(data_params)})
     end
 
@@ -23,7 +23,11 @@ module TheCity
       if response.curl_error_message != 'No error'
         raise TheCityExceptions::UnableToConnectToTheCity.new(response.curl_error_message)
       else
-        raise TheCityExceptions::TheCityResponseError.new( JSON.parse(response.body)['error_message'] )
+        begin
+          raise TheCityExceptions::TheCityResponseError.new( JSON.parse(response.body)['error_message'] )
+        rescue
+          raise TheCityExceptions::UnknownErrorConnectingToTheCity.new('Unknown error when connecting to The City')
+        end
       end
     end
     

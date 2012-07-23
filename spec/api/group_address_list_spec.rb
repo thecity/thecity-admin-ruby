@@ -11,9 +11,11 @@ describe 'GroupAddressList' do
   end
 
 
-  it 'should pass if ....' do
-    true.should == true
-  end
+  it 'should not fail if group address list attribute is not specifed' 
+  it 'should not fail if group address list is empty'
+  it 'should return a valid list of group addresses'
+  it 'should iterate using *each* method'
+  it 'should iterate using *collect* method'
 
 
 end

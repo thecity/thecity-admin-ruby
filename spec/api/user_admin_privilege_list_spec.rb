@@ -11,9 +11,11 @@ describe 'UserAdminPrivilegeList' do
   end
 
 
-  it 'should pass if ....' do
-    true.should == true
-  end
+  it 'should not fail if user admin privilege list attribute is not specifed' 
+  it 'should not fail if user admin privilege list is empty'
+  it 'should return a valid list of user admin privileges'
+  it 'should iterate using *each* method'
+  it 'should iterate using *collect* method'
 
 
 end

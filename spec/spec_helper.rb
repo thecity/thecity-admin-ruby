@@ -25,5 +25,5 @@ end
 
 
 def simulate_connection_to_server
-  @the_city = TheCity::AdminApi.new('123', '456')
+  @the_city = TheCity::AdminApi.new('cf2903151e3213e66fd8080c7d8b65b1d6ccdd31', '5c88b32edda7653c')
 end

@@ -11,9 +11,11 @@ describe 'UserInvitationList' do
   end
 
 
-  it 'should pass if ....' do
-    true.should == true
-  end
+  it 'should not fail if user invitation list attribute is not specifed' 
+  it 'should not fail if user invitation list is empty'
+  it 'should return a valid list of user invitations'
+  it 'should iterate using *each* method'
+  it 'should iterate using *collect* method'
 
 
 end

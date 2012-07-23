@@ -111,6 +111,10 @@ module TheCity
       return @group_list
     end
 
+
+    # Get metric.
+    #
+    # @param options The options to specify for the metric list.
     def metrics(options = {})
       page = options[:page] || 1
       return @metric_list if @metrics_page_requested == page and !@metric_list.nil?  

@@ -11,9 +11,7 @@ describe 'GroupAddress' do
   end
 
 
-  it 'should pass if ....' do
-    true.should == true
-  end
+  it 'should pass if ....' 
 
 
 end

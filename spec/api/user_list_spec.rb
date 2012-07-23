@@ -44,6 +44,7 @@ describe 'UserList' do
     user_list.names.should == ["Sam Shepherd"]
   end
 
+
   it 'should iterate using *each* method' do
     request_data = FactoryGirl.attributes_for(:user_list, {
       :total_entries => 1,
