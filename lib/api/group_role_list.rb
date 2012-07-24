@@ -34,6 +34,16 @@ module TheCity
       @json_data['roles'].each{ |role| yield( GroupRole.new(role) )}
     end    
   
+    # Alias the count method
+    alias :size :count
+
+    # Checks if the list is empty.
+    #
+    # @return True on empty, false otherwise.
+    def empty?
+      @json_data['roles'].empty?
+    end
+
   end
   
 end

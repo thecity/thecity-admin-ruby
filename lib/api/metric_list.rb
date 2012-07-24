@@ -55,6 +55,17 @@ module TheCity
       @json_data['metrics'].each{ |metric| yield( Metric.new(metric) )}
     end    
   
+
+    # Alias the count method
+    alias :size :count
+
+    # Checks if the list is empty.
+    #
+    # @return True on empty, false otherwise.
+    def empty?
+      @json_data['metrics'].empty?
+    end
+
   end
   
 end

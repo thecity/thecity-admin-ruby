@@ -42,6 +42,16 @@ module TheCity
       @json_data['family_members'].each{ |member| yield( UserFamilyMember.new(member) )}
     end    
   
+    # Alias the count method
+    alias :size :count
+
+    # Checks if the list is empty.
+    #
+    # @return True on empty, false otherwise.
+    def empty?
+      @json_data['family_members'].empty?
+    end
+
   end
   
 end

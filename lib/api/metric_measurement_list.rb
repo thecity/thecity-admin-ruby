@@ -34,6 +34,16 @@ module TheCity
       @json_data['measurements'].each{ |measurement| yield( MatricMeasurement.new(measurement) )}
     end    
   
+    # Alias the count method
+    alias :size :count
+
+    # Checks if the list is empty.
+    #
+    # @return True on empty, false otherwise.
+    def empty?
+      @json_data['measurements'].empty?
+    end
+
   end
   
 end

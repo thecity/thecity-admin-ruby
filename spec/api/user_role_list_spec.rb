@@ -11,8 +11,8 @@ describe 'UserRoleList' do
   end
 
 
-  it 'should not fail if user process list page number is not specifed' 
-  it 'should not fail if user process list is empty'
+  it 'should pass if user process list page number is not specifed' 
+  it 'should pass if user process list is empty'
   it 'should return a valid list of user processes'
   it 'should iterate using *each* method'
   it 'should iterate using *collect* method'

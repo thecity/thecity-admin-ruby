@@ -11,7 +11,7 @@ describe 'UserList' do
   end
 
 
-  it 'should not fail if user list attribute is not specifed' do
+  it 'should pass if user list attribute is not specifed' do
     request_data = FactoryGirl.attributes_for(:user_list).to_json
     TheCity.stub(:admin_request).and_return(request_data)
     reader = TheCity::UserListReader.new
@@ -21,7 +21,7 @@ describe 'UserList' do
   end
 
 
-  it 'should not fail if user list is empty' do
+  it 'should pass if user list is empty' do
     request_data = FactoryGirl.attributes_for(:user_list, :users => []).to_json
     TheCity.stub(:admin_request).and_return(request_data)
     reader = TheCity::UserListReader.new

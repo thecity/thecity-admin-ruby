@@ -11,11 +11,90 @@ describe 'GroupAddressList' do
   end
 
 
-  it 'should not fail if group address list attribute is not specifed' 
-  it 'should not fail if group address list is empty'
-  it 'should return a valid list of group addresses'
-  it 'should iterate using *each* method'
-  it 'should iterate using *collect* method'
+  it 'should pass if group address list attribute is not specifed' do
+    group_id = 123
+    request_data = FactoryGirl.attributes_for(:group_address_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :addresses => [FactoryGirl.attributes_for(:group_address)]
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
+
+    reader = TheCity::GroupAddressListReader.new(group_id)
+    address_list = TheCity::GroupAddressList.new(reader)
+
+    address = address_list[0]
+    address.city.should == "Sammamish"
+  end
+
+
+  it 'should pass if group address list is empty' do
+    group_id = 123
+    page = 2
+    request_data = FactoryGirl.attributes_for(:group_address_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :addresses => []
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
+    reader = TheCity::GroupAddressListReader.new(group_id, page)
+    address_list = TheCity::GroupAddressList.new(reader)
+
+    address_list.empty?.should be_true
+  end
+
+
+  it 'should return a valid list of group addresses' do 
+    group_id = 123
+    page = 2
+    request_data = FactoryGirl.attributes_for(:group_address_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :addresses => [FactoryGirl.attributes_for(:group_address)]
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
+
+    reader = TheCity::GroupAddressListReader.new(group_id, page)
+    address_list = TheCity::GroupAddressList.new(reader)
+
+    address = address_list[0]
+    address.city.should == "Sammamish"
+  end
+
+
+  it 'should iterate using *each* method' do
+    group_id = 123
+    request_data = FactoryGirl.attributes_for(:group_address_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :addresses => [FactoryGirl.attributes_for(:group_address)]
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
+
+    reader = TheCity::GroupAddressListReader.new(group_id)
+    address_list = TheCity::GroupAddressList.new(reader)
+
+    addresses = []
+    address_list.each { |address| addresses << address.city }
+    addresses.should == ["Sammamish"]
+  end  
+
+
+  it 'should iterate using *collect* method' do
+    group_id = 123
+    request_data = FactoryGirl.attributes_for(:group_address_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :addresses => [FactoryGirl.attributes_for(:group_address)]
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
+
+    reader = TheCity::GroupAddressListReader.new(group_id)
+    address_list = TheCity::GroupAddressList.new(reader)
+
+    addresses = address_list.collect { |address| address.city }
+    addresses.should == ["Sammamish"]
+  end   
 
 
 end

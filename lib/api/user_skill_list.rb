@@ -34,6 +34,16 @@ module TheCity
       @json_data['skills'].each{ |skill| yield( UserSkill.new(skill) )}
     end    
   
+    # Alias the count method
+    alias :size :count
+
+    # Checks if the list is empty.
+    #
+    # @return True on empty, false otherwise.
+    def empty?
+      @json_data['skills'].empty?
+    end
+  
   end
   
 end

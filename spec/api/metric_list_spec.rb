@@ -11,8 +11,8 @@ describe 'MetricList' do
   end
 
 
-  it 'should not fail if matric list attribute is not specifed' 
-  it 'should not fail if matric list is empty'
+  it 'should pass if matric list attribute is not specifed' 
+  it 'should pass if matric list is empty'
   it 'should return a valid list of matrics'
   it 'should iterate using *each* method'
   it 'should iterate using *collect* method'

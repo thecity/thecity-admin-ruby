@@ -34,6 +34,16 @@ module TheCity
       @json_data['acct_roles'].each{ |acct_role| yield( UserAdminPrivilege.new(acct_role) )}
     end    
   
+    # Alias the count method
+    alias :size :count
+
+    # Checks if the list is empty.
+    #
+    # @return True on empty, false otherwise.
+    def empty?
+      @json_data['acct_roles'].empty?
+    end
+
   end
   
 end

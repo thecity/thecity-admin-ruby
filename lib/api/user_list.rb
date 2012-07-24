@@ -9,29 +9,7 @@ module TheCity
     # Constructor.
     #
     # @param [UserListReader] reader The object that loaded the data.
-    # @param options A hash of filters for loading the user list.
-    # 
-    # Options:
-    #   :page - The page number to get.
-    #   :filter -  (optional) The filters are below and only one can be specified.
-    #     ::created_in_the_last_N_PERIOD - A string specifying the period of time to look back for users created. 
-    #                                      N_PERIOD is in days, weeks, months or years.
-    #     ::contact_updated_in_the_last_N_PERIOD - A string specifying the period of time to look back for users created.
-    #                                              N_PERIOD is in days, weeks, months or years.
-    #     ::with_external_id_1 - The external ID to reference.
-    #     ::with_external_id_2 - The external ID to reference.
-    #     ::with_external_id_3 - The external ID to reference.
-    #     ::without_external_id_1 - The external ID to reference.
-    #     ::without_external_id_2 - The external ID to reference.
-    #     ::without_external_id_3 - The external ID to reference.
-    #
-    #
-    # Examples:
-    #   UserList.new(reader, {:page => 3, :filter => :created_in_the_last_7_days})
-    #
-    #   UserList.new(reader, {:page => 2, :filter => :contact_updated_in_the_last_2_weeks})
-    #
-    def initialize(reader, options = {}) 
+    def initialize(reader) 
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']

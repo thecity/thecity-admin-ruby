@@ -11,8 +11,8 @@ describe 'UserNoteList' do
   end
 
 
-  it 'should not fail if user note list page number is not specifed' 
-  it 'should not fail if user note list is empty'
+  it 'should pass if user note list page number is not specifed' 
+  it 'should pass if user note list is empty'
   it 'should return a valid list of user notes'
   it 'should iterate using *each* method'
   it 'should iterate using *collect* method'

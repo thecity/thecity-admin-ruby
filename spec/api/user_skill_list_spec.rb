@@ -11,8 +11,8 @@ describe 'UserSkillList' do
   end
 
 
-  it 'should not fail if user skill list page number is not specifed' 
-  it 'should not fail if user skill list is empty'
+  it 'should pass if user skill list page number is not specifed' 
+  it 'should pass if user skill list is empty'
   it 'should return a valid list of user skills'
   it 'should iterate using *each* method'
   it 'should iterate using *collect* method'

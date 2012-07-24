@@ -34,6 +34,16 @@ module TheCity
       @json_data['processes'].each{ |process| yield( UserProcess.new(process) )}
     end    
   
+    # Alias the count method
+    alias :size :count
+
+    # Checks if the list is empty.
+    #
+    # @return True on empty, false otherwise.
+    def empty?
+      @json_data['processes'].empty?
+    end
+
   end
   
 end

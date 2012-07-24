@@ -54,6 +54,17 @@ module TheCity
     def each &block
       @json_data['groups'].each{ |group| yield( Group.new(group) )}
     end    
+
+
+    # Alias the count method
+    alias :size :count
+
+    # Checks if the list is empty.
+    #
+    # @return True on empty, false otherwise.
+    def empty?
+      @json_data['groups'].empty?
+    end    
   
   end
   
