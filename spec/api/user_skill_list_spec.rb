@@ -96,7 +96,6 @@ describe 'UserSkillList' do
     skills.should == ["Teaching-Curriculum"]
   end   
 
-
 end
 
 

@@ -4,11 +4,11 @@ module TheCity
 
     tc_attr_accessor :author, 
                      :author_id, 
+                     :body,
                      :created_at, 
                      :id, 
                      :updated_at, 
-                     :visible_to
-
+                     :visible_to                 
 
     # Constructor.
     #

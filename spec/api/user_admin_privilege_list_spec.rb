@@ -7,17 +7,98 @@ describe 'UserAdminPrivilegeList' do
   end
 
   after do
-
+    
   end
 
 
-  it 'should pass if user admin privilege list attribute is not specifed' 
-  it 'should pass if user admin privilege list is empty'
-  it 'should return a valid list of user admin privileges'
-  it 'should iterate using *each* method'
-  it 'should iterate using *collect* method'
+  it 'should pass if user admin_privilege list attribute is not specifed' do
+    user_id = 123
+    request_data = FactoryGirl.attributes_for(:user_admin_privilege_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :acct_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
 
+    reader = TheCity::UserAdminPrivilegeListReader.new(user_id)
+    admin_privilege_list = TheCity::UserAdminPrivilegeList.new(reader)
+
+    admin_privilege = admin_privilege_list[0]
+    admin_privilege.title.should == "Designer"
+  end
+
+
+  it 'should pass if user admin_privilege list is empty' do
+    user_id = 123
+    page = 2
+    request_data = FactoryGirl.attributes_for(:user_admin_privilege_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :acct_roles => []
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
+    reader = TheCity::UserAdminPrivilegeListReader.new(user_id, page)
+    admin_privilege_list = TheCity::UserAdminPrivilegeList.new(reader)
+
+    admin_privilege_list.empty?.should be_true
+  end
+
+
+  it 'should return a valid list of user admin_privileges' do 
+    user_id = 123
+    page = 2
+    request_data = FactoryGirl.attributes_for(:user_admin_privilege_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :acct_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
+
+    reader = TheCity::UserAdminPrivilegeListReader.new(user_id, page)
+    admin_privilege_list = TheCity::UserAdminPrivilegeList.new(reader)
+
+    admin_privilege = admin_privilege_list[0]
+    admin_privilege.title.should == "Designer"
+  end
+
+
+  it 'should iterate using *each* method' do
+    user_id = 123
+    request_data = FactoryGirl.attributes_for(:user_admin_privilege_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :acct_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
+
+    reader = TheCity::UserAdminPrivilegeListReader.new(user_id)
+    admin_privilege_list = TheCity::UserAdminPrivilegeList.new(reader)
+
+    admin_privileges = []
+    admin_privilege_list.each { |admin_privilege| admin_privileges << admin_privilege.title }
+    admin_privileges.should == ["Designer"]
+  end  
+
+
+  it 'should iterate using *collect* method' do
+    user_id = 123
+    request_data = FactoryGirl.attributes_for(:user_admin_privilege_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :acct_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
+
+    reader = TheCity::UserAdminPrivilegeListReader.new(user_id)
+    admin_privilege_list = TheCity::UserAdminPrivilegeList.new(reader)
+
+    admin_privileges = admin_privilege_list.collect { |admin_privilege| admin_privilege.title }
+    admin_privileges.should == ["Designer"]
+  end   
 
 end
+
+
+
 
 

@@ -7,16 +7,94 @@ describe 'UserInvitationList' do
   end
 
   after do
-
+    
   end
 
 
-  it 'should pass if user invitation list attribute is not specifed' 
-  it 'should pass if user invitation list is empty'
-  it 'should return a valid list of user invitations'
-  it 'should iterate using *each* method'
-  it 'should iterate using *collect* method'
+  it 'should pass if user invitation list attribute is not specifed' do
+    user_id = 123
+    request_data = FactoryGirl.attributes_for(:user_invitation_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :invitations => [FactoryGirl.attributes_for(:user_invitation)]
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
 
+    reader = TheCity::UserInvitationListReader.new(user_id)
+    invitation_list = TheCity::UserInvitationList.new(reader)
+
+    invitation = invitation_list[0]
+    invitation.source.should == "API Invite | Group A (17543) on 2012-02-06 at 16:54"
+  end
+
+
+  it 'should pass if user invitation list is empty' do
+    user_id = 123
+    page = 2
+    request_data = FactoryGirl.attributes_for(:user_invitation_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :invitations => []
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
+    reader = TheCity::UserInvitationListReader.new(user_id, page)
+    invitation_list = TheCity::UserInvitationList.new(reader)
+
+    invitation_list.empty?.should be_true
+  end
+
+
+  it 'should return a valid list of user invitations' do 
+    user_id = 123
+    page = 2
+    request_data = FactoryGirl.attributes_for(:user_invitation_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :invitations => [FactoryGirl.attributes_for(:user_invitation)]
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
+
+    reader = TheCity::UserInvitationListReader.new(user_id, page)
+    invitation_list = TheCity::UserInvitationList.new(reader)
+
+    invitation = invitation_list[0]
+    invitation.source.should == "API Invite | Group A (17543) on 2012-02-06 at 16:54"
+  end
+
+
+  it 'should iterate using *each* method' do
+    user_id = 123
+    request_data = FactoryGirl.attributes_for(:user_invitation_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :invitations => [FactoryGirl.attributes_for(:user_invitation)]
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
+
+    reader = TheCity::UserInvitationListReader.new(user_id)
+    invitation_list = TheCity::UserInvitationList.new(reader)
+
+    invitations = []
+    invitation_list.each { |invitation| invitations << invitation.source }
+    invitations.should == ["API Invite | Group A (17543) on 2012-02-06 at 16:54"]
+  end  
+
+
+  it 'should iterate using *collect* method' do
+    user_id = 123
+    request_data = FactoryGirl.attributes_for(:user_invitation_list, {
+      :total_entries => 1,
+      :total_pages => 1,
+      :invitations => [FactoryGirl.attributes_for(:user_invitation)]
+    }).to_json
+    TheCity.stub(:admin_request).and_return(request_data)
+
+    reader = TheCity::UserInvitationListReader.new(user_id)
+    invitation_list = TheCity::UserInvitationList.new(reader)
+
+    invitations = invitation_list.collect { |invitation| invitation.source }
+    invitations.should == ["API Invite | Group A (17543) on 2012-02-06 at 16:54"]
+  end   
 
 end
 

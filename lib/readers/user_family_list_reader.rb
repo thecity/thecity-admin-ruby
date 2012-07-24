@@ -6,7 +6,7 @@ module TheCity
     #
     # @param user_id The user ID to load the family info for.
     # @param [CacheAdapter] cacher (optional) The cacher to be used to cache data.
-    def initialize(user_id, cacher = nil)
+    def initialize(user_id, page = 1, cacher = nil)
       @class_key = "users_#{user_id}_family"   
       @url_data_path = "/users/#{user_id}/family"
       
