@@ -60,6 +60,7 @@ module TheCity
     # @param reader (optional) The object that has the data.  This can be a {UserReader} or Hash object.
     # @param options (optional) Options for including more information.
     def initialize(reader = nil, options = {})    
+      @writer_object = UserWriter
       if reader.is_a?(UserReader)
         initialize_from_json_object(reader.load_feed) 
       elsif reader.is_a?(Hash)
@@ -190,34 +191,34 @@ module TheCity
     end
 
 
-    # Save this object.
-    #
-    # @return True on success, otherwise false.
-    def save
-      writer = UserWriter.new(self.to_attributes) 
-      result = writer.save_object
-      if result === false
-        @error_messages = writer.error_messages
-      else
-        self.id = result
-      end
-      result === false ? false : true
-    end
+    # # Save this object.
+    # #
+    # # @return True on success, otherwise false.
+    # def save
+    #   writer = UserWriter.new(self.to_attributes) 
+    #   result = writer.save_object
+    #   if result === false
+    #     @error_messages = writer.error_messages
+    #   else
+    #     self.id = result
+    #   end
+    #   result === false ? false : true
+    # end
 
 
-    # Delete this object.
-    #
-    # @return True on success, otherwise false.
-    def delete
-      writer = UserWriter.new(self.to_attributes) 
-      result = writer.delete_object
-      if result === false
-        @error_messages = writer.error_messages
-      else
-        @_deleted = true
-      end
-      result === false ? false : true
-    end
+    # # Delete this object.
+    # #
+    # # @return True on success, otherwise false.
+    # def delete
+    #   writer = UserWriter.new(self.to_attributes) 
+    #   result = writer.delete_object
+    #   if result === false
+    #     @error_messages = writer.error_messages
+    #   else
+    #     @_deleted = true
+    #   end
+    #   result === false ? false : true
+    # end
 
 
   end

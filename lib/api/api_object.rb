@@ -51,6 +51,36 @@ module TheCity
       vals
     end
 
+
+    # Save this object.
+    #
+    # @return True on success, otherwise false.
+    def save
+      writer = @writer_object.new(self.to_attributes) 
+      result = writer.save_object
+      if result === false
+        @error_messages = writer.error_messages
+      else
+        self.id = result
+      end
+      result === false ? false : true
+    end
+
+
+    # Delete this object.
+    #
+    # @return True on success, otherwise false.
+    def delete
+      writer = @writer_object.new(self.to_attributes) 
+      result = writer.delete_object
+      if result === false
+        @error_messages = writer.error_messages
+      else
+        @_deleted = true
+      end
+      result === false ? false : true
+    end    
+
   end
 
 end
