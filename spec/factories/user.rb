@@ -34,12 +34,18 @@ module TheCity
       external_id_2 nil 
       external_id_3 nil 
       middle "" 
-      email "zack@church.org" 
+      email "zack@church.org"
+      last_checkin_date "05/14/2012 05:51 PM (UTC)" 
+      last_donation_date "05/14/2012 05:51 PM (UTC)" 
+      last_attendance_date "05/14/2012 05:51 PM (UTC)" 
+      in_community true
+      in_service true
+      in_welcome true
+      in_campus true
+      in_neighborhood true      
     end
 
   end
 end
-
-
 
 
