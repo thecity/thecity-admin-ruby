@@ -106,9 +106,8 @@ module TheCity
     def family
       return @family_list unless @user_list.nil?  
       return nil unless self.id
-
-      reader = UserFamilyListReader.new(self.id)    
-      @family_list = UserFamilyList.new(reader)
+  
+      @family_list = UserFamilyList.new({:user_id => self.id})
       return @family_list
     end
 
@@ -119,9 +118,8 @@ module TheCity
     def notes
       return @note_list unless @note_list.nil?  
       return nil unless self.id
-
-      reader = UserNoteListReader.new(self.id)    
-      @note_list = UserNoteList.new(reader)
+  
+      @note_list = UserNoteList.new({:user_id => self.id})
       return @note_list
     end    
 
@@ -132,9 +130,8 @@ module TheCity
     def roles
       return @role_list unless @role_list.nil?  
       return nil unless self.id
-
-      reader = UserRoleListReader.new(self.id)    
-      @role_list = UserRoleList.new(reader)
+  
+      @role_list = UserRoleList.new({:user_id => self.id})
       return @role_list
     end      
 
@@ -145,9 +142,8 @@ module TheCity
     def skills
       return @skill_list unless @skill_list.nil?  
       return nil unless self.id
-
-      reader = UserSkillListReader.new(self.id)    
-      @skill_list = UserSkillList.new(reader)
+  
+      @skill_list = UserSkillList.new({:user_id => self.id})
       return @skill_list
     end     
 
@@ -158,9 +154,8 @@ module TheCity
     def processes
       return @process_list unless @process_list.nil?  
       return nil unless self.id
-
-      reader = UserProcessListReader.new(self.id)    
-      @process_list = UserProcessList.new(reader)
+ 
+      @process_list = UserProcessList.new({:user_id => self.id})
       return @process_list
     end   
 
@@ -171,9 +166,8 @@ module TheCity
     def invitations
       return @invitation_list unless @invitation_list.nil?  
       return nil unless self.id
-
-      reader = UserInvitationListReader.new(self.id)    
-      @invitation_list = UserInvitationList.new(reader)
+ 
+      @invitation_list = UserInvitationList.new({:user_id => self.id})
       return @invitation_list
     end
 
@@ -185,8 +179,7 @@ module TheCity
       return @admin_privilege_list unless @admin_privilege_list.nil?  
       return nil unless self.id
 
-      reader = UserAdminPrivilegeListReader.new(self.id)    
-      @admin_privilege_list = UserAdminPrivilegeList.new(reader)
+      @admin_privilege_list = UserAdminPrivilegeList.new({:user_id => self.id})
       return @admin_privilege_list
     end
 

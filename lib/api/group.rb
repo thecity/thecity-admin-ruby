@@ -52,8 +52,7 @@ module TheCity
       return @address_list unless @address_list.nil?  
       return nil unless self.id
 
-      reader = GroupAddressListReader.new(self.id)    
-      @address_list = GroupAddressList.new(reader)
+      @address_list = GroupAddressList.new({:group_id => self.id})
       return @address_list
     end
     
@@ -64,9 +63,8 @@ module TheCity
     def invitations
       return @invitation_list unless @invitation_list.nil?  
       return nil unless self.id
-
-      reader = GroupInvitationListReader.new(self.id)    
-      @invitation_list = GroupInvitationList.new(reader)
+ 
+      @invitation_list = GroupInvitationList.new({:group_id => self.id})
       return @invitation_list
     end
 
@@ -77,9 +75,8 @@ module TheCity
     def roles
       return @role_list unless @role_list.nil?  
       return nil unless self.id
-
-      reader = GroupRoleListReader.new(self.id)    
-      @role_list = GroupRoleList.new(reader)
+ 
+      @role_list = GroupRoleList.new({:group_id => self.id})
       return @role_list
     end     
 
@@ -90,9 +87,8 @@ module TheCity
     def tags
       return @tag_list unless @tag_list.nil?  
       return nil unless self.id
-
-      reader = GroupTagListReader.new(self.id)    
-      @tag_list = GroupTagList.new(reader)
+  
+      @tag_list = GroupTagList.new({:group_id => self.id})
       return @tag_list
     end     
 
