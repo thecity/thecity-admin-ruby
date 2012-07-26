@@ -4,13 +4,12 @@ module TheCity
 
     # Constructor.
     #
-    # @param page The page number to get.  Default is 1.
     # @param options A hash of options for requesting data from the server.
     # @param [CacheAdapter] cacher (optional) The cacher to be used to cache data.
-    def initialize(page = 1, options = {}, cacher = nil) 
-      search = options[:search] || ''
+    def initialize(options = {}, cacher = nil) 
+      page = options[:page] || 1
 
-      @class_key = "tag_list_#{page}_#{search.to_s.downcase.gsub(' ','')}"   
+      @class_key = "tag_list_#{page}"   
       @url_data_path = "/tags"
       @url_data_params = {:page => page}
       

@@ -8,16 +8,15 @@ module TheCity
 
     # Constructor.
     #
-    # @param [SkillListReader] reader The object that loaded the data.
     # @param options A hash of filters for loading the user list.
     # 
     # Options:
     #   :page - The page number to get.
-    #   :search -  (optional) A skill name to search on.
+    #   :reader - The Reader to use to load the data.
     #
     #
     # Examples:
-    #   SkillList.new({:page => 3})
+    #   SkillList.new
     #
     #   SkillList.new({:page => 2})
     #    

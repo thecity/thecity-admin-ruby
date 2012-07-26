@@ -14,8 +14,7 @@ describe 'SkillList' do
   it 'should pass if skill list attribute is not specifed' do
     request_data = FactoryGirl.attributes_for(:skill_list).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::SkillListReader.new
-    skill_list = TheCity::SkillList.new(reader)
+    skill_list = TheCity::SkillList.new
 
     skill_list.skills.should == []    
   end
@@ -24,8 +23,7 @@ describe 'SkillList' do
   it 'should pass if skill list is empty' do
     request_data = FactoryGirl.attributes_for(:skill_list, :skills => []).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::SkillListReader.new
-    skill_list = TheCity::SkillList.new(reader)
+    skill_list = TheCity::SkillList.new
 
     skill_list.skills.should == []
   end
@@ -38,8 +36,7 @@ describe 'SkillList' do
       :skills => [FactoryGirl.attributes_for(:skill)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::SkillListReader.new
-    skill_list = TheCity::SkillList.new(reader)
+    skill_list = TheCity::SkillList.new({:page => 2})
 
     skill_list.skills.should == ["Welding"]
   end
@@ -52,8 +49,7 @@ describe 'SkillList' do
       :skills => [FactoryGirl.attributes_for(:skill)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::SkillListReader.new
-    skill_list = TheCity::SkillList.new(reader)
+    skill_list = TheCity::SkillList.new
 
     skills = []
     skill_list.each { |skill| skills << skill.name }
@@ -68,8 +64,7 @@ describe 'SkillList' do
       :skills => [FactoryGirl.attributes_for(:skill)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::SkillListReader.new
-    skill_list = TheCity::SkillList.new(reader)
+    skill_list = TheCity::SkillList.new
 
     skills = skill_list.collect { |skill| skill.name }
     skill_list.skills.should == ["Welding"]

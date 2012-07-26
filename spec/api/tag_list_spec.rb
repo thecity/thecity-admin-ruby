@@ -14,8 +14,7 @@ describe 'TagList' do
   it 'should pass if tag list attribute is not specifed' do
     request_data = FactoryGirl.attributes_for(:tag_list).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::TagListReader.new
-    tag_list = TheCity::TagList.new(reader)
+    tag_list = TheCity::TagList.new
 
     tag_list.tags.should == []    
   end
@@ -24,8 +23,7 @@ describe 'TagList' do
   it 'should pass if tag list is empty' do
     request_data = FactoryGirl.attributes_for(:tag_list, :tags => []).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::TagListReader.new
-    tag_list = TheCity::TagList.new(reader)
+    tag_list = TheCity::TagList.new
 
     tag_list.tags.should == []
   end
@@ -38,8 +36,7 @@ describe 'TagList' do
       :tags => [FactoryGirl.attributes_for(:tag)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::TagListReader.new
-    tag_list = TheCity::TagList.new(reader)
+    tag_list = TheCity::TagList.new({:page => 2})
 
     tag_list.tags.should == ["Evening"]
   end
@@ -52,8 +49,7 @@ describe 'TagList' do
       :tags => [FactoryGirl.attributes_for(:tag)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::TagListReader.new
-    tag_list = TheCity::TagList.new(reader)
+    tag_list = TheCity::TagList.new
 
     tags = []
     tag_list.each { |tag| tags << tag.name }
@@ -68,8 +64,7 @@ describe 'TagList' do
       :tags => [FactoryGirl.attributes_for(:tag)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::TagListReader.new
-    tag_list = TheCity::TagList.new(reader)
+    tag_list = TheCity::TagList.new
 
     tags = tag_list.collect { |tag| tag.name }
     tag_list.tags.should == ["Evening"]
