@@ -8,8 +8,22 @@ module TheCity
 
     # Constructor.
     #
-    # @param [UserAddressListReader] reader The object that loaded the data.
-    def initialize(reader) 
+    # @param options A hash of options for loading the list.
+    # 
+    # Options:
+    #   :group_id - The ID of the group to load the addresses for. (required)
+    #   :page - The page number to get.
+    #   :reader - The Reader to use to load the data.
+    #
+    #
+    # Examples:
+    #   GroupAddressList.new({:group_id => 12345})
+    #
+    #   GroupAddressList.new({:group_id => 12345, :page => 2})
+    #    
+    def initialize(options = {}) 
+      options[:page] ||= 1
+      reader = options[:reader] || TheCity::GroupAddressListReader.new(options)    
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']

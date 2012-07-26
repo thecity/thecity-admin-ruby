@@ -6,22 +6,25 @@ module TheCity
 
     attr_reader :total_entries, :total_pages, :per_page, :current_page
 
+
     # Constructor.
     #
-    # @param [UserListReader] reader The object that loaded the data.
-    # @param options A hash of filters for loading the user list.
+    # @param options A hash of options for loading the list.
     # 
     # Options:
     #   :page - The page number to get.
+    #   :reader - The Reader to use to load the data.
     #   :search -  (optional) A group name to search on.
     #
     #
     # Examples:
-    #   GroupList.new(reader, {:page => 3, :search => 'Bobby Grossi'})
+    #   UserList.new
     #
-    #   GroupList.new(reader, {:page => 2, :search => 'Pub and Sub'})
+    #   UserList.new({:page => 2})
     #    
-    def initialize(reader, options = {}) 
+    def initialize(options = {}) 
+      options[:page] ||= 1
+      reader = options[:reader] || TheCity::GroupReader.new(options)   
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']

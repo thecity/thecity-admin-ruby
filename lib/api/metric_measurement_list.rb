@@ -8,8 +8,21 @@ module TheCity
 
     # Constructor.
     #
-    # @param [UserRoleListReader] reader The object that loaded the data.
-    def initialize(reader) 
+    # @param options A hash of options for loading the list.
+    # 
+    # Options:
+    #   :page - The page number to get.
+    #   :reader - The Reader to use to load the data.
+    #
+    #
+    # Examples:
+    #   MetricMeasurementList.new({:group_id => 12345})
+    #
+    #   MetricMeasurementList.new({:group_id => 12345, :page => 2})
+    #    
+    def initialize(options = {}) 
+      options[:page] ||= 1
+      reader = options[:reader] || TheCity::MetricMeasurementListReader.new(options)   
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']

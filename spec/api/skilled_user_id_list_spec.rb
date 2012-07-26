@@ -15,8 +15,7 @@ describe 'SkilledUserIdList' do
     skill_id = 123
     request_data = FactoryGirl.attributes_for(:skilled_user_id_list).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::SkilledUserIdListReader.new(skill_id)
-    skilled_user_id_list = TheCity::SkilledUserIdList.new(reader)
+    skilled_user_id_list = TheCity::SkilledUserIdList.new({:skill_id => skill_id})
 
     skilled_user_id_list.user_ids.should == []    
   end
@@ -26,8 +25,7 @@ describe 'SkilledUserIdList' do
     skill_id = 123
     request_data = FactoryGirl.attributes_for(:skilled_user_id_list, :users => []).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::SkilledUserIdListReader.new(skill_id)
-    skilled_user_id_list = TheCity::SkilledUserIdList.new(reader)
+    skilled_user_id_list = TheCity::SkilledUserIdList.new({:skill_id => skill_id})
 
     skilled_user_id_list.user_ids.should == []
   end
@@ -35,14 +33,14 @@ describe 'SkilledUserIdList' do
 
   it 'should return a valid list of users' do
     skill_id = 123
+    page = 2
     request_data = FactoryGirl.attributes_for(:skilled_user_id_list, {
       :total_entries => 1,
       :total_pages => 1,
       :user_ids => [FactoryGirl.attributes_for(:user)[:id]]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::SkilledUserIdListReader.new(skill_id)
-    skilled_user_id_list = TheCity::SkilledUserIdList.new(reader)
+    skilled_user_id_list = TheCity::SkilledUserIdList.new({:skill_id => skill_id, :page => page})
 
     skilled_user_id_list.user_ids.should == [946060874]
   end
@@ -56,8 +54,7 @@ describe 'SkilledUserIdList' do
       :user_ids => [FactoryGirl.attributes_for(:user)[:id]]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::SkilledUserIdListReader.new(skill_id)
-    skilled_user_id_list = TheCity::SkilledUserIdList.new(reader)
+    skilled_user_id_list = TheCity::SkilledUserIdList.new({:skill_id => skill_id})
 
     users = []
     skilled_user_id_list.each { |user_id| users << user_id}
@@ -73,8 +70,7 @@ describe 'SkilledUserIdList' do
       :user_ids => [FactoryGirl.attributes_for(:user)[:id]]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::SkilledUserIdListReader.new(skill_id)
-    skilled_user_id_list = TheCity::SkilledUserIdList.new(reader)
+    skilled_user_id_list = TheCity::SkilledUserIdList.new({:skill_id => skill_id})
 
     users = skilled_user_id_list.collect { |user_id| user_id }
     skilled_user_id_list.user_ids.should == [946060874]

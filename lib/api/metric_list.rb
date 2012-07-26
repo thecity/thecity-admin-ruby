@@ -8,8 +8,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param [UserListReader] reader The object that loaded the data.
-    # @param options A hash of filters for loading the user list.
+    # @param options A hash of filters for loading the list.
     # 
     # Options:
     #   :page - The page number to get.
@@ -27,11 +26,13 @@ module TheCity
     #
     #
     # Examples:
-    #   UserList.new(reader, {:page => 3, :filter => :created_in_the_last_7_days})
+    #   MetricList.new({:filter => :created_in_the_last_7_days})
     #
-    #   UserList.new(reader, {:page => 2, :filter => :contact_updated_in_the_last_2_weeks})
+    #   MetricList.new({:page => 2, :filter => :contact_updated_in_the_last_2_weeks})
     #
-    def initialize(reader, options = {}) 
+    def initialize(options = {}) 
+      options[:page] ||= 1
+      reader = options[:reader] || TheCity::MetricListReader.new(options)  
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']
