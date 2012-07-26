@@ -32,6 +32,16 @@ module TheCity
       @current_page = @json_data['current_page']      
     end
     
+
+    # All the roles in the list.
+    #
+    # @return array of role names.
+    def all_roles
+      return [] if @json_data['roles'].nil?
+      @json_data['roles'].collect { |role| role['title'] }
+    end
+    alias :roles :all_roles
+        
     
     # Get the specified user role.
     #

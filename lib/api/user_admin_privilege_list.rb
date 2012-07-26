@@ -39,7 +39,7 @@ module TheCity
     #
     # @return [UserAdminPrivilege]
     def [](index)
-      UserAdminPrivilege.new( @json_data['acct_roles'][index] ) if @json_data['acct_roles'][index]
+      UserAdminPrivilege.new( @json_data['account_roles'][index] ) if @json_data['account_roles'][index]
     end
 
 
@@ -55,7 +55,7 @@ module TheCity
     #
     # @return True on empty, false otherwise.
     def empty?
-      @json_data['acct_roles'].empty?
+      @json_data['account_roles'].empty?
     end
 
   end

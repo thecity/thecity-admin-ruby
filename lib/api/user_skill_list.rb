@@ -32,6 +32,16 @@ module TheCity
       @current_page = @json_data['current_page']      
     end
     
+
+    # All the skills in the list.
+    #
+    # @return array of skill names.
+    def all_skills
+      return [] if @json_data['skills'].nil?
+      @json_data['skills'].collect { |skill| skill['name'] }
+    end
+    alias :skills :all_skills
+        
     
     # Get the specified skill.
     #

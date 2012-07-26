@@ -93,9 +93,8 @@ module TheCity
     def addresses
       return @address_list unless @address_list.nil?  
       return nil unless self.id
-
-      reader = UserAddressListReader.new(self.id)    
-      @address_list = UserAddressList.new(reader)
+         
+      @address_list = UserAddressList.new({:user_id => self.id})
       return @address_list
     end
 

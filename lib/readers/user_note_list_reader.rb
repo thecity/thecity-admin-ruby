@@ -4,10 +4,12 @@ module TheCity
 
     # Constructor.
     #
-    # @param user_id The user ID to load the notes for.
-    # @param page The page number to get.  Default is 1.   
+    # @param options A hash of options for requesting data from the server.
+    #                :: user_id is required
     # @param [CacheAdapter] cacher (optional) The cacher to be used to cache data.
-    def initialize(user_id, page = 1, cacher = nil)
+    def initialize(options = {}, cacher = nil) 
+      page = options[:page] || 1
+      user_id = options[:user_id]
       @class_key = "users_#{user_id}_notes_#{page}"   
       @url_data_path = "/users/#{user_id}/notes"
       @url_data_params = {:page => page}
