@@ -17,11 +17,13 @@ module TheCity
     #
     #
     # Examples:
-    #   SkillList.new(reader, {:page => 3})
+    #   SkillList.new({:page => 3})
     #
-    #   SkillList.new(reader, {:page => 2})
+    #   SkillList.new({:page => 2})
     #    
-    def initialize(reader, options = {}) 
+    def initialize(options = {}) 
+      options[:page] ||= 1
+      reader = options[:reader] || TheCity::SkillListReader.new(options)
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']
