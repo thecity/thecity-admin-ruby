@@ -8,7 +8,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param options A hash of filters for loading the user list.
+    # @param options A hash of options for loading the skill list.
     # 
     # Options:
     #   :page - The page number to get.

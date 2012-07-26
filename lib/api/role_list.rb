@@ -8,12 +8,11 @@ module TheCity
 
     # Constructor.
     #
-    # @param [UserListReader] reader The object that loaded the data.
-    # @param options A hash of filters for loading the user list.
+    # @param options A hash of options for loading the skill list.
     # 
     # Options:
     #   :page - The page number to get.
-    #   :options -  (optional) other parameters.
+    #   :reader - The Reader to use to load the data.
     #
     #
     # Examples:
@@ -21,7 +20,9 @@ module TheCity
     #
     #   RoleList.new(reader, {:page => 2})
     #    
-    def initialize(reader, options = {}) 
+    def initialize(options = {}) 
+      options[:page] ||= 1
+      reader = options[:reader] || TheCity::RoleListReader.new(options)      
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']
