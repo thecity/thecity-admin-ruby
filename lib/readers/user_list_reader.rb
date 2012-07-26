@@ -7,7 +7,8 @@ module TheCity
     # @param page The page number to get.  Default is 1.
     # @param options A hash of options for requesting data from the server.
     # @param [CacheAdapter] cacher (optional) The cacher to be used to cache data.
-    def initialize(page = 1, options = {}, cacher = nil) 
+    def initialize(options = {}, cacher = nil) 
+      page = options[:page] || 1
       filter = options[:filter] 
 
       @class_key = "user_list_#{page}_#{filter.to_s.downcase.gsub(' ','')}"   
