@@ -19,9 +19,7 @@ describe 'UserRoleList' do
       :roles => [FactoryGirl.attributes_for(:user_role)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserRoleListReader.new(user_id)
-    role_list = TheCity::UserRoleList.new(reader)
+    role_list = TheCity::UserRoleList.new({:user_id => user_id})
 
     role = role_list[0]
     role.group_name.should == "The Group"
@@ -30,15 +28,13 @@ describe 'UserRoleList' do
 
   it 'should pass if user role list is empty' do
     user_id = 123
-    page = 2
     request_data = FactoryGirl.attributes_for(:user_role_list, {
       :total_entries => 1,
       :total_pages => 1,
       :roles => []
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::UserRoleListReader.new(user_id, page)
-    role_list = TheCity::UserRoleList.new(reader)
+    role_list = TheCity::UserRoleList.new({:user_id => user_id})
 
     role_list.empty?.should be_true
   end
@@ -53,9 +49,7 @@ describe 'UserRoleList' do
       :roles => [FactoryGirl.attributes_for(:user_role)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserRoleListReader.new(user_id, page)
-    role_list = TheCity::UserRoleList.new(reader)
+    role_list = TheCity::UserRoleList.new({:user_id => user_id, :page => page})
 
     role = role_list[0]
     role.group_name.should == "The Group"
@@ -70,9 +64,7 @@ describe 'UserRoleList' do
       :roles => [FactoryGirl.attributes_for(:user_role)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserRoleListReader.new(user_id)
-    role_list = TheCity::UserRoleList.new(reader)
+    role_list = TheCity::UserRoleList.new({:user_id => user_id})
 
     roles = []
     role_list.each { |role| roles << role.group_name }
@@ -88,9 +80,7 @@ describe 'UserRoleList' do
       :roles => [FactoryGirl.attributes_for(:user_role)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserRoleListReader.new(user_id)
-    role_list = TheCity::UserRoleList.new(reader)
+    role_list = TheCity::UserRoleList.new({:user_id => user_id})
 
     roles = role_list.collect { |role| role.group_name }
     roles.should == ["The Group"]

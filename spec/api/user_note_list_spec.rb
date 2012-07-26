@@ -19,9 +19,7 @@ describe 'UserNoteList' do
       :notes => [FactoryGirl.attributes_for(:user_note)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserNoteListReader.new(user_id)
-    note_list = TheCity::UserNoteList.new(reader)
+    note_list = TheCity::UserNoteList.new({:user_id => user_id})
 
     note = note_list[0]
     note.body.should == "Deaconship is complete"
@@ -30,15 +28,13 @@ describe 'UserNoteList' do
 
   it 'should pass if user note list is empty' do
     user_id = 123
-    page = 2
     request_data = FactoryGirl.attributes_for(:user_note_list, {
       :total_entries => 1,
       :total_pages => 1,
       :notes => []
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::UserNoteListReader.new(user_id, page)
-    note_list = TheCity::UserNoteList.new(reader)
+    note_list = TheCity::UserNoteList.new({:user_id => user_id})
 
     note_list.empty?.should be_true
   end
@@ -53,9 +49,7 @@ describe 'UserNoteList' do
       :notes => [FactoryGirl.attributes_for(:user_note)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserNoteListReader.new(user_id, page)
-    note_list = TheCity::UserNoteList.new(reader)
+    note_list = TheCity::UserNoteList.new({:user_id => user_id, :page => page})
 
     note = note_list[0]
     note.body.should == "Deaconship is complete"
@@ -70,9 +64,7 @@ describe 'UserNoteList' do
       :notes => [FactoryGirl.attributes_for(:user_note)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserNoteListReader.new(user_id)
-    note_list = TheCity::UserNoteList.new(reader)
+    note_list = TheCity::UserNoteList.new({:user_id => user_id})
 
     notes = []
     note_list.each { |note| notes << note.body }
@@ -88,9 +80,7 @@ describe 'UserNoteList' do
       :notes => [FactoryGirl.attributes_for(:user_note)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserNoteListReader.new(user_id)
-    note_list = TheCity::UserNoteList.new(reader)
+    note_list = TheCity::UserNoteList.new({:user_id => user_id})
 
     notes = note_list.collect { |note| note.body }
     notes.should == ["Deaconship is complete"]

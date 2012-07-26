@@ -18,8 +18,7 @@ describe 'User' do
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
 
-    reader = TheCity::UserListReader.new
-    user_list = TheCity::UserList.new(reader)
+    user_list = TheCity::UserList.new
 
     user = user_list[0]
     user.full_name.should == "Sammy Shepherd"

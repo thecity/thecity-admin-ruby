@@ -19,9 +19,7 @@ describe 'UserInvitationList' do
       :invitations => [FactoryGirl.attributes_for(:user_invitation)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserInvitationListReader.new(user_id)
-    invitation_list = TheCity::UserInvitationList.new(reader)
+    invitation_list = TheCity::UserInvitationList.new({:user_id => user_id})
 
     invitation = invitation_list[0]
     invitation.source.should == "API Invite | Group A (17543) on 2012-02-06 at 16:54"
@@ -30,15 +28,13 @@ describe 'UserInvitationList' do
 
   it 'should pass if user invitation list is empty' do
     user_id = 123
-    page = 2
     request_data = FactoryGirl.attributes_for(:user_invitation_list, {
       :total_entries => 1,
       :total_pages => 1,
       :invitations => []
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::UserInvitationListReader.new(user_id, page)
-    invitation_list = TheCity::UserInvitationList.new(reader)
+    invitation_list = TheCity::UserInvitationList.new({:user_id => user_id})
 
     invitation_list.empty?.should be_true
   end
@@ -53,9 +49,7 @@ describe 'UserInvitationList' do
       :invitations => [FactoryGirl.attributes_for(:user_invitation)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserInvitationListReader.new(user_id, page)
-    invitation_list = TheCity::UserInvitationList.new(reader)
+    invitation_list = TheCity::UserInvitationList.new({:user_id => user_id, :page => 2})
 
     invitation = invitation_list[0]
     invitation.source.should == "API Invite | Group A (17543) on 2012-02-06 at 16:54"
@@ -70,9 +64,7 @@ describe 'UserInvitationList' do
       :invitations => [FactoryGirl.attributes_for(:user_invitation)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserInvitationListReader.new(user_id)
-    invitation_list = TheCity::UserInvitationList.new(reader)
+    invitation_list = TheCity::UserInvitationList.new({:user_id => user_id})
 
     invitations = []
     invitation_list.each { |invitation| invitations << invitation.source }
@@ -88,9 +80,7 @@ describe 'UserInvitationList' do
       :invitations => [FactoryGirl.attributes_for(:user_invitation)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserInvitationListReader.new(user_id)
-    invitation_list = TheCity::UserInvitationList.new(reader)
+    invitation_list = TheCity::UserInvitationList.new({:user_id => user_id})
 
     invitations = invitation_list.collect { |invitation| invitation.source }
     invitations.should == ["API Invite | Group A (17543) on 2012-02-06 at 16:54"]

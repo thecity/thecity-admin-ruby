@@ -19,9 +19,7 @@ describe 'UserFamilyList' do
       :family_members => [FactoryGirl.attributes_for(:user_family_member)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserFamilyListReader.new(user_id)
-    family_list = TheCity::UserFamilyList.new(reader)
+    family_list = TheCity::UserFamilyList.new({:user_id => user_id})
 
     family = family_list[0]
     family.name.should == "Pastor Sam Shepherd"
@@ -30,15 +28,13 @@ describe 'UserFamilyList' do
 
   it 'should pass if user family list is empty' do
     user_id = 123
-    page = 2
     request_data = FactoryGirl.attributes_for(:user_family_list, {
       :total_entries => 1,
       :total_pages => 1,
       :family_members => []
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::UserFamilyListReader.new(user_id, page)
-    family_list = TheCity::UserFamilyList.new(reader)
+    family_list = TheCity::UserFamilyList.new({:user_id => user_id})
 
     family_list.empty?.should be_true
   end
@@ -53,9 +49,7 @@ describe 'UserFamilyList' do
       :family_members => [FactoryGirl.attributes_for(:user_family_member)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserFamilyListReader.new(user_id, page)
-    family_list = TheCity::UserFamilyList.new(reader)
+    family_list = TheCity::UserFamilyList.new({:user_id => user_id, :page => page})
 
     family = family_list[0]
     family.name.should == "Pastor Sam Shepherd"
@@ -70,9 +64,7 @@ describe 'UserFamilyList' do
       :family_members => [FactoryGirl.attributes_for(:user_family_member)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserFamilyListReader.new(user_id)
-    family_list = TheCity::UserFamilyList.new(reader)
+    family_list = TheCity::UserFamilyList.new({:user_id => user_id})
 
     family_members = []
     family_list.each { |family| family_members << family.name }
@@ -88,9 +80,7 @@ describe 'UserFamilyList' do
       :family_members => [FactoryGirl.attributes_for(:user_family_member)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserFamilyListReader.new(user_id)
-    family_list = TheCity::UserFamilyList.new(reader)
+    family_list = TheCity::UserFamilyList.new({:user_id => user_id})
 
     family_members = family_list.collect { |family| family.name }
     family_members.should == ["Pastor Sam Shepherd"]

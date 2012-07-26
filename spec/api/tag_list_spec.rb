@@ -30,13 +30,14 @@ describe 'TagList' do
 
 
   it 'should return a valid list of tags' do
+    page = 2
     request_data = FactoryGirl.attributes_for(:tag_list, {
       :total_entries => 1,
       :total_pages => 1,
       :tags => [FactoryGirl.attributes_for(:tag)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    tag_list = TheCity::TagList.new({:page => 2})
+    tag_list = TheCity::TagList.new({:page => page})
 
     tag_list.tags.should == ["Evening"]
   end

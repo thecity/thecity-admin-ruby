@@ -8,7 +8,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param options A hash of options for loading the tag list.
+    # @param options A hash of options for loading the list.
     # 
     # Options:
     #   :page - The page number to get.

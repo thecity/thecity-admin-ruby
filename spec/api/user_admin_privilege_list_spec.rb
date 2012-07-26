@@ -19,9 +19,7 @@ describe 'UserAdminPrivilegeList' do
       :acct_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserAdminPrivilegeListReader.new(user_id)
-    admin_privilege_list = TheCity::UserAdminPrivilegeList.new(reader)
+    admin_privilege_list = TheCity::UserAdminPrivilegeList.new({:user_id => user_id})
 
     admin_privilege = admin_privilege_list[0]
     admin_privilege.title.should == "Designer"
@@ -30,15 +28,13 @@ describe 'UserAdminPrivilegeList' do
 
   it 'should pass if user admin_privilege list is empty' do
     user_id = 123
-    page = 2
     request_data = FactoryGirl.attributes_for(:user_admin_privilege_list, {
       :total_entries => 1,
       :total_pages => 1,
       :acct_roles => []
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::UserAdminPrivilegeListReader.new(user_id, page)
-    admin_privilege_list = TheCity::UserAdminPrivilegeList.new(reader)
+    admin_privilege_list = TheCity::UserAdminPrivilegeList.new({:user_id => user_id})
 
     admin_privilege_list.empty?.should be_true
   end
@@ -53,9 +49,7 @@ describe 'UserAdminPrivilegeList' do
       :acct_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserAdminPrivilegeListReader.new(user_id, page)
-    admin_privilege_list = TheCity::UserAdminPrivilegeList.new(reader)
+    admin_privilege_list = TheCity::UserAdminPrivilegeList.new({:user_id => user_id, :page => page})
 
     admin_privilege = admin_privilege_list[0]
     admin_privilege.title.should == "Designer"
@@ -70,9 +64,7 @@ describe 'UserAdminPrivilegeList' do
       :acct_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserAdminPrivilegeListReader.new(user_id)
-    admin_privilege_list = TheCity::UserAdminPrivilegeList.new(reader)
+    admin_privilege_list = TheCity::UserAdminPrivilegeList.new({:user_id => user_id})
 
     admin_privileges = []
     admin_privilege_list.each { |admin_privilege| admin_privileges << admin_privilege.title }
@@ -88,9 +80,7 @@ describe 'UserAdminPrivilegeList' do
       :acct_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserAdminPrivilegeListReader.new(user_id)
-    admin_privilege_list = TheCity::UserAdminPrivilegeList.new(reader)
+    admin_privilege_list = TheCity::UserAdminPrivilegeList.new({:user_id => user_id})
 
     admin_privileges = admin_privilege_list.collect { |admin_privilege| admin_privilege.title }
     admin_privileges.should == ["Designer"]

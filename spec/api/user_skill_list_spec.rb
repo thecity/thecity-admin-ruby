@@ -19,9 +19,7 @@ describe 'UserSkillList' do
       :skills => [FactoryGirl.attributes_for(:user_skill)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserSkillListReader.new(user_id)
-    skill_list = TheCity::UserSkillList.new(reader)
+    skill_list = TheCity::UserSkillList.new({:user_id => user_id})
 
     skill = skill_list[0]
     skill.name.should == "Teaching-Curriculum"
@@ -30,15 +28,13 @@ describe 'UserSkillList' do
 
   it 'should pass if user skill list is empty' do
     user_id = 123
-    page = 2
     request_data = FactoryGirl.attributes_for(:user_skill_list, {
       :total_entries => 1,
       :total_pages => 1,
       :skills => []
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::UserSkillListReader.new(user_id, page)
-    skill_list = TheCity::UserSkillList.new(reader)
+    skill_list = TheCity::UserSkillList.new({:user_id => user_id})
 
     skill_list.empty?.should be_true
   end
@@ -53,9 +49,7 @@ describe 'UserSkillList' do
       :skills => [FactoryGirl.attributes_for(:user_skill)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserSkillListReader.new(user_id, page)
-    skill_list = TheCity::UserSkillList.new(reader)
+    skill_list = TheCity::UserSkillList.new({:user_id => user_id, :page => page})
 
     skill = skill_list[0]
     skill.name.should == "Teaching-Curriculum"
@@ -70,9 +64,7 @@ describe 'UserSkillList' do
       :skills => [FactoryGirl.attributes_for(:user_skill)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserSkillListReader.new(user_id)
-    skill_list = TheCity::UserSkillList.new(reader)
+    skill_list = TheCity::UserSkillList.new({:user_id => user_id})
 
     skills = []
     skill_list.each { |skill| skills << skill.name }
@@ -88,9 +80,7 @@ describe 'UserSkillList' do
       :skills => [FactoryGirl.attributes_for(:user_skill)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserSkillListReader.new(user_id)
-    skill_list = TheCity::UserSkillList.new(reader)
+    skill_list = TheCity::UserSkillList.new({:user_id => user_id})
 
     skills = skill_list.collect { |skill| skill.name }
     skills.should == ["Teaching-Curriculum"]

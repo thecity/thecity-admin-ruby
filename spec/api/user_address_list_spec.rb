@@ -19,9 +19,7 @@ describe 'UserAddressList' do
       :addresses => [FactoryGirl.attributes_for(:user_address)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserAddressListReader.new(user_id)
-    address_list = TheCity::UserAddressList.new(reader)
+    address_list = TheCity::UserAddressList.new({:user_id => user_id})
 
     address = address_list[0]
     address.city.should == "Seattle"
@@ -30,15 +28,13 @@ describe 'UserAddressList' do
 
   it 'should pass if user address list is empty' do
     user_id = 123
-    page = 2
     request_data = FactoryGirl.attributes_for(:user_address_list, {
       :total_entries => 1,
       :total_pages => 1,
       :addresses => []
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-    reader = TheCity::UserAddressListReader.new(user_id, page)
-    address_list = TheCity::UserAddressList.new(reader)
+    address_list = TheCity::UserAddressList.new({:user_id => user_id})
 
     address_list.empty?.should be_true
   end
@@ -53,9 +49,7 @@ describe 'UserAddressList' do
       :addresses => [FactoryGirl.attributes_for(:user_address)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserAddressListReader.new(user_id, page)
-    address_list = TheCity::UserAddressList.new(reader)
+    address_list = TheCity::UserAddressList.new({:user_id => user_id, :page => page})
 
     address = address_list[0]
     address.city.should == "Seattle"
@@ -70,9 +64,7 @@ describe 'UserAddressList' do
       :addresses => [FactoryGirl.attributes_for(:user_address)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserAddressListReader.new(user_id)
-    address_list = TheCity::UserAddressList.new(reader)
+    address_list = TheCity::UserAddressList.new({:user_id => user_id})
 
     addresses = []
     address_list.each { |address| addresses << address.city }
@@ -88,9 +80,7 @@ describe 'UserAddressList' do
       :addresses => [FactoryGirl.attributes_for(:user_address)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
-
-    reader = TheCity::UserAddressListReader.new(user_id)
-    address_list = TheCity::UserAddressList.new(reader)
+    address_list = TheCity::UserAddressList.new({:user_id => user_id})
 
     addresses = address_list.collect { |address| address.city }
     addresses.should == ["Seattle"]

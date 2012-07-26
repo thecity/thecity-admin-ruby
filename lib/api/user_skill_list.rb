@@ -8,8 +8,22 @@ module TheCity
 
     # Constructor.
     #
-    # @param [UserSkillListReader] reader The object that loaded the data.
-    def initialize(reader) 
+    # @param options A hash of options for loading the list.
+    # 
+    # Options:
+    #   :user_id - The ID of the user to load the user skills for. (required)
+    #   :page - The page number to get.
+    #   :reader - The Reader to use to load the data.
+    #
+    #
+    # Examples:
+    #   UserSkillList.new({:user_id => 12345})
+    #
+    #   UserSkillList.new({:user_id => 12345, :page => 2})
+    #    
+    def initialize(options = {}) 
+      options[:page] ||= 1
+      reader = options[:reader] || TheCity::UserSkillListReader.new(options)  
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']
