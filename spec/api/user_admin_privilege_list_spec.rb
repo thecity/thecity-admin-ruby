@@ -16,7 +16,7 @@ describe 'UserAdminPrivilegeList' do
     request_data = FactoryGirl.attributes_for(:user_admin_privilege_list, {
       :total_entries => 1,
       :total_pages => 1,
-      :acct_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
+      :account_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
     admin_privilege_list = TheCity::UserAdminPrivilegeList.new({:user_id => user_id})
@@ -31,7 +31,7 @@ describe 'UserAdminPrivilegeList' do
     request_data = FactoryGirl.attributes_for(:user_admin_privilege_list, {
       :total_entries => 1,
       :total_pages => 1,
-      :acct_roles => []
+      :account_roles => []
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
     admin_privilege_list = TheCity::UserAdminPrivilegeList.new({:user_id => user_id})
@@ -46,7 +46,7 @@ describe 'UserAdminPrivilegeList' do
     request_data = FactoryGirl.attributes_for(:user_admin_privilege_list, {
       :total_entries => 1,
       :total_pages => 1,
-      :acct_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
+      :account_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
     admin_privilege_list = TheCity::UserAdminPrivilegeList.new({:user_id => user_id, :page => page})
@@ -61,7 +61,7 @@ describe 'UserAdminPrivilegeList' do
     request_data = FactoryGirl.attributes_for(:user_admin_privilege_list, {
       :total_entries => 1,
       :total_pages => 1,
-      :acct_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
+      :account_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
     admin_privilege_list = TheCity::UserAdminPrivilegeList.new({:user_id => user_id})
@@ -77,7 +77,7 @@ describe 'UserAdminPrivilegeList' do
     request_data = FactoryGirl.attributes_for(:user_admin_privilege_list, {
       :total_entries => 1,
       :total_pages => 1,
-      :acct_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
+      :account_roles => [FactoryGirl.attributes_for(:user_admin_privilege)]
     }).to_json
     TheCity.stub(:admin_request).and_return(request_data)
     admin_privilege_list = TheCity::UserAdminPrivilegeList.new({:user_id => user_id})

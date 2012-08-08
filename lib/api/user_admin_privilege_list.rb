@@ -45,7 +45,7 @@ module TheCity
 
     # This method is needed for Enumerable.
     def each &block
-      @json_data['acct_roles'].each{ |acct_role| yield( UserAdminPrivilege.new(acct_role) )}
+      @json_data['account_roles'].each{ |account_role| yield( UserAdminPrivilege.new(account_role) )}
     end    
   
     # Alias the count method
