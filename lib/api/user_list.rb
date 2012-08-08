@@ -57,6 +57,16 @@ module TheCity
       @json_data['users'].each{ |user| yield( User.new(user) )}
     end    
   
+    # Alias the count method
+    alias :size :count
+
+    # Checks if the list is empty.
+    #
+    # @return True on empty, false otherwise.
+    def empty?
+      @json_data['users'].empty?
+    end   
+  
   end
   
 end

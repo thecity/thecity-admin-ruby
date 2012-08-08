@@ -4,10 +4,12 @@ module TheCity
 
     # Constructor.
     #
-    # @param group_id The group ID to load the roles for.
-    # @param page The page number to get.  Default is 1. 
+    # @param options A hash of options for requesting data from the server.
+    #                :: group_id is required
     # @param [CacheAdapter] cacher (optional) The cacher to be used to cache data.
-    def initialize(group_id, page = 1, cacher = nil)
+    def initialize(options = {}, cacher = nil) 
+      page = options[:page] || 1
+      group_id = options[:group_id]
       @class_key = "groups_#{group_id}_roles_#{page}"   
       @url_data_path = "/groups/#{group_id}/roles"
       @url_data_params = {:page => page}

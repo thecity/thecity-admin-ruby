@@ -22,7 +22,6 @@ module TheCity
     #   GroupTagList.new({:group_id => 12345, :page => 2})
     #    
     def initialize(options = {}) 
-      options[:page] ||= 1
       reader = options[:reader] || TheCity::GroupTagListReader.new(options)  
       @json_data = reader.load_feed
 
