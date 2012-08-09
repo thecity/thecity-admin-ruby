@@ -18,7 +18,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param json_data JSON data of the user address.
+    # @param json_data (optional) JSON data of the user address.
     def initialize(json_data = nil)
       @writer_object = UserAddressWriter
       initialize_from_json_object(json_data) unless json_data.nil?
