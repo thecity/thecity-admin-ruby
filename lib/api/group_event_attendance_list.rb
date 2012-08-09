@@ -38,7 +38,7 @@ module TheCity
     #
     # @return [GroupEventAttendance]
     def [](index)
-      GroupAddress.new( @json_data['event_attendances'][index] ) if @json_data['event_attendances'][index]
+      GroupEventAttendance.new( @json_data['event_attendances'][index] ) if @json_data['event_attendances'][index]
     end
 
 

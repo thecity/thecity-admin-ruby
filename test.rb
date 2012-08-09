@@ -120,13 +120,13 @@ group_list = TheCity::GroupList.new
 
   puts "------------------------------------"
 
-  # if group.events.empty?
-  #   puts "No events for group"
-  # else
-  #   puts "Events: #{group.events.size}"
-  # end
+  if group.event_attendances.empty?
+    puts "No event attendances for group"
+  else
+    puts "Events: #{group.event_attendances.size}"
+  end
 
-  # puts "------------------------------------"
+  puts "------------------------------------"
 
   if group.exports.empty?
     puts "No exports for group"
