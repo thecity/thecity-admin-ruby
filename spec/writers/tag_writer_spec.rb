@@ -56,7 +56,7 @@ describe 'TagWriter' do
 
 
   it 'should delete if data ID exists for the existing tag' do
-    TheCity.stub(:admin_request) { {:success => true}.to_json }
+    TheCity.stub(:admin_request) { 204 }
     tag_data = FactoryGirl.attributes_for(:tag, {:id => 12345})
     tag = TheCity::Tag.new(tag_data)
     tag.is_deleted?.should === false

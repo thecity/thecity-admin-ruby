@@ -32,7 +32,7 @@ module TheCity
       begin
         # @url_data_path should be the same as :put if this object is already
         # setup and mapped to an object that exists
-        response_code = TheCity::admin_request(:delete, @url_data_path)   
+        response_code = TheCity::admin_request(:delete, @url_data_path)           
         success = response_code == 204 ? true : false # No content but is a success
       rescue Exception => e  
         @error_messages = e.message.split(',')

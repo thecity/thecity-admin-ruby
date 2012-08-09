@@ -56,7 +56,7 @@ describe 'UserWriter' do
 
 
   it 'should delete if data ID exists for the existing user' do
-    TheCity.stub(:admin_request) { {:success => true}.to_json }
+    TheCity.stub(:admin_request) { 204 }
     user_data = FactoryGirl.attributes_for(:user, {:id => 12345})
     user = TheCity::User.new(user_data)
     user.is_deleted?.should === false
