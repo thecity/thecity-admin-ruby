@@ -13,7 +13,7 @@ module TheCity
 
       begin
         json = TheCity::admin_request(@url_action, @url_data_path, @url_data_params)   
-        success = JSON.parse(json.body) 
+        success = JSON.parse(json) 
       rescue Exception => e  
         @error_messages = e.message.split(',')
         success = false

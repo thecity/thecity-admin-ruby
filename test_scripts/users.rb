@@ -39,7 +39,11 @@ address.street = '445 S. Virginia St'
 address.city = 'Reno'
 address.state = 'NV'
 address.zipcode = '89501'
-address.save
+if address.save
+  puts "Address saved"
+else
+  puts "** Unable to save new address"
+end
 
 if user.addresses(true).empty?
   puts "No addresses for user"
