@@ -13,8 +13,8 @@ require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 # token = '7cfed59b037125d3' 
 
 # Local
-key = 'a345c682210a29b80c227573303674fce900650d'
-token = '853d87fbcebb81f6'
+key = '6db4c76b5e8fb6ef09055eeaa4b977326c70c371'
+token = 'e43ab88416b3b5b7'
 
 TheCity::AdminApi.connect(key, token)
 
@@ -112,13 +112,13 @@ group_list = TheCity::GroupList.new
 
   puts "------------------------------------"
 
-  # if group.checkins.empty?
-  #   puts "No checkins for group"
-  # else
-  #   puts "Checkins: #{group.checkins.size}"
-  # end
+  if group.checkins.empty?
+    puts "No checkins for group"
+  else
+    puts "Checkins: #{group.checkins.size}"
+  end
 
-  # puts "------------------------------------"
+  puts "------------------------------------"
 
   # if group.events.empty?
   #   puts "No events for group"

@@ -39,6 +39,7 @@ module TheCity
       end
 
       @address_list = nil
+      @checkin_list = nil
       @invitations = nil
       @role_list = nil
       @tag_list = nil
@@ -47,7 +48,7 @@ module TheCity
 
     # The address information.
     #
-    # @return [AddressList]
+    # @return [GroupAddressList]
     def addresses
       return @address_list unless @address_list.nil?  
       return nil unless self.id
@@ -56,6 +57,18 @@ module TheCity
       return @address_list
     end
     
+
+    # The checkin information.
+    #
+    # @return [GroupCheckinList]
+    def checkins
+      return @checkin_list unless @checkin_list.nil?  
+      return nil unless self.id
+
+      @checkin_list = GroupCheckinList.new({:group_id => self.id})
+      return @checkin_list
+    end
+
 
     # The invitations for this group.
     #

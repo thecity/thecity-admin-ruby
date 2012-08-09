@@ -13,8 +13,8 @@ require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 # token = '7cfed59b037125d3' 
 
 # Local
-key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
-token = '5c88b32edda7653c'
+key = '6db4c76b5e8fb6ef09055eeaa4b977326c70c371'
+token = 'e43ab88416b3b5b7'
 
 
 the_city = TheCity::AdminApi.new(key, token)

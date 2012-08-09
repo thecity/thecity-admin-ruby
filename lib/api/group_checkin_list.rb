@@ -1,6 +1,6 @@
 module TheCity
 
-  class GroupAddressList 
+  class GroupCheckinList 
 
     include Enumerable
 
@@ -17,12 +17,12 @@ module TheCity
     #
     #
     # Examples:
-    #   GroupAddressList.new({:group_id => 12345})
+    #   GroupCheckinList.new({:group_id => 12345})
     #
-    #   GroupAddressList.new({:group_id => 12345, :page => 2})
+    #   GroupCheckinList.new({:group_id => 12345, :page => 2})
     #    
     def initialize(options = {}) 
-      reader = options[:reader] || TheCity::GroupAddressListReader.new(options)    
+      reader = options[:reader] || TheCity::GroupCheckinListReader.new(options)    
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']
@@ -36,15 +36,15 @@ module TheCity
     #
     # @param index The index of the note to get.
     #
-    # @return [GroupAddress]
+    # @return [GroupCheckin]
     def [](index)
-      GroupAddress.new( @json_data['addresses'][index] ) if @json_data['addresses'][index]
+      GroupAddress.new( @json_data['checkins'][index] ) if @json_data['checkins'][index]
     end
 
 
     # This method is needed for Enumerable.
     def each &block
-      @json_data['addresses'].each{ |address| yield( GroupAddress.new(address) )}
+      @json_data['checkins'].each{ |address| yield( GroupCheckin.new(address) )}
     end    
   
   
@@ -55,7 +55,7 @@ module TheCity
     #
     # @return True on empty, false otherwise.
     def empty?
-      @json_data['addresses'].empty?
+      @json_data['checkins'].empty?
     end
 
   end

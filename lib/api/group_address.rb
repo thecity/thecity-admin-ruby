@@ -18,7 +18,7 @@ module TheCity
 
     # Constructor.
     #
-    # @param json_data JSON data of the user address.
+    # @param json_data JSON data of the group address.
     def initialize(json_data)
       initialize_from_json_object(json_data)
     end
