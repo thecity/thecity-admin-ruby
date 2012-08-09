@@ -89,9 +89,15 @@ module TheCity
 
     # Address information.
     #
+    # @param force_reload (optional) Data is cached on first call.  If data needs to be 
+    #                                reloaded from the server on a subsequent call then 
+    #                                a force reload is need.
+    #
     # @return [UserAddressList]
-    def addresses
-      return @address_list unless @address_list.nil?  
+    def addresses(force_reload = false)
+      unless force_reload
+        return @address_list unless @address_list.nil?  
+      end
       return nil unless self.id
          
       @address_list = UserAddressList.new({:user_id => self.id})
@@ -102,8 +108,10 @@ module TheCity
     # The family information.
     #
     # @return [UserFamilyList]
-    def family
-      return @family_list unless @user_list.nil?  
+    def family(force_reload = false)
+      unless force_reload
+        return @family_list unless @user_list.nil?  
+      end
       return nil unless self.id
   
       @family_list = UserFamilyList.new({:user_id => self.id})
@@ -114,8 +122,10 @@ module TheCity
     # The notes for this user.
     #
     # @return [UserNoteList]
-    def notes
-      return @note_list unless @note_list.nil?  
+    def notes(force_reload = false)
+      unless force_reload
+        return @note_list unless @note_list.nil?  
+      end
       return nil unless self.id
   
       @note_list = UserNoteList.new({:user_id => self.id})
@@ -126,8 +136,10 @@ module TheCity
     # The roles for this user.
     #
     # @return [UserRoleList]
-    def roles
-      return @role_list unless @role_list.nil?  
+    def roles(force_reload = false)
+      unless force_reload
+        return @role_list unless @role_list.nil?  
+      end
       return nil unless self.id
   
       @role_list = UserRoleList.new({:user_id => self.id})
@@ -138,8 +150,10 @@ module TheCity
     # The skills for this user.
     #
     # @return [UserSkillList]
-    def skills
-      return @skill_list unless @skill_list.nil?  
+    def skills(force_reload = false)
+      unless force_reload
+        return @skill_list unless @skill_list.nil?  
+      end
       return nil unless self.id
   
       @skill_list = UserSkillList.new({:user_id => self.id})
@@ -150,8 +164,10 @@ module TheCity
     # The processes for this user.
     #
     # @return [UserProcessList]
-    def processes
-      return @process_list unless @process_list.nil?  
+    def processes(force_reload = false)
+      unless force_reload
+        return @process_list unless @process_list.nil?  
+      end
       return nil unless self.id
  
       @process_list = UserProcessList.new({:user_id => self.id})
@@ -162,8 +178,10 @@ module TheCity
     # The invitations for this user.
     #
     # @return [UserInvitationList]
-    def invitations
-      return @invitation_list unless @invitation_list.nil?  
+    def invitations(force_reload = false)
+      unless force_reload
+        return @invitation_list unless @invitation_list.nil?  
+      end
       return nil unless self.id
  
       @invitation_list = UserInvitationList.new({:user_id => self.id})
@@ -174,8 +192,10 @@ module TheCity
     # The invitations for this user.
     #
     # @return [UserAdminPrivilegeList]
-    def admin_privileges
-      return @admin_privilege_list unless @admin_privilege_list.nil?  
+    def admin_privileges(force_reload = false)
+      unless force_reload
+        return @admin_privilege_list unless @admin_privilege_list.nil?  
+      end
       return nil unless self.id
 
       @admin_privilege_list = UserAdminPrivilegeList.new({:user_id => self.id})

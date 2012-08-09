@@ -52,6 +52,12 @@ module TheCity
     end
 
 
+    # Sets the current object's attributes from a hash
+    def set_attributes(attribute_data)
+      attribute_data.each { |key, value| self.send("#{key}=", value) if self.respond_to?("#{key}=") }
+    end
+
+
     # Save this object.
     #
     # @return True on success, otherwise false.
@@ -61,7 +67,7 @@ module TheCity
       if result === false
         @error_messages = writer.error_messages
       else
-        self.id = result
+        self.set_attributes(result)
       end
       result === false ? false : true
     end

@@ -32,61 +32,84 @@ else
   puts "Addresses: #{user.addresses.size}"
 end
 
-puts "------------------------------------"
+address = TheCity::UserAddress.new
+address.user_id = user.id
+address.location_type = 'Work'
+address.street = '445 S. Virginia St'
+address.city = 'Reno'
+address.state = 'NV'
+address.zipcode = '89501'
+address.save
 
-if user.admin_privileges.empty?
-  puts "No admin admin privileges for user"
+if user.addresses(true).empty?
+  puts "No addresses for user"
 else
-  puts "Admin privileges: #{user.admin_privileges.count}"
+  puts "Addresses: #{user.addresses.size}"
 end
 
-puts "------------------------------------"
 
-puts "ADD CHECK FOR FAMILY"
-# if user.family.empty?
-#   puts "No family members for user"
+
+if user.addresses(true).empty?
+  puts "No addresses for user"
+else
+  puts "Addresses: #{user.addresses.size}"
+end
+
+# puts "------------------------------------"
+
+# if user.admin_privileges.empty?
+#   puts "No admin admin privileges for user"
 # else
-#   puts user.family.names
+#   puts "Admin privileges: #{user.admin_privileges.count}"
 # end
 
-puts "------------------------------------"
+# puts "------------------------------------"
 
-if user.invitations.empty?
-  puts "No invitations for user"
-else
-  puts "Invitations: #{user.invitations.count}"
-end
+# puts "ADD CHECK FOR FAMILY"
+# # if user.family.empty?
+# #   puts "No family members for user"
+# # else
+# #   puts user.family.names
+# # end
 
-puts "------------------------------------"
+# puts "------------------------------------"
 
-if user.notes.empty?
-  puts "No notes for user"
-else
-  puts "Notes: #{user.notes.count}"
-end
+# if user.invitations.empty?
+#   puts "No invitations for user"
+# else
+#   puts "Invitations: #{user.invitations.count}"
+# end
 
-puts "------------------------------------"
+# puts "------------------------------------"
 
-if user.processes.empty?
-  puts "No processes for user"
-else
-  puts "Processes: #{user.processes.count}"
-end
+# if user.notes.empty?
+#   puts "No notes for user"
+# else
+#   puts "Notes: #{user.notes.count}"
+# end
 
-puts "------------------------------------"
+# puts "------------------------------------"
 
-if user.roles.empty?
-  puts "No roles for user"
-else
-  puts user.roles.all_roles
-end
+# if user.processes.empty?
+#   puts "No processes for user"
+# else
+#   puts "Processes: #{user.processes.count}"
+# end
 
-puts "------------------------------------"
+# puts "------------------------------------"
 
-if user.skills.empty?
-  puts "No skills for user"
-else
-  puts user.skills.all_skills
-end
+# if user.roles.empty?
+#   puts "No roles for user"
+# else
+#   puts user.roles.all_roles
+# end
+
+# puts "------------------------------------"
+
+# if user.skills.empty?
+#   puts "No skills for user"
+# else
+#   puts user.skills.all_skills
+# end
 
 puts "####################################"
