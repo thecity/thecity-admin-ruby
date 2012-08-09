@@ -13,7 +13,7 @@ module TheCity
 
       begin
         json = TheCity::admin_request(@url_action, @url_data_path, @url_data_params)   
-        success = JSON.parse(json)   
+        success = JSON.parse(json.body) 
       rescue Exception => e  
         @error_messages = e.message.split(',')
         success = false
@@ -32,9 +32,8 @@ module TheCity
       begin
         # @url_data_path should be the same as :put if this object is already
         # setup and mapped to an object that exists
-        json = TheCity::admin_request(:delete, @url_data_path)   
-        data = JSON.parse(json)   
-        success = data['id'] if data['id']
+        response_code = TheCity::admin_request(:delete, @url_data_path)   
+        success = response_code == 204 ? true : false # No content but is a success
       rescue Exception => e  
         @error_messages = e.message.split(',')
         success = false

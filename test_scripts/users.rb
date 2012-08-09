@@ -47,7 +47,13 @@ else
   puts "Addresses: #{user.addresses.size}"
 end
 
-
+user.addresses.each do |address| 
+  if address.delete 
+    puts "Address #{address.id} deleted"
+  else
+    puts "Unable to delete address #{address.id}"
+  end
+end
 
 if user.addresses(true).empty?
   puts "No addresses for user"

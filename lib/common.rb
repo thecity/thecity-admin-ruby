@@ -31,7 +31,7 @@ module TheCity
       end
     end
     
-    response.body
+    method == :delete ? response.code : response.body
   end
 
 
