@@ -2,18 +2,24 @@ module TheCity
 
   class GroupCheckin < ApiObject
 
-    tc_attr_accessor :city,
-                     :created_at,
-                     :latitude,
-                     :updated_at,
-                     :zipcode,
+    tc_attr_accessor :group,
+                     :checked_out_by_user,
+                     :special_instructions,
+                     :parent_group_name,
+                     :callboard_number,
+                     :checked_in_at,
+                     :barcode,
+                     :checked_in_user,
+                     :checked_in_user_id,
                      :id,
-                     :street,
-                     :location_type,
-                     :privacy,
-                     :longitude,
-                     :state,
-                     :group_id
+                     :checked_in_by_user,
+                     :checked_in_by_user_id,
+                     :parent_receipt_barcode,
+                     :event,
+                     :checked_in_user_notes,
+                     :checked_out_at,
+                     :parent_group_id,
+                     :pager_number
 
 
     # Constructor.

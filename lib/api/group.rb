@@ -40,6 +40,7 @@ module TheCity
 
       @address_list = nil
       @checkin_list = nil
+      @event_attendance_list = nil
       @export_list = nil
       @invitations = nil
       @role_list = nil
@@ -80,6 +81,18 @@ module TheCity
 
       @export_list = GroupExportList.new({:group_id => self.id})
       return @export_list
+    end  
+
+
+    # The checkin information.
+    #
+    # @return [GroupEventAttendanceList]
+    def event_attendances
+      return @event_attendance_list unless @event_attendance_list.nil?  
+      return nil unless self.id
+
+      @event_attendance_list = GroupEventAttendanceList.new({:group_id => self.id})
+      return @event_attendance_list
     end    
 
 

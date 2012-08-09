@@ -1,6 +1,6 @@
 module TheCity
 
-  class GroupExportList 
+  class GroupEventAttendanceList 
 
     include Enumerable
 
@@ -17,12 +17,12 @@ module TheCity
     #
     #
     # Examples:
-    #   GroupExportList.new({:group_id => 12345})
+    #   GroupEventAttendanceList.new({:group_id => 12345})
     #
-    #   GroupExportList.new({:group_id => 12345, :page => 2})
+    #   GroupEventAttendanceList.new({:group_id => 12345, :page => 2})
     #    
     def initialize(options = {}) 
-      reader = options[:reader] || TheCity::GroupExportListReader.new(options)    
+      reader = options[:reader] || TheCity::GroupEventAttendanceListReader.new(options)    
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']
@@ -36,15 +36,15 @@ module TheCity
     #
     # @param index The index of the note to get.
     #
-    # @return [GroupExport]
+    # @return [GroupEventAttendance]
     def [](index)
-      GroupExport.new( @json_data['exports'][index] ) if @json_data['exports'][index]
+      GroupAddress.new( @json_data['event_attendances'][index] ) if @json_data['event_attendances'][index]
     end
 
 
     # This method is needed for Enumerable.
     def each &block
-      @json_data['exports'].each{ |export| yield( GroupExport.new(export) )}
+      @json_data['event_attendances'].each{ |attendance| yield( GroupEventAttendance.new(attendance) )}
     end    
   
   
@@ -55,7 +55,7 @@ module TheCity
     #
     # @return True on empty, false otherwise.
     def empty?
-      @json_data['exports'].empty?
+      @json_data['event_attendances'].empty?
     end
 
   end

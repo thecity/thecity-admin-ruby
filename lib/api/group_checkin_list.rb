@@ -38,13 +38,13 @@ module TheCity
     #
     # @return [GroupCheckin]
     def [](index)
-      GroupAddress.new( @json_data['checkins'][index] ) if @json_data['checkins'][index]
+      GroupCheckin.new( @json_data['checkins'][index] ) if @json_data['checkins'][index]
     end
 
 
     # This method is needed for Enumerable.
     def each &block
-      @json_data['checkins'].each{ |address| yield( GroupCheckin.new(address) )}
+      @json_data['checkins'].each{ |checkin| yield( GroupCheckin.new(checkin) )}
     end    
   
   
