@@ -32,7 +32,7 @@ module TheCity
         end
       end
     end
-    
+
     response
   end
 

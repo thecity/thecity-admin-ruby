@@ -24,7 +24,7 @@ module TheCity
     # @param json_data (optional) JSON data of the user role.
     def initialize(json_data = nil)
       @writer_object = UserRoleWriter
-      initialize_from_json_object(json_data)
+      initialize_from_json_object(json_data) unless json_data.nil?
     end
     
   end

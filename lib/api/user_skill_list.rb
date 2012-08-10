@@ -26,6 +26,7 @@ module TheCity
       reader = options[:reader] || TheCity::UserSkillListReader.new(options)  
       @json_data = reader.load_feed
 
+      @user_id = options[:user_id] || nil
       @total_entries = @json_data['total_entries']
       @total_pages = @json_data['total_pages']
       @per_page = @json_data['per_page']
@@ -49,13 +50,13 @@ module TheCity
     #
     # @return [UserSkill]
     def [](index)
-      UserSkill.new( @json_data['skills'][index] ) if @json_data['skills'][index]
+      UserSkill.new( @json_data['skills'][index].merge({:user_id => @user_id}) ) if @json_data['skills'][index]
     end
 
 
     # This method is needed for Enumerable.
     def each &block
-      @json_data['skills'].each{ |skill| yield( UserSkill.new(skill) )}
+      @json_data['skills'].each{ |skill| yield( UserSkill.new(skill.merge({:user_id => @user_id})) ) }
     end    
   
     # Alias the count method

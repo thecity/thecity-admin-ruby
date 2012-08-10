@@ -182,69 +182,102 @@ puts user.full_name
 
 # puts "------------------------------------"
 
-group_list = TheCity::GroupList.new
-group = group_list.first
+# group_list = TheCity::GroupList.new
+# group = group_list.first
 
-offline_user = TheCity::User.new
-offline_user.first = 'Wes'
-offline_user.last = 'Hays'
-offline_user.email = 'someguy@someplace.org'
-if offline_user.save
-  puts "Offline user created"
+# offline_user = TheCity::User.new
+# offline_user.first = 'Wes'
+# offline_user.last = 'Hays'
+# offline_user.email = 'someguy@someplace.org'
+# if offline_user.save
+#   puts "Offline user created"
+# else
+#    puts "Failed to create offline user"
+# end
+
+# if user.roles.empty?
+#   puts "No roles for user"
+# else
+#   puts "Roles: #{user.roles.size}"
+# end
+
+# role = TheCity::UserRole.new
+# role.group_type = TheCity::UserRole::GroupTypes[:campus]
+# role.title = TheCity::UserRole::Titles[:leader]
+# role.user_id = offline_user.id
+# role.group_id = group.id
+
+# if role.save
+#   puts "Role saved"
+# else
+#   puts "** Unable to save new role: #{role.error_messages.join(', ')}"
+# end
+
+# if user.roles(true).empty?
+#   puts "No roles for user"
+# else
+#   puts "Roles: #{user.roles.size}"
+# end
+
+# user.roles.each do |role| 
+#   if role.delete 
+#     puts "Role #{role.id} deleted"
+#   else
+#     puts "Unable to delete role #{role.id}: #{role.error_messages.join(', ')}"
+#   end
+# end
+
+# if user.roles(true).empty?
+#   puts "No roles for user"
+# else
+#   puts "Roles: #{user.roles.size}"
+# end
+
+# if offline_user.delete 
+#   puts "OfflineUser #{offline_user.id} deleted"
+# else
+#   puts "Unable to delete offline user #{offline_user.id}: #{offline_user.error_messages.join(', ')}"
+# end
+
+puts "------------------------------------"
+
+if user.skills.empty?
+  puts "No skills for user"
 else
-   puts "Failed to create offline user"
+  puts "Skills: #{user.skills.size}"
 end
 
-if user.roles.empty?
-  puts "No roles for user"
+skill_list = TheCity::SkillList.new
+skill = skill_list.first
+
+user_skill = TheCity::UserSkill.new
+user_skill.user_id = user.id
+user_skill.name = skill.name
+
+if user_skill.save
+  puts "User Skill saved"
 else
-  puts "Roles: #{user.roles.size}"
+  puts "** Unable to save new user skill (#{user_skill.skill_id}): #{user_skill.error_messages.join(', ')}"
 end
 
-role = TheCity::UserRole.new
-role.group_type = TheCity::UserRole::GroupTypes[:campus]
-role.title = TheCity::UserRole::Titles[:leader]
-role.user_id = offline_user.id
-role.group_id = group.id
-
-if role.save
-  puts "Role saved"
+if user.skills(true).empty?
+  puts "No skills for user"
 else
-  puts "** Unable to save new role: #{role.error_messages.join(', ')}"
+  puts "Skills: #{user.skills.size}"
 end
 
-if user.roles(true).empty?
-  puts "No roles for user"
-else
-  puts "Roles: #{user.roles.size}"
-end
-
-user.roles.each do |role| 
-  if role.delete 
-    puts "Role #{role.id} deleted"
+user.skills(true).each do |us| 
+  if us.delete 
+    puts "User Skill #{us.name} deleted"
   else
-    puts "Unable to delete role #{role.id}: #{role.error_messages.join(', ')}"
+    puts "Unable to delete user skill #{us.name}: #{us.error_messages.join(', ')}"
   end
 end
 
-if user.roles(true).empty?
-  puts "No roles for user"
+if user.skills(true).empty?
+  puts "No skills for user"
 else
-  puts "Roles: #{user.roles.size}"
+  puts "Skills: #{user.skills.size}"
 end
-
-if offline_user.delete 
-  puts "OfflineUser #{offline_user.id} deleted"
-else
-  puts "Unable to delete offline user #{offline_user.id}: #{offline_user.error_messages.join(', ')}"
-end
-
-# puts "------------------------------------"
-
-# if user.skills.empty?
-#   puts "No skills for user"
-# else
-#   puts user.skills.all_skills
-# end
 
 puts "####################################"
