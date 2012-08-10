@@ -18,7 +18,7 @@ describe 'UserFamilyList' do
       :total_pages => 1,
       :family_members => [FactoryGirl.attributes_for(:user_family_member)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     family_list = TheCity::UserFamilyList.new({:user_id => user_id})
 
     family = family_list[0]
@@ -33,7 +33,7 @@ describe 'UserFamilyList' do
       :total_pages => 1,
       :family_members => []
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     family_list = TheCity::UserFamilyList.new({:user_id => user_id})
 
     family_list.empty?.should be_true
@@ -48,7 +48,7 @@ describe 'UserFamilyList' do
       :total_pages => 1,
       :family_members => [FactoryGirl.attributes_for(:user_family_member)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     family_list = TheCity::UserFamilyList.new({:user_id => user_id, :page => page})
 
     family = family_list[0]
@@ -63,7 +63,7 @@ describe 'UserFamilyList' do
       :total_pages => 1,
       :family_members => [FactoryGirl.attributes_for(:user_family_member)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     family_list = TheCity::UserFamilyList.new({:user_id => user_id})
 
     family_members = []
@@ -79,7 +79,7 @@ describe 'UserFamilyList' do
       :total_pages => 1,
       :family_members => [FactoryGirl.attributes_for(:user_family_member)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     family_list = TheCity::UserFamilyList.new({:user_id => user_id})
 
     family_members = family_list.collect { |family| family.name }

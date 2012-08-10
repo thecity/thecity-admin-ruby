@@ -18,7 +18,7 @@ describe 'UserInvitationList' do
       :total_pages => 1,
       :invitations => [FactoryGirl.attributes_for(:user_invitation)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     invitation_list = TheCity::UserInvitationList.new({:user_id => user_id})
 
     invitation = invitation_list[0]
@@ -33,7 +33,7 @@ describe 'UserInvitationList' do
       :total_pages => 1,
       :invitations => []
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     invitation_list = TheCity::UserInvitationList.new({:user_id => user_id})
 
     invitation_list.empty?.should be_true
@@ -48,7 +48,7 @@ describe 'UserInvitationList' do
       :total_pages => 1,
       :invitations => [FactoryGirl.attributes_for(:user_invitation)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     invitation_list = TheCity::UserInvitationList.new({:user_id => user_id, :page => 2})
 
     invitation = invitation_list[0]
@@ -63,7 +63,7 @@ describe 'UserInvitationList' do
       :total_pages => 1,
       :invitations => [FactoryGirl.attributes_for(:user_invitation)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     invitation_list = TheCity::UserInvitationList.new({:user_id => user_id})
 
     invitations = []
@@ -79,7 +79,7 @@ describe 'UserInvitationList' do
       :total_pages => 1,
       :invitations => [FactoryGirl.attributes_for(:user_invitation)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     invitation_list = TheCity::UserInvitationList.new({:user_id => user_id})
 
     invitations = invitation_list.collect { |invitation| invitation.source }

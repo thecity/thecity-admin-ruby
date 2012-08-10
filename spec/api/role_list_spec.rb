@@ -13,7 +13,7 @@ describe 'RoleList' do
 
   it 'should pass if role list attribute is not specifed' do
     request_data = FactoryGirl.attributes_for(:role_list).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     role_list = TheCity::RoleList.new
 
     role_list.roles.should == []    
@@ -22,7 +22,7 @@ describe 'RoleList' do
 
   it 'should pass if role list is empty' do
     request_data = FactoryGirl.attributes_for(:role_list, :roles => []).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     role_list = TheCity::RoleList.new
 
     role_list.roles.should == []
@@ -35,7 +35,7 @@ describe 'RoleList' do
       :total_pages => 1,
       :roles => [FactoryGirl.attributes_for(:role)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     role_list = TheCity::RoleList.new({:page => 2})
     role_list.roles.should == ["Leader"]
   end
@@ -47,7 +47,7 @@ describe 'RoleList' do
       :total_pages => 1,
       :roles => [FactoryGirl.attributes_for(:role)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     role_list = TheCity::RoleList.new
 
     roles = []
@@ -62,7 +62,7 @@ describe 'RoleList' do
       :total_pages => 1,
       :roles => [FactoryGirl.attributes_for(:role)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     role_list = TheCity::RoleList.new
 
     roles = role_list.collect { |role| role.title }

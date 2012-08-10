@@ -18,7 +18,7 @@ describe 'UserNoteList' do
       :total_pages => 1,
       :notes => [FactoryGirl.attributes_for(:user_note)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     note_list = TheCity::UserNoteList.new({:user_id => user_id})
 
     note = note_list[0]
@@ -33,7 +33,7 @@ describe 'UserNoteList' do
       :total_pages => 1,
       :notes => []
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     note_list = TheCity::UserNoteList.new({:user_id => user_id})
 
     note_list.empty?.should be_true
@@ -48,7 +48,7 @@ describe 'UserNoteList' do
       :total_pages => 1,
       :notes => [FactoryGirl.attributes_for(:user_note)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     note_list = TheCity::UserNoteList.new({:user_id => user_id, :page => page})
 
     note = note_list[0]
@@ -63,7 +63,7 @@ describe 'UserNoteList' do
       :total_pages => 1,
       :notes => [FactoryGirl.attributes_for(:user_note)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     note_list = TheCity::UserNoteList.new({:user_id => user_id})
 
     notes = []
@@ -79,7 +79,7 @@ describe 'UserNoteList' do
       :total_pages => 1,
       :notes => [FactoryGirl.attributes_for(:user_note)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     note_list = TheCity::UserNoteList.new({:user_id => user_id})
 
     notes = note_list.collect { |note| note.body }

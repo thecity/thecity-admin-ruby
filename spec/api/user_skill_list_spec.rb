@@ -18,7 +18,7 @@ describe 'UserSkillList' do
       :total_pages => 1,
       :skills => [FactoryGirl.attributes_for(:user_skill)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     skill_list = TheCity::UserSkillList.new({:user_id => user_id})
 
     skill = skill_list[0]
@@ -33,7 +33,7 @@ describe 'UserSkillList' do
       :total_pages => 1,
       :skills => []
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     skill_list = TheCity::UserSkillList.new({:user_id => user_id})
 
     skill_list.empty?.should be_true
@@ -48,7 +48,7 @@ describe 'UserSkillList' do
       :total_pages => 1,
       :skills => [FactoryGirl.attributes_for(:user_skill)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     skill_list = TheCity::UserSkillList.new({:user_id => user_id, :page => page})
 
     skill = skill_list[0]
@@ -63,7 +63,7 @@ describe 'UserSkillList' do
       :total_pages => 1,
       :skills => [FactoryGirl.attributes_for(:user_skill)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     skill_list = TheCity::UserSkillList.new({:user_id => user_id})
 
     skills = []
@@ -79,7 +79,7 @@ describe 'UserSkillList' do
       :total_pages => 1,
       :skills => [FactoryGirl.attributes_for(:user_skill)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     skill_list = TheCity::UserSkillList.new({:user_id => user_id})
 
     skills = skill_list.collect { |skill| skill.name }

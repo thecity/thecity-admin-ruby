@@ -17,7 +17,7 @@ describe 'UserProcessList' do
       :total_pages => 1,
       :processes => [FactoryGirl.attributes_for(:user_process)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     process_list = TheCity::UserProcessList.new({:user_id => user_id})
 
     process = process_list[0]
@@ -32,7 +32,7 @@ describe 'UserProcessList' do
       :total_pages => 1,
       :processes => []
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     process_list = TheCity::UserProcessList.new({:user_id => user_id})
 
     process_list.empty?.should be_true
@@ -47,7 +47,7 @@ describe 'UserProcessList' do
       :total_pages => 1,
       :processes => [FactoryGirl.attributes_for(:user_process)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     process_list = TheCity::UserProcessList.new({:user_id => user_id, :page => page})
 
     process = process_list[0]
@@ -62,7 +62,7 @@ describe 'UserProcessList' do
       :total_pages => 1,
       :processes => [FactoryGirl.attributes_for(:user_process)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     process_list = TheCity::UserProcessList.new({:user_id => user_id})
 
     processes = []
@@ -78,7 +78,7 @@ describe 'UserProcessList' do
       :total_pages => 1,
       :processes => [FactoryGirl.attributes_for(:user_process)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     process_list = TheCity::UserProcessList.new({:user_id => user_id})
 
     processes = process_list.collect { |process| process.name }

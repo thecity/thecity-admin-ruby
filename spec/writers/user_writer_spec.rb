@@ -14,7 +14,8 @@ describe 'UserWriter' do
 
 
   it 'should save if all data is valid for new user' do
-    TheCity.stub(:admin_request) { FactoryGirl.attributes_for(:user, {:id => 12345}).to_json }
+    request_data = FactoryGirl.attributes_for(:user, {:id => 12345}).to_json
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     user_data = FactoryGirl.attributes_for(:user, {:id => nil})
     user = TheCity::User.new(user_data)
     user.id.should be_nil
@@ -35,7 +36,8 @@ describe 'UserWriter' do
 
 
   it 'should save if all data is valid for existing user' do
-    TheCity.stub(:admin_request) { FactoryGirl.attributes_for(:user, {:id => 12345}).to_json }
+    request_data = FactoryGirl.attributes_for(:user, {:id => 12345}).to_json
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )    
     user_data = FactoryGirl.attributes_for(:user, {:id => 12345})
     user = TheCity::User.new(user_data)
     user.id.should == 12345
@@ -56,7 +58,7 @@ describe 'UserWriter' do
 
 
   it 'should delete if data ID exists for the existing user' do
-    TheCity.stub(:admin_request) { 204 }
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(204, '{}') ) 
     user_data = FactoryGirl.attributes_for(:user, {:id => 12345})
     user = TheCity::User.new(user_data)
     user.is_deleted?.should === false

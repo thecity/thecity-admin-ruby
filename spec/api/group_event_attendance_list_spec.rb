@@ -18,7 +18,7 @@ describe 'GroupEventAttendanceList' do
       :total_pages => 1,
       :event_attendances => [FactoryGirl.attributes_for(:group_event_attendance)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     attendance_list = TheCity::GroupEventAttendanceList.new({:group_id => group_id})
 
     attendance = attendance_list[0]
@@ -34,7 +34,7 @@ describe 'GroupEventAttendanceList' do
       :total_pages => 1,
       :event_attendances => []
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     attendance_list = TheCity::GroupEventAttendanceList.new({:group_id => group_id})
 
     attendance_list.empty?.should be_true
@@ -49,7 +49,7 @@ describe 'GroupEventAttendanceList' do
       :total_pages => 1,
       :event_attendances => [FactoryGirl.attributes_for(:group_event_attendance)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     attendance_list = TheCity::GroupEventAttendanceList.new({:group_id => group_id, :page => 2})
 
     attendance = attendance_list[0]
@@ -64,7 +64,7 @@ describe 'GroupEventAttendanceList' do
       :total_pages => 1,
       :event_attendances => [FactoryGirl.attributes_for(:group_event_attendance)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     attendance_list = TheCity::GroupEventAttendanceList.new({:group_id => group_id})
 
     attendances = []
@@ -80,7 +80,7 @@ describe 'GroupEventAttendanceList' do
       :total_pages => 1,
       :event_attendances => [FactoryGirl.attributes_for(:group_event_attendance)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     attendance_list = TheCity::GroupEventAttendanceList.new({:group_id => group_id})
 
     attendances = attendance_list.collect { |attendance| attendance.user }

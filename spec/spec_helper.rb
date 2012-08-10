@@ -17,6 +17,8 @@ require 'factory_girl'
 Dir.glob(File.dirname(__FILE__) + "/factories/*").each { |f| require f }
 
 
+TheCityResponse = Struct.new(:code, :body)
+
 RSpec.configure do |config|
   config.tty = true
   config.mock_with :rspec

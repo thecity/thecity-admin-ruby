@@ -15,8 +15,8 @@ module TheCity
         data = @cacher.get_data( @class_key )
       else
         @url_data_params ||= {}
-        json = TheCity::admin_request(:get, @url_data_path, @url_data_params)        
-        data = JSON.parse(json)    
+        response = TheCity::admin_request(:get, @url_data_path, @url_data_params) 
+        data = JSON.parse(response.body)    
         @cacher.save_data(@class_key, data) unless @cacher.nil?  
       end   
 

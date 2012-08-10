@@ -13,8 +13,8 @@ require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 # token = '7cfed59b037125d3' 
 
 # Local
-key = 'a345c682210a29b80c227573303674fce900650d'
-token = '853d87fbcebb81f6'
+key = '6db4c76b5e8fb6ef09055eeaa4b977326c70c371'
+token = 'e43ab88416b3b5b7'
 
 TheCity::AdminApi.connect(key, token)
 
@@ -24,7 +24,7 @@ user_list = TheCity::UserList.new
 user = user_list.first
 puts user.full_name
 
-puts "------------------------------------"
+# puts "------------------------------------"
 
 # if user.addresses.empty?
 #   puts "No addresses for user"
@@ -68,40 +68,27 @@ puts "------------------------------------"
 
 # puts "------------------------------------"
 
-if user.admin_privileges.empty?
-  puts "No admin admin privileges for user"
-else
-  puts "Admin privileges: #{user.admin_privileges.count}"
-end
-
-privilege = TheCity::UserAdminPrivilege.new
-privilege.title = TheCity::UserAdminPrivilege::Permissions[:financial_user]
-privilege.user_id = user.id
-
-if privilege.save
-  puts "Privilege saved"
-else
-  puts "** Unable to save new privilege"
-end
-
-if user.admin_privileges(true).empty?
-  puts "No admin admin privileges for user"
-else
-  puts "Admin privileges: #{user.admin_privileges.count}"
-end
-
-# if privilege.delete 
-#   puts "Privilege #{privilege.id} deleted"
+# if user.admin_privileges.empty?
+#   puts "No admin admin privileges for user"
 # else
-#   puts "Unable to delete privilege #{privilege.id}"
+#   puts "Admin privileges: #{user.admin_privileges.count}"
 # end
 
-if user.admin_privileges(true).empty?
-  puts "No admin admin privileges for user"
-else
-  puts "Admin privileges: #{user.admin_privileges.count}"
-end
+# privilege = TheCity::UserAdminPrivilege.new
+# privilege.title = TheCity::UserAdminPrivilege::Permissions[:resource_admin]
+# privilege.user_id = user.id
 
+# if privilege.save
+#   puts "Privilege saved"
+# else
+#   puts "** Unable to save new privilege"
+# end
+
+# if user.admin_privileges(true).empty?
+#   puts "No admin admin privileges for user"
+# else
+#   puts "Admin privileges: #{user.admin_privileges.count}"
+# end
 
 # puts "------------------------------------"
 

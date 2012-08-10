@@ -2,7 +2,7 @@ module TheCity
 
   # This adapter is the standard for all saving objects.
   class ApiWriter
-    attr_reader :error_messages
+    attr_reader :error_messages, :response_code
 
     # Saves this object.
     #
@@ -12,8 +12,9 @@ module TheCity
       success = true
 
       begin
-        json = TheCity::admin_request(@url_action, @url_data_path, @url_data_params)   
-        success = JSON.parse(json) 
+        response = TheCity::admin_request(@url_action, @url_data_path, @url_data_params)   
+        @response_code = response.code
+        success = JSON.parse(response.body) 
       rescue Exception => e  
         @error_messages = e.message.split(',')
         success = false
@@ -32,8 +33,8 @@ module TheCity
       begin
         # @url_data_path should be the same as :put if this object is already
         # setup and mapped to an object that exists
-        response_code = TheCity::admin_request(:delete, @url_data_path)           
-        success = response_code == 204 ? true : false # No content but is a success
+        response = TheCity::admin_request(:delete, @url_data_path)           
+        success = response.code == 204 ? true : false # No content but is a success
       rescue Exception => e  
         @error_messages = e.message.split(',')
         success = false

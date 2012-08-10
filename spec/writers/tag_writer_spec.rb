@@ -14,7 +14,8 @@ describe 'TagWriter' do
 
 
   it 'should save if all data is valid for new tag' do
-    TheCity.stub(:admin_request) { FactoryGirl.attributes_for(:tag, {:id => 12345}).to_json }
+    request_data = FactoryGirl.attributes_for(:tag, {:id => 12345}).to_json
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     tag_data = {:name => 'Cool People'}
     tag = TheCity::Tag.new(tag_data)
     tag.id.should be_nil
@@ -35,7 +36,8 @@ describe 'TagWriter' do
 
 
   it 'should save if all data is valid for existing tag' do
-    TheCity.stub(:admin_request) { FactoryGirl.attributes_for(:tag, {:id => 12345}).to_json }
+    request_data = FactoryGirl.attributes_for(:tag, {:id => 12345}).to_json
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     tag_data = FactoryGirl.attributes_for(:tag, {:id => 12345})
     tag = TheCity::Tag.new(tag_data)
     tag.id.should == 12345
@@ -56,7 +58,7 @@ describe 'TagWriter' do
 
 
   it 'should delete if data ID exists for the existing tag' do
-    TheCity.stub(:admin_request) { 204 }
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(204, '{}') )
     tag_data = FactoryGirl.attributes_for(:tag, {:id => 12345})
     tag = TheCity::Tag.new(tag_data)
     tag.is_deleted?.should === false

@@ -18,7 +18,7 @@ describe 'GroupAddressList' do
       :total_pages => 1,
       :addresses => [FactoryGirl.attributes_for(:group_address)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     address_list = TheCity::GroupAddressList.new({:group_id => group_id})
 
     address = address_list[0]
@@ -34,7 +34,7 @@ describe 'GroupAddressList' do
       :total_pages => 1,
       :addresses => []
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     address_list = TheCity::GroupAddressList.new({:group_id => group_id})
 
     address_list.empty?.should be_true
@@ -49,7 +49,7 @@ describe 'GroupAddressList' do
       :total_pages => 1,
       :addresses => [FactoryGirl.attributes_for(:group_address)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     address_list = TheCity::GroupAddressList.new({:group_id => group_id, :page => 2})
 
     address = address_list[0]
@@ -64,7 +64,7 @@ describe 'GroupAddressList' do
       :total_pages => 1,
       :addresses => [FactoryGirl.attributes_for(:group_address)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     address_list = TheCity::GroupAddressList.new({:group_id => group_id})
 
     addresses = []
@@ -80,7 +80,7 @@ describe 'GroupAddressList' do
       :total_pages => 1,
       :addresses => [FactoryGirl.attributes_for(:group_address)]
     }).to_json
-    TheCity.stub(:admin_request).and_return(request_data)
+    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     address_list = TheCity::GroupAddressList.new({:group_id => group_id})
 
     addresses = address_list.collect { |address| address.city }

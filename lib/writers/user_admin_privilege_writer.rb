@@ -6,17 +6,17 @@ module TheCity
     #
     # @param data The json object data to save.
     def initialize(data)
-      if data[:id] 
-        # @url_action = :put
-        # @url_data_path = "/users/#{data[:user_id]}/addresses/#{data[:id]}"   
-      else
-        @url_action = :post   
-        @url_data_path = "/users/#{data[:user_id]}/admin_privileges"   
-      end
-
+      @url_action = :post   
+      @url_data_path = "/users/#{data[:user_id]}/admin_privileges"   
+    
       @url_data_params = data
     end
     
+
+    def delete_object
+      raise TheCityExceptions::TheCityResponseError.new('Unable to delete Admin Privilege')
+    end
+
   end
 
 end
