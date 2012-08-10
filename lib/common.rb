@@ -24,9 +24,11 @@ module TheCity
         raise TheCityExceptions::UnableToConnectToTheCity.new(response.curl_error_message)
       else
         begin
-          raise TheCityExceptions::TheCityResponseError.new( JSON.parse(response.body)['error_message'] )
+          error_messages = JSON.parse(response.body)['error_message']
         rescue
           raise TheCityExceptions::UnknownErrorConnectingToTheCity.new('Unknown error when connecting to The City')
+        else
+          raise TheCityExceptions::TheCityResponseError.new(error_messages)
         end
       end
     end

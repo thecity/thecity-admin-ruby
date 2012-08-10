@@ -2,7 +2,13 @@ module TheCity
 
   class UserRole < ApiObject
 
-    tc_attr_accessor :active, 
+    GroupTypes = {:cg => 'CG', :service => 'Service', :campus => 'Campus'}
+
+    Titles = {:leader => 'Leader', :manager => 'Manager', 
+              :volunteer => 'Volunteer', :participant => 'Participant'}
+
+    tc_attr_accessor :user_id,
+                     :active, 
                      :created_at, 
                      :group_api_url, 
                      :group_id, 
@@ -15,8 +21,9 @@ module TheCity
 
     # Constructor.
     #
-    # @param json_data JSON data of the role.
-    def initialize(json_data)
+    # @param json_data (optional) JSON data of the user role.
+    def initialize(json_data = nil)
+      @writer_object = UserRoleWriter
       initialize_from_json_object(json_data)
     end
     

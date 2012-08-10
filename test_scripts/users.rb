@@ -13,8 +13,8 @@ require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 # token = '7cfed59b037125d3' 
 
 # Local
-key = '6db4c76b5e8fb6ef09055eeaa4b977326c70c371'
-token = 'e43ab88416b3b5b7'
+key = 'a345c682210a29b80c227573303674fce900650d'
+token = '853d87fbcebb81f6'
 
 TheCity::AdminApi.connect(key, token)
 
@@ -133,43 +133,43 @@ puts user.full_name
 
 # puts "------------------------------------"
 
-if user.notes.empty?
-  puts "No notes for user"
-else
-  puts "Notes: #{user.notes.count}"
-end
+# if user.notes.empty?
+#   puts "No notes for user"
+# else
+#   puts "Notes: #{user.notes.count}"
+# end
 
 
-note = TheCity::UserNote.new
-note.author_id = user.id
-note.body = "Hello World"
-#note.visible_to = [TheCity::UserNote::VisibleTo[:process_user], TheCity::UserNote::VisibleTo[:resource_admin]]
+# note = TheCity::UserNote.new
+# note.author_id = user.id
+# note.body = "Hello World"
+# #note.visible_to = [TheCity::UserNote::VisibleTo[:process_user], TheCity::UserNote::VisibleTo[:resource_admin]]
 
-if note.save
-  puts "Note saved"
-else
-  puts "** Unable to save new note"
-end
+# if note.save
+#   puts "Note saved"
+# else
+#   puts "** Unable to save new note"
+# end
 
-if user.notes(true).empty?
-  puts "No notes for user"
-else
-  puts "Notes: #{user.notes.count}"
-end
+# if user.notes(true).empty?
+#   puts "No notes for user"
+# else
+#   puts "Notes: #{user.notes.count}"
+# end
 
-user.notes.each do |note| 
-  if note.delete 
-    puts "Note #{note.id} deleted"
-  else
-    puts "Unable to delete note #{note.id}"
-  end
-end
+# user.notes.each do |note| 
+#   if note.delete 
+#     puts "Note #{note.id} deleted"
+#   else
+#     puts "Unable to delete note #{note.id}"
+#   end
+# end
 
-if user.notes(true).empty?
-  puts "No notes for user"
-else
-  puts "Notes: #{user.notes.count}"
-end
+# if user.notes(true).empty?
+#   puts "No notes for user"
+# else
+#   puts "Notes: #{user.notes.count}"
+# end
 
 
 # puts "------------------------------------"
@@ -182,11 +182,62 @@ end
 
 # puts "------------------------------------"
 
-# if user.roles.empty?
-#   puts "No roles for user"
-# else
-#   puts user.roles.all_roles
-# end
+group_list = TheCity::GroupList.new
+group = group_list.first
+
+offline_user = TheCity::User.new
+offline_user.first = 'Wes'
+offline_user.last = 'Hays'
+offline_user.email = 'someguy@someplace.org'
+if offline_user.save
+  puts "Offline user created"
+else
+   puts "Failed to create offline user"
+end
+
+if user.roles.empty?
+  puts "No roles for user"
+else
+  puts "Roles: #{user.roles.size}"
+end
+
+role = TheCity::UserRole.new
+role.group_type = TheCity::UserRole::GroupTypes[:campus]
+role.title = TheCity::UserRole::Titles[:leader]
+role.user_id = offline_user.id
+role.group_id = group.id
+
+if role.save
+  puts "Role saved"
+else
+  puts "** Unable to save new role: #{role.error_messages.join(', ')}"
+end
+
+if user.roles(true).empty?
+  puts "No roles for user"
+else
+  puts "Roles: #{user.roles.size}"
+end
+
+user.roles.each do |role| 
+  if role.delete 
+    puts "Role #{role.id} deleted"
+  else
+    puts "Unable to delete role #{role.id}: #{role.error_messages.join(', ')}"
+  end
+end
+
+if user.roles(true).empty?
+  puts "No roles for user"
+else
+  puts "Roles: #{user.roles.size}"
+end
+
+if offline_user.delete 
+  puts "OfflineUser #{offline_user.id} deleted"
+else
+  puts "Unable to delete offline user #{offline_user.id}: #{offline_user.error_messages.join(', ')}"
+end
 
 # puts "------------------------------------"
 

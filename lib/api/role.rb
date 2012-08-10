@@ -2,6 +2,12 @@ module TheCity
 
   class Role < ApiObject
 
+    GroupTypes = {:cg => 'CG', :service => 'Service', :campus => 'Campus'}
+
+    Titles = {:leader => 'Leader', :manager => 'Manager', 
+              :volunteer => 'Volunteer', :participant => 'Participant'}
+
+
     tc_attr_accessor :group_name,
                      :created_at,
                      :group_api_url, 

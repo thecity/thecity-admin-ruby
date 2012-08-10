@@ -14,7 +14,8 @@ module TheCity
       begin
         response = TheCity::admin_request(@url_action, @url_data_path, @url_data_params)   
         @response_code = response.code
-        success = JSON.parse(response.body) 
+        # No content but is a success
+        success = response.code == 204 ? {'success' => true} : JSON.parse(response.body)  
       rescue Exception => e  
         @error_messages = e.message.split(',')
         success = false
