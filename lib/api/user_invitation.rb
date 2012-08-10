@@ -6,15 +6,16 @@ module TheCity
                      :custom_message,
                      :email,
                      :group_id,
+                     :user_id,
                      :id,
                      :pending_approval,
                      :source
 
-
     # Constructor.
     #
-    # @param json_data JSON data of the note.
-    def initialize(json_data)
+    # @param json_data (optional) JSON data of the invitation.
+    def initialize(json_data = nil)
+      @writer_object = UserInvitationWriter
       initialize_from_json_object(json_data)
     end
     

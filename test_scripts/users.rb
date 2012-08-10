@@ -101,7 +101,31 @@ puts user.full_name
 
 # puts "------------------------------------"
 
+#### THIS SEEMS TO NOT BE WORKING RIGHT
+# After post the invitation is saved but it is not in the database.
+
 # if user.invitations.empty?
+#   puts "No invitations for user"
+# else
+#   puts "Invitations: #{user.invitations.count}"
+# end
+
+# group_list = TheCity::GroupList.new
+# group = group_list.first
+
+# invitation = TheCity::UserInvitation.new
+# invitation.user_id = user.id
+# invitation.email = user.email
+# invitation.group_id = group.id
+# invitation.custom_message = 'Please join the group!'
+
+# if invitation.save
+#   puts "Invitation saved"
+# else
+#   puts "** Unable to save new invitation"
+# end
+
+# if user.invitations(true).empty?
 #   puts "No invitations for user"
 # else
 #   puts "Invitations: #{user.invitations.count}"
@@ -109,11 +133,44 @@ puts user.full_name
 
 # puts "------------------------------------"
 
-# if user.notes.empty?
-#   puts "No notes for user"
-# else
-#   puts "Notes: #{user.notes.count}"
-# end
+if user.notes.empty?
+  puts "No notes for user"
+else
+  puts "Notes: #{user.notes.count}"
+end
+
+
+note = TheCity::UserNote.new
+note.author_id = user.id
+note.body = "Hello World"
+#note.visible_to = [TheCity::UserNote::VisibleTo[:process_user], TheCity::UserNote::VisibleTo[:resource_admin]]
+
+if note.save
+  puts "Note saved"
+else
+  puts "** Unable to save new note"
+end
+
+if user.notes(true).empty?
+  puts "No notes for user"
+else
+  puts "Notes: #{user.notes.count}"
+end
+
+user.notes.each do |note| 
+  if note.delete 
+    puts "Note #{note.id} deleted"
+  else
+    puts "Unable to delete note #{note.id}"
+  end
+end
+
+if user.notes(true).empty?
+  puts "No notes for user"
+else
+  puts "Notes: #{user.notes.count}"
+end
+
 
 # puts "------------------------------------"
 
