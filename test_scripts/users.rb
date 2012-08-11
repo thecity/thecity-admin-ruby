@@ -13,8 +13,8 @@ require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 # token = '7cfed59b037125d3' 
 
 # Local
-key = 'a345c682210a29b80c227573303674fce900650d'
-token = '853d87fbcebb81f6'
+key = '66c59e2ee24553e7237259e30b4c17365681b95c'
+token = 'a9ae4af3c3e80102'
 
 TheCity::AdminApi.connect(key, token)
 
@@ -182,18 +182,18 @@ puts user.full_name
 
 # puts "------------------------------------"
 
-# group_list = TheCity::GroupList.new
-# group = group_list.first
+group_list = TheCity::GroupList.new
+group = group_list.first
 
-# offline_user = TheCity::User.new
-# offline_user.first = 'Wes'
-# offline_user.last = 'Hays'
-# offline_user.email = 'someguy@someplace.org'
-# if offline_user.save
-#   puts "Offline user created"
-# else
-#    puts "Failed to create offline user"
-# end
+offline_user = TheCity::User.new
+offline_user.first = 'Wes'
+offline_user.last = 'Hays'
+offline_user.email = 'someguy@someplace.org'
+if offline_user.save
+  puts "Offline user created"
+else
+   puts "Failed to create offline user: #{offline_user.error_messages.join(', ')}"
+end
 
 # if user.roles.empty?
 #   puts "No roles for user"
@@ -233,51 +233,51 @@ puts user.full_name
 #   puts "Roles: #{user.roles.size}"
 # end
 
-# if offline_user.delete 
-#   puts "OfflineUser #{offline_user.id} deleted"
+if offline_user.delete 
+  puts "OfflineUser #{offline_user.id} deleted"
+else
+  puts "Unable to delete offline user #{offline_user.id}: #{offline_user.error_messages.join(', ')}"
+end
+
+# puts "------------------------------------"
+
+# if user.skills.empty?
+#   puts "No skills for user"
 # else
-#   puts "Unable to delete offline user #{offline_user.id}: #{offline_user.error_messages.join(', ')}"
+#   puts "Skills: #{user.skills.size}"
 # end
 
-puts "------------------------------------"
+# skill_list = TheCity::SkillList.new
+# skill = skill_list.first
 
-if user.skills.empty?
-  puts "No skills for user"
-else
-  puts "Skills: #{user.skills.size}"
-end
+# user_skill = TheCity::UserSkill.new
+# user_skill.user_id = user.id
+# user_skill.skill_id = skill.id
 
-skill_list = TheCity::SkillList.new
-skill = skill_list.first
+# if user_skill.save
+#   puts "User Skill saved"
+# else
+#   puts "** Unable to save new user skill (#{user_skill.skill_id}): #{user_skill.error_messages.join(', ')}"
+# end
 
-user_skill = TheCity::UserSkill.new
-user_skill.user_id = user.id
-user_skill.name = skill.name
+# if user.skills(true).empty?
+#   puts "No skills for user"
+# else
+#   puts "Skills: #{user.skills.size}"
+# end
 
-if user_skill.save
-  puts "User Skill saved"
-else
-  puts "** Unable to save new user skill (#{user_skill.skill_id}): #{user_skill.error_messages.join(', ')}"
-end
+# user.skills(true).each do |us| 
+#   if us.delete 
+#     puts "User Skill #{us.name} deleted"
+#   else
+#     puts "Unable to delete user skill #{us.name}: #{us.error_messages.join(', ')}"
+#   end
+# end
 
-if user.skills(true).empty?
-  puts "No skills for user"
-else
-  puts "Skills: #{user.skills.size}"
-end
-
-user.skills(true).each do |us| 
-  if us.delete 
-    puts "User Skill #{us.name} deleted"
-  else
-    puts "Unable to delete user skill #{us.name}: #{us.error_messages.join(', ')}"
-  end
-end
-
-if user.skills(true).empty?
-  puts "No skills for user"
-else
-  puts "Skills: #{user.skills.size}"
-end
+# if user.skills(true).empty?
+#   puts "No skills for user"
+# else
+#   puts "Skills: #{user.skills.size}"
+# end
 
 puts "####################################"

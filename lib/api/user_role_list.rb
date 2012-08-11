@@ -26,6 +26,7 @@ module TheCity
       reader = options[:reader] || TheCity::UserRoleListReader.new(options)  
       @json_data = reader.load_feed
 
+      @user_id = options[:user_id] || nil
       @total_entries = @json_data['total_entries']
       @total_pages = @json_data['total_pages']
       @per_page = @json_data['per_page']
@@ -49,13 +50,13 @@ module TheCity
     #
     # @return [UserRole]
     def [](index)
-      UserRole.new( @json_data['roles'][index] ) if @json_data['roles'][index]
+      UserRole.new( @json_data['roles'][index].merge({:user_id => @user_id}) ) if @json_data['roles'][index]
     end
 
 
     # This method is needed for Enumerable.
     def each &block
-      @json_data['roles'].each{ |role| yield( UserRole.new(role) )}
+      @json_data['roles'].each{ |role| yield( UserRole.new(role.merge({:user_id => @user_id})) )}
     end    
   
     # Alias the count method

@@ -13,6 +13,7 @@ module TheCity
         @url_action = :post   
         @url_data_path = "/users/#{data[:user_id]}/roles"   
       end
+      @url_data_delete_path = "/users/#{data[:user_id]}/roles/#{data[:id]}"   
 
       # user_id is not an option to submit with this path.
       data.delete(:user_id)

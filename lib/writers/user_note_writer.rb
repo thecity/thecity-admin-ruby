@@ -13,6 +13,7 @@ module TheCity
         @url_action = :post   
         @url_data_path = "/users/#{data[:author_id]}/notes"   
       end
+      @url_data_delete_path = "/users/#{data[:author_id]}/notes/#{data[:id]}"
 
       @url_data_params = data
     end
