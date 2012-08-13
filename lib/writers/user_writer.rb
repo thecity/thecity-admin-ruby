@@ -17,7 +17,6 @@ module TheCity
 
       @url_data_params = data
 
-
       @updatable_fields = [:title,
                            :first,
                            :middle,

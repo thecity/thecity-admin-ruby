@@ -19,78 +19,77 @@ token = 'a9ae4af3c3e80102'
 TheCity::AdminApi.connect(key, token)
 
 
-# user_list = TheCity::UserList.new
+user_list = TheCity::UserList.new
 
-# user = user_list.first
-# puts user.full_name
-
-
-
-offline_user = TheCity::User.new
-offline_user.first = 'Wes'
-offline_user.last = 'Hays'
-offline_user.email = 'someguy@someplace.org'
+user = user_list.first
+puts user.full_name
 
 
-if offline_user.save
-  puts "Offline user created (#{offline_user.id})"
-else
-  puts "Failed to create offline user: #{offline_user.error_messages.join(', ')}"
-end
 
-offline_user.first = 'Anna'
-offline_user.email = 'somegal@someplace.org'
+# offline_user = TheCity::User.new
+# offline_user.first = 'Wes'
+# offline_user.last = 'Hays'
+# offline_user.email = 'someguy@someplace.org'
 
-if offline_user.save
-  puts "Offline user updated (#{offline_user.id})"
-else
-  puts "Failed to create offline user: #{offline_user.error_messages.join(', ')}"
-end
 
-offline_user2 = TheCity::User.load_user_by_id(offline_user.id)
-puts "Loaded user first name: #{offline_user2.first}"
+# if offline_user.save
+#   puts "Offline user created (#{offline_user.id})"
+# else
+#   puts "Failed to create offline user: #{offline_user.error_messages.join(', ')}"
+# end
 
-if offline_user.delete 
-  puts "OfflineUser #{offline_user.id} deleted"
-else
-  puts "Unable to delete offline user #{offline_user.id}: #{offline_user.error_messages.join(', ')}"
-end
+# offline_user.first = 'Anna'
+
+# if offline_user.save
+#   puts "Offline user updated (#{offline_user.id})"
+# else
+#   puts "Failed to create offline user: #{offline_user.error_messages.join(', ')}"
+# end
+
+# offline_user2 = TheCity::User.load_user_by_id(offline_user.id)
+# puts "Loaded user first name: #{offline_user2.first}"
+
+# if offline_user.delete 
+#   puts "OfflineUser #{offline_user.id} deleted"
+# else
+#   puts "Unable to delete offline user #{offline_user.id}: #{offline_user.error_messages.join(', ')}"
+# end
 
 
 # puts "------------------------------------"
 
-# if user.addresses.empty?
-#   puts "No addresses for user"
-# else
-#   puts "Addresses: #{user.addresses.size}"
-# end
+if user.addresses.empty?
+  puts "No addresses for user"
+else
+  puts "Addresses: #{user.addresses.size}"
+end
 
-# address = TheCity::UserAddress.new
-# address.user_id = user.id
-# address.location_type = 'Work'
-# address.street = '445 S. Virginia St'
-# address.city = 'Reno'
-# address.state = 'NV'
-# address.zipcode = '89501'
-# if address.save
-#   puts "Address saved"
-# else
-#   puts "** Unable to save new address"
-# end
+address = TheCity::UserAddress.new
+address.user_id = user.id
+address.location_type = 'Work'
+address.street = '445 S. Virginia St'
+address.city = 'Reno'
+address.state = 'NV'
+address.zipcode = '89501'
+if address.save
+  puts "Address saved"
+else
+  puts "** Unable to save new address"
+end
 
-# if user.addresses(true).empty?
-#   puts "No addresses for user"
-# else
-#   puts "Addresses: #{user.addresses.size}"
-# end
+if user.addresses(true).empty?
+  puts "No addresses for user"
+else
+  puts "Addresses: #{user.addresses.size}"
+end
 
-# user.addresses.each do |address| 
-#   if address.delete 
-#     puts "Address #{address.id} deleted"
-#   else
-#     puts "Unable to delete address #{address.id}"
-#   end
-# end
+user.addresses.each do |address| 
+  if address.delete 
+    puts "Address #{address.id} deleted"
+  else
+    puts "Unable to delete address #{address.id}"
+  end
+end
 
 # if user.addresses(true).empty?
 #   puts "No addresses for user"
