@@ -23,7 +23,7 @@ module TheCity
                            :last,
                            :nickname,
                            :gender,
-                           #:email,
+                           :email,
                            :staff,
                            :primary_campus_id,
                            :member_since,

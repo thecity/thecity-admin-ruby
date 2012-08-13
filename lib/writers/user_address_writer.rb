@@ -16,6 +16,13 @@ module TheCity
       @url_data_delete_path = "/users/#{data[:user_id]}/addresses/#{data[:id]}" 
 
       @url_data_params = data
+
+
+      @updatable_fields = [:city,
+                           :zipcode,
+                           :street,
+                           :location_type,
+                           :state]      
     end
     
   end

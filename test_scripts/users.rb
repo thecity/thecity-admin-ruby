@@ -72,10 +72,20 @@ puts user.full_name
 # address.state = 'NV'
 # address.zipcode = '89501'
 # if address.save
-#   puts "Address saved"
+#   puts "Address saved: #{address.id}"
 # else
 #   puts "** Unable to save new address"
 # end
+
+
+# address.street = '663 Beckwourth Dr'
+
+# if address.save
+#   puts "Address updated: #{address.id}"
+# else
+#   puts "** Unable to update address: #{address.error_messages.join(', ')}"
+# end
+
 
 # if user.addresses(true).empty?
 #   puts "No addresses for user"
@@ -87,7 +97,7 @@ puts user.full_name
 #   if address.delete 
 #     puts "Address #{address.id} deleted"
 #   else
-#     puts "Unable to delete address #{address.id}"
+#     puts "Unable to delete address #{address.id}: #{address.error_messages.join(', ')}"
 #   end
 # end
 
@@ -172,7 +182,7 @@ puts user.full_name
 # note = TheCity::UserNote.new
 # note.author_id = user.id
 # note.body = "Hello World"
-# #note.visible_to = [TheCity::UserNote::VisibleTo[:process_user], TheCity::UserNote::VisibleTo[:resource_admin]]
+# note.visible_to = [TheCity::UserNote::VisibleTo[:process_user], TheCity::UserNote::VisibleTo[:resource_admin]]
 
 # if note.save
 #   puts "Note saved"
@@ -190,7 +200,7 @@ puts user.full_name
 #   if note.delete 
 #     puts "Note #{note.id} deleted"
 #   else
-#     puts "Unable to delete note #{note.id}"
+#     puts "Unable to delete note #{note.id}: #{note.error_messages.join(', ')}"
 #   end
 # end
 
@@ -209,64 +219,67 @@ puts user.full_name
 #   puts "Processes: #{user.processes.count}"
 # end
 
-# puts "------------------------------------"
+puts "------------------------------------"
 
-# group_list = TheCity::GroupList.new
-# group = group_list.first
+group_list = TheCity::GroupList.new
+group = group_list.first
 
-# offline_user = TheCity::User.new
-# offline_user.first = 'Wes'
-# offline_user.last = 'Hays'
-# offline_user.email = 'someguy@someplace.org'
-# if offline_user.save
-#   puts "Offline user created"
-# else
-#    puts "Failed to create offline user: #{offline_user.error_messages.join(', ')}"
-# end
+offline_user = TheCity::User.new
+offline_user.first = 'Wes'
+offline_user.last = 'Hays'
+offline_user.email = 'someguy@someplace.org'
+if offline_user.save
+  puts "Offline user created #{offline_user.id}"
+else
+   puts "Failed to create offline user: #{offline_user.error_messages.join(', ')}"
+end
 
-# if user.roles.empty?
-#   puts "No roles for user"
-# else
-#   puts "Roles: #{user.roles.size}"
-# end
+# offline_user = TheCity::User.load_user_by_id(1068169497)
+# puts offline_user.first
 
-# role = TheCity::UserRole.new
-# role.group_type = TheCity::UserRole::GroupTypes[:campus]
-# role.title = TheCity::UserRole::Titles[:leader]
-# role.user_id = offline_user.id
-# role.group_id = group.id
+if user.roles.empty?
+  puts "No roles for user"
+else
+  puts "Roles: #{user.roles.size}"
+end
 
-# if role.save
-#   puts "Role saved"
-# else
-#   puts "** Unable to save new role: #{role.error_messages.join(', ')}"
-# end
+role = TheCity::UserRole.new
+role.group_type = TheCity::UserRole::GroupTypes[:campus]
+role.title = TheCity::UserRole::Titles[:leader]
+role.user_id = offline_user.id
+role.group_id = group.id
 
-# if user.roles(true).empty?
-#   puts "No roles for user"
-# else
-#   puts "Roles: #{user.roles.size}"
-# end
+if role.save
+  puts "Role saved"
+else
+  puts "** Unable to save new role: #{role.error_messages.join(', ')}"
+end
 
-# user.roles.each do |role| 
-#   if role.delete 
-#     puts "Role #{role.id} deleted"
-#   else
-#     puts "Unable to delete role #{role.id}: #{role.error_messages.join(', ')}"
-#   end
-# end
+if user.roles(true).empty?
+  puts "No roles for user"
+else
+  puts "Roles: #{user.roles.size}"
+end
 
-# if user.roles(true).empty?
-#   puts "No roles for user"
-# else
-#   puts "Roles: #{user.roles.size}"
-# end
+user.roles.each do |role| 
+  if role.delete 
+    puts "Role #{role.id} deleted"
+  else
+    puts "Unable to delete role #{role.id}: #{role.error_messages.join(', ')}"
+  end
+end
 
-# if offline_user.delete 
-#   puts "OfflineUser #{offline_user.id} deleted"
-# else
-#   puts "Unable to delete offline user #{offline_user.id}: #{offline_user.error_messages.join(', ')}"
-# end
+if user.roles(true).empty?
+  puts "No roles for user"
+else
+  puts "Roles: #{user.roles.size}"
+end
+
+if offline_user.delete 
+  puts "OfflineUser #{offline_user.id} deleted"
+else
+  puts "Unable to delete offline user #{offline_user.id}: #{offline_user.error_messages.join(', ')}"
+end
 
 # puts "------------------------------------"
 
