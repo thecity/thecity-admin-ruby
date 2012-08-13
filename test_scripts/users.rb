@@ -58,38 +58,38 @@ puts user.full_name
 
 # puts "------------------------------------"
 
-if user.addresses.empty?
-  puts "No addresses for user"
-else
-  puts "Addresses: #{user.addresses.size}"
-end
+# if user.addresses.empty?
+#   puts "No addresses for user"
+# else
+#   puts "Addresses: #{user.addresses.size}"
+# end
 
-address = TheCity::UserAddress.new
-address.user_id = user.id
-address.location_type = 'Work'
-address.street = '445 S. Virginia St'
-address.city = 'Reno'
-address.state = 'NV'
-address.zipcode = '89501'
-if address.save
-  puts "Address saved"
-else
-  puts "** Unable to save new address"
-end
+# address = TheCity::UserAddress.new
+# address.user_id = user.id
+# address.location_type = 'Work'
+# address.street = '445 S. Virginia St'
+# address.city = 'Reno'
+# address.state = 'NV'
+# address.zipcode = '89501'
+# if address.save
+#   puts "Address saved"
+# else
+#   puts "** Unable to save new address"
+# end
 
-if user.addresses(true).empty?
-  puts "No addresses for user"
-else
-  puts "Addresses: #{user.addresses.size}"
-end
+# if user.addresses(true).empty?
+#   puts "No addresses for user"
+# else
+#   puts "Addresses: #{user.addresses.size}"
+# end
 
-user.addresses.each do |address| 
-  if address.delete 
-    puts "Address #{address.id} deleted"
-  else
-    puts "Unable to delete address #{address.id}"
-  end
-end
+# user.addresses.each do |address| 
+#   if address.delete 
+#     puts "Address #{address.id} deleted"
+#   else
+#     puts "Unable to delete address #{address.id}"
+#   end
+# end
 
 # if user.addresses(true).empty?
 #   puts "No addresses for user"
@@ -113,7 +113,7 @@ end
 # if privilege.save
 #   puts "Privilege saved"
 # else
-#   puts "** Unable to save new privilege"
+#   puts "** Unable to save new privilege: #{privilege.error_messages.join(', ')}"
 # end
 
 # if user.admin_privileges(true).empty?
@@ -124,17 +124,14 @@ end
 
 # puts "------------------------------------"
 
-# puts "ADD CHECK FOR FAMILY"
-# # if user.family.empty?
-# #   puts "No family members for user"
-# # else
-# #   puts user.family.names
-# # end
+# # puts "ADD CHECK FOR FAMILY"
+# if user.family.empty?
+#   puts "No family members for user"
+# else
+#   puts user.family.names
+# end
 
 # puts "------------------------------------"
-
-#### THIS SEEMS TO NOT BE WORKING RIGHT
-# After post the invitation is saved but it is not in the database.
 
 # if user.invitations.empty?
 #   puts "No invitations for user"
@@ -154,7 +151,7 @@ end
 # if invitation.save
 #   puts "Invitation saved"
 # else
-#   puts "** Unable to save new invitation"
+#   puts "** Unable to save new invitation: #{invitation.error_messages.join(', ')}"
 # end
 
 # if user.invitations(true).empty?
