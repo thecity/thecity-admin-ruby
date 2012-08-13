@@ -11,6 +11,11 @@ module TheCity
       @url_data_params ||= {}
       success = true
 
+      if @updatable_fields and !@updatable_fields.empty?
+        fields_to_remove = @url_data_params.keys - @updatable_fields  
+        fields_to_remove.each { |ftr| @url_data_params.delete(ftr) }
+      end
+
       begin
         response = TheCity::admin_request(@url_action, @url_data_path, @url_data_params)   
         @response_code = response.code
