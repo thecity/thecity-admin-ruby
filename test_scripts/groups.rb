@@ -28,7 +28,7 @@ puts "------------------------------------"
 if group.addresses.empty?
   puts "No addresses for group"
 else
-  puts "Addresses: #{groups.addresses.size}"
+  puts "Addresses: #{group.addresses.size}"
 end
 
 address = TheCity::GroupAddress.new

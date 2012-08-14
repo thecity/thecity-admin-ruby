@@ -6,7 +6,7 @@ Items with a "-" in front are almost done.
 +Users Index
 +Users Show
 +Users Create
--Users Update
++Users Update
 +Users Destroy
 +Users Count
 Users Memberize
@@ -17,7 +17,7 @@ Users Bulk Deactivate
 +Users Addresses Index
 +Users Addresses Show
 +Users Addresses Create
--Users Addresses Update
++Users Addresses Update
 +Users Addresses Destroy
 +Users Admin Privileges Index
 +Users Admin Privileges Create
@@ -62,7 +62,7 @@ Users Roles Demote
 +Groups Index
 +Groups Show
 +Groups Create
--Groups Update
++Groups Update
 Groups Count
 Groups Schedule Archive
 Groups Schedule Deletion
@@ -72,7 +72,7 @@ Groups Unarchive
 +Groups Addresses Index
 +Groups Addresses Show
 +Groups Addresses Create
--Groups Addresses Update
++Groups Addresses Update
 +Groups Addresses Destroy
 +Groups Checkins Index
 Groups Checkins Show
