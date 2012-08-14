@@ -170,8 +170,8 @@ Skills User Ids
 +Tags Index
 +Tags Show
 +Tags Create
--Tags Update
-Tags Destroy
++Tags Update
++Tags Destroy
 Tags Groups Index
 
 
