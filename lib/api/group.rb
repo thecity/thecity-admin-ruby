@@ -51,8 +51,10 @@ module TheCity
     # The address information.
     #
     # @return [GroupAddressList]
-    def addresses
-      return @address_list unless @address_list.nil?  
+    def addresses(force_reload = false)
+      unless force_reload
+        return @address_list unless @address_list.nil?  
+      end
       return nil unless self.id
 
       @address_list = GroupAddressList.new({:group_id => self.id})
@@ -63,8 +65,10 @@ module TheCity
     # The checkin information.
     #
     # @return [GroupCheckinList]
-    def checkins
-      return @checkin_list unless @checkin_list.nil?  
+    def checkins(force_reload = false)
+      unless force_reload
+        return @checkin_list unless @checkin_list.nil?  
+      end
       return nil unless self.id
 
       @checkin_list = GroupCheckinList.new({:group_id => self.id})
@@ -75,8 +79,10 @@ module TheCity
     # The checkin information.
     #
     # @return [GroupExportList]
-    def exports
-      return @export_list unless @export_list.nil?  
+    def exports(force_reload = false)
+      unless force_reload
+        return @export_list unless @export_list.nil?  
+      end
       return nil unless self.id
 
       @export_list = GroupExportList.new({:group_id => self.id})
@@ -87,8 +93,10 @@ module TheCity
     # The checkin information.
     #
     # @return [GroupEventAttendanceList]
-    def event_attendances
-      return @event_attendance_list unless @event_attendance_list.nil?  
+    def event_attendances(force_reload = false)
+      unless force_reload
+        return @event_attendance_list unless @event_attendance_list.nil?  
+      end
       return nil unless self.id
 
       @event_attendance_list = GroupEventAttendanceList.new({:group_id => self.id})
@@ -99,8 +107,10 @@ module TheCity
     # The invitations for this group.
     #
     # @return [GroupInvitationList]
-    def invitations
-      return @invitation_list unless @invitation_list.nil?  
+    def invitations(force_reload = false)
+      unless force_reload
+        return @invitation_list unless @invitation_list.nil?  
+      end
       return nil unless self.id
  
       @invitation_list = GroupInvitationList.new({:group_id => self.id})
@@ -111,8 +121,10 @@ module TheCity
     # The roles for this group.
     #
     # @return [GroupRoleList]
-    def roles
-      return @role_list unless @role_list.nil?  
+    def roles(force_reload = false)
+      unless force_reload
+        return @role_list unless @role_list.nil?  
+      end
       return nil unless self.id
  
       @role_list = GroupRoleList.new({:group_id => self.id})
@@ -123,8 +135,10 @@ module TheCity
     # The tags for this group.
     #
     # @return [GroupTagList]
-    def tags
-      return @tag_list unless @tag_list.nil?  
+    def tags(force_reload = false)
+      unless force_reload
+        return @tag_list unless @tag_list.nil?  
+      end
       return nil unless self.id
   
       @tag_list = GroupTagList.new({:group_id => self.id})

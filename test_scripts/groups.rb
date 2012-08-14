@@ -13,8 +13,8 @@ require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 # token = '7cfed59b037125d3' 
 
 # Local
-key = '6db4c76b5e8fb6ef09055eeaa4b977326c70c371'
-token = 'e43ab88416b3b5b7'
+key = '66c59e2ee24553e7237259e30b4c17365681b95c'
+token = 'a9ae4af3c3e80102'
 
 TheCity::AdminApi.connect(key, token)
 
@@ -28,56 +28,99 @@ puts "------------------------------------"
 if group.addresses.empty?
   puts "No addresses for group"
 else
+  puts "Addresses: #{groups.addresses.size}"
+end
+
+address = TheCity::GroupAddress.new
+address.group_id = group.id
+address.location_type = 'Work'
+address.street = '445 S. Virginia St'
+address.city = 'Reno'
+address.state = 'NV'
+address.zipcode = '89501'
+if address.save
+  puts "Address saved: #{address.id}"
+else
+  uts "** Unable to create address: #{address.error_messages.join(', ')}"
+end
+
+
+address.street = '663 Beckwourth Dr'
+
+if address.save
+  puts "Address updated: #{address.id}"
+else
+  puts "** Unable to update address: #{address.error_messages.join(', ')}"
+end
+
+
+if group.addresses(true).empty?
+  puts "No addresses for group"
+else
+  puts "Addresses: #{group.addresses.size}"
+end
+
+group.addresses.each do |address| 
+  if address.delete 
+    puts "Address #{address.id} deleted"
+  else
+    puts "Unable to delete address #{address.id}: #{address.error_messages.join(', ')}"
+  end
+end
+
+if group.addresses(true).empty?
+  puts "No addresses for group"
+else
   puts "Addresses: #{group.addresses.size}"
 end
 
 puts "------------------------------------"
 
-if group.checkins.empty?
-  puts "No checkins for group"
-else
-  puts "Checkins: #{group.checkins.size}"
-end
+# if group.checkins.empty?
+#   puts "No checkins for group"
+# else
+#   puts "Checkins: #{group.checkins.size}"
+# end
 
-puts "------------------------------------"
+# puts "------------------------------------"
 
-if group.event_attendances.empty?
-  puts "No event attendances for group"
-else
-  puts "Events: #{group.event_attendances.size}"
-end
+# if group.event_attendances.empty?
+#   puts "No event attendances for group"
+# else
+#   puts "Events: #{group.event_attendances.size}"
+# end
 
-puts "------------------------------------"
+# puts "------------------------------------"
 
-if group.exports.empty?
-  puts "No exports for group"
-else
-  puts "Exports: #{group.exports.size}"
-end
+# if group.exports.empty?
+#   puts "No exports for group"
+# else
+#   puts "Exports: #{group.exports.size}"
+# end
 
-puts "------------------------------------"
+# puts "------------------------------------"
 
-if group.invitations.empty?
-  puts "No invitations for group"
-else
-  puts "Invitations: #{group.invitations.size}"
-end
+# if group.invitations.empty?
+#   puts "No invitations for group"
+# else
+#   puts "Invitations: #{group.invitations.size}"
+# end
 
-puts "------------------------------------"
+# puts "------------------------------------"
 
-if group.roles.empty?
-  puts "No roles for group"
-else
-  puts "Roles: #{group.roles.size}"
-end
+# if group.roles.empty?
+#   puts "No roles for group"
+# else
+#   puts "Roles: #{group.roles.size}"
+# end
 
-puts "------------------------------------"
+# puts "------------------------------------"
 
-if group.tags.empty?
-  puts "No tags for group"
-else
-  puts "Tags: #{group.tags.size}"
-end
+# if group.tags.empty?
+#   puts "No tags for group"
+# else
+#   puts "Tags: #{group.tags.size}"
+# end
 
 puts "------------------------------------"
 
