@@ -35,11 +35,11 @@ module TheCity
     # All the terms in the list.
     #
     # @return array of term names.
-    def all_tags
+    def all_labels
       return [] if @json_data['labels'].nil?
       @json_data['labels'].collect { |label| label.values[0] }
     end
-    alias :tags :all_tags
+    alias :labels :all_labels
     
     
     # Get the specified tag.

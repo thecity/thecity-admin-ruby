@@ -18,8 +18,7 @@ module TheCity
       @url_data_params = data
 
 
-      @updatable_fields = [:id,
-                           :city,
+      @updatable_fields = [:city,
                            :zipcode,
                            :street,
                            :location_type,

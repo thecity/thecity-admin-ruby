@@ -20,6 +20,12 @@ module TheCity
       @writer_object = WebHookWriter
       initialize_from_json_object(json_data) unless json_data.nil?
     end
+
+
+    # The name of the hook based on the event and object
+    def name
+      "#{self.object}::#{self.event}"
+    end
     
   end
 
