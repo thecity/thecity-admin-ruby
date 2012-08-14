@@ -176,9 +176,9 @@ Tags Groups Index
 
 
 ## Terminology Endpoints ##
-Terminology Index
-Terminology Show
-Terminology Update
++Terminology Index
++Terminology Show
++Terminology Update
 
 
 ## WebHook Endpoints ##

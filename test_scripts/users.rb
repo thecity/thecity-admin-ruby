@@ -53,7 +53,7 @@ puts user_count.filter
 #   puts "Failed to create offline user: #{offline_user.error_messages.join(', ')}"
 # end
 
-# offline_user2 = TheCity::User.load_user_by_id(offline_user.id)
+# offline_user2 = TheCity::User.load_by_id(offline_user.id)
 # puts "Loaded user first name: #{offline_user2.first}"
 
 # if offline_user.delete 
@@ -241,7 +241,7 @@ puts user_count.filter
 #    puts "Failed to create offline user: #{offline_user.error_messages.join(', ')}"
 # end
 
-# # offline_user = TheCity::User.load_user_by_id(1068169497)
+# # offline_user = TheCity::User.load_by_id(1068169497)
 # # puts offline_user.first
 
 # if user.roles.empty?

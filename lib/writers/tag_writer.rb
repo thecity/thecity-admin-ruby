@@ -16,6 +16,8 @@ module TheCity
       @url_data_delete_path = "/tags/#{data[:id]}" 
 
       @url_data_params = data
+
+      @updatable_fields = [:name]         
     end
     
   end

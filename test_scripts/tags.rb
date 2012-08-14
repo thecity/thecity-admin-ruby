@@ -13,8 +13,8 @@ require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 # token = '7cfed59b037125d3' 
 
 # Local
-key = '66c59e2ee24553e7237259e30b4c17365681b95c'
-token = 'a9ae4af3c3e80102'
+key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
+token = '5c88b32edda7653c'
 
 TheCity::AdminApi.connect(key, token)
 
@@ -42,6 +42,13 @@ if tag_list2.empty?
   puts "No tags in list"
 else
   puts "Tags: #{tag_list2.count}"
+end
+
+tag2 = TheCity::Tag.load_by_id(tag.id)
+if tag2.nil?
+  puts "Tag not found"
+else
+  puts "Tag found by ID #{tag.id}"
 end
 
 

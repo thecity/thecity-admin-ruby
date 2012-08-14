@@ -49,23 +49,21 @@ module TheCity
     # @param user_id The ID of the user to load.
     #
     # Returns a new {User} object.
-    def self.load_user_by_id(user_id)
-      user_reader = UserReader.new(user_id)
-      self.new(user_reader)
+    def self.load_by_id(user_id)
+      reader = UserReader.new(user_id)
+      self.new(reader.load_feed)
+    rescue
+      nil      
     end       
 
 
     # Constructor.
     #
-    # @param reader (optional) The object that has the data.  This can be a {UserReader} or Hash object.
+    # @param json_data (optional) The object that has the data.  This can be a {UserReader} or Hash object.
     # @param options (optional) Options for including more information.
-    def initialize(reader = nil, options = {})    
+    def initialize(json_data = nil, options = {})    
       @writer_object = UserWriter
-      if reader.is_a?(UserReader)
-        initialize_from_json_object(reader.load_feed) 
-      elsif reader.is_a?(Hash)
-        initialize_from_json_object(reader)
-      end
+      initialize_from_json_object(json_data) unless json_data.nil?
 
       @address_list = nil
       @family_list = nil

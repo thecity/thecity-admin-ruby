@@ -7,6 +7,18 @@ module TheCity
                      :created_at
 
 
+    # Loads the tag by the specified ID.
+    #
+    # @param tag_id The ID of the tag to load.
+    #
+    # Returns a new {Tag} object.
+    def self.load_by_id(tag_id)
+      reader = TagReader.new(tag_id)
+      self.new(reader.load_feed)
+    rescue
+      nil
+    end       
+
     # Constructor.
     #
     # @param json_data (optional) JSON data of the Tag.
