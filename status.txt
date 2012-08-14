@@ -160,8 +160,8 @@ Roles Index
 ## Skill Endpoints ##
 +Skills Index
 +Skills Show
-Skills Create
-Skills Destroy
++Skills Create
++Skills Destroy
 Skills Users Index
 Skills User Ids
 
