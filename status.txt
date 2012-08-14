@@ -1,13 +1,14 @@
-Items with a "+" in front are done or are very close to being done.
+Items with a "+" in front are done.
+Items with a "-" in front are almost done.
 
 
 ## User Endpoints ##
 +Users Index
 +Users Show
 +Users Create
-+Users Update
+-Users Update
 +Users Destroy
-Users Count
++Users Count
 Users Memberize
 Users Dememberize
 Users Deactivate
@@ -16,7 +17,7 @@ Users Bulk Deactivate
 +Users Addresses Index
 +Users Addresses Show
 +Users Addresses Create
-+Users Addresses Update
+-Users Addresses Update
 +Users Addresses Destroy
 +Users Admin Privileges Index
 +Users Admin Privileges Create
