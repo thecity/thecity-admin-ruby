@@ -3,31 +3,30 @@ module TheCity
   class Metric < ApiObject
     tc_attr_accessor :id,
                      :name,
+                     :description,
                      :category,
                      :subcategory,
                      :is_percent         
 
 
-    # Loads the user by the specified ID.
+    # Loads the metric by the specified ID.
     #
-    # @param user_id The ID of the user to load.
+    # @param metric_id The ID of the user to load.
     #
-    # Returns a new {User} object.
-    def self.load_metric_by_id(metric_id)
+    # Returns a new {Metric} object.
+    def self.load_by_id(metric_id)
       metric_reader = MetricReader.new(metric_id)
-      self.new(metric_reader)
+      self.new(metric_reader.load_feed)
     end       
 
 
     # Constructor.
     #
-    # @param reader (optional) The object that has the data.  This can be a {UserReader} or Hash object.
-    def initialize(reader = nil)    
-      if reader.is_a?(MetricReader)
-        initialize_from_json_object(reader.load_feed) 
-      elsif reader.is_a?(Hash)
-        initialize_from_json_object(reader)
-      end
+    # @param json_data (optional) The object that has the data.
+    # @param options (optional) Options for including more information.
+    def initialize(json_data = nil, options = {}) 
+      @writer_object = MetricWriter
+      initialize_from_json_object(json_data) unless json_data.nil?   
 
       @measurement_list = nil
     end
@@ -44,16 +43,6 @@ module TheCity
       @measurement_list = MetricMeasurementList.new(reader)
       return @measurement_list
     end
-
-
-    # Save this object.
-    #
-    # @return True on success, otherwise false.
-    def save
-      writer = MetricWriter.new(self.to_attributes) 
-      writer.save_feed
-    end
-
   end
 
 end

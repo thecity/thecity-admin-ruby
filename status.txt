@@ -139,11 +139,11 @@ Invitations Bulk Invite
 
 
 ## Metric Endpoints ##
-Metrics Index
-Metrics Show
-Metrics Create
-Metrics Update
-Metrics Destroy
++Metrics Index
++Metrics Show
++Metrics Create
++Metrics Update
++Metrics Destroy
 Metrics Measurements Index
 Metrics Measurements Show
 Metrics Measurements Create
