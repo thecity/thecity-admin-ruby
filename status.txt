@@ -182,6 +182,6 @@ Terminology Update
 
 
 ## WebHook Endpoints ##
-WebHooks Index
-WebHooks Create
-WebHooks Destroy
++WebHooks Index
++WebHooks Create
++WebHooks Destroy
