@@ -29,7 +29,7 @@ else
 end
 
 tag = TheCity::Tag.new
-tag.name = 'WesHays'
+tag.name = 'Z Cool Guy'
 if tag.save
   puts "Tag created (#{tag.id})"
 else
@@ -44,6 +44,15 @@ else
   puts "Tags: #{tag_list2.count}"
 end
 
+
+tag.name = 'Z Some Guy'
+if tag.save
+  puts "Tag updated (#{tag.id})"
+else
+  puts "Failed to update tag: #{tag.error_messages.join(', ')}"
+end
+
+
 if tag.delete 
   puts "Tag #{tag.id} deleted"
 else
@@ -51,7 +60,7 @@ else
 end
 
 tag_list3 = TheCity::TagList.new
-if tag_list2.empty?
+if tag_list3.empty?
   puts "No tags in list"
 else
   puts "Tags: #{tag_list3.count}"
