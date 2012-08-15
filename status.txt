@@ -99,8 +99,8 @@ Groups Roles Deactivate All
 
 
 ## Address Endpoints ##
-Addresses Index
-Addresses Show
++Addresses Index
++Addresses Show
 Addresses Groups
 
 
