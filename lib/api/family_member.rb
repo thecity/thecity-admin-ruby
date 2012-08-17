@@ -2,6 +2,8 @@ module TheCity
 
   class FamilyMember < ApiObject
 
+    Roles = {:spouse => 'Spouse', :child => 'Child', :temp_child => 'TempChild', :legal_child => 'LegalChild'}
+
     tc_attr_accessor :name,
                      :admin_url,
                      :external_id_1,
@@ -19,7 +21,6 @@ module TheCity
     def initialize(json_data = nil)
       initialize_from_json_object(json_data) unless json_data.nil?
     end
-
   end
 
 end

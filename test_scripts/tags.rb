@@ -8,15 +8,10 @@
 require 'ruby-debug'
 require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 
-# staging
-# key = 'bc6b57204b0ee4818bb4b3befd0f3292e93a2d0a'
-# token = '7cfed59b037125d3' 
+require File.dirname(__FILE__) + '/city_keys.rb'
+include CityKeys
 
-# Local
-key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
-token = '5c88b32edda7653c'
-
-TheCity::AdminApi.connect(key, token)
+TheCity::AdminApi.connect(KEY, TOKEN)
 
 
 puts "------------------------------------"

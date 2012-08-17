@@ -8,26 +8,55 @@
 require 'ruby-debug'
 require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 
-# sroleing
-# key = 'bc6b57204b0ee4818bb4b3befd0f3292e93a2d0a'
-# token = '7cfed59b037125d3' 
+require File.dirname(__FILE__) + '/city_keys.rb'
+include CityKeys
 
-# Local
-key = '66c59e2ee24553e7237259e30b4c17365681b95c'
-token = 'a9ae4af3c3e80102'
-
-TheCity::AdminApi.connect(key, token)
+TheCity::AdminApi.connect(KEY, TOKEN)
 
 
 puts "------------------------------------"
 
-family = TheCity::Family.load_by_id(398768686)
+user_list = TheCity::UserList.new
+user1 = user_list[0]
+user2 = user_list[1]
 
-if family.nil?
-  puts "Family found with #{family.members.size} members"
+family = TheCity::Family.new 
+family.external_id = 'family123'
+
+member1 = TheCity::FamilyMember.new
+member1.user_id = user1.id
+member1.name = user1.full_name
+member1.email = user1.email
+member1.external_id_1 = 'weshays123'
+member1.birthdate = user1.birthdate
+member1.family_role = TheCity::FamilyMember::Roles[:spouse]
+family.add_family_member(member1)
+
+member2 = TheCity::FamilyMember.new
+member2.user_id = user2.id
+member2.name = user2.full_name
+member2.email = user2.email
+member2.external_id_1 = 'annahays123'
+member2.birthdate = user1.birthdate
+member2.family_role = TheCity::FamilyMember::Roles[:spouse]
+family.add_family_member(member2)
+
+if family.save
+  puts "Family saved"
 else
-  puts "Family: #{family.id}"
+  puts "** Unable to save new family: #{family.error_messages.join(', ')}"
+  puts family.to_attributes
 end
+
+
+#family2 = TheCity::Family.load_by_id(398768686)
+
+# if family.nil?
+#   puts "Family found with #{family.members.size} members"
+# else
+#   puts "Family: #{family.id}"
+# end
+
 
 # if family.save
 #   puts "Family saved"

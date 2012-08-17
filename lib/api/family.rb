@@ -12,7 +12,7 @@ module TheCity
     #
     # @param family_id The ID of the family to load.
     #
-    # Returns a new {Tag} object.
+    # Returns a new {Family} object.
     def self.load_by_id(family_id)
       reader = FamilyReader.new(family_id)
       self.new(reader.load_feed)

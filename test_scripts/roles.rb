@@ -8,15 +8,10 @@
 require 'ruby-debug'
 require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 
-# sroleing
-# key = 'bc6b57204b0ee4818bb4b3befd0f3292e93a2d0a'
-# token = '7cfed59b037125d3' 
+require File.dirname(__FILE__) + '/city_keys.rb'
+include CityKeys
 
-# Local
-key = '66c59e2ee24553e7237259e30b4c17365681b95c'
-token = 'a9ae4af3c3e80102'
-
-TheCity::AdminApi.connect(key, token)
+TheCity::AdminApi.connect(KEY, TOKEN)
 
 
 puts "------------------------------------"

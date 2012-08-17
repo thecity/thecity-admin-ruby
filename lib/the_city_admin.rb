@@ -68,6 +68,8 @@ module TheCity
     # @param api_key The API key for the church.
     # @param api_token The API token for the church.
     def initialize(api_key, api_token)
+      raise TheCityExceptions::UnableToConnectToTheCity.new('Key and Token cannot be nil.') if api_key.nil? or api_token.nil?
+
       # Create a constant for the churches API key.
       TheCity::AdminApi::const_set(:API_KEY, api_key) unless defined?(API_KEY)
 

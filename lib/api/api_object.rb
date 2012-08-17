@@ -47,7 +47,13 @@ module TheCity
     def to_attributes 
       vals = {}
       vals = {:marked_for_destruction => self.is_deleted?} if self.is_deleted?
-      self.class.__tc_attributes.each { |tca| vals[tca] = self.send(tca) }
+      self.class.__tc_attributes.each do |tca| 
+        rep = self.send(tca) 
+        if rep.class == Array
+          rep.collect! { |r| r.respond_to?(:to_attributes) ? r.to_attributes : r }
+        end
+        vals[tca] = rep
+      end
       vals
     end
 
