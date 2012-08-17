@@ -7,6 +7,7 @@ module TheCity
                      :admin_url, 
                      :api_url, 
                      :birthdate, 
+                     :barcodes,
                      :email, 
                      :family_role, 
                      :name, 
