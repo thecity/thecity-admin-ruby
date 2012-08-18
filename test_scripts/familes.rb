@@ -18,7 +18,7 @@ puts "------------------------------------"
 
 user_list = TheCity::UserList.new
 user1 = user_list[0]
-user2 = user_list[1]
+# user2 = user_list[1]
 
 family = TheCity::Family.new 
 family.external_id = 'family123'
@@ -32,20 +32,20 @@ member1.birthdate = user1.birthdate
 member1.family_role = TheCity::FamilyMember::Roles[:spouse]
 family.add_family_member(member1)
 
-member2 = TheCity::FamilyMember.new
-member2.user_id = user2.id
-member2.name = user2.full_name
-member2.email = user2.email
-member2.external_id_1 = 'annahays123'
-member2.birthdate = user1.birthdate
-member2.family_role = TheCity::FamilyMember::Roles[:spouse]
-family.add_family_member(member2)
+# member2 = TheCity::FamilyMember.new
+# member2.user_id = user2.id
+# member2.name = user2.full_name
+# member2.email = user2.email
+# member2.external_id_1 = 'annahays123'
+# member2.birthdate = user1.birthdate
+# member2.family_role = TheCity::FamilyMember::Roles[:spouse]
+# family.add_family_member(member2)
 
 if family.save
   puts "Family saved"
 else
   puts "** Unable to save new family: #{family.error_messages.join(', ')}"
-  puts family.to_attributes
+  #puts family.to_attributes
 end
 
 
