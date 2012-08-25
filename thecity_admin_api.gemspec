@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.summary = 'Ruby gem/plugin to interact with The City Admin API (http://api.OnTheCity.org).'
   s.description = 'Ruby gem/plugin to interact with The City Admin API (http://api.OnTheCity.org).'
 
-  s.add_dependency('rake','>= 0.8.3')
+  s.add_dependency('typhoeus')
 
 
   s.files         = `git ls-files`.split("\n")
