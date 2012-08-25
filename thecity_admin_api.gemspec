@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  PROJECT_GEM = 'the_city_admin'
+  PROJECT_GEM = 'the-city-admin'
   PROJECT_GEM_VERSION = '0.1.0'
   
   s.name = PROJECT_GEM
