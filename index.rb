@@ -13,48 +13,44 @@ require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 # token = '7cfed59b037125d3' 
 
 # Local
-key = '6db4c76b5e8fb6ef09055eeaa4b977326c70c371'
-token = 'e43ab88416b3b5b7'
+key = '66c59e2ee24553e7237259e30b4c17365681b95c'
+token = 'a9ae4af3c3e80102'
 
 
-the_city = TheCity::AdminApi.new(key, token)
-the_city2 = TheCity::AdminApi.new(key, token)
+TheCity::AdminApi.connect(key, token)
 
 ###### USERS / GROUPS #######
 
-the_city.users.each do |user|
-  puts user.full_name
-end
 puts "-----------------------------"
 
-# user = TheCity::User.new
-# user.title = 'Deacon'
-# user.first = 'James'
-# user.middle = 'Wesley'
-# user.last = 'Hays'
-# user.nickname = 'Wes'
-# user.gender = TheCity::User::Gender[:male]
-# user.email = 'wes+tc3@onthecity.org'
-# user.staff = false
-# user.member_since = Time.now.strftime("%Y-%m-%d")
-# user.birthdate = '1980-09-27'
-# user.primary_phone = '775-745-3013'
-# user.primary_phone_type = TheCity::User::PhoneType[:mobile]
-# user.secondary_phone = '775-677-7707'
-# user.secondary_phone_type = TheCity::User::PhoneType[:home]
-# user.marital_status = TheCity::User::MaritalStatus[:married]
-# #user.primary_campus_id
-# #user.external_id_1
-# #user.external_id_2
-# #user.external_id_3
-# unless user.save
-#   user.error_messages.each { |em| puts em }
-# end
+user = TheCity::User.new
+user.title = 'Deacon'
+user.first = 'James'
+user.middle = 'Wesley'
+user.last = 'Hays'
+user.nickname = 'Wes'
+user.gender = TheCity::User::Gender[:male]
+user.email = 'wes+tc6@onthecity.org'
+user.staff = false
+user.member_since = Time.now.strftime("%Y-%m-%d")
+user.birthdate = '1980-09-27'
+user.primary_phone = '775-745-3013'
+user.primary_phone_type = TheCity::User::PhoneType[:mobile]
+user.secondary_phone = '775-677-7707'
+user.secondary_phone_type = TheCity::User::PhoneType[:home]
+#user.marital_status = TheCity::User::MaritalStatus[:married]
+#user.primary_campus_id
+#user.external_id_1
+#user.external_id_2
+#user.external_id_3
+unless user.save
+  user.error_messages.each { |em| puts em }
+end
+
+user.delete
+
 
 # puts "-----------------------------"
-# the_city2.users.each do |user2|
-#   puts user2.full_name
-# end
 
 
 # user = the_city.users[0]

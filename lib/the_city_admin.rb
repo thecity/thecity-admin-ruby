@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'openssl'
 require 'cgi'
-require 'Base64'
+require 'base64'
 require 'openssl'
 require 'net/http'
 require 'net/https'
@@ -9,7 +9,7 @@ require 'typhoeus'
 require 'json'
 
 
-TCA_ENV = 'development'
+TCA_ENV = 'development' unless defined?(TCA_ENV)
 #TCA_ENV = 'staging'
 
 # The path to the lib directory.
