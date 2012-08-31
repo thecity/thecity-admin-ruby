@@ -37,19 +37,6 @@ module TheCity
   end
 
 
-  def self._flatten_params(params)
-    retval = {}
-    params.each do |key, value|
-      if value.instance_of?(Array)
-        value.each_with_index { |a_val, indx| retval["#{key}[#{indx}]"] = a_val }
-      else # assume string
-        retval[key] = value
-      end
-    end
-    retval
-  end
-
-
   def self._build_admin_headers(method, path, params)
     get_vars = method == :post ? '' : '?'
     get_vars += params.to_a.sort.collect { |kv_pair| "#{kv_pair[0]}=#{kv_pair[1].to_s}" }.join('&')
