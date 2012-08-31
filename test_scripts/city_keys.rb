@@ -1,6 +1,6 @@
 module CityKeys
 
-  KEY = '66c59e2ee24553e7237259e30b4c17365681b95c'
-  TOKEN = 'a9ae4af3c3e80102'
+  KEY = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
+  TOKEN = '5c88b32edda7653c'
 
 end

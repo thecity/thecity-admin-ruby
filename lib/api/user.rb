@@ -41,7 +41,8 @@ module TheCity
                      :external_id_2,
                      :external_id_3,
                      :middle,
-                     :email       
+                     :email,
+                     :marital_status  
 
 
     # Loads the user by the specified ID.
