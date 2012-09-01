@@ -9,40 +9,15 @@ require 'typhoeus'
 require 'json'
 
 
-TCA_ENV = 'development' unless defined?(TCA_ENV)
-#TCA_ENV = 'staging'
+TCA_ENV = 'production' unless defined?(TCA_ENV)
+THE_CITY_ADMIN_PATH = 'https://api.onthecity.org' unless defined?(THE_CITY_ADMIN_PATH)
+THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.admin.v1+json' unless defined?(THE_CITY_ADMIN_API_VERSION)
 
 # The path to the lib directory.
 THECITY_LIB_DIR = File.dirname(__FILE__)
 
 # The path to the storage directory that will be used for caching data to disk.
 THECITY_STORAGE_DIR = File.dirname(__FILE__) + '/../storage/'
-
-
-
-# TODO: This needs to be moved into a config file.
-######################################################
-if TCA_ENV == 'production'
-  raise 'Admin API path not set for production' # Delete this exception when set
-  THE_CITY_ADMIN_PATH = ''
-  THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.admin.v1+json'
-
-elsif TCA_ENV == 'development'
-  THE_CITY_ADMIN_PATH = 'http://0.0.0.0:9292'
-  THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.admin.v1+json'
-
-elsif TCA_ENV == 'staging'
-  THE_CITY_ADMIN_PATH = 'https://api.stagethecity.org'
-  THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.admin.v1+json'
-
-elsif TCA_ENV == 'test'
-  raise 'Admin API path not set for testing' # Delete this exception when set
-  THE_CITY_ADMIN_PATH = ''
-  THE_CITY_ADMIN_API_VERSION = 'application/vnd.thecity.admin.v1+json'
-end
-######################################################
-
-
 
 require File.dirname(__FILE__) + '/auto_load.rb'
 

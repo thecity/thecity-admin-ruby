@@ -8,8 +8,13 @@
 require 'ruby-debug'
 require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 
-key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
-token = '5c88b32edda7653c'
+# key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
+# token = '5c88b32edda7653c'
+
+TCA_ENV = 'production'
+
+key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee3'
+token = 'e37ae7fb2042a17b'
 
 TheCity::AdminApi.connect(key, token)
 
@@ -71,28 +76,28 @@ TheCity::AdminApi.connect(key, token)
 # end
 
 
-puts "-----------------------------"
+# puts "-----------------------------"
 
-user_list = TheCity::UserList.new
+# user_list = TheCity::UserList.new
 
-user = user_list[0]
-puts user.full_name
-user.first = 'Wes'
-puts user.full_name
-user.save
-puts user.id
+# user = user_list[0]
+# puts user.full_name
+# user.first = 'Wes'
+# puts user.full_name
+# user.save
+# puts user.id
 
-user2 = TheCity::User.load_by_id(user.id)
-puts user2.full_name
+# user2 = TheCity::User.load_by_id(user.id)
+# puts user2.full_name
 
-puts "User has #{user.addresses.size} addresses"
-puts "User has #{user.family.size} family members"
-puts "User has #{user.notes.size} notes"
-puts "User has #{user.roles.size} roles"
-puts "User has #{user.skills.size} skills"
-#puts "User has #{user.processes.size} processes"
-puts "User has #{user.invitations.size} invitations"
-#puts "User has #{user.admin_privileges.size} admin_privileges"
+# puts "User has #{user.addresses.size} addresses"
+# puts "User has #{user.family.size} family members"
+# puts "User has #{user.notes.size} notes"
+# puts "User has #{user.roles.size} roles"
+# puts "User has #{user.skills.size} skills"
+# #puts "User has #{user.processes.size} processes"
+# puts "User has #{user.invitations.size} invitations"
+# #puts "User has #{user.admin_privileges.size} admin_privileges"
 
 
 # This is currenly returning a 404 if no family members are found
@@ -112,9 +117,9 @@ puts "User has #{user.invitations.size} invitations"
 # puts group2.name
 
 
-# # puts "-----------------------------"
-# # puts "##### GROUPS #######"
-# # puts "-----------------------------"
+# puts "-----------------------------"
+# puts "##### GROUPS #######"
+# puts "-----------------------------"
 
 # group_list = TheCity::GroupList.new
 
@@ -140,4 +145,13 @@ puts "User has #{user.invitations.size} invitations"
 # end
 
 
+puts "-----------------------------"
+puts "##### SKILLS #######"
+puts "-----------------------------"
+
+skill_list = TheCity::SkillList.new
+
+skill_list.each do |skill|
+  puts skill.name
+end
 
