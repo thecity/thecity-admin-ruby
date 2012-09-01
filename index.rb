@@ -11,10 +11,8 @@ require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 # key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
 # token = '5c88b32edda7653c'
 
-TCA_ENV = 'production'
-
-key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee3'
-token = 'e37ae7fb2042a17b'
+key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee4'
+token = 'e37ae7fb2042a17c'
 
 TheCity::AdminApi.connect(key, token)
 
@@ -145,13 +143,38 @@ TheCity::AdminApi.connect(key, token)
 # end
 
 
+# puts "-----------------------------"
+# puts "##### SKILLS #######"
+# puts "-----------------------------"
+
+# skill_list = TheCity::SkillList.new
+
+# puts skill_list.inspect
+
+# # skill_list.each do |skill|
+# #   puts skill.name
+# # end
+
+
 puts "-----------------------------"
-puts "##### SKILLS #######"
+puts "##### USERS #######"
 puts "-----------------------------"
 
-skill_list = TheCity::SkillList.new
+done = false
+page = 1
 
-skill_list.each do |skill|
-  puts skill.name
+
+while !done
+  user_list = TheCity::UserList.new({:page => page})
+
+  user_list.each do |user|
+    puts user.full_name
+  end
+
+  if user_list.total_pages <= page
+    done = true
+  else
+    page += 1
+  end
 end
 
