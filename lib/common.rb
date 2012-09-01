@@ -7,9 +7,6 @@ module TheCity
     headers = self._build_admin_headers(method, path, params)
     url = THE_CITY_ADMIN_PATH+path
 
-
-    puts url
-
     response =
     case method
     when :post
