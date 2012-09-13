@@ -11,8 +11,8 @@ require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 # key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
 # token = '5c88b32edda7653c'
 
-key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee4'
-token = 'e37ae7fb2042a17c'
+key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee'
+token = 'e37ae7fb2042a17b'
 
 TheCity::AdminApi.connect(key, token)
 
@@ -105,8 +105,28 @@ TheCity::AdminApi.connect(key, token)
 
 # puts "-----------------------------"
 
-# group_list = TheCity::GroupList.new
-# group = group_list[0]
+
+done = false
+page = 1
+count = 0
+
+while !done
+  group_list = TheCity::GroupList.new({:page => page, :group_types => 'CG', :include_inactive => 'true'})
+
+  group_list.each do |group|
+    count += 1
+    puts "#{count}) #{group.name}"
+  end
+
+  if group_list.total_pages <= page
+    done = true
+  else
+    page += 1
+  end
+end
+
+
+# group_list = TheCity::GroupList.new(:)
 # puts group.name
 # group.name = 'Wes Group'
 # puts group.name
@@ -156,25 +176,25 @@ TheCity::AdminApi.connect(key, token)
 # # end
 
 
-puts "-----------------------------"
-puts "##### USERS #######"
-puts "-----------------------------"
+# puts "-----------------------------"
+# puts "##### USERS #######"
+# puts "-----------------------------"
 
-done = false
-page = 1
+# done = false
+# page = 1
 
 
-while !done
-  user_list = TheCity::UserList.new({:page => page})
+# while !done
+#   user_list = TheCity::UserList.new({:page => page})
 
-  user_list.each do |user|
-    puts user.full_name
-  end
+#   user_list.each do |user|
+#     puts user.full_name
+#   end
 
-  if user_list.total_pages <= page
-    done = true
-  else
-    page += 1
-  end
-end
+#   if user_list.total_pages <= page
+#     done = true
+#   else
+#     page += 1
+#   end
+# end
 

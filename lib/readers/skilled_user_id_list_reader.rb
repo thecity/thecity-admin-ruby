@@ -9,7 +9,7 @@ module TheCity
     # @param options A hash of options for requesting data from the server.
     # @param [CacheAdapter] cacher (optional) The cacher to be used to cache data.
     def initialize(skill_id, page = 1, options = {}, cacher = nil) 
-      @class_key = "skilled_user_id_list_#{page}"   
+      #@class_key = "skilled_user_id_list_#{page}"   
       @url_data_path = "/skills/#{skill_id}/user_ids"
       @url_data_params = {:page => page}
       

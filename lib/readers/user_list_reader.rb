@@ -11,7 +11,7 @@ module TheCity
       page = options[:page] || 1
       filter = options[:filter] 
 
-      @class_key = "user_list_#{page}_#{filter.to_s.downcase.gsub(' ','')}"   
+      #@class_key = "user_list_#{page}_#{filter.to_s.downcase.gsub(' ','')}"   
       @url_data_path = "/users"
       @url_data_params = {:page => page}
       @url_data_params.merge!({:filter => filter}) if filter

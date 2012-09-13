@@ -10,7 +10,7 @@ module TheCity
     def initialize(options = {}, cacher = nil) 
       page = options[:page] || 1
       group_id = options[:group_id]
-      @class_key = "groups_#{group_id}_invitations_#{page}"   
+      #@class_key = "groups_#{group_id}_invitations_#{page}"   
       @url_data_path = "/groups/#{group_id}/invitations"
       @url_data_params = {:page => page}
       

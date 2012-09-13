@@ -9,7 +9,7 @@ module TheCity
     def initialize(options = {}, cacher = nil) 
       page = options[:page] || 1
 
-      @class_key = "tag_list_#{page}"   
+      #@class_key = "tag_list_#{page}"   
       @url_data_path = "/tags"
       @url_data_params = {:page => page}
       

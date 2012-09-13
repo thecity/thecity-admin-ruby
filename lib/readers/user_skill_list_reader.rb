@@ -10,7 +10,7 @@ module TheCity
     def initialize(options = {}, cacher = nil) 
       page = options[:page] || 1
       user_id = options[:user_id]
-      @class_key = "users_#{user_id}_skills_#{page}"   
+      #@class_key = "users_#{user_id}_skills_#{page}"   
       @url_data_path = "/users/#{user_id}/skills"
       @url_data_params = {:page => page}
       

@@ -8,7 +8,7 @@ module TheCity
     # @param [CacheAdapter] cacher (optional) The cacher to be used to cache data.
     def initialize(options = {}, cacher = nil) 
       page = options[:page] || 1
-      @class_key = "checkin_list_#{page}"   
+      #@class_key = "checkin_list_#{page}"   
       @url_data_path = "/checkins"
       @url_data_params = {:page => page}
       

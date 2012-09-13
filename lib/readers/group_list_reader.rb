@@ -8,13 +8,11 @@ module TheCity
     # @param options A hash of options for requesting data from the server.
     # @param [CacheAdapter] cacher (optional) The cacher to be used to cache data.
     def initialize(options = {}, cacher = nil) 
-      page = options[:page] || 1
-      filter = options[:filter] 
+      options[:page] ||= 1
 
-      @class_key = "group_list_#{page}_#{filter.to_s.downcase.gsub(' ','')}"  
+      #@class_key = "group_list_#{options[:page]}_{some_kind_of_md5_thing_here}"  
       @url_data_path = "/groups"
-      @url_data_params = {:page => page}
-      @url_data_params.merge!({:filter => filter}) if filter
+      @url_data_params = options
       
       # The object to store and load the cache.
       @cacher = cacher unless cacher.nil?    

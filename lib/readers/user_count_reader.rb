@@ -16,7 +16,7 @@ module TheCity
     #
     #   UserCount.new({:filter => :created_in_the_last_7_Days})
     def initialize(options = {}, cacher = nil)
-      @class_key = "users_count_#{options[:filter] || ''}"   
+      #@class_key = "users_count_#{options[:filter] || ''}"   
       @url_data_path = "/users/count"
 
       @url_data_params = {:filter => options[:filter] || ''}    
