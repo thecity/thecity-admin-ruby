@@ -5,14 +5,17 @@
 # @authors Robbie Lieb <robbie@onthecity.org>, Wes Hays <wes@onthecity.org>
 # ******************************************* 
 
+TCA_ENV = 'development' 
+THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:3000' 
+
 require 'ruby-debug'
 require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 
-# key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
-# token = '5c88b32edda7653c'
+key = '66c59e2ee24553e7237259e30b4c17365681b95c'
+token = 'a9ae4af3c3e80102'
 
-key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee'
-token = 'e37ae7fb2042a17b'
+# key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee'
+# token = 'e37ae7fb2042a17b'
 
 TheCity::AdminApi.connect(key, token)
 
@@ -106,19 +109,39 @@ TheCity::AdminApi.connect(key, token)
 # puts "-----------------------------"
 
 
+# done = false
+# page = 1
+# count = 0
+
+# while !done
+#   group_list = TheCity::GroupList.new({:page => page, :group_types => 'CG', :include_inactive => 'true'})
+
+#   group_list.each do |group|
+#     count += 1
+#     puts "#{count}) #{group.name}"
+#   end
+
+#   if group_list.total_pages <= page
+#     done = true
+#   else
+#     page += 1
+#   end
+# end
+
+
 done = false
 page = 1
 count = 0
 
 while !done
-  group_list = TheCity::GroupList.new({:page => page, :group_types => 'CG', :include_inactive => 'true'})
-
-  group_list.each do |group|
+  tag_list = TheCity::TagList.new({:page => page})
+  
+  tag_list.each do |tag|
     count += 1
-    puts "#{count}) #{group.name}"
+    puts "#{count}) #{tag.name} :: #{tag.id}"
   end
 
-  if group_list.total_pages <= page
+  if tag_list.total_pages <= page
     done = true
   else
     page += 1
