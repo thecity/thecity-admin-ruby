@@ -19,9 +19,6 @@ module TheCity
       Typhoeus::Request.delete(url, {:headers => headers, :params => params})
     end    
 
-debugger
-asdf=234
-
     unless response.success?
       if response.curl_error_message != 'No error'
         raise TheCityExceptions::UnableToConnectToTheCity.new(response.curl_error_message)
