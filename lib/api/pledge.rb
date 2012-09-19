@@ -1,7 +1,13 @@
 module TheCity
 
   class Pledge < ApiObject
-    tc_attr_accessor :id
+    tc_attr_accessor :id, 
+                     :user_id, 
+                     :fund_id, 
+                     :amount, 
+                     :pledge_date, 
+                     :created_at, 
+                     :updated_at
 
 
     # Loads the pledge by the specified ID.
