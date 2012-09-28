@@ -49,7 +49,7 @@ module TheCity
     #
     # @return [pledge]
     def [](index)
-      pledge.new( @json_data['pledges'][index] ) if @json_data['pledges'][index]
+      Pledge.new( @json_data['pledges'][index] ) if @json_data['pledges'][index]
     end
 
 

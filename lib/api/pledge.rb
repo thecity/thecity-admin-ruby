@@ -7,7 +7,16 @@ module TheCity
                      :amount, 
                      :pledge_date, 
                      :created_at, 
-                     :updated_at
+                     :updated_at,
+                     :fund_name,
+                     :primary_campus_id,
+                     :user_name,
+                     :user_type,
+                     :user_api_url,
+                     :user_is_member,
+                     :spouse_id,
+                     :spouse_name,
+                     :spouse_is_name
 
 
     # Loads the pledge by the specified ID.

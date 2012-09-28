@@ -26,7 +26,10 @@ puts "-----------------------------"
 
 
 pledge_list = TheCity::PledgeList.new({:page => 1})
-puts pledge_list.names
+#puts pledge_list.names
+
+pledge = pledge_list[0]
+puts pledge.amount
 
 
 # done = false
