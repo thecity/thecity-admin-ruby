@@ -5,7 +5,7 @@ module TheCity
       question_id 316
       question "Do you like foo?"
       answer "bar"
-      answered_at Time.now.to_date
+      answered_at Date.today
       required true
     end
 

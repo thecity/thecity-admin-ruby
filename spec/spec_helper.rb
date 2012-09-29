@@ -12,6 +12,7 @@ require File.expand_path( File.dirname(__FILE__) + '/../lib/the_city_admin.rb')
 require 'rubygems'
 require 'rspec'
 require 'ruby-debug'
+require 'date'
 
 require 'factory_girl'
 Dir.glob(File.dirname(__FILE__) + "/factories/*").each { |f| require f }
