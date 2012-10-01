@@ -29,10 +29,7 @@ Next you will need to initialize a connection
 
 == Example usage
 
-
-=== Get list of group
-
-    TheCity::AdminApi.connect(THECITY_KEY, THECITY_TOKEN)
+  Checkout the examples folder.
 
 
 == Additional resources
