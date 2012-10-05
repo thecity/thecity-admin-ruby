@@ -2,3 +2,6 @@
 storage/*
 doc/*
 the-city-admin-*.gem
+bin/
+.bundle/
+.rbenv-version
