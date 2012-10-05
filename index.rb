@@ -6,13 +6,13 @@
 # ******************************************* 
 
 TCA_ENV = 'development' 
-THE_CITY_ADMIN_PATH = 'http://localhost:9292' 
+THE_CITY_ADMIN_PATH = 'https://api.stagethecity.org' 
 
 require 'ruby-debug'
 require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 
-key = '66c59e2ee24553e7237259e30b4c17365681b95c'
-token = 'a9ae4af3c3e80102'
+key = '9ab27af083a172944722593d1c0814fb24b010c7'
+token = '4c06b5399dcf40b1'
 
 # key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee3'
 # token = 'e37ae7fb2042a17b'
@@ -25,11 +25,13 @@ puts "##### PLEDGES #######"
 puts "-----------------------------"
 
 
-pledge_list = TheCity::PledgeList.new({:page => 1})
-#puts pledge_list.names
+donation_list = TheCity::DonationList.new({:page => 1, :include_details => 1, :start_date => '2012-09-01', :end_date => '2012-09-30'})
 
-pledge = pledge_list[0]
-puts pledge.amount
+donation_list.each do |donation|
+  puts [donation.user_name, donation.amount].join(' :: ')
+end
+
+
 
 
 # done = false

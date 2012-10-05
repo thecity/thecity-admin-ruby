@@ -1,6 +1,6 @@
 module TheCity
 
-  class PledgeList 
+  class DonationList 
 
     include Enumerable
 
@@ -14,17 +14,17 @@ module TheCity
     # Options:
     #   :page - The page number to get.
     #   :reader - The Reader to use to load the data.
-    #   :search -  (optional) A pledge name to search on.
+    #   :search -  (optional) A donation name to search on.
     #
     #
     # Examples:
-    #   PledgeList.new
+    #   DonationList.new
     #
-    #   PledgeList.new({:page => 2})
+    #   DonationList.new({:page => 2})
     #    
     def initialize(options = {}) 
       options[:page] ||= 1
-      reader = options[:reader] || TheCity::PledgeListReader.new(options)   
+      reader = options[:reader] || TheCity::DonationListReader.new(options)   
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']
@@ -34,28 +34,28 @@ module TheCity
     end
     
     
-    # All the pledges in the list.
+    # All the donations in the list.
     #
-    # @return array of pledge names.
+    # @return array of donation names.
     def all_names
-      @json_data['pledges'].collect { |pledge| pledge['user_name'] }
+      @json_data['donations'].collect { |donation| donation['user_name'] }
     end
     alias :names :all_names
     
     
-    # Get the specified pledge.
+    # Get the specified donation.
     #
-    # @param index The index of the pledge to get.
+    # @param index The index of the donation to get.
     #
-    # @return [pledge]
+    # @return [donation]
     def [](index)
-      Pledge.new( @json_data['pledges'][index] ) if @json_data['pledges'][index]
+      Donation.new( @json_data['donations'][index] ) if @json_data['donations'][index]
     end
 
 
     # This method is needed for Enumerable.
     def each &block
-      @json_data['pledges'].each{ |pledge| yield( Pledge.new(pledge) )}
+      @json_data['donations'].each{ |donation| yield( Donation.new(donation) )}
     end    
 
 
@@ -66,7 +66,7 @@ module TheCity
     #
     # @return True on empty, false otherwise.
     def empty?
-      @json_data['pledges'].empty?
+      @json_data['donations'].empty?
     end    
   
   end
