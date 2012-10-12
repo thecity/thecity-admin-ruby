@@ -6,13 +6,13 @@
 # ******************************************* 
 
 TCA_ENV = 'development' 
-THE_CITY_ADMIN_PATH = 'https://api.stagethecity.org' 
+THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:9292' 
 
 require 'ruby-debug'
 require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 
-key = '9ab27af083a172944722593d1c0814fb24b010c7'
-token = '4c06b5399dcf40b1'
+key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
+token = '5c88b32edda7653c'
 
 # key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee3'
 # token = 'e37ae7fb2042a17b'
@@ -21,17 +21,22 @@ TheCity::AdminApi.connect(key, token)
 
 
 puts "-----------------------------"
-puts "##### PLEDGES #######"
+puts "##### FUNDS / DONATIONS / PLEDGES #######"
 puts "-----------------------------"
 
 
-donation_list = TheCity::DonationList.new({:page => 1, :include_details => 1, :start_date => '2012-09-01', :end_date => '2012-09-30'})
+# donation_list = TheCity::DonationList.new({:page => 1, :include_details => 1, :start_date => '2012-09-01', :end_date => '2012-09-30'})
 
-donation_list.each do |donation|
-  puts [donation.user_name, donation.amount].join(' :: ')
+# donation_list.each do |donation|
+#   puts [donation.user_name, donation.amount].join(' :: ')
+# end
+
+
+fund_list = TheCity::FundList.new({:page => 1})
+
+fund_list.each do |fund|
+  puts [fund.id, fund.name].join(' :: ')
 end
-
-
 
 
 # done = false
