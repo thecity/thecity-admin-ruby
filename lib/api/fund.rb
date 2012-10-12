@@ -20,8 +20,8 @@ module TheCity
     # @param fund_id The ID of the fund to load.
     #
     # Returns a new {Fund} object.
-    def self.load_fund_by_id(pledge_id)
-      fund_reader = FundReader.new(Pledge_id)
+    def self.load_fund_by_id(fund_id)
+      fund_reader = FundReader.new(fund_id)
       self.new(fund_reader)
     end       
 

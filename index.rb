@@ -11,8 +11,8 @@ THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:9292'
 require 'ruby-debug'
 require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 
-key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
-token = '5c88b32edda7653c'
+key = '66c59e2ee24553e7237259e30b4c17365681b95c'
+token = 'a9ae4af3c3e80102'
 
 # key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee3'
 # token = 'e37ae7fb2042a17b'
@@ -38,6 +38,9 @@ fund_list.each do |fund|
   puts [fund.id, fund.name].join(' :: ')
 end
 
+sfund = TheCity::Fund.load_fund_by_id(fund_list.first.id)
+
+puts [sfund.id, sfund.name].join(' :-: ')
 
 # done = false
 # page = 1
