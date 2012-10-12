@@ -5,17 +5,17 @@
 # @authors Robbie Lieb <robbie@onthecity.org>, Wes Hays <wes@onthecity.org>
 # ******************************************* 
 
-TCA_ENV = 'development' 
-THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:9292' 
+# TCA_ENV = 'development' 
+# THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:9292' 
 
 require 'ruby-debug'
 require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 
-key = '66c59e2ee24553e7237259e30b4c17365681b95c'
-token = 'a9ae4af3c3e80102'
+# key = '66c59e2ee24553e7237259e30b4c17365681b95c'
+# token = 'a9ae4af3c3e80102'
 
-# key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee3'
-# token = 'e37ae7fb2042a17b'
+key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee2'
+token = 'e37ae7fb2042a17a'
 
 TheCity::AdminApi.connect(key, token)
 
