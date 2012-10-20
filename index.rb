@@ -11,24 +11,53 @@ THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:9292'
 require 'ruby-debug'
 require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 
-# key = '66c59e2ee24553e7237259e30b4c17365681b95c'
-# token = 'a9ae4af3c3e80102'
+key = '66c59e2ee24553e7237259e30b4c17365681b95c'
+token = 'a9ae4af3c3e80102'
 
-key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
-token = '5c88b32edda7653c'
+# key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
+# token = '5c88b32edda7653c'
 
 TheCity::AdminApi.connect(key, token)
+
+
+puts "-----------------------------"
+puts "##### Web Hooks #######"
+puts "-----------------------------"
+
+web_hooks = TheCity::WebHookList.new({:page => 1})
+web_hooks.each do |hook|
+  puts hook.inspect
+end
+
+# web_hook = TheCity::WebHook.new({:callback_uri => 'https://www.capacityassessor.com/city/callbacks/group_tag/create', 
+#                                  :object => TheCity::WebHook::Objects[:group_tag],
+#                                  :event => TheCity::WebHook::Events[:create]})
+
+# if web_hook.save
+#   puts 'Web Hook saved'
+# else
+#   puts 'Web Hook failed'
+# end
+
+# debugger
+# asdf=234
+
+
+# web_hooks = TheCity::WebHookList.new({:page => 1})
+# web_hooks.each do |hook|
+#   puts hook.inspect
+# end
 
 
 # puts "-----------------------------"
 # puts "##### Invitations #######"
 # puts "-----------------------------"
 
-invitation_list = TheCity::InvitationList.new({:page => 1})
+# invitation_list = TheCity::InvitationList.new({:page => 1})
 
-invitation_list.each do |invitation|
-  puts invitation.inspect
-end
+# invitation_list.each do |invitation|
+#   puts invitation.inspect
+# end
 
 # puts "-----------------------------"
 # puts "##### FUNDS / DONATIONS / PLEDGES #######"

@@ -2,16 +2,16 @@ module TheCity
 
   class WebHook < ApiObject
 
-    Objects = {:user => 'User', :group => 'Group', :invitation => 'Invitation',
-               :privilege => 'Privilege', :checkin => 'Checkin', :address => 'Address'}
-
-    Events = {:create => 'create', :update => 'update', :destroy => 'destroy', :expire => 'expire'}              
-
-
     tc_attr_accessor :id,
                      :callback_uri, 
                      :event,
                      :object
+
+    Objects = {:user => 'user', :group => 'group', :invitation => 'invitation',
+               :privilege => 'privilege', :checkin => 'checkin', :address => 'address',
+               :group_tag => 'group_tag'}
+
+    Events = {:create => 'create', :update => 'update', :destroy => 'destroy', :expire => 'expire'}              
 
     # Constructor.
     #
