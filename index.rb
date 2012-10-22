@@ -11,11 +11,11 @@ THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:9292'
 require 'ruby-debug'
 require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 
-key = '66c59e2ee24553e7237259e30b4c17365681b95c'
-token = 'a9ae4af3c3e80102'
+# key = '66c59e2ee24553e7237259e30b4c17365681b95c'
+# token = 'a9ae4af3c3e80102'
 
-# key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
-# token = '5c88b32edda7653c'
+key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
+token = '5c88b32edda7653c'
 
 TheCity::AdminApi.connect(key, token)
 
@@ -29,23 +29,26 @@ web_hooks.each do |hook|
   puts hook.inspect
 end
 
-# web_hook = TheCity::WebHook.new({:callback_uri => 'https://www.capacityassessor.com/city/callbacks/group_tag/create', 
-#                                  :object => TheCity::WebHook::Objects[:group_tag],
-#                                  :event => TheCity::WebHook::Events[:create]})
+web_hook1 = TheCity::WebHook.new({:callback_uri => 'https://www.capacityassessor.com/city/callbacks/fund/create', 
+                                  :object => TheCity::WebHook::Objects[:fund],
+                                  :event => TheCity::WebHook::Events[:create]})
 
-# if web_hook.save
-#   puts 'Web Hook saved'
-# else
-#   puts 'Web Hook failed'
-# end
+web_hook2 = TheCity::WebHook.new({:callback_uri => 'https://www.capacityassessor.com/city/callbacks/pledge/create', 
+                                  :object => TheCity::WebHook::Objects[:pledge],
+                                  :event => TheCity::WebHook::Events[:create]})
 
-# debugger
-# asdf=234
+web_hook3 = TheCity::WebHook.new({:callback_uri => 'https://www.capacityassessor.com/city/callbacks/donation/create', 
+                                  :object => TheCity::WebHook::Objects[:donation],
+                                  :event => TheCity::WebHook::Events[:create]})
 
+puts web_hook1.save ? 'Web Hook saved' : 'Web Hook failed'
+puts web_hook2.save ? 'Web Hook saved' : 'Web Hook failed'
+puts web_hook3.save ? 'Web Hook saved' : 'Web Hook failed'
 
 # web_hooks = TheCity::WebHookList.new({:page => 1})
 # web_hooks.each do |hook|
 #   puts hook.inspect
+#   puts hook.delete
 # end
 
 

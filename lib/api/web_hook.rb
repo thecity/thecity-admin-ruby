@@ -9,7 +9,7 @@ module TheCity
 
     Objects = {:user => 'user', :group => 'group', :invitation => 'invitation',
                :privilege => 'privilege', :checkin => 'checkin', :address => 'address',
-               :group_tag => 'group_tag'}
+               :group_tag => 'group_tag', :fund => 'fund', :pledge => 'pledge', :donation => 'donation'}
 
     Events = {:create => 'create', :update => 'update', :destroy => 'destroy', :expire => 'expire'}              
 
