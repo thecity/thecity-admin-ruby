@@ -29,15 +29,15 @@ web_hooks.each do |hook|
   puts hook.inspect
 end
 
-web_hook1 = TheCity::WebHook.new({:callback_uri => 'https://www.capacityassessor.com/city/callbacks/fund/create', 
+web_hook1 = TheCity::WebHook.new({:callback_uri => 'https://www.somedomain.com/city/callbacks/fund/create', 
                                   :object => TheCity::WebHook::Objects[:fund],
                                   :event => TheCity::WebHook::Events[:create]})
 
-web_hook2 = TheCity::WebHook.new({:callback_uri => 'https://www.capacityassessor.com/city/callbacks/pledge/create', 
+web_hook2 = TheCity::WebHook.new({:callback_uri => 'https://www.somedomain.com/city/callbacks/pledge/create', 
                                   :object => TheCity::WebHook::Objects[:pledge],
                                   :event => TheCity::WebHook::Events[:create]})
 
-web_hook3 = TheCity::WebHook.new({:callback_uri => 'https://www.capacityassessor.com/city/callbacks/donation/create', 
+web_hook3 = TheCity::WebHook.new({:callback_uri => 'https://www.somedomain.com/city/callbacks/donation/create', 
                                   :object => TheCity::WebHook::Objects[:donation],
                                   :event => TheCity::WebHook::Events[:create]})
 
