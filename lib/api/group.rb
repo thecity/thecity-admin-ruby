@@ -13,16 +13,18 @@ module TheCity
                      :parent_id, 
                      :plaza_url, 
                      :smart_large_profile_pic, 
-                     :started_as_seed
+                     :started_as_seed,
+                     :user_ids
 
 
     # Loads the group by the specified ID.
     #
     # @param group_id The ID of the group to load.
+    # @param options A hash of options for requesting data from the server.
     #
     # Returns a new {Group} object.
-    def self.load_group_by_id(group_id)
-      group_reader = GroupReader.new(group_id)
+    def self.load_group_by_id(group_id, options = {})
+      group_reader = GroupReader.new(group_id, options)
       self.new(group_reader)
     end       
 
