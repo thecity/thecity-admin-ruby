@@ -2,6 +2,7 @@ module TheCity
 
   # This adapter is the standard for all loading objects.
   class ApiReader
+    attr_reader :headers
 
     # Constructor
     # def initialize
@@ -15,12 +16,17 @@ module TheCity
       #   data = @cacher.get_data( @class_key )
       # else
         @url_data_params ||= {}
-        response = TheCity::admin_request(:get, @url_data_path, @url_data_params) 
-        data = JSON.parse(response.body)     
-        @cacher.save_data(@class_key, data) unless @cacher.nil?  
+        response = TheCity::admin_request(:get, @url_data_path, @url_data_params)
+        data = JSON.parse(response.body)
+        @headers = parse_headers(response.headers) if response.headers
+        @cacher.save_data(@class_key, data) unless @cacher.nil?
       #end   
 
       return data
+    end
+
+    def parse_headers(headers)
+      Hash[headers.split("\r\n").collect { |pair| pair.split(': ') }]
     end
 
   end

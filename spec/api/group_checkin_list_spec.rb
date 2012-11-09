@@ -1,4 +1,4 @@
-require File.join(Dir.pwd, 'spec', 'spec_helper')
+require File.dirname(__FILE__) + '/../spec_helper'
 
 describe 'GroupCheckinList' do
 
@@ -11,7 +11,7 @@ describe 'GroupCheckinList' do
   end
 
 
-  it 'should pass if group checkin list attribute is not specifed' do
+  it 'should pass if group checkin list attribute is not specified' do
     group_id = 123
     request_data = FactoryGirl.attributes_for(:group_checkin_list, {
       :total_entries => 1,
