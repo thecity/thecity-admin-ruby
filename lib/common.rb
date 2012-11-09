@@ -26,7 +26,8 @@ module TheCity
         begin
           error_messages = JSON.parse(response.body)['error_message']
         rescue
-          raise TheCityExceptions::UnknownErrorConnectingToTheCity.new('Unknown error when connecting to The City')
+          response_code_desc = response.headers.partition("\r\n")[0].sub(/^\S+/, '') rescue nil
+          raise TheCityExceptions::UnknownErrorConnectingToTheCity.new("Unknown error when connecting to The City.#{response_code_desc}")
         else
           raise TheCityExceptions::TheCityResponseError.new(error_messages)
         end
