@@ -29,6 +29,22 @@ module TheCity
       Hash[headers.split("\r\n").collect { |pair| pair.split(': ') }]
     end
 
+    # Returns either the value of the X-City-RateLimit-Limit-By-Ip header or
+    # X-City-RateLimit-Limit-By-Account header, whichever is lower.
+    def rate_limit
+      if @headers
+        [@headers['X-City-RateLimit-Limit-By-Ip'].to_i, @headers['X-City-RateLimit-Limit-By-Account'].to_i].min
+      end
+    end
+
+    # Returns either the value of the X-City-RateLimit-Remaining-By-Ip header or
+    # X-City-RateLimit-Remaining-By-Account header, whichever is lower.
+    def rate_limit_remaining
+      if @headers
+        [@headers['X-City-RateLimit-Remaining-By-Ip'].to_i, @headers['X-City-RateLimit-Remaining-By-Account'].to_i].min
+      end
+    end
+
   end
 
 end
