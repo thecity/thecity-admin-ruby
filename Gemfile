@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'typhoeus'
+gem 'typhoeus', '0.4.2'
 gem 'json'
 
 group :development, :test do

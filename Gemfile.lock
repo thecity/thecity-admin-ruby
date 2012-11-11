@@ -44,4 +44,4 @@ DEPENDENCIES
   factory_girl
   json
   rspec
-  typhoeus
+  typhoeus (= 0.4.2)
