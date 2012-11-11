@@ -3,7 +3,6 @@
 #
 # Author:: Wes Hays <weshays@gbdev.com> 
 # Link:: https://github.com/weshays/admin-api-ruby
-# Version:: 0.1a
 # Package:: TheCity::Admin
 
 
