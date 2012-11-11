@@ -18,7 +18,7 @@ require 'factory_girl'
 Dir.glob(File.dirname(__FILE__) + "/factories/*").each { |f| require f }
 
 
-TheCityResponse = Struct.new(:code, :body)
+TheCityResponse = Struct.new(:code, :body, :headers)
 
 RSpec.configure do |config|
   config.tty = true
