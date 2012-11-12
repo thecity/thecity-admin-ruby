@@ -7,13 +7,14 @@
 
 # TCA_ENV = 'development' 
 # THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:9292' 
-# key = '66c59e2ee24553e7237259e30b4c17365681b95c'
-# token = 'a9ae4af3c3e80102'
+# key = 'Dev Key'
+# token = 'dev token'
 
-key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee3'
-token = 'e37ae7fb2042a17b'
+key = 'YOUR KEY'
+token = 'YOUR TOKEN'
 
-
+require 'open-uri'
+require 'csv'
 require 'ruby-debug'
 require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 
@@ -51,11 +52,16 @@ TheCity::AdminApi.connect(key, token)
 # group_export = export_list[0]
 # puts group_export.inspect
 
-group_export = TheCity::GroupExport.new
 
-# group_export = TheCity::GroupExport.load_by_id(100996, {:group_id => 73608})
-# puts group_export.inspect
 
+group_export = TheCity::GroupExport.load_by_id(100996, {:group_id => 73608})
+path = group_export.authenticated_s3_url
+
+data = open(path).read()
+
+CSV.parse(data, {:headers => true}).each do |row| 
+  puts [row[2], row[4]].join(' ')
+end
 
 
 # puts "-----------------------------"
