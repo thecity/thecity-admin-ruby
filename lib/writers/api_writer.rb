@@ -11,6 +11,11 @@ module TheCity
       @url_data_params ||= {}
       success = true
 
+      if @url_data_path.nil?
+        @error_messages = ["#{@url_action.to_s.upcase} not implemented for #{self.class.to_s}"]
+        return false
+      end
+
       if @updatable_fields and !@updatable_fields.empty?
         fields_to_remove = @url_data_params.keys - @updatable_fields  
         fields_to_remove.each { |ftr| @url_data_params.delete(ftr) }
@@ -35,6 +40,11 @@ module TheCity
     # @return True or ID on success, otherwise false.
     def delete_object
       success = true
+
+      if @url_data_delete_path.nil?
+        @error_messages = ["DELETE not implemented for #{self.class.to_s}"]
+        return false
+      end
 
       begin
         # @url_data_path should be the same as :put if this object is already

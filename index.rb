@@ -5,45 +5,83 @@
 # @authors Robbie Lieb <robbie@onthecity.org>, Wes Hays <wes@onthecity.org>
 # ******************************************* 
 
-TCA_ENV = 'development' 
-THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:9292' 
+# TCA_ENV = 'development' 
+# THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:9292' 
+# key = '66c59e2ee24553e7237259e30b4c17365681b95c'
+# token = 'a9ae4af3c3e80102'
+
+key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee3'
+token = 'e37ae7fb2042a17b'
+
 
 require 'ruby-debug'
 require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 
-# key = '66c59e2ee24553e7237259e30b4c17365681b95c'
-# token = 'a9ae4af3c3e80102'
-
-key = 'cf2903151e3213e66fd8080c7d8b65b1d6ccdd31'
-token = '5c88b32edda7653c'
-
 TheCity::AdminApi.connect(key, token)
 
+# group_export = TheCity::GroupExport.new
+# group_export.group_id = 73608
+# if group_export.save
+#   puts "Export created"
+# else
+#   puts "Export failed: #{group_export.error_messages.join(', ')}"
+# end
 
-puts "-----------------------------"
-puts "##### Web Hooks #######"
-puts "-----------------------------"
 
-web_hooks = TheCity::WebHookList.new({:page => 1})
-web_hooks.each do |hook|
-  puts hook.inspect
-end
+# done = false
+# page = 1
+# count = 0
 
-web_hook1 = TheCity::WebHook.new({:callback_uri => 'https://www.somedomain.com/city/callbacks/fund/create', 
-                                  :object => TheCity::WebHook::Objects[:fund],
-                                  :event => TheCity::WebHook::Events[:create]})
+# while !done
+#   export_list = TheCity::GroupExportList.new({:page => page, :group_id => 73608})
+  
+#   export_list.each do |export|
+#     count += 1
+#     puts "#{count}) #{export.id} :: #{export.state}"
+#   end
 
-web_hook2 = TheCity::WebHook.new({:callback_uri => 'https://www.somedomain.com/city/callbacks/pledge/create', 
-                                  :object => TheCity::WebHook::Objects[:pledge],
-                                  :event => TheCity::WebHook::Events[:create]})
+#   if export_list.total_pages <= page
+#     done = true
+#   else
+#     page += 1
+#   end
+# end
 
-web_hook3 = TheCity::WebHook.new({:callback_uri => 'https://www.somedomain.com/city/callbacks/donation/create', 
-                                  :object => TheCity::WebHook::Objects[:donation],
-                                  :event => TheCity::WebHook::Events[:create]})
+# export_list = TheCity::GroupExportList.new({:page => page, :group_id => 73608})
+# group_export = export_list[0]
+# puts group_export.inspect
 
-puts web_hook1.save ? 'Web Hook saved' : 'Web Hook failed'
-puts web_hook2.save ? 'Web Hook saved' : 'Web Hook failed'
-puts web_hook3.save ? 'Web Hook saved' : 'Web Hook failed'
+group_export = TheCity::GroupExport.new
+
+# group_export = TheCity::GroupExport.load_by_id(100996, {:group_id => 73608})
+# puts group_export.inspect
+
+
+
+# puts "-----------------------------"
+# puts "##### Web Hooks #######"
+# puts "-----------------------------"
+
+# web_hooks = TheCity::WebHookList.new({:page => 1})
+# web_hooks.each do |hook|
+#   puts hook.inspect
+# end
+
+# web_hook1 = TheCity::WebHook.new({:callback_uri => 'https://www.somedomain.com/city/callbacks/fund/create', 
+#                                   :object => TheCity::WebHook::Objects[:fund],
+#                                   :event => TheCity::WebHook::Events[:create]})
+
+# web_hook2 = TheCity::WebHook.new({:callback_uri => 'https://www.somedomain.com/city/callbacks/pledge/create', 
+#                                   :object => TheCity::WebHook::Objects[:pledge],
+#                                   :event => TheCity::WebHook::Events[:create]})
+
+# web_hook3 = TheCity::WebHook.new({:callback_uri => 'https://www.somedomain.com/city/callbacks/donation/create', 
+#                                   :object => TheCity::WebHook::Objects[:donation],
+#                                   :event => TheCity::WebHook::Events[:create]})
+
+# puts web_hook1.save ? 'Web Hook saved' : 'Web Hook failed'
+# puts web_hook2.save ? 'Web Hook saved' : 'Web Hook failed'
+# puts web_hook3.save ? 'Web Hook saved' : 'Web Hook failed'
 
 # web_hooks = TheCity::WebHookList.new({:page => 1})
 # web_hooks.each do |hook|
@@ -93,7 +131,7 @@ puts web_hook3.save ? 'Web Hook saved' : 'Web Hook failed'
 
 #   group_list.each do |group|
 #     count += 1
-#     puts "#{count}) #{group.name}"
+#     puts "#{count}) #{group.name} [#{group.group_type}]"
 #   end
 
 #   if group_list.total_pages <= page
@@ -123,6 +161,17 @@ puts web_hook3.save ? 'Web Hook saved' : 'Web Hook failed'
 #   end
 # end
 
+# tag_list = TheCity::TagList.new({:page => page})
+# tag = tag_list[0]
+
+# puts tag.name
+# tag.name = "Wes Hays #{Random.rand(99999)}"
+# if tag.save
+#   puts "TAG SAVED"
+# else
+#   puts "TAG FAILED TO SAVE: #{tag.error_messages}"
+# end
+
 
 
 
@@ -130,6 +179,16 @@ puts web_hook3.save ? 'Web Hook saved' : 'Web Hook failed'
 # puts "-----------------------------"
 # puts "##### USERS #######"
 # puts "-----------------------------"
+
+
+# wes = TheCity::User.load_by_id(746076)
+
+# wes.first = "Jim"
+# if wes.save
+#   puts "Wes Saved"
+# else
+#   puts "WES FAILED TO SAVE: #{wes.error_messages}"
+# end
 
 
 # user_list = TheCity::UserList.new
