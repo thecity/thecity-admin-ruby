@@ -55,6 +55,7 @@ module TheCity
       elsif reader.is_a?(Hash)
         initialize_from_json_object(reader)
       end
+      @writer_object = GroupWriter
 
       @address_list = nil
       @checkin_list = nil
@@ -162,16 +163,6 @@ module TheCity
       @tag_list = GroupTagList.new({:group_id => self.id})
       return @tag_list
     end     
-
-
-
-    # Save this object.
-    #
-    # @return True on success, otherwise false.
-    def save
-      writer = GroupWriter.new(self.to_attributes) 
-      writer.save_feed
-    end
 
   end
 

@@ -24,63 +24,68 @@ require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 TheCity::AdminApi.connect(key, token)
 
 
+group = TheCity::Group.load_group_by_id(94022)
+puts group.name
+group.name = 'Wes Group'
+
+if group.save
+  puts "GROUP SAVED"
+else
+  puts "FAILED TO SAVE GROUP"
+end
+
+group2 = TheCity::Group.load_group_by_id(94022)
+puts group2.name
+
+
+
 # puts "-----------------------------"
 # puts "##### SKILLS #######"
 # puts "-----------------------------"
 
-# skill_list = TheCity::SkillList.new
-
-# skill_list.each do |skill|
-#   puts [skill.id, skill.name].join(' :: ')
-# end
-
-# skill = TheCity::Skill.load_by_id(157436)
-# puts skill.name # = 'AAAAAA'
-
-# skill.name = 'BBBBBBB'
-
-# if skill.save
+# skill = TheCity::Skill.new
+# skill.name = 'AAAAAA'
+# puts "****************"
+# if skill.save  
 #   puts "Skill Saved: #{skill.id}"
 # else
 #   puts "FAILED TO SAVE SKILL: #{skill.error_messages}"
 # end
+# puts "****************"
 
 # skill_list = TheCity::SkillList.new
 # skill_list.each do |skill|
-#   puts skill.name
+#   puts [skill.id, skill.name].join(' :: ')
 # end
 
-
-
-
-
-# group = TheCity::Group.load_group_by_id(94022)
-# puts group.name
-# group.name = 'James Group'
-
-# if group.save
-#   puts "GROUP SAVED"
+# puts "****************"
+# if skill.delete  
+#   puts "Skill deleted: #{skill.id}"
 # else
-#   puts "FAILED TO SAVE GROUP"
+#   puts "FAILED TO delete SKILL: #{skill.error_messages}"
+# end
+# puts "****************"
+
+# skill_list = TheCity::SkillList.new
+# skill_list.each do |skill|
+#   puts [skill.id, skill.name].join(' :: ')
 # end
 
-# group2 = TheCity::Group.load_group_by_id(94022)
-# puts group2.name
 
 
 
-user = TheCity::User.load_by_id(746076)
-puts user.first
-user.first = 'James'
+# user = TheCity::User.load_by_id(746076)
+# puts user.first
+# user.first = 'James'
 
-if user.save
-  puts "USER SAVED"
-else
-  puts "FAILED TO SAVE USER: #{user.error_messages}"
-end
+# if user.save
+#   puts "USER SAVED"
+# else
+#   puts "FAILED TO SAVE USER: #{user.error_messages}"
+# end
 
-user2 = TheCity::User.load_by_id(746076)
-puts user2.first
+# user2 = TheCity::User.load_by_id(746076)
+# puts user2.first
 
 
 
