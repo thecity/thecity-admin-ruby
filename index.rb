@@ -7,11 +7,14 @@
 
 # TCA_ENV = 'development' 
 # THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:9292' 
-# key = 'Dev Key'
-# token = 'dev token'
+# key = '66c59e2ee24553e7237259e30b4c17365681b95c'
+# token = 'a9ae4af3c3e80102'
 
-key = 'YOUR KEY'
-token = 'YOUR TOKEN'
+# key = 'YOUR KEY'
+# token = 'YOUR TOKEN'
+
+key = '2bcee1fdccd31f1ef35a7c6708daf5a446a61ee3'
+token = 'e37ae7fb2042a17b'
 
 require 'open-uri'
 require 'csv'
@@ -19,6 +22,70 @@ require 'ruby-debug'
 require File.dirname(__FILE__) + '/lib/the_city_admin.rb'
 
 TheCity::AdminApi.connect(key, token)
+
+
+# puts "-----------------------------"
+# puts "##### SKILLS #######"
+# puts "-----------------------------"
+
+# skill_list = TheCity::SkillList.new
+
+# skill_list.each do |skill|
+#   puts [skill.id, skill.name].join(' :: ')
+# end
+
+# skill = TheCity::Skill.load_by_id(157436)
+# puts skill.name # = 'AAAAAA'
+
+# skill.name = 'BBBBBBB'
+
+# if skill.save
+#   puts "Skill Saved: #{skill.id}"
+# else
+#   puts "FAILED TO SAVE SKILL: #{skill.error_messages}"
+# end
+
+# skill_list = TheCity::SkillList.new
+# skill_list.each do |skill|
+#   puts skill.name
+# end
+
+
+
+
+
+# group = TheCity::Group.load_group_by_id(94022)
+# puts group.name
+# group.name = 'James Group'
+
+# if group.save
+#   puts "GROUP SAVED"
+# else
+#   puts "FAILED TO SAVE GROUP"
+# end
+
+# group2 = TheCity::Group.load_group_by_id(94022)
+# puts group2.name
+
+
+
+user = TheCity::User.load_by_id(746076)
+puts user.first
+user.first = 'James'
+
+if user.save
+  puts "USER SAVED"
+else
+  puts "FAILED TO SAVE USER: #{user.error_messages}"
+end
+
+user2 = TheCity::User.load_by_id(746076)
+puts user2.first
+
+
+
+
+
 
 # group_export = TheCity::GroupExport.new
 # group_export.group_id = 73608
@@ -54,14 +121,14 @@ TheCity::AdminApi.connect(key, token)
 
 
 
-group_export = TheCity::GroupExport.load_by_id(100996, {:group_id => 73608})
-path = group_export.authenticated_s3_url
+# group_export = TheCity::GroupExport.load_by_id(100996, {:group_id => 73608})
+# path = group_export.authenticated_s3_url
 
-data = open(path).read()
+# data = open(path).read()
 
-CSV.parse(data, {:headers => true}).each do |row| 
-  puts [row[2], row[4]].join(' ')
-end
+# CSV.parse(data, {:headers => true}).each do |row| 
+#   puts [row[2], row[4]].join(' ')
+# end
 
 
 # puts "-----------------------------"
@@ -327,9 +394,9 @@ end
 
 # puts skill_list.inspect
 
-# # skill_list.each do |skill|
-# #   puts skill.name
-# # end
+# skill_list.each do |skill|
+#   puts skill.name
+# end
 
 
 # puts "-----------------------------"

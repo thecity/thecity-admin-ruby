@@ -22,7 +22,7 @@ module TheCity
       end
 
       begin
-        response = TheCity::admin_request(@url_action, @url_data_path, @url_data_params)   
+        response = TheCity::admin_request(@url_action, @url_data_path, nil, @url_data_params.to_json)   
         @response_code = response.code
         # No content but is a success
         success = response.code == 204 ? {'success' => true} : JSON.parse(response.body)  

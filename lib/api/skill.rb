@@ -6,12 +6,27 @@ module TheCity
                      :name,
                      :created_at
 
+
+    # Loads the skill by the specified ID.
+    #
+    # @param skill_id The ID of the skill to load.
+    #
+    # Returns a new {Skill} object.
+    def self.load_by_id(fund_id)
+      skill_reader = SkillReader.new(fund_id)
+      self.new(skill_reader)
+    end       
+
     # Constructor.
     #
-    # @param json_data (optional) JSON data of the Skill.
-    def initialize(json_data = nil)
+    # @param reader (optional) The object that has the data.  This can be a {SkillReader} or Hash object.
+    def initialize(reader = nil)
       @writer_object = SkillWriter
-      initialize_from_json_object(json_data) unless json_data.nil?
+      if reader.is_a?(SkillReader)
+        initialize_from_json_object(reader.load_feed) 
+      elsif reader.is_a?(Hash)
+        initialize_from_json_object(reader)
+      end
     end
     
   end

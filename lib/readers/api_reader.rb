@@ -18,30 +18,26 @@ module TheCity
         @url_data_params ||= {}
         response = TheCity::admin_request(:get, @url_data_path, @url_data_params)
         data = JSON.parse(response.body)
-        @headers = parse_headers(response.headers) if response.headers
+        @headers = response.headers
         @cacher.save_data(@class_key, data) unless @cacher.nil?
       #end   
 
       return data
     end
 
-    def parse_headers(headers)
-      Hash[headers.split("\r\n").collect { |pair| pair.split(': ') }]
-    end
-
-    # Returns either the value of the X-City-RateLimit-Limit-By-Ip header or
-    # X-City-RateLimit-Limit-By-Account header, whichever is lower.
+    # Returns either the value of the x-city-ratelimit-limit-by-ip header or
+    # x-city-ratelimit-limit-by-account header, whichever is lower.
     def rate_limit
       if @headers
-        [@headers['X-City-RateLimit-Limit-By-Ip'].to_i, @headers['X-City-RateLimit-Limit-By-Account'].to_i].min
+        [@headers['x-city-ratelimit-limit-by-ip'].to_i, @headers['x-city-ratelimit-limit-by-account'].to_i].min
       end
     end
 
-    # Returns either the value of the X-City-RateLimit-Remaining-By-Ip header or
-    # X-City-RateLimit-Remaining-By-Account header, whichever is lower.
+    # Returns either the value of the x-city-ratelimit-remaining-by-ip header or
+    # x-city-ratelimit-remaining-by-account header, whichever is lower.
     def rate_limit_remaining
       if @headers
-        [@headers['X-City-RateLimit-Remaining-By-Ip'].to_i, @headers['X-City-RateLimit-Remaining-By-Account'].to_i].min
+        [@headers['x-city-ratelimit-remaining-by-ip'].to_i, @headers['x-city-ratelimit-remaining-by-account'].to_i].min
       end
     end
 
