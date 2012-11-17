@@ -17,55 +17,45 @@ TheCity::AdminApi.connect(KEY, TOKEN)
 puts "------------------------------------"
 
 tag_list = TheCity::TagList.new
-if tag_list.empty?
-  puts "No tags in list"
-else
-  puts "Tags: #{tag_list.count}"
-end
+puts "Tags: #{tag_list.total_entries}"
 
+
+puts "*******************"
 tag = TheCity::Tag.new
-tag.name = 'Z Cool Guy'
+tag.name = 'zProgrammer'
+
 if tag.save
-  puts "Tag created (#{tag.id})"
+  puts "Tag SAVED"
 else
-  puts "Failed to create tag: #{tag.error_messages.join(', ')}"
+  puts "FAILED TO SAVE TAG: #{tag.error_messages}"
 end
+puts "*******************"
 
+tag_list = TheCity::TagList.new
+puts "Tags: #{tag_list.total_entries}"
 
-tag_list2 = TheCity::TagList.new
-if tag_list2.empty?
-  puts "No tags in list"
-else
-  puts "Tags: #{tag_list2.count}"
-end
+puts "*******************"
+tag.name = 'zProgrammer 2'
 
-tag2 = TheCity::Tag.load_by_id(tag.id)
-if tag2.nil?
-  puts "Tag not found"
-else
-  puts "Tag found by ID #{tag.id}"
-end
-
-
-tag.name = 'Z Some Guy'
 if tag.save
-  puts "Tag updated (#{tag.id})"
+  puts "Tag Updated"
 else
-  puts "Failed to update tag: #{tag.error_messages.join(', ')}"
+  puts "FAILED TO SAVE TAG: #{tag.error_messages}"
 end
+puts "*******************"
 
 
-if tag.delete 
-  puts "Tag #{tag.id} deleted"
+puts "*******************"
+if tag.delete
+  puts "Tag Deleted"
 else
-  puts "Unable to delete tag #{tag.id}: #{tag.error_messages.join(', ')}"
+  puts "FAILED TO DELETE TAG: #{tag.error_messages}"
 end
+puts "*******************"
 
-tag_list3 = TheCity::TagList.new
-if tag_list3.empty?
-  puts "No tags in list"
-else
-  puts "Tags: #{tag_list3.count}"
-end
+
+tag_list = TheCity::TagList.new
+puts "Tags: #{tag_list.total_entries}"
+
 
 puts "####################################"
