@@ -5,3 +5,4 @@ the-city-admin-*.gem
 bin/
 .bundle/
 .rbenv-version
+index.rb
