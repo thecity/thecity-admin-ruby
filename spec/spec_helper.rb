@@ -12,12 +12,17 @@ require 'rubygems'
 require 'rspec'
 require 'ruby-debug'
 require 'date'
+require 'timecop'
 
 require 'factory_girl'
 Dir.glob(File.dirname(__FILE__) + "/factories/*").each { |f| require f }
 
 
-TheCityResponse = Struct.new(:code, :body, :headers)
+class TheCityResponse < Struct.new(:code, :body, :header_raw)
+  def headers
+    Typhoeus::Response::Header.new(header_raw)
+  end
+end
 
 RSpec.configure do |config|
   config.tty = true
