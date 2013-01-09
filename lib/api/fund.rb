@@ -36,6 +36,7 @@ module TheCity
       elsif reader.is_a?(Hash)
         initialize_from_json_object(reader)
       end
+      @writer_object = FundWriter
     end
 
   end
