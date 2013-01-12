@@ -9,7 +9,7 @@ module TheCity
     # @param cacher (optional) The CacheAdapter cacher to be used to cache data.
     def initialize(donation_export_id, options = {}, cacher = nil)
       #@class_key = "donation_export_#{donation_export_id}"   
-      @url_data_path = "/donations/exports/#{group_export_id}"
+      @url_data_path = "/donations/exports/#{donation_export_id}"
       @url_data_params = options
       
       # The object to store and load the cache.
