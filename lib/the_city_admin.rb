@@ -28,28 +28,14 @@ require File.dirname(__FILE__) + '/common.rb'
 module TheCity
 
   class AdminApi
-
-    attr_reader :api_key, :api_token
-
-
-    # Alias for calling the *new* method.
-    def self.connect(api_key, api_token)
-      self.new(api_key, api_token)
+    class << self
+      attr_reader :api_key, :api_token
     end
-
-
-    # Constructor.
-    #
-    # @param api_key The API key for the church.
-    # @param api_token The API token for the church.
-    def initialize(api_key, api_token)
-      raise TheCityExceptions::UnableToConnectToTheCity.new('Key and Token cannot be nil.') if api_key.nil? or api_token.nil?
-
-      # Create a constant for the churches API key.
-      TheCity::AdminApi::const_set(:API_KEY, api_key) unless defined?(API_KEY)
-
-      # Create a constant for the churches API Token.
-      TheCity::AdminApi::const_set(:API_TOKEN, api_token) unless defined?(API_TOKEN)
+    
+    def self.connect(admin_api_key, admin_api_token)
+      raise TheCityExceptions::UnableToConnectToTheCity.new('Key and Token cannot be nil.') if admin_api_key.nil? or admin_api_token.nil?
+      @api_key = admin_api_key
+      @api_token = admin_api_token
     end
 
   end
