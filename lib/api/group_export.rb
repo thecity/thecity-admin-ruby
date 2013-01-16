@@ -4,6 +4,7 @@ module TheCity
 
     tc_attr_accessor :id, 
                      :group_id,
+                     :user_type,
                      :state,
                      :authenticated_s3_url,
                      :created_at
