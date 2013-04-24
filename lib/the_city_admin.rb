@@ -23,6 +23,8 @@ require File.dirname(__FILE__) + '/auto_load.rb'
 
 require File.dirname(__FILE__) + '/common.rb'
 
+require File.dirname(__FILE__) + '/pacemaker.rb'
+
 
 # This class is meant to be a wrapper TheCity Admin API (OnTheCity.org).
 module TheCity
