@@ -2,8 +2,7 @@ module TheCity
 
   class Terminology < ApiObject
 
-    tc_attr_accessor :term,
-                     :label
+    tc_attr_accessor :cg
 
 
     # Loads the terminology by the specified term.

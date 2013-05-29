@@ -7,16 +7,15 @@ module TheCity
     Titles = {:leader => 'Leader', :manager => 'Manager', 
               :volunteer => 'Volunteer', :participant => 'Participant'}
 
-    tc_attr_accessor :user_id,
-                     :active, 
+    tc_attr_accessor :group_name, 
                      :created_at, 
                      :group_api_url, 
-                     :group_id, 
-                     :group_name, 
+                     :title,
                      :group_type, 
+                     :group_id, 
                      :id, 
                      :last_engaged, 
-                     :title
+                     :active
 
 
     # Constructor.

@@ -2,8 +2,8 @@ module TheCity
 
   class UserBarcode < ApiObject
 
-    tc_attr_accessor :id, 
-                     :barcode,
+    tc_attr_accessor :barcode,
+                     :id, 
                      :created_at
 
     # Constructor.

@@ -2,8 +2,8 @@ module TheCity
 
   class MetricMeasurement < ApiObject
 
-    tc_attr_accessor :id, 
-                     :created_at, 
+    tc_attr_accessor :created_at, 
+                     :id, 
                      :value
 
 

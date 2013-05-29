@@ -2,11 +2,12 @@ module TheCity
 
   class GroupExport < ApiObject
 
-    tc_attr_accessor :id, 
-                     :group_id,
-                     :state,
+    tc_attr_accessor :created_at,
                      :authenticated_s3_url,
-                     :created_at
+                     :id, 
+                     :state
+                     
+                     
 
 
     # Loads the group export by the specified ID.

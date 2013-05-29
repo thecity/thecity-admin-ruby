@@ -4,17 +4,18 @@ module TheCity
 
     tc_attr_accessor :city, 
                      :created_at, 
-                     :id, 
                      :latitude, 
-                     :location_type, 
-                     :longitude, 
-                     :privacy, 
-                     :state, 
-                     :street, 
                      :updated_at, 
+                     :zipcode,
+                     :id,
+                     :street, 
+                     :street2, 
+                     :location_type, 
+                     :privacy, 
+                     :longitude, 
+                     :state, 
                      :group_id, 
-                     :zipcode
-
+                     :group_external_id
 
     # Constructor.
     #

@@ -1,12 +1,12 @@
 module TheCity
 
   class Metric < ApiObject
-    tc_attr_accessor :id,
-                     :name,
-                     :description,
+    tc_attr_accessor :name,
                      :category,
                      :subcategory,
-                     :is_percent         
+                     :id,
+                     :is_percent,                     
+                     :description
 
 
     # Loads the metric by the specified ID.

@@ -2,9 +2,9 @@ module TheCity
 
   class Skill < ApiObject
 
-    tc_attr_accessor :id, 
-                     :name,
-                     :created_at
+    tc_attr_accessor :name,
+                     :created_at,
+                     :id
 
     # Constructor.
     #

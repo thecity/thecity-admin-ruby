@@ -8,13 +8,14 @@ module TheCity
                  :reporting_user => "Reporting User", :resource_admin => "Resource Admin",
                  :support_admin => "Support Admin", :user_admin => "User Admin"}
 
-    tc_attr_accessor :author, 
-                     :author_id, 
+    tc_attr_accessor :created_at, 
                      :body,
-                     :created_at, 
-                     :id, 
+                     :author, 
                      :updated_at, 
-                     :visible_to                 
+                     :id, 
+                     :visible_to,
+                     :author_id, 
+                     :file_attachments                
 
     # Constructor.
     #

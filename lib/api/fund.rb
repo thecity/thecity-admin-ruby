@@ -1,19 +1,21 @@
 module TheCity
 
   class Fund < ApiObject
-    tc_attr_accessor :id,
+    tc_attr_accessor :givable,
+                     :pledge_inactive_date,                     
+                     :fund_state,
+                     :updated_at,
+                     :created_at,
+                     :pledge_state,
+                     :pledge_type,
+                     :campus_name,
                      :name,
                      :tax_deductible,
-                     :group_id,
-                     :fund_state,
-                     :pledge_type,
-                     :pledge_state,
-                     :pledge_inactive_date,
                      :pledge_description,
-                     :online_givable,
                      :external_id,
-                     :created_at,
-                     :updated_at
+                     :campus_id,
+                     :id
+
 
     # Loads the fund by the specified ID.
     #

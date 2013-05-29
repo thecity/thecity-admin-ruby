@@ -2,9 +2,9 @@ module TheCity
 
   class Tag < ApiObject
 
-    tc_attr_accessor :id,
-                     :name,
-                     :created_at
+    tc_attr_accessor :name,
+                     :created_at,
+                     :id
 
 
     # Loads the tag by the specified ID.

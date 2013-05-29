@@ -1,25 +1,19 @@
 module TheCity
 
   class Donation < ApiObject
-    tc_attr_accessor :id, 
-                     :user_id, 
-                     :fund_id, 
+    tc_attr_accessor :split_id,
+                     :external_id,
+                     :amount,
+                     :id, 
+                     :date,
+                     :note,
+                     :instrument, 
+                     :state, 
                      :batch_id,
-                     :amount, 
-                     :instrument_type, 
-                     :donation_state, 
-                     :donation_date, 
-                     :created_at, 
-                     :updated_at,
-                     :fund_name,
-                     :primary_campus_id,
-                     :user_name,
-                     :user_type,
-                     :user_api_url,
-                     :user_is_member,
-                     :spouse_id,
-                     :spouse_name,
-                     :spouse_is_member
+                     :user,
+                     :fund
+                     
+                     
 
     # Loads the donation by the specified ID.
     #

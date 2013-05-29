@@ -2,15 +2,16 @@ module TheCity
 
   class GroupRole < ApiObject
 
-    tc_attr_accessor :active, 
-                     :created_at, 
-                     :id, 
-                     :last_engaged, 
+    tc_attr_accessor :created_at,
                      :title, 
                      :user_api_url, 
+                     :id, 
+                     :user_type,
                      :user_id, 
+                     :last_engaged, 
                      :user_name, 
-                     :user_type
+                     :active 
+
 
 
     # Constructor.

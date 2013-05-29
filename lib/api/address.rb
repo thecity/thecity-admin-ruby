@@ -3,17 +3,21 @@ module TheCity
   class Address < ApiObject
 
     tc_attr_accessor :city, 
-                     :created_at, 
-                     :id, 
+                     :created_at,
                      :latitude, 
-                     :location_type, 
-                     :longitude, 
-                     :privacy, 
-                     :state, 
-                     :street, 
-                     :updated_at, 
+                     :updated_at,
+                     :zipcode,
                      :group_id, 
-                     :zipcode
+                     :group_external_id,
+                     :id, 
+                     :street,
+                     :street2, 
+                     :location_type, 
+                     :privacy, 
+                     :longitude, 
+                     :state
+
+
 
 
     # Loads the address by the specified ID.

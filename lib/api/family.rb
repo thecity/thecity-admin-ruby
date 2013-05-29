@@ -2,9 +2,9 @@ module TheCity
 
   class Family < ApiObject
 
-    tc_attr_accessor :id,
+    tc_attr_accessor :created_at,
                      :external_id,
-                     :created_at,
+                     :id,
                      :family_members
 
 
