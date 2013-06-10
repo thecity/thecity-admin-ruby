@@ -1,8 +1,8 @@
 require File.join(Dir.pwd, 'spec', 'spec_helper')
 
-describe 'Tag' do
+describe 'Skill' do
 
-  tag = FactoryGirl.attributes_for(:tag)
+  skill = FactoryGirl.attributes_for(:skill)
 
   before do
     simulate_connection_to_server
@@ -15,11 +15,11 @@ describe 'Tag' do
 
   context 'with valid params' do
     it 'will have an integer for an id' do
-      tag[:id].should be_a(Integer)
+      skill[:id].should be_a(Integer)
     end
 
     it 'will not have a blank name field' do
-      tag[:name].should_not be(nil)
+      skill[:name].should_not be(nil)
     end
   end
   
