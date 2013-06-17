@@ -15,6 +15,7 @@ module TheCity
     # @param group_export_id The ID of the group export to load.
     # @param options A hash of options for requesting data from the server.
     #                :: group_id is required    
+    #                :: user_type is optional. It can be "Users" or "OfflineUsers"
     #
     # Returns a new {GroupExport} object.
     def self.load_by_id(group_export_id, options = {})

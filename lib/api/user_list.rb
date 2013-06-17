@@ -1,10 +1,8 @@
 module TheCity
 
-  class UserList 
+  class UserList < ApiList
 
     include Enumerable
-
-    attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
     #
@@ -21,8 +19,8 @@ module TheCity
     #   UserList.new({:page => 2})
     #    
     def initialize(options = {}) 
-      options[:page] ||= 1
-      reader = options[:reader] || TheCity::UserListReader.new(options)      
+      @options[:page] ||= 1
+      reader = options[:reader] || TheCity::UserListReader.new(@options)      
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']
