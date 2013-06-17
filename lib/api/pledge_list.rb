@@ -4,9 +4,6 @@ module TheCity
 
     include Enumerable
 
-    attr_reader :total_entries, :total_pages, :per_page, :current_page
-
-
     # Constructor.
     #
     # @param options A hash of options for loading the list.

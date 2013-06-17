@@ -1,10 +1,8 @@
 module TheCity
 
-  class UserAddressList 
+  class UserAddressList < ApiList
 
     include Enumerable
-
-    attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
     #

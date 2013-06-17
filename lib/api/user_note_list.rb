@@ -1,10 +1,8 @@
 module TheCity
 
-  class UserNoteList 
+  class UserNoteList < ApiList
 
     include Enumerable
-
-    attr_reader :total_entries, :total_pages, :per_page, :current_page
 
     # Constructor.
     #

@@ -19,9 +19,10 @@ module TheCity
     #   UserList.new({:page => 2})
     #    
     def initialize(options = {}) 
+      @options = options.clone
       @options[:page] ||= 1
-      reader = options[:reader] || TheCity::UserListReader.new(@options)      
-      @json_data = reader.load_feed
+      @options[:reader] = TheCity::UserListReader.new(@options) if @options[:reader].nil? 
+      @json_data = @options[:reader].load_feed
 
       @total_entries = @json_data['total_entries']
       @total_pages = @json_data['total_pages']
