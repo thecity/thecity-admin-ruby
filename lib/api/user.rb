@@ -42,7 +42,9 @@ module TheCity
                      :external_id_3,
                      :middle,
                      :email,
-                     :marital_status  
+                     :marital_status,
+                     :family_id,
+                     :family_role
 
 
     # Loads the user by the specified ID.

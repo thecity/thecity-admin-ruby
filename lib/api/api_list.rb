@@ -11,11 +11,18 @@ module TheCity
       self.new(options)
     end
 
+    # Checks if there is a next page.
+    #
+    # @return true for yes, false for no.
+    def next_page?
+      @current_page < @total_pages
+    end
+
     # Gets the next page of results.
     # 
     # @return [UserList] or nil if there are no more pages.
     def next_page
-      return nil if @current_page == @total_pages
+      return nil unless next_page?
       self.class.new( @options.merge({:page => @options[:page]+1}) )
     end
 
@@ -23,7 +30,7 @@ module TheCity
     # 
     # @return true on success or otherwise false.
     def next_page!
-      return false if @current_page == @total_pages
+      return false unless next_page?
 
       @options[:page] += 1
       @options[:reader] = @options[:reader].class.new(@options)
