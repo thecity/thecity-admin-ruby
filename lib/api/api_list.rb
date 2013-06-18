@@ -7,7 +7,6 @@ module TheCity
     attr_reader :total_entries, :total_pages, :per_page, :current_page
     
     def self.load(options = {}) 
-      @reader = nil
       self.new(options)
     end
 
