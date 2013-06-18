@@ -43,18 +43,23 @@ module TheCity
                      :middle,
                      :email,
                      :marital_status,
-                     :family_id,
-                     :family_role
+
+                     :addresses, # include_addresses
+
+                     :family_id,         # include_family
+                     :family_role,       # include_family
+                     :external_family_id # include_family
 
 
     # Loads the user by the specified ID.
     #
     # @param user_id The ID of the user to load.
+    # @param options (optional) Options for including more information.
     #
     # Returns a new {User} object.
-    def self.load_by_id(user_id)
-      reader = UserReader.new(user_id)
-      self.new(reader.load_feed)
+    def self.load_by_id(user_id, options = {})
+      reader = UserReader.new(user_id, options)
+      self.new(reader.load_feed, options)
     rescue
       nil      
     end       
@@ -68,7 +73,10 @@ module TheCity
       @writer_object = UserWriter
       initialize_from_json_object(json_data) unless json_data.nil?
 
-      @address_list = nil
+      unless options[:include_addresses].nil?
+        @addresses = @addresses.collect { |addr| UserAddress.new(addr.merge({:user_id => self.id})) }
+      end
+
       @family_list = nil
       @note_list = nil
       @role_list = nil
@@ -79,30 +87,21 @@ module TheCity
     end
     
 
+    # The first with the nickname in parens if available.
+    #
+    # @return A string of the first name with the nickname if available.
+    def first_name_with_nickname
+      with_nickname = self.nickname.to_s.empty? ? nil : "(#{self.nickname})"
+      [self.first, with_nickname].compact.join(' ')
+    end
+
+
     # The first and last name of the user.
     #
     # @return A string of the full name
     def full_name
       use_name = self.nickname.to_s.empty? ? self.first : self.nickname
       [use_name, self.last].compact.join(' ')
-    end
-
-
-    # Address information.
-    #
-    # @param force_reload (optional) Data is cached on first call.  If data needs to be 
-    #                                reloaded from the server on a subsequent call then 
-    #                                a force reload is need.
-    #
-    # @return [UserAddressList]
-    def addresses(force_reload = false)
-      unless force_reload
-        return @address_list unless @address_list.nil?  
-      end
-      return nil unless self.id
-         
-      @address_list = UserAddressList.new({:user_id => self.id})
-      return @address_list
     end
 
 
