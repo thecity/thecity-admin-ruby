@@ -11,7 +11,7 @@ module TheCity
     def initialize(user_id, options = {}, cacher = nil)
       #@class_key = "users_#{user_id}"   
       @url_data_path = "/users/#{user_id}"
-      @url_data_params = {:include_custom_fields => true}
+      @url_data_params = options
       
       # The object to store and load the cache.
       @cacher = cacher unless cacher.nil?    
