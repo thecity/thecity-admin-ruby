@@ -56,6 +56,12 @@ module TheCity
       end
     end
 
+    # Convert amount to cents.
+    #
+    # @return Amount in cents.
+    def amount_cents 
+      (self.amount.to_f * 100).round.to_i
+    end
   end
 
 end
