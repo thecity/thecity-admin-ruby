@@ -21,8 +21,9 @@ module TheCity
     #   UserProcessAnswerList.new({:user_id => 12345, :process_id => 23456, :page => 2})
     #
     def initialize(options = {})
-      options[:page] ||= 1
-      reader = options[:reader] || TheCity::UserProcessAnswerListReader.new(options)
+      @options = options
+      @options[:page] ||= 1
+      reader = @options[:reader] || TheCity::UserProcessAnswerListReader.new(options)
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']

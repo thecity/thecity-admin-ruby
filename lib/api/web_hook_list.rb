@@ -19,8 +19,9 @@ module TheCity
     #   UserSkillList.new({:page => 2})
     #    
     def initialize(options = {}) 
-      options[:page] ||= 1
-      reader = options[:reader] || TheCity::WebHookListReader.new(options)  
+      @options = options
+      @options[:page] ||= 1
+      reader = @options[:reader] || TheCity::WebHookListReader.new(options)  
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']

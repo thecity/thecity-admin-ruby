@@ -1,6 +1,6 @@
 module TheCity
 
-  class UserFamilyList 
+  class UserFamilyList < ApiList
 
     include Enumerable
 
@@ -22,8 +22,9 @@ module TheCity
     #   UserFamilyList.new({:user_id => 12345, :page => 2})
     #    
     def initialize(options = {}) 
-      options[:page] ||= 1
-      reader = options[:reader] || TheCity::UserFamilyListReader.new(options)
+      @options = options
+      @options[:page] ||= 1
+      reader = @options[:reader] || TheCity::UserFamilyListReader.new(options)
       @json_data = reader.load_feed
 
       @id = @json_data['id']

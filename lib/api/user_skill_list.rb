@@ -20,8 +20,9 @@ module TheCity
     #   UserSkillList.new({:user_id => 12345, :page => 2})
     #    
     def initialize(options = {}) 
-      options[:page] ||= 1
-      reader = options[:reader] || TheCity::UserSkillListReader.new(options)  
+      @options = options
+      @options[:page] ||= 1
+      reader = @options[:reader] || TheCity::UserSkillListReader.new(options)  
       @json_data = reader.load_feed
 
       @user_id = options[:user_id] || nil

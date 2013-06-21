@@ -20,7 +20,8 @@ module TheCity
     #   InvitationList.new({:group_id => 12345, :page => 2})
     #    
     def initialize(options = {}) 
-      reader = options[:reader] || TheCity::InvitationListReader.new(options)  
+      @options = options
+      reader = @options[:reader] || TheCity::InvitationListReader.new(options)  
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']

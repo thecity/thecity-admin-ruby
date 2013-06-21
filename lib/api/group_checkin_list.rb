@@ -20,7 +20,8 @@ module TheCity
     #   GroupCheckinList.new({:group_id => 12345, :page => 2})
     #    
     def initialize(options = {}) 
-      reader = options[:reader] || TheCity::GroupCheckinListReader.new(options)    
+      @options = options
+      reader = @options[:reader] || TheCity::GroupCheckinListReader.new(options)    
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']

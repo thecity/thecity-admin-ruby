@@ -1,6 +1,6 @@
 module TheCity
 
-  class PledgeList 
+  class PledgeList < ApiList
 
     include Enumerable
 
@@ -20,8 +20,9 @@ module TheCity
     #   PledgeList.new({:page => 2})
     #    
     def initialize(options = {}) 
-      options[:page] ||= 1
-      reader = options[:reader] || TheCity::PledgeListReader.new(options)   
+      @options = options
+      @options[:page] ||= 1
+      reader = @options[:reader] || TheCity::PledgeListReader.new(options)   
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']

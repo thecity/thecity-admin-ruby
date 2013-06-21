@@ -19,8 +19,9 @@ module TheCity
     #   TagList.new({:page => 2})
     #    
     def initialize(options = {}) 
-      options[:page] ||= 1
-      reader = options[:reader] || TheCity::TagListReader.new(options)
+      @options = options
+      @options[:page] ||= 1
+      reader = @options[:reader] || TheCity::TagListReader.new(options)
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']

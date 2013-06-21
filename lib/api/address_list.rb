@@ -19,7 +19,8 @@ module TheCity
     #   AddressList.new({:page => 2})
     #    
     def initialize(options = {}) 
-      reader = options[:reader] || TheCity::AddressListReader.new(options)    
+      @options = options
+      reader = @options[:reader] || TheCity::AddressListReader.new(options)    
       @json_data = reader.load_feed
 
       @total_entries = @json_data['total_entries']
