@@ -24,8 +24,8 @@ module TheCity
     def initialize(options = {}) 
       @options = options
       @options[:page] ||= 1
-      reader = @options[:reader] || TheCity::UserFamilyListReader.new(options)
-      @json_data = reader.load_feed
+      @options[:reader] = TheCity::UserFamilyListReader.new(@options) if @options[:reader].nil?
+      @json_data = @options[:reader].load_feed 
 
       @id = @json_data['id']
       @created_at = @json_data['created_at']

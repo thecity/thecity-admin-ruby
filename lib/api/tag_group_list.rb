@@ -21,8 +21,8 @@ module TheCity
     def initialize(options = {}) 
       @options = options
       @options[:page] ||= 1
-      reader = @options[:reader] || TheCity::TagGroupListReader.new(options)
-      @json_data = reader.load_feed
+      @options[:reader] = TheCity::TagGroupListReader.new(@options) if @options[:reader].nil?
+      @json_data = @options[:reader].load_feed 
 
       @total_entries = @json_data['total_entries']
       @total_pages = @json_data['total_pages']

@@ -29,9 +29,10 @@ module TheCity
     #   MetricList.new({:page => 2, :filter => :contact_updated_in_the_last_2_weeks})
     #
     def initialize(options = {}) 
-      options[:page] ||= 1
-      reader = options[:reader] || TheCity::MetricListReader.new(options)  
-      @json_data = reader.load_feed
+      @options = options
+      @options[:page] ||= 1
+      @options[:reader] = TheCity::MetricListReader.new(@options) if @options[:reader].nil?
+      @json_data = @options[:reader].load_feed 
 
       @total_entries = @json_data['total_entries']
       @total_pages = @json_data['total_pages']
