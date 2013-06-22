@@ -4,14 +4,15 @@ module TheCity
 
     # Constructor.
     #
-    # @param page The skill id to get the users for.
-    # @param page The page number to get.  Default is 1.
     # @param options A hash of options for requesting data from the server.
+    #                :: skill_id is required
     # @param [CacheAdapter] cacher (optional) The cacher to be used to cache data.
-    def initialize(skill_id, page = 1, options = {}, cacher = nil) 
+    def initialize(options = {}, cacher = nil) 
+      options[:page] ||= 1
+      skill_id = options.delete(:skill_id)
       #@class_key = "skilled_user_list_#{page}"   
       @url_data_path = "/skills/#{skill_id}/users"
-      @url_data_params = {:page => page}
+      @url_data_params = options
       
       # The object to store and load the cache.
       @cacher = cacher unless cacher.nil?    
