@@ -12,10 +12,15 @@ module TheCity
 
       #@class_key = "pledge_list_#{options[:page]}_{some_kind_of_md5_thing_here}"  
       @url_data_path = "/funds"
-      @url_data_params = options
+      @url_data_params = white_list_options(options)
       
       # The object to store and load the cache.
       @cacher = cacher unless cacher.nil?    
+    end
+
+    def white_list_options
+      white_list = [:page]
+      options.clone.delete_if { |key, value| !white_list.include?(key) }
     end
 
   end

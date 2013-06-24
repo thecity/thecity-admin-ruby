@@ -12,10 +12,15 @@ module TheCity
       user_id = options.delete(:user_id)
       #@class_key = "users_#{user_id}_notes_#{page}"   
       @url_data_path = "/users/#{user_id}/notes"
-      @url_data_params = options
+      @url_data_params = white_list_options(options)
       
       # The object to store and load the cache.
       @cacher = cacher unless cacher.nil?    
+    end
+
+    def white_list_options
+      white_list = [:page]
+      options.clone.delete_if { |key, value| !white_list.include?(key) }
     end
 
   end

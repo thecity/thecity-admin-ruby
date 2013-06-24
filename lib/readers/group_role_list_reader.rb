@@ -12,10 +12,15 @@ module TheCity
       group_id = options.delete(:group_id)
       #@class_key = "groups_#{group_id}_roles_#{page}"   
       @url_data_path = "/groups/#{group_id}/roles"
-      @url_data_params = options
+      @url_data_params = white_list_options(options)
       
       # The object to store and load the cache.
       @cacher = cacher unless cacher.nil?    
+    end
+
+    def white_list_options
+      white_list = [:page, :title, :include_inactive]
+      options.clone.delete_if { |key, value| !white_list.include?(key) }
     end
 
   end
