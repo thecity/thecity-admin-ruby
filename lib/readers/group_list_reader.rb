@@ -17,7 +17,7 @@ module TheCity
       @cacher = cacher unless cacher.nil?    
     end
 
-    def white_list_options
+    def white_list_options(options)
       white_list = [:page, :search, :under_group_id, :group_types, :include_inactive, :include_addresses, :include_composition, :include_user_ids]
       options.clone.delete_if { |key, value| !white_list.include?(key) }
     end
