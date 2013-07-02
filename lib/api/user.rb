@@ -73,9 +73,7 @@ module TheCity
       @writer_object = UserWriter
       initialize_from_json_object(json_data) unless json_data.nil?
 
-      unless options[:include_addresses].nil?
-        @addresses = @addresses.collect { |addr| UserAddress.new(addr.merge({:user_id => self.id})) }
-      end
+      @addresses = @addresses.nil? ? [] : @addresses.collect { |addr| UserAddress.new(addr.merge({:user_id => self.id})) }
 
       @family_list = nil
       @note_list = nil

@@ -11,6 +11,7 @@ module TheCity
                      :privacy, 
                      :state, 
                      :street, 
+                     :street2,
                      :updated_at, 
                      :group_id, 
                      :zipcode
