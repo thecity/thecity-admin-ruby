@@ -43,7 +43,7 @@ module TheCity
 
     # This method is needed for Enumerable.
     def each &block
-      @json_data['measurements'].each{ |measurement| yield( MatricMeasurement.new(measurement) )}
+      @json_data['measurements'].each{ |measurement| yield( MetricMeasurement.new(measurement) )}
     end    
   
     # Alias the count method
