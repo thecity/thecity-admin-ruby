@@ -23,11 +23,23 @@ else
   puts "Metrices: #{metric_list.count}"
 end
 
-measurement_list = TheCity::MetricMeasurementList.new({:metric_id => metric_list[0].id})
+
+# The next line is the same as: TheCity::MetricMeasurementList.new({:metric_id => metric_list[0].id})
+measurement_list = metric_list[0].measurements 
 if metric_list.empty?
   puts "No measurements in list"
 else
   puts "Measurements: #{measurement_list.count}"
+end
+
+
+# The next line is the same as: TheCity::MetricMeasurementValues.new({:metric_id => metric_list[0].id})
+values = metric_list[0].measurement_values
+if values.empty?
+  puts "No values returned"
+else
+  puts "Measurement values: #{values.count}"
+  values.each_with_index { |value, indx| puts "#{indx+1}) #{value}" }
 end
 
 puts "####################################"

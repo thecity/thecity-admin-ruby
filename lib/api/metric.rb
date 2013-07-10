@@ -32,17 +32,29 @@ module TheCity
     end
 
 
-    # Address information.
+    # Measurement information.
     #
-    # @return [UserAddressList]
+    # @return [MetricMeasurementList]
     def measurements
       return @measurement_list unless @measurement_list.nil?  
       return nil unless self.id
-
-      reader = MetricMeasurementListReader.new(self.id)    
-      @measurement_list = MetricMeasurementList.new(reader)
+ 
+      @measurement_list = MetricMeasurementList.new({:metric_id => self.id})
       return @measurement_list
     end
+
+
+
+    # Measurement values list information.
+    #
+    # @return [MetricMeasurementValues]
+    def measurement_values
+      return @measurement_values unless @measurement_values.nil?  
+      return nil unless self.id
+ 
+      @measurement_values = MetricMeasurementValues.new({:metric_id => self.id})
+      return @measurement_values
+    end    
   end
 
 end
