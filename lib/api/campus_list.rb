@@ -47,7 +47,7 @@ module TheCity
     #
     # @return [Group]
     def [](index)
-      Group.new( @json_data['campuses'][index] ) if @json_data['campuses'][index]
+      Campus.new( @json_data['campuses'][index] ) if @json_data['campuses'][index]
     end
 
 
