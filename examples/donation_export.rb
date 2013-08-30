@@ -5,12 +5,6 @@
 # @authors Robbie Lieb <robbie@onthecity.org>, Wes Hays <wes@onthecity.org>
 # ******************************************* 
 
-TCA_ENV = 'development' 
-THE_CITY_ADMIN_PATH = 'http://api.devthecity.org:9292' 
-key = '66c59e2ee24553e7237259e30b4c17365681b95c'
-token = 'a9ae4af3c3e80102'
-
-
 require 'ruby-debug'
 require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 
