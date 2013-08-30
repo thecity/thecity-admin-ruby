@@ -22,7 +22,7 @@ module TheCity
     def initialize(options = {}) 
       @options = options
       @options[:page] ||= 1
-      @options[:per_page] ||= 200
+      @options[:per_page] ||= 50
       @options[:reader] = TheCity::DonationListReader.new(@options) if @options[:reader].nil?
       @json_data = @options[:reader].load_feed
 
