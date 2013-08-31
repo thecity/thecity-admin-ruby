@@ -26,7 +26,7 @@ module TheCity
     end
 
     def home_address?
-      self.location_type.downcase == 'home'
+      self.location_type.to_s.downcase == 'home'
     end
     
   end
