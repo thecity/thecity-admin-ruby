@@ -14,7 +14,7 @@ module TheCity
     #
     # Returns a new {Family} object.
     def self.load_by_id(family_id)
-      reader = FamilyReader.new(family_id)
+      reader = FamilyReader.new({:id => family_id})
       self.new(reader.load_feed)
     rescue
       nil
