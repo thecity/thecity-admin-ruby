@@ -1,7 +1,7 @@
 # *******************************************
 # This is a demo file to show usage.
 #
-# @package TheCity::Admin
+# @package TheCityAdmin::Admin
 # @authors Robbie Lieb <robbie@onthecity.org>, Wes Hays <wes@onthecity.org>
 # ******************************************* 
 
@@ -11,12 +11,12 @@ require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 require File.dirname(__FILE__) + '/city_keys.rb'
 include CityKeys
 
-TheCity::AdminApi.connect(KEY, TOKEN)
+TheCityAdmin::AdminApi.connect(KEY, TOKEN)
 
 
 puts "------------------------------------"
 
-barcode = TheCity::Barcode.load_by_id(12345)
+barcode = TheCityAdmin::Barcode.load_by_id(12345)
 if barcode.nil?
   puts 'Barcode not found'
 else
@@ -26,7 +26,7 @@ end
 
 puts "------------------------------------"
 
-checkin_list = TheCity::CheckinList.new
+checkin_list = TheCityAdmin::CheckinList.new
 # if checkin_list.empty?
 #   puts "No checkins in list"
 # else
@@ -35,7 +35,7 @@ checkin_list = TheCity::CheckinList.new
 
 # checkin = checkin_list[0]
 
-# checkin2 = TheCity::Checkin.load_by_id(checkin.id)
+# checkin2 = TheCityAdmin::Checkin.load_by_id(checkin.id)
 # if checkin2.nil?
 #   puts 'Checkin not found'
 # else

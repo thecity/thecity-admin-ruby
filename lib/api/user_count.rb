@@ -20,7 +20,7 @@ module TheCityAdmin
     #   UserCount.new({:filter => :created_in_the_last_7_Days})
     #    
     def initialize(options = {})
-      reader = options[:reader] || TheCity::UserCountReader.new(options)
+      reader = options[:reader] || TheCityAdmin::UserCountReader.new(options)
       @json_data = reader.load_feed    
       self.count = @json_data['count']
       self.filter = @json_data['filter']

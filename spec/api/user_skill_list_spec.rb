@@ -19,7 +19,7 @@ describe 'UserSkillList' do
       :skills => [FactoryGirl.attributes_for(:user_skill)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    skill_list = TheCity::UserSkillList.new({:user_id => user_id})
+    skill_list = TheCityAdmin::UserSkillList.new({:user_id => user_id})
 
     skill = skill_list[0]
     skill.name.should == "Teaching-Curriculum"
@@ -34,7 +34,7 @@ describe 'UserSkillList' do
       :skills => []
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    skill_list = TheCity::UserSkillList.new({:user_id => user_id})
+    skill_list = TheCityAdmin::UserSkillList.new({:user_id => user_id})
 
     skill_list.empty?.should be_true
   end
@@ -49,7 +49,7 @@ describe 'UserSkillList' do
       :skills => [FactoryGirl.attributes_for(:user_skill)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    skill_list = TheCity::UserSkillList.new({:user_id => user_id, :page => page})
+    skill_list = TheCityAdmin::UserSkillList.new({:user_id => user_id, :page => page})
 
     skill = skill_list[0]
     skill.name.should == "Teaching-Curriculum"
@@ -64,7 +64,7 @@ describe 'UserSkillList' do
       :skills => [FactoryGirl.attributes_for(:user_skill)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    skill_list = TheCity::UserSkillList.new({:user_id => user_id})
+    skill_list = TheCityAdmin::UserSkillList.new({:user_id => user_id})
 
     skills = []
     skill_list.each { |skill| skills << skill.name }
@@ -80,7 +80,7 @@ describe 'UserSkillList' do
       :skills => [FactoryGirl.attributes_for(:user_skill)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    skill_list = TheCity::UserSkillList.new({:user_id => user_id})
+    skill_list = TheCityAdmin::UserSkillList.new({:user_id => user_id})
 
     skills = skill_list.collect { |skill| skill.name }
     skills.should == ["Teaching-Curriculum"]

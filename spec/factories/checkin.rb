@@ -1,7 +1,7 @@
 module TheCityAdmin
   FactoryGirl.define do
   
-    factory :checkin, :class => TheCity::Checkin do
+    factory :checkin, :class => TheCityAdmin::Checkin do
       #group {"name" => "Third Grade", "external_id" => nil, "id" => 494538351}  
       checked_out_by_user nil 
       special_instructions "No snacks!" 

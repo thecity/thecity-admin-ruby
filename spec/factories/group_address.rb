@@ -1,7 +1,7 @@
 module TheCityAdmin
   FactoryGirl.define do
   
-    factory :group_address, :class => TheCity::GroupAddress do
+    factory :group_address, :class => TheCityAdmin::GroupAddress do
       city "Sammamish" 
       created_at "04/30/2012 11:54 PM (UTC)" 
       latitude 47.60918 

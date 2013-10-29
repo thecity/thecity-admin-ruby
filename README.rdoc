@@ -23,7 +23,7 @@ Add your church's City API Token and API Key to [RAILS_ROOT]/config/initializers
 
 Next you will need to initialize a connection
 
-    TheCity::AdminApi.connect(THECITY_KEY, THECITY_TOKEN)
+    TheCityAdmin::AdminApi.connect(THECITY_KEY, THECITY_TOKEN)
 
 
 

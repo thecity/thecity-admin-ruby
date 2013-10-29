@@ -7,7 +7,7 @@ module TheCityAdmin
 
     # Constructor.
     def initialize
-      reader = TheCity::ChurchReader.new 
+      reader = TheCityAdmin::ChurchReader.new 
       json_data = reader.load_feed
       initialize_from_json_object(json_data)
     end

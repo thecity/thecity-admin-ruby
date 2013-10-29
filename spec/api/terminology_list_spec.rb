@@ -14,7 +14,7 @@ describe 'TerminologyList' do
   it 'should pass if terminology list attribute is not specifed' do
     request_data = FactoryGirl.attributes_for(:terminology_list).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    terminology_list = TheCity::TerminologyList.new
+    terminology_list = TheCityAdmin::TerminologyList.new
 
     terminology_list.labels.should == []    
   end
@@ -23,7 +23,7 @@ describe 'TerminologyList' do
   it 'should pass if terminology list is empty' do
     request_data = FactoryGirl.attributes_for(:terminology_list, :terminologies => []).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    terminology_list = TheCity::TerminologyList.new
+    terminology_list = TheCityAdmin::TerminologyList.new
 
     terminology_list.labels.should == []
   end
@@ -36,7 +36,7 @@ describe 'TerminologyList' do
       :labels => [FactoryGirl.attributes_for(:terminology)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    terminology_list = TheCity::TerminologyList.new({:page => 2})
+    terminology_list = TheCityAdmin::TerminologyList.new({:page => 2})
     terminology_list.labels.should == ['CG']
   end
 
@@ -48,7 +48,7 @@ describe 'TerminologyList' do
       :labels => [FactoryGirl.attributes_for(:terminology)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    terminology_list = TheCity::TerminologyList.new
+    terminology_list = TheCityAdmin::TerminologyList.new
 
     terminologies = []
     terminology_list.each { |terminology| terminologies << terminology.label }
@@ -63,7 +63,7 @@ describe 'TerminologyList' do
       :labels => [FactoryGirl.attributes_for(:terminology)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    terminology_list = TheCity::TerminologyList.new
+    terminology_list = TheCityAdmin::TerminologyList.new
 
     terminologies = terminology_list.collect { |terminology| terminology.label }
     terminology_list.labels.should == ['CG']

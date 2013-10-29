@@ -19,7 +19,7 @@ describe 'UserAddressList' do
       :addresses => [FactoryGirl.attributes_for(:user_address)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    address_list = TheCity::UserAddressList.new({:user_id => user_id})
+    address_list = TheCityAdmin::UserAddressList.new({:user_id => user_id})
 
     address = address_list[0]
     address.city.should == "Seattle"
@@ -34,7 +34,7 @@ describe 'UserAddressList' do
       :addresses => []
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    address_list = TheCity::UserAddressList.new({:user_id => user_id})
+    address_list = TheCityAdmin::UserAddressList.new({:user_id => user_id})
 
     address_list.empty?.should be_true
   end
@@ -49,7 +49,7 @@ describe 'UserAddressList' do
       :addresses => [FactoryGirl.attributes_for(:user_address)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    address_list = TheCity::UserAddressList.new({:user_id => user_id, :page => page})
+    address_list = TheCityAdmin::UserAddressList.new({:user_id => user_id, :page => page})
 
     address = address_list[0]
     address.city.should == "Seattle"
@@ -64,7 +64,7 @@ describe 'UserAddressList' do
       :addresses => [FactoryGirl.attributes_for(:user_address)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    address_list = TheCity::UserAddressList.new({:user_id => user_id})
+    address_list = TheCityAdmin::UserAddressList.new({:user_id => user_id})
 
     addresses = []
     address_list.each { |address| addresses << address.city }
@@ -80,7 +80,7 @@ describe 'UserAddressList' do
       :addresses => [FactoryGirl.attributes_for(:user_address)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    address_list = TheCity::UserAddressList.new({:user_id => user_id})
+    address_list = TheCityAdmin::UserAddressList.new({:user_id => user_id})
 
     addresses = address_list.collect { |address| address.city }
     addresses.should == ["Seattle"]

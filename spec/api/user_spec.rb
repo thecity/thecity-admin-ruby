@@ -18,7 +18,7 @@ describe 'User' do
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
 
-    user_list = TheCity::UserList.new
+    user_list = TheCityAdmin::UserList.new
 
     user = user_list[0]
     user.full_name.should == "Sammy Shepherd"
@@ -28,7 +28,7 @@ describe 'User' do
   it 'should pass retrieving a user' do
     request_data = FactoryGirl.attributes_for(:user).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    user = TheCity::User.load_by_id(123)
+    user = TheCityAdmin::User.load_by_id(123)
     user.full_name.should == "Sammy Shepherd"
   end  
 

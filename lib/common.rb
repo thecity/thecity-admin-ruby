@@ -50,12 +50,12 @@ module TheCityAdmin
     current_time = Time.now.to_i.to_s
     string_to_sign = current_time.to_s + method_request + url
 
-    unencoded_hmac = OpenSSL::HMAC.digest('sha256', TheCity::AdminApi.api_key, string_to_sign)
+    unencoded_hmac = OpenSSL::HMAC.digest('sha256', TheCityAdmin::AdminApi.api_key, string_to_sign)
     unescaped_hmac = Base64.encode64(unencoded_hmac).chomp
     hmac_signature = CGI.escape(unescaped_hmac)
 
     {'X-City-Sig' => hmac_signature,
-     'X-City-User-Token' => TheCity::AdminApi.api_token,
+     'X-City-User-Token' => TheCityAdmin::AdminApi.api_token,
      'X-City-Time' => current_time,
      'Accept' => 'application/vnd.thecity.admin.v1+json',
      'Content-Type' => 'application/json',

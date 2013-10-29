@@ -3,7 +3,7 @@
 #
 # Author:: Wes Hays <weshays@gbdev.com> 
 # Link:: https://github.com/weshays/admin-api-ruby
-# Package:: TheCity::Admin
+# Package:: TheCityAdmin::Admin
 
 
 require File.expand_path( File.dirname(__FILE__) + '/../lib/the_city_admin.rb')
@@ -27,5 +27,5 @@ end
 
 
 def simulate_connection_to_server
-  @the_city = TheCity::AdminApi.new('cf2903151e3213e66fd8080c7d8b65b1d6ccdd31', '5c88b32edda7653c')
+  @the_city = TheCityAdmin::AdminApi.new('cf2903151e3213e66fd8080c7d8b65b1d6ccdd31', '5c88b32edda7653c')
 end

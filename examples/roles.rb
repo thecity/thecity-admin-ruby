@@ -1,7 +1,7 @@
 # *******************************************
 # This is a demo file to show usage.
 #
-# @package TheCity::Admin
+# @package TheCityAdmin::Admin
 # @authors Robbie Lieb <robbie@onthecity.org>, Wes Hays <wes@onthecity.org>
 # ******************************************* 
 
@@ -11,16 +11,16 @@ require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 require File.dirname(__FILE__) + '/city_keys.rb'
 include CityKeys
 
-TheCity::AdminApi.connect(KEY, TOKEN)
+TheCityAdmin::AdminApi.connect(KEY, TOKEN)
 
 
 puts "------------------------------------"
 
 puts '--- USER ROLE SETUP ---'
-group_list = TheCity::GroupList.new
+group_list = TheCityAdmin::GroupList.new
 group = group_list.first
 
-offline_user = TheCity::User.new
+offline_user = TheCityAdmin::User.new
 offline_user.first = 'Wes'
 offline_user.last = 'Hays'
 offline_user.email = 'someguy@someplace.org'
@@ -36,9 +36,9 @@ else
   puts "Roles: #{offline_user.roles.size}"
 end
 
-role = TheCity::UserRole.new
-role.group_type = TheCity::UserRole::GroupTypes[:campus]
-role.title = TheCity::UserRole::Titles[:leader]
+role = TheCityAdmin::UserRole.new
+role.group_type = TheCityAdmin::UserRole::GroupTypes[:campus]
+role.title = TheCityAdmin::UserRole::Titles[:leader]
 role.user_id = offline_user.id
 role.group_id = group.id
 
@@ -52,7 +52,7 @@ puts '--- USER ROLE SETUP DONE ---'
 
 
 
-role_list = TheCity::RoleList.new
+role_list = TheCityAdmin::RoleList.new
 if role_list.empty?
   puts "No roles in list"
 else
