@@ -1,7 +1,7 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
   
-    factory :web_hook_list, :class => TheCity::WebHookList do
+    factory :web_hook_list, :class => TheCityAdmin::WebHookList do
       total_entries 0
       total_pages 0
       per_page 15

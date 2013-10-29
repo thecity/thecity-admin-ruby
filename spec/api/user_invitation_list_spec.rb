@@ -19,7 +19,7 @@ describe 'UserInvitationList' do
       :invitations => [FactoryGirl.attributes_for(:user_invitation)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    invitation_list = TheCity::UserInvitationList.new({:user_id => user_id})
+    invitation_list = TheCityAdmin::UserInvitationList.new({:user_id => user_id})
 
     invitation = invitation_list[0]
     invitation.source.should == "API Invite | Group A (17543) on 2012-02-06 at 16:54"
@@ -34,7 +34,7 @@ describe 'UserInvitationList' do
       :invitations => []
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    invitation_list = TheCity::UserInvitationList.new({:user_id => user_id})
+    invitation_list = TheCityAdmin::UserInvitationList.new({:user_id => user_id})
 
     invitation_list.empty?.should be_true
   end
@@ -49,7 +49,7 @@ describe 'UserInvitationList' do
       :invitations => [FactoryGirl.attributes_for(:user_invitation)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    invitation_list = TheCity::UserInvitationList.new({:user_id => user_id, :page => 2})
+    invitation_list = TheCityAdmin::UserInvitationList.new({:user_id => user_id, :page => 2})
 
     invitation = invitation_list[0]
     invitation.source.should == "API Invite | Group A (17543) on 2012-02-06 at 16:54"
@@ -64,7 +64,7 @@ describe 'UserInvitationList' do
       :invitations => [FactoryGirl.attributes_for(:user_invitation)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    invitation_list = TheCity::UserInvitationList.new({:user_id => user_id})
+    invitation_list = TheCityAdmin::UserInvitationList.new({:user_id => user_id})
 
     invitations = []
     invitation_list.each { |invitation| invitations << invitation.source }
@@ -80,7 +80,7 @@ describe 'UserInvitationList' do
       :invitations => [FactoryGirl.attributes_for(:user_invitation)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    invitation_list = TheCity::UserInvitationList.new({:user_id => user_id})
+    invitation_list = TheCityAdmin::UserInvitationList.new({:user_id => user_id})
 
     invitations = invitation_list.collect { |invitation| invitation.source }
     invitations.should == ["API Invite | Group A (17543) on 2012-02-06 at 16:54"]

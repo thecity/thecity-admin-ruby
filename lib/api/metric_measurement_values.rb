@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class MetricMeasurementValues < ApiObject
 
@@ -30,7 +30,7 @@ module TheCity
     #   MetricMeasurementValues.new({:metric_id => 12345})
     #    
     def initialize(options = {})
-      options[:reader] = TheCity::MetricMeasurementValuesReader.new(options) if options[:reader].nil?
+      options[:reader] = TheCityAdmin::MetricMeasurementValuesReader.new(options) if options[:reader].nil?
       @json_data = options[:reader].load_feed 
     end
     

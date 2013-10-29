@@ -1,7 +1,7 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
     
-    factory :user_role, :class => TheCity::UserRole do
+    factory :user_role, :class => TheCityAdmin::UserRole do
       group_name "The Group" 
       created_at "05/11/2009" 
       group_api_url "https://api.onthecity.org/admin/groups/1245" 

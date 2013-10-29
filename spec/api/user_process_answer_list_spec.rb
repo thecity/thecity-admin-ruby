@@ -17,7 +17,7 @@ describe 'UserProcessAnswerList' do
       :answers => [FactoryGirl.attributes_for(:user_process_answer)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    answer_list = TheCity::UserProcessAnswerList.new({:user_id => user_id, :process_id => process_id})
+    answer_list = TheCityAdmin::UserProcessAnswerList.new({:user_id => user_id, :process_id => process_id})
 
     answer = answer_list[0]
     answer.question_id.should == 316
@@ -35,7 +35,7 @@ describe 'UserProcessAnswerList' do
       :answers => []
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    answer_list = TheCity::UserProcessAnswerList.new({:user_id => user_id, :process_id => process_id})
+    answer_list = TheCityAdmin::UserProcessAnswerList.new({:user_id => user_id, :process_id => process_id})
 
     answer_list.empty?.should be_true
   end
@@ -51,7 +51,7 @@ describe 'UserProcessAnswerList' do
       :answers => [FactoryGirl.attributes_for(:user_process_answer)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    answer_list = TheCity::UserProcessAnswerList.new({:user_id => user_id, :page => page})
+    answer_list = TheCityAdmin::UserProcessAnswerList.new({:user_id => user_id, :page => page})
     answer_list.current_page.should == 2
     answer_list.empty?.should be_false
 
@@ -68,7 +68,7 @@ describe 'UserProcessAnswerList' do
       :answers => [FactoryGirl.attributes_for(:user_process_answer)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    answer_list = TheCity::UserProcessAnswerList.new({:user_id => user_id})
+    answer_list = TheCityAdmin::UserProcessAnswerList.new({:user_id => user_id})
 
     answers = answer_list.map(&:answer)
     answers.should == %w(bar)

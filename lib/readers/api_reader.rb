@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   # This adapter is the standard for all loading objects.
   class ApiReader
@@ -16,7 +16,7 @@ module TheCity
       #   data = @cacher.get_data( @class_key )
       # else
         @url_data_params ||= {}
-        response = TheCity::admin_request(:get, @url_data_path, @url_data_params)
+        response = TheCityAdmin::admin_request(:get, @url_data_path, @url_data_params)
         data = JSON.parse(response.body)
         @headers = response.headers
         @cacher.save_data(@class_key, data) unless @cacher.nil?

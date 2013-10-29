@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   # This class is the base class for all TheCity objects and is meant to be inherited.
   #

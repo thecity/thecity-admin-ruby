@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   require THECITY_LIB_DIR + '/exceptions.rb'
 

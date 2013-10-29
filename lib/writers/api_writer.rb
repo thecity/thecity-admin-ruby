@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   # This adapter is the standard for all saving objects.
   class ApiWriter
@@ -22,7 +22,7 @@ module TheCity
       end
 
       begin
-        response = TheCity::admin_request(@url_action, @url_data_path, nil, @url_data_params.to_json)   
+        response = TheCityAdmin::admin_request(@url_action, @url_data_path, nil, @url_data_params.to_json)   
         @response_code = response.code
         # No content but is a success
         success = response.code == 204 ? {'success' => true} : JSON.parse(response.body)  
@@ -49,7 +49,7 @@ module TheCity
       begin
         # @url_data_path should be the same as :put if this object is already
         # setup and mapped to an object that exists
-        response = TheCity::admin_request(:delete, @url_data_delete_path)           
+        response = TheCityAdmin::admin_request(:delete, @url_data_delete_path)           
         success = response.code == 204 ? true : false # No content but is a success
       rescue Exception => e  
         @error_messages = e.message.split(',')

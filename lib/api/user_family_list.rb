@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class UserFamilyList < ApiList
 
@@ -24,7 +24,7 @@ module TheCity
     def initialize(options = {}) 
       @options = options
       @options[:page] ||= 1
-      @options[:reader] = TheCity::UserFamilyListReader.new(@options) if @options[:reader].nil?
+      @options[:reader] = TheCityAdmin::UserFamilyListReader.new(@options) if @options[:reader].nil?
       @json_data = @options[:reader].load_feed 
 
       @id = @json_data['id']

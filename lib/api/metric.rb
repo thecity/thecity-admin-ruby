@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class Metric < ApiObject
     tc_attr_accessor :id,

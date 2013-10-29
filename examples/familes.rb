@@ -1,7 +1,7 @@
 # *******************************************
 # This is a demo file to show usage.
 #
-# @package TheCity::Admin
+# @package TheCityAdmin::Admin
 # @authors Robbie Lieb <robbie@onthecity.org>, Wes Hays <wes@onthecity.org>
 # ******************************************* 
 
@@ -11,34 +11,34 @@ require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 require File.dirname(__FILE__) + '/city_keys.rb'
 include CityKeys
 
-TheCity::AdminApi.connect(KEY, TOKEN)
+TheCityAdmin::AdminApi.connect(KEY, TOKEN)
 
 
 puts "------------------------------------"
 
-user_list = TheCity::UserList.new
+user_list = TheCityAdmin::UserList.new
 user1 = user_list[0]
 # user2 = user_list[1]
 
-family = TheCity::Family.new 
+family = TheCityAdmin::Family.new 
 family.external_id = 'family123'
 
-member1 = TheCity::FamilyMember.new
+member1 = TheCityAdmin::FamilyMember.new
 member1.user_id = user1.id
 member1.name = user1.full_name
 member1.email = user1.email
 member1.external_id_1 = 'weshays123'
 member1.birthdate = user1.birthdate
-member1.family_role = TheCity::FamilyMember::Roles[:spouse]
+member1.family_role = TheCityAdmin::FamilyMember::Roles[:spouse]
 family.add_family_member(member1)
 
-# member2 = TheCity::FamilyMember.new
+# member2 = TheCityAdmin::FamilyMember.new
 # member2.user_id = user2.id
 # member2.name = user2.full_name
 # member2.email = user2.email
 # member2.external_id_1 = 'annahays123'
 # member2.birthdate = user1.birthdate
-# member2.family_role = TheCity::FamilyMember::Roles[:spouse]
+# member2.family_role = TheCityAdmin::FamilyMember::Roles[:spouse]
 # family.add_family_member(member2)
 
 if family.save
@@ -49,7 +49,7 @@ else
 end
 
 
-#family2 = TheCity::Family.load_by_id(398768686)
+#family2 = TheCityAdmin::Family.load_by_id(398768686)
 
 # if family.nil?
 #   puts "Family found with #{family.members.size} members"

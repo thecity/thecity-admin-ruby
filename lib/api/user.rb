@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class User < ApiObject
     Gender = {:male => 'Male', :female => 'Female'}

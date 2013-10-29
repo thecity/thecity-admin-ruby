@@ -18,7 +18,7 @@ describe 'UserProcessList' do
       :processes => [FactoryGirl.attributes_for(:user_process)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    process_list = TheCity::UserProcessList.new({:user_id => user_id})
+    process_list = TheCityAdmin::UserProcessList.new({:user_id => user_id})
 
     process = process_list[0]
     process.name.should == "Member Process"
@@ -33,7 +33,7 @@ describe 'UserProcessList' do
       :processes => []
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    process_list = TheCity::UserProcessList.new({:user_id => user_id})
+    process_list = TheCityAdmin::UserProcessList.new({:user_id => user_id})
 
     process_list.empty?.should be_true
   end
@@ -48,7 +48,7 @@ describe 'UserProcessList' do
       :processes => [FactoryGirl.attributes_for(:user_process)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    process_list = TheCity::UserProcessList.new({:user_id => user_id, :page => page})
+    process_list = TheCityAdmin::UserProcessList.new({:user_id => user_id, :page => page})
 
     process = process_list[0]
     process.name.should == "Member Process"
@@ -63,7 +63,7 @@ describe 'UserProcessList' do
       :processes => [FactoryGirl.attributes_for(:user_process)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    process_list = TheCity::UserProcessList.new({:user_id => user_id})
+    process_list = TheCityAdmin::UserProcessList.new({:user_id => user_id})
 
     processes = []
     process_list.each { |process| processes << process.name }
@@ -79,7 +79,7 @@ describe 'UserProcessList' do
       :processes => [FactoryGirl.attributes_for(:user_process)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    process_list = TheCity::UserProcessList.new({:user_id => user_id})
+    process_list = TheCityAdmin::UserProcessList.new({:user_id => user_id})
 
     processes = process_list.collect { |process| process.name }
     processes.should == ["Member Process"]

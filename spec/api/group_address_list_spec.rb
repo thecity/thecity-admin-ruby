@@ -19,7 +19,7 @@ describe 'GroupAddressList' do
       :addresses => [FactoryGirl.attributes_for(:group_address)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    address_list = TheCity::GroupAddressList.new({:group_id => group_id})
+    address_list = TheCityAdmin::GroupAddressList.new({:group_id => group_id})
 
     address = address_list[0]
     address.city.should == "Sammamish"
@@ -35,7 +35,7 @@ describe 'GroupAddressList' do
       :addresses => []
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    address_list = TheCity::GroupAddressList.new({:group_id => group_id})
+    address_list = TheCityAdmin::GroupAddressList.new({:group_id => group_id})
 
     address_list.empty?.should be_true
   end
@@ -50,7 +50,7 @@ describe 'GroupAddressList' do
       :addresses => [FactoryGirl.attributes_for(:group_address)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    address_list = TheCity::GroupAddressList.new({:group_id => group_id, :page => 2})
+    address_list = TheCityAdmin::GroupAddressList.new({:group_id => group_id, :page => 2})
 
     address = address_list[0]
     address.city.should == "Sammamish"
@@ -65,7 +65,7 @@ describe 'GroupAddressList' do
       :addresses => [FactoryGirl.attributes_for(:group_address)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    address_list = TheCity::GroupAddressList.new({:group_id => group_id})
+    address_list = TheCityAdmin::GroupAddressList.new({:group_id => group_id})
 
     addresses = []
     address_list.each { |address| addresses << address.city }
@@ -81,7 +81,7 @@ describe 'GroupAddressList' do
       :addresses => [FactoryGirl.attributes_for(:group_address)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    address_list = TheCity::GroupAddressList.new({:group_id => group_id})
+    address_list = TheCityAdmin::GroupAddressList.new({:group_id => group_id})
 
     addresses = address_list.collect { |address| address.city }
     addresses.should == ["Sammamish"]

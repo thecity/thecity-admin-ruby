@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class UserRoleList < ApiList
 
@@ -22,7 +22,7 @@ module TheCity
     def initialize(options = {}) 
       @options = options
       @options[:page] ||= 1
-      @options[:reader] = TheCity::UserRoleListReader.new(@options) if @options[:reader].nil?
+      @options[:reader] = TheCityAdmin::UserRoleListReader.new(@options) if @options[:reader].nil?
       @json_data = @options[:reader].load_feed 
 
       @user_id = options[:user_id] || nil

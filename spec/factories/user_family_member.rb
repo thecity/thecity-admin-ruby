@@ -1,7 +1,7 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
     
-    factory :user_family_member, :class => TheCity::UserFamilyMember do
+    factory :user_family_member, :class => TheCityAdmin::UserFamilyMember do
       name "Pastor Sam Shepherd" 
       admin_url "http://local.devthecity.org:3000/admin/users/946060874" 
       external_id_1 nil 

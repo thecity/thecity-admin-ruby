@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class Pledge < ApiObject
     tc_attr_accessor :id, 

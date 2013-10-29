@@ -5,7 +5,7 @@ describe 'TagWriter' do
   it 'should show connection error messages if server cannot be reached' do
     TheCity.stub(:admin_request) { raise TheCityExceptions::UnableToConnectToTheCity.new('Unable to connect to server') }
     tag_data = {:name => 'Cool People'}
-    tag = TheCity::Tag.new(tag_data)
+    tag = TheCityAdmin::Tag.new(tag_data)
     tag.id.should be_nil
     tag.save.should === false
     tag.id.should be_nil
@@ -17,7 +17,7 @@ describe 'TagWriter' do
     request_data = FactoryGirl.attributes_for(:tag, {:id => 12345}).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     tag_data = {:name => 'Cool People'}
-    tag = TheCity::Tag.new(tag_data)
+    tag = TheCityAdmin::Tag.new(tag_data)
     tag.id.should be_nil
     tag.save.should === true
     tag.id.should == 12345
@@ -27,7 +27,7 @@ describe 'TagWriter' do
   it 'should show error messages if save fails for new tag' do
     TheCity.stub(:admin_request) { raise TheCityExceptions::TheCityResponseError.new('tag already exists') }
     tag_data = {:name => 'Cool People'}
-    tag = TheCity::Tag.new(tag_data)
+    tag = TheCityAdmin::Tag.new(tag_data)
     tag.id.should be_nil
     tag.save.should === false
     tag.id.should be_nil
@@ -39,7 +39,7 @@ describe 'TagWriter' do
     request_data = FactoryGirl.attributes_for(:tag, {:id => 12345}).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
     tag_data = FactoryGirl.attributes_for(:tag, {:id => 12345})
-    tag = TheCity::Tag.new(tag_data)
+    tag = TheCityAdmin::Tag.new(tag_data)
     tag.id.should == 12345
     tag.save.should === true
     tag.id.should == 12345
@@ -49,7 +49,7 @@ describe 'TagWriter' do
   it 'should show error messages if save fails for existing tag' do
     TheCity.stub(:admin_request) { raise TheCityExceptions::TheCityResponseError.new('something bad happened') }
     tag_data = FactoryGirl.attributes_for(:tag, {:id => 12345})
-    tag = TheCity::Tag.new(tag_data)
+    tag = TheCityAdmin::Tag.new(tag_data)
     tag.id.should == 12345
     tag.save.should === false
     tag.id.should == 12345
@@ -60,7 +60,7 @@ describe 'TagWriter' do
   it 'should delete if data ID exists for the existing tag' do
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(204, '{}') )
     tag_data = FactoryGirl.attributes_for(:tag, {:id => 12345})
-    tag = TheCity::Tag.new(tag_data)
+    tag = TheCityAdmin::Tag.new(tag_data)
     tag.is_deleted?.should === false
     tag.delete
     tag.is_deleted?.should === true
@@ -70,7 +70,7 @@ describe 'TagWriter' do
   it 'should show error messages if data fails to be deleted' do
     TheCity.stub(:admin_request) { raise TheCityExceptions::TheCityResponseError.new('something bad happened') }
     tag_data = FactoryGirl.attributes_for(:tag, {:id => 12345})
-    tag = TheCity::Tag.new(tag_data)
+    tag = TheCityAdmin::Tag.new(tag_data)
     tag.is_deleted?.should === false
     tag.delete
     tag.is_deleted?.should === false

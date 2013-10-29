@@ -1,8 +1,8 @@
 
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
     
-    factory :user_note, :class => TheCity::UserNote do
+    factory :user_note, :class => TheCityAdmin::UserNote do
       created_at "05/08/2012" 
       body "Deaconship is complete" 
       author "Pastor Sam Shepherd" 

@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class DonationList < ApiList
 
@@ -23,7 +23,7 @@ module TheCity
       @options = options
       @options[:page] ||= 1
       @options[:per_page] ||= 50
-      @options[:reader] = TheCity::DonationListReader.new(@options) if @options[:reader].nil?
+      @options[:reader] = TheCityAdmin::DonationListReader.new(@options) if @options[:reader].nil?
       @json_data = @options[:reader].load_feed
 
       @total_entries = @json_data['total_entries']

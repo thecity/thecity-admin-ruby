@@ -1,7 +1,7 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
     
-    factory :web_hook, :class => TheCity::WebHook do
+    factory :web_hook, :class => TheCityAdmin::WebHook do
       id 1
       event 'create'
       object 'User' 

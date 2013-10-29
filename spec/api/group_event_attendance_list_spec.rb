@@ -19,7 +19,7 @@ describe 'GroupEventAttendanceList' do
       :event_attendances => [FactoryGirl.attributes_for(:group_event_attendance)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    attendance_list = TheCity::GroupEventAttendanceList.new({:group_id => group_id})
+    attendance_list = TheCityAdmin::GroupEventAttendanceList.new({:group_id => group_id})
 
     attendance = attendance_list[0]
     attendance.user.should == "Johnny Smith"
@@ -35,7 +35,7 @@ describe 'GroupEventAttendanceList' do
       :event_attendances => []
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    attendance_list = TheCity::GroupEventAttendanceList.new({:group_id => group_id})
+    attendance_list = TheCityAdmin::GroupEventAttendanceList.new({:group_id => group_id})
 
     attendance_list.empty?.should be_true
   end
@@ -50,7 +50,7 @@ describe 'GroupEventAttendanceList' do
       :event_attendances => [FactoryGirl.attributes_for(:group_event_attendance)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    attendance_list = TheCity::GroupEventAttendanceList.new({:group_id => group_id, :page => 2})
+    attendance_list = TheCityAdmin::GroupEventAttendanceList.new({:group_id => group_id, :page => 2})
 
     attendance = attendance_list[0]
     attendance.user.should == "Johnny Smith"
@@ -65,7 +65,7 @@ describe 'GroupEventAttendanceList' do
       :event_attendances => [FactoryGirl.attributes_for(:group_event_attendance)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    attendance_list = TheCity::GroupEventAttendanceList.new({:group_id => group_id})
+    attendance_list = TheCityAdmin::GroupEventAttendanceList.new({:group_id => group_id})
 
     attendances = []
     attendance_list.each { |attendance| attendances << attendance.user }
@@ -81,7 +81,7 @@ describe 'GroupEventAttendanceList' do
       :event_attendances => [FactoryGirl.attributes_for(:group_event_attendance)]
     }).to_json
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    attendance_list = TheCity::GroupEventAttendanceList.new({:group_id => group_id})
+    attendance_list = TheCityAdmin::GroupEventAttendanceList.new({:group_id => group_id})
 
     attendances = attendance_list.collect { |attendance| attendance.user }
     attendances.should == ["Johnny Smith"]

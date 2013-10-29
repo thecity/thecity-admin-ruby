@@ -1,7 +1,7 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
     
-    factory :terminology, :class => TheCity::Terminology do
+    factory :terminology, :class => TheCityAdmin::Terminology do
        term 'CG'
        label 'Life'
     end

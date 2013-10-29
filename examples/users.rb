@@ -1,7 +1,7 @@
 # *******************************************
 # This is a demo file to show usage.
 #
-# @package TheCity::Admin
+# @package TheCityAdmin::Admin
 # @authors Robbie Lieb <robbie@onthecity.org>, Wes Hays <wes@onthecity.org>
 # ******************************************* 
 
@@ -11,24 +11,24 @@ require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 require File.dirname(__FILE__) + '/city_keys.rb'
 include CityKeys
 
-TheCity::AdminApi.connect(KEY, TOKEN)
+TheCityAdmin::AdminApi.connect(KEY, TOKEN)
 
 
-user_list = TheCity::UserList.new
+user_list = TheCityAdmin::UserList.new
 
 user = user_list.first
 puts user.full_name
 
 
-# user_count = TheCity::UserCount.new
+# user_count = TheCityAdmin::UserCount.new
 # puts user_count.count
 # puts user_count.filter
 
-# user_count = TheCity::UserCount.new({:filter => :created_in_the_last_7_Days})
+# user_count = TheCityAdmin::UserCount.new({:filter => :created_in_the_last_7_Days})
 # puts user_count.count
 # puts user_count.filter
 
-offline_user = TheCity::User.new
+offline_user = TheCityAdmin::User.new
 offline_user.first = 'Wes'
 offline_user.last = 'Hays'
 offline_user.email = 'someguy@someplace.org'
@@ -49,7 +49,7 @@ else
   puts "Failed to create offline user: #{offline_user.error_messages.join(', ')}"
 end
 
-offline_user2 = TheCity::User.load_by_id(offline_user.id)
+offline_user2 = TheCityAdmin::User.load_by_id(offline_user.id)
 puts "Loaded user first name: #{offline_user2.first}::#{offline_user2.email}"
 
 if offline_user.delete 
@@ -67,7 +67,7 @@ end
 #   puts "Addresses: #{user.addresses.size}"
 # end
 
-# address = TheCity::UserAddress.new
+# address = TheCityAdmin::UserAddress.new
 # address.user_id = user.id
 # address.location_type = 'Work'
 # address.street = '445 S. Virginia St'
@@ -119,8 +119,8 @@ end
 #   puts "Admin privileges: #{user.admin_privileges.count}"
 # end
 
-# privilege = TheCity::UserAdminPrivilege.new
-# privilege.title = TheCity::UserAdminPrivilege::Permissions[:resource_admin]
+# privilege = TheCityAdmin::UserAdminPrivilege.new
+# privilege.title = TheCityAdmin::UserAdminPrivilege::Permissions[:resource_admin]
 # privilege.user_id = user.id
 
 # if privilege.save
@@ -152,10 +152,10 @@ end
 #   puts "Invitations: #{user.invitations.count}"
 # end
 
-# group_list = TheCity::GroupList.new
+# group_list = TheCityAdmin::GroupList.new
 # group = group_list.first
 
-# invitation = TheCity::UserInvitation.new
+# invitation = TheCityAdmin::UserInvitation.new
 # invitation.user_id = user.id
 # invitation.email = user.email
 # invitation.group_id = group.id
@@ -182,10 +182,10 @@ end
 # end
 
 
-# note = TheCity::UserNote.new
+# note = TheCityAdmin::UserNote.new
 # note.author_id = user.id
 # note.body = "Hello World"
-# note.visible_to = [TheCity::UserNote::VisibleTo[:process_user], TheCity::UserNote::VisibleTo[:resource_admin]]
+# note.visible_to = [TheCityAdmin::UserNote::VisibleTo[:process_user], TheCityAdmin::UserNote::VisibleTo[:resource_admin]]
 
 # if note.save
 #   puts "Note saved"
@@ -224,10 +224,10 @@ end
 
 # puts "------------------------------------"
 
-# group_list = TheCity::GroupList.new
+# group_list = TheCityAdmin::GroupList.new
 # group = group_list.first
 
-# offline_user = TheCity::User.new
+# offline_user = TheCityAdmin::User.new
 # offline_user.first = 'Wes'
 # offline_user.last = 'Hays'
 # offline_user.email = 'someguy@someplace.org'
@@ -243,9 +243,9 @@ end
 #   puts "Roles: #{offline_user.roles.size}"
 # end
 
-# role = TheCity::UserRole.new
-# role.group_type = TheCity::UserRole::GroupTypes[:campus]
-# role.title = TheCity::UserRole::Titles[:leader]
+# role = TheCityAdmin::UserRole.new
+# role.group_type = TheCityAdmin::UserRole::GroupTypes[:campus]
+# role.title = TheCityAdmin::UserRole::Titles[:leader]
 # role.user_id = offline_user.id
 # role.group_id = group.id
 
@@ -289,10 +289,10 @@ end
 #   puts "Skills: #{user.skills.size}"
 # end
 
-# skill_list = TheCity::SkillList.new
+# skill_list = TheCityAdmin::SkillList.new
 # skill = skill_list.first
 
-# user_skill = TheCity::UserSkill.new
+# user_skill = TheCityAdmin::UserSkill.new
 # user_skill.user_id = user.id
 # user_skill.skill_id = skill.id
 

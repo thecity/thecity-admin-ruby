@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class FamilyReader < ApiReader
 

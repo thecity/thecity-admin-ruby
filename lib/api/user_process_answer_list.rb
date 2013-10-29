@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class UserProcessAnswerList < ApiList
 
@@ -23,7 +23,7 @@ module TheCity
     def initialize(options = {})
       @options = options
       @options[:page] ||= 1
-      @options[:reader] = TheCity::UserProcessAnswerListReader.new(@options) if @options[:reader].nil?
+      @options[:reader] = TheCityAdmin::UserProcessAnswerListReader.new(@options) if @options[:reader].nil?
       @json_data = @options[:reader].load_feed 
 
       @total_entries = @json_data['total_entries']

@@ -1,7 +1,7 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
   
-    factory :group_checkin_list, :class => TheCity::GroupCheckinList do
+    factory :group_checkin_list, :class => TheCityAdmin::GroupCheckinList do
       total_entries 0
       total_pages 0
       per_page 15
