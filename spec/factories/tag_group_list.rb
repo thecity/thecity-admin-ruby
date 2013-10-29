@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
   
     factory :tag_group_list, :class => TheCity::TagGroupList do

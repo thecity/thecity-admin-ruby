@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
   
     factory :group_checkin_list, :class => TheCity::GroupCheckinList do

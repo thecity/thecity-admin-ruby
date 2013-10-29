@@ -1,5 +1,5 @@
 
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
     
     factory :user_note, :class => TheCity::UserNote do

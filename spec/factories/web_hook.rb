@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
     
     factory :web_hook, :class => TheCity::WebHook do

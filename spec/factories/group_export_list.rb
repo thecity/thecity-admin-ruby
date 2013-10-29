@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
   
     factory :group_export_list, :class => TheCity::GroupExportList do

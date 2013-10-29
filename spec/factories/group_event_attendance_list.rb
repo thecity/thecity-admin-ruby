@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
   
     factory :group_event_attendance_list, :class => TheCity::GroupEventAttendanceList do

@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
   
     factory :skilled_user_id_list, :class => TheCity::SkilledUserIdList do

@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
     
     factory :terminology, :class => TheCity::Terminology do

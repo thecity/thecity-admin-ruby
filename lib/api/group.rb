@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class Group < ApiObject
     tc_attr_accessor :campus_name,

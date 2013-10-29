@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class Fund < ApiObject
     tc_attr_accessor :id,

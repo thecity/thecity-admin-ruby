@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class Donation < ApiObject
     tc_attr_accessor :split_id,

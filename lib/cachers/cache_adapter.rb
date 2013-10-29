@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   # This adapter is the standard for all caching objects.
   class CacheAdapter

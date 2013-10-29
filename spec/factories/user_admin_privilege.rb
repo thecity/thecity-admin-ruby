@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
   
     factory :user_admin_privilege, :class => TheCity::UserAdminPrivilege do

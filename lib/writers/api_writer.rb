@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   # This adapter is the standard for all saving objects.
   class ApiWriter
