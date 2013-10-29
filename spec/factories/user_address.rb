@@ -1,7 +1,7 @@
 module TheCityAdmin
   FactoryGirl.define do
   
-    factory :user_address, :class => TheCity::UserAddress do
+    factory :user_address, :class => TheCityAdmin::UserAddress do
       city "Seattle"
       created_at "04/30/2012 08:46 PM (UTC)"
       latitude 47.64114

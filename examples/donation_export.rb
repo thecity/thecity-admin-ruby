@@ -1,7 +1,7 @@
 # *******************************************
 # This is a demo file to show usage.
 #
-# @package TheCity::Admin
+# @package TheCityAdmin::Admin
 # @authors Robbie Lieb <robbie@onthecity.org>, Wes Hays <wes@onthecity.org>
 # ******************************************* 
 
@@ -11,15 +11,15 @@ require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 require File.dirname(__FILE__) + '/city_keys.rb'
 include CityKeys
 
-TheCity::AdminApi.connect(KEY, TOKEN)
+TheCityAdmin::AdminApi.connect(KEY, TOKEN)
 
 
-de_list = TheCity::DonationExportList.new
+de_list = TheCityAdmin::DonationExportList.new
 de_list.each do |item|
   puts "DonationExport: #{item.inspect}"
 end
 
-# de_list = TheCity::DonationExportList.new
+# de_list = TheCityAdmin::DonationExportList.new
 # de_list.each do |item|
 #   if item.delete 
 #     puts "DonationExport #{item.id} deleted"
@@ -28,14 +28,14 @@ end
 #   end
 # end
 
-# de_list = TheCity::DonationExportList.new
+# de_list = TheCityAdmin::DonationExportList.new
 # if de_list.empty?
 #   puts "No donation exports found"
 # else
 #   puts "Donation exports found"
 # end
 
-# donation_export = TheCity::DonationExport.new
+# donation_export = TheCityAdmin::DonationExport.new
 # if donation_export.save
 #   puts "Donation export created"
 # else
@@ -43,7 +43,7 @@ end
 # end
 
 
-# de_list = TheCity::DonationExportList.new
+# de_list = TheCityAdmin::DonationExportList.new
 # if de_list.empty?
 #   puts "No donation exports found"
 # else

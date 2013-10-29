@@ -1,7 +1,7 @@
 module TheCityAdmin
   FactoryGirl.define do
     
-    factory :user_invitation, :class => TheCity::UserInvitation do
+    factory :user_invitation, :class => TheCityAdmin::UserInvitation do
       created_at "02/06/2012" 
       pending_approval false
       group_id 17543

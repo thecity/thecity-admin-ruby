@@ -14,8 +14,8 @@ describe 'TagGroupList' do
   it 'should pass if tag group list is empty' do
     tag_id = 123
     request_data = FactoryGirl.attributes_for(:tag_group_list, :groups => []).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    tag_group_list = TheCity::TagGroupList.new({:tag_id => tag_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    tag_group_list = TheCityAdmin::TagGroupList.new({:tag_id => tag_id})
 
     tag_group_list.groups.should == []
   end
@@ -29,8 +29,8 @@ describe 'TagGroupList' do
       :total_pages => 1,
       :groups => [FactoryGirl.attributes_for(:group)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    tag_group_list = TheCity::TagGroupList.new({:tag_id => tag_id, :page => page})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    tag_group_list = TheCityAdmin::TagGroupList.new({:tag_id => tag_id, :page => page})
 
     tag_group_list.groups.should == ["The Group"]
   end
@@ -43,8 +43,8 @@ describe 'TagGroupList' do
       :total_pages => 1,
       :groups => [FactoryGirl.attributes_for(:group)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    tag_group_list = TheCity::TagGroupList.new({:tag_id => tag_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    tag_group_list = TheCityAdmin::TagGroupList.new({:tag_id => tag_id})
 
     groups = []
     tag_group_list.each { |group| groups << group.name }
@@ -59,8 +59,8 @@ describe 'TagGroupList' do
       :total_pages => 1,
       :groups => [FactoryGirl.attributes_for(:group)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    tag_group_list = TheCity::TagGroupList.new({:tag_id => tag_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    tag_group_list = TheCityAdmin::TagGroupList.new({:tag_id => tag_id})
 
     groups = tag_group_list.collect { |group| group.name }
     tag_group_list.groups.should == ["The Group"]

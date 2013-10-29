@@ -18,8 +18,8 @@ describe 'UserFamilyList' do
       :total_pages => 1,
       :family_members => [FactoryGirl.attributes_for(:user_family_member)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    family_list = TheCity::UserFamilyList.new({:user_id => user_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    family_list = TheCityAdmin::UserFamilyList.new({:user_id => user_id})
 
     family = family_list[0]
     family.name.should == "Pastor Sam Shepherd"
@@ -33,8 +33,8 @@ describe 'UserFamilyList' do
       :total_pages => 1,
       :family_members => []
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    family_list = TheCity::UserFamilyList.new({:user_id => user_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    family_list = TheCityAdmin::UserFamilyList.new({:user_id => user_id})
 
     family_list.empty?.should be_true
   end
@@ -48,8 +48,8 @@ describe 'UserFamilyList' do
       :total_pages => 1,
       :family_members => [FactoryGirl.attributes_for(:user_family_member)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    family_list = TheCity::UserFamilyList.new({:user_id => user_id, :page => page})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    family_list = TheCityAdmin::UserFamilyList.new({:user_id => user_id, :page => page})
 
     family = family_list[0]
     family.name.should == "Pastor Sam Shepherd"
@@ -63,8 +63,8 @@ describe 'UserFamilyList' do
       :total_pages => 1,
       :family_members => [FactoryGirl.attributes_for(:user_family_member)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    family_list = TheCity::UserFamilyList.new({:user_id => user_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    family_list = TheCityAdmin::UserFamilyList.new({:user_id => user_id})
 
     family_members = []
     family_list.each { |family| family_members << family.name }
@@ -79,8 +79,8 @@ describe 'UserFamilyList' do
       :total_pages => 1,
       :family_members => [FactoryGirl.attributes_for(:user_family_member)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    family_list = TheCity::UserFamilyList.new({:user_id => user_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    family_list = TheCityAdmin::UserFamilyList.new({:user_id => user_id})
 
     family_members = family_list.collect { |family| family.name }
     family_members.should == ["Pastor Sam Shepherd"]

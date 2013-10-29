@@ -18,8 +18,8 @@ describe 'UserRoleList' do
       :total_pages => 1,
       :roles => [FactoryGirl.attributes_for(:user_role)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    role_list = TheCity::UserRoleList.new({:user_id => user_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    role_list = TheCityAdmin::UserRoleList.new({:user_id => user_id})
 
     role = role_list[0]
     role.group_name.should == "The Group"
@@ -33,8 +33,8 @@ describe 'UserRoleList' do
       :total_pages => 1,
       :roles => []
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    role_list = TheCity::UserRoleList.new({:user_id => user_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    role_list = TheCityAdmin::UserRoleList.new({:user_id => user_id})
 
     role_list.empty?.should be_true
   end
@@ -48,8 +48,8 @@ describe 'UserRoleList' do
       :total_pages => 1,
       :roles => [FactoryGirl.attributes_for(:user_role)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    role_list = TheCity::UserRoleList.new({:user_id => user_id, :page => page})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    role_list = TheCityAdmin::UserRoleList.new({:user_id => user_id, :page => page})
 
     role = role_list[0]
     role.group_name.should == "The Group"
@@ -63,8 +63,8 @@ describe 'UserRoleList' do
       :total_pages => 1,
       :roles => [FactoryGirl.attributes_for(:user_role)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    role_list = TheCity::UserRoleList.new({:user_id => user_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    role_list = TheCityAdmin::UserRoleList.new({:user_id => user_id})
 
     roles = []
     role_list.each { |role| roles << role.group_name }
@@ -79,8 +79,8 @@ describe 'UserRoleList' do
       :total_pages => 1,
       :roles => [FactoryGirl.attributes_for(:user_role)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    role_list = TheCity::UserRoleList.new({:user_id => user_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    role_list = TheCityAdmin::UserRoleList.new({:user_id => user_id})
 
     roles = role_list.collect { |role| role.group_name }
     roles.should == ["The Group"]

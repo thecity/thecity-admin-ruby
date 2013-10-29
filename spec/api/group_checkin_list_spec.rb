@@ -18,8 +18,8 @@ describe 'GroupCheckinList' do
       :total_pages => 1,
       :checkins => [FactoryGirl.attributes_for(:group_checkin)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    checkin_list = TheCity::GroupCheckinList.new({:group_id => group_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    checkin_list = TheCityAdmin::GroupCheckinList.new({:group_id => group_id})
 
     checkin = checkin_list[0]
     checkin.parent_group_name.should == "Ballard Childrens ministry"
@@ -34,8 +34,8 @@ describe 'GroupCheckinList' do
       :total_pages => 1,
       :checkins => []
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    checkin_list = TheCity::GroupCheckinList.new({:group_id => group_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    checkin_list = TheCityAdmin::GroupCheckinList.new({:group_id => group_id})
 
     checkin_list.empty?.should be_true
   end
@@ -49,8 +49,8 @@ describe 'GroupCheckinList' do
       :total_pages => 1,
       :checkins => [FactoryGirl.attributes_for(:group_checkin)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    checkin_list = TheCity::GroupCheckinList.new({:group_id => group_id, :page => 2})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    checkin_list = TheCityAdmin::GroupCheckinList.new({:group_id => group_id, :page => 2})
 
     checkin = checkin_list[0]
     checkin.parent_group_name.should == "Ballard Childrens ministry"
@@ -64,8 +64,8 @@ describe 'GroupCheckinList' do
       :total_pages => 1,
       :checkins => [FactoryGirl.attributes_for(:group_checkin)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    checkin_list = TheCity::GroupCheckinList.new({:group_id => group_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    checkin_list = TheCityAdmin::GroupCheckinList.new({:group_id => group_id})
 
     checkins = []
     checkin_list.each { |checkin| checkins << checkin.parent_group_name }
@@ -80,8 +80,8 @@ describe 'GroupCheckinList' do
       :total_pages => 1,
       :checkins => [FactoryGirl.attributes_for(:group_checkin)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    checkin_list = TheCity::GroupCheckinList.new({:group_id => group_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    checkin_list = TheCityAdmin::GroupCheckinList.new({:group_id => group_id})
 
     checkins = checkin_list.collect { |checkin| checkin.parent_group_name }
     checkins.should == ["Ballard Childrens ministry"]

@@ -14,8 +14,8 @@ describe 'SkilledUserIdList' do
   it 'should pass if skilled user list attribute is not specifed' do
     skill_id = 123
     request_data = FactoryGirl.attributes_for(:skilled_user_id_list).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    skilled_user_id_list = TheCity::SkilledUserIdList.new({:skill_id => skill_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    skilled_user_id_list = TheCityAdmin::SkilledUserIdList.new({:skill_id => skill_id})
 
     skilled_user_id_list.user_ids.should == []    
   end
@@ -24,8 +24,8 @@ describe 'SkilledUserIdList' do
   it 'should pass if skilled user list is empty' do
     skill_id = 123
     request_data = FactoryGirl.attributes_for(:skilled_user_id_list, :users => []).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    skilled_user_id_list = TheCity::SkilledUserIdList.new({:skill_id => skill_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    skilled_user_id_list = TheCityAdmin::SkilledUserIdList.new({:skill_id => skill_id})
 
     skilled_user_id_list.user_ids.should == []
   end
@@ -39,8 +39,8 @@ describe 'SkilledUserIdList' do
       :total_pages => 1,
       :user_ids => [FactoryGirl.attributes_for(:user)[:id]]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    skilled_user_id_list = TheCity::SkilledUserIdList.new({:skill_id => skill_id, :page => page})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    skilled_user_id_list = TheCityAdmin::SkilledUserIdList.new({:skill_id => skill_id, :page => page})
 
     skilled_user_id_list.user_ids.should == [946060874]
   end
@@ -53,8 +53,8 @@ describe 'SkilledUserIdList' do
       :total_pages => 1,
       :user_ids => [FactoryGirl.attributes_for(:user)[:id]]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    skilled_user_id_list = TheCity::SkilledUserIdList.new({:skill_id => skill_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    skilled_user_id_list = TheCityAdmin::SkilledUserIdList.new({:skill_id => skill_id})
 
     users = []
     skilled_user_id_list.each { |user_id| users << user_id}
@@ -69,8 +69,8 @@ describe 'SkilledUserIdList' do
       :total_pages => 1,
       :user_ids => [FactoryGirl.attributes_for(:user)[:id]]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    skilled_user_id_list = TheCity::SkilledUserIdList.new({:skill_id => skill_id})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    skilled_user_id_list = TheCityAdmin::SkilledUserIdList.new({:skill_id => skill_id})
 
     users = skilled_user_id_list.collect { |user_id| user_id }
     skilled_user_id_list.user_ids.should == [946060874]

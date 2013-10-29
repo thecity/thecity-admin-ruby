@@ -1,7 +1,7 @@
 module TheCityAdmin
   FactoryGirl.define do
     
-    factory :user, :class => TheCity::User do
+    factory :user, :class => TheCityAdmin::User do
       api_url "https://api.onthecity.org/users/946060874" 
       updated_at "05/15/2012 07:24 AM (UTC)" 
       last_logged_in "05/16/2012 04:52 AM (UTC)" 

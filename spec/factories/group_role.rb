@@ -1,7 +1,7 @@
 module TheCityAdmin
   FactoryGirl.define do
   
-    factory :group_role, :class => TheCity::GroupRole do
+    factory :group_role, :class => TheCityAdmin::GroupRole do
       created_at "04/30/2012" 
       title nil 
       user_api_url "https://api.onthecity.org/users/494335566" 

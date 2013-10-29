@@ -21,7 +21,7 @@ module TheCityAdmin
     #    
     def initialize(options = {}) 
       @options = options
-      @options[:reader] = TheCity::GroupCheckinListReader.new(@options) if @options[:reader].nil?
+      @options[:reader] = TheCityAdmin::GroupCheckinListReader.new(@options) if @options[:reader].nil?
       @json_data = @options[:reader].load_feed 
 
       @total_entries = @json_data['total_entries']
