@@ -6,3 +6,5 @@ bin/
 .bundle/
 .rbenv-version
 index.rb
+.idea/*
+coverage
