@@ -1,7 +1,7 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
   
-    factory :user_list, :class => TheCity::UserList do
+    factory :user_list, :class => TheCityAdmin::UserList do
       total_entries 0
       total_pages 0
       per_page 15

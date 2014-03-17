@@ -13,8 +13,8 @@ describe 'UserList' do
 
   it 'should pass if user list attribute is not specifed' do
     request_data = FactoryGirl.attributes_for(:user_list).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    user_list = TheCity::UserList.new
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    user_list = TheCityAdmin::UserList.new
 
     user_list.names.should == []
   end
@@ -22,8 +22,8 @@ describe 'UserList' do
 
   it 'should pass if user list is empty' do
     request_data = FactoryGirl.attributes_for(:user_list, :users => []).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    user_list = TheCity::UserList.new
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    user_list = TheCityAdmin::UserList.new
 
     user_list.names.should == []
   end
@@ -35,8 +35,8 @@ describe 'UserList' do
       :total_pages => 1,
       :users => [FactoryGirl.attributes_for(:user)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    user_list = TheCity::UserList.new({:page => 2})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    user_list = TheCityAdmin::UserList.new({:page => 2})
 
     user_list.names.should == ["Sam Shepherd"]
   end
@@ -48,8 +48,8 @@ describe 'UserList' do
       :total_pages => 1,
       :users => [FactoryGirl.attributes_for(:user)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    user_list = TheCity::UserList.new
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    user_list = TheCityAdmin::UserList.new
 
     users = []
     user_list.each { |user| users << user.full_name }
@@ -63,8 +63,8 @@ describe 'UserList' do
       :total_pages => 1,
       :users => [FactoryGirl.attributes_for(:user)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    user_list = TheCity::UserList.new
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    user_list = TheCityAdmin::UserList.new
 
     users = user_list.collect { |user| user.full_name }
     user_list.names.should == ["Sam Shepherd"]

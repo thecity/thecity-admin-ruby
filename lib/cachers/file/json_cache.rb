@@ -4,7 +4,7 @@
 require 'fileutils'
 
 
-module TheCity
+module TheCityAdmin
 
   # This class caches the data in a JSON file.
   class JsonCache < CacheAdapter 

@@ -1,7 +1,7 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
   
-    factory :group_event_attendance, :class => TheCity::GroupEventAttendance do
+    factory :group_event_attendance, :class => TheCityAdmin::GroupEventAttendance do
       user "Johnny Smith" 
       created_at "07/29/2012" 
       event_title "9 AM Service" 

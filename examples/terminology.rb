@@ -1,7 +1,7 @@
 # *******************************************
 # This is a demo file to show usage.
 #
-# @package TheCity::Admin
+# @package TheCityAdmin::Admin
 # @authors Robbie Lieb <robbie@onthecity.org>, Wes Hays <wes@onthecity.org>
 # ******************************************* 
 
@@ -11,12 +11,12 @@ require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 require File.dirname(__FILE__) + '/city_keys.rb'
 include CityKeys
 
-TheCity::AdminApi.connect(KEY, TOKEN)
+TheCityAdmin::AdminApi.connect(KEY, TOKEN)
 
 
 puts "------------------------------------"
 
-term_list = TheCity::TerminologyList.new
+term_list = TheCityAdmin::TerminologyList.new
 if term_list.empty?
   puts "No terms in list"
 else
@@ -24,7 +24,7 @@ else
 end
 
 
-term = TheCity::Terminology.load_by_term('CG')
+term = TheCityAdmin::Terminology.load_by_term('CG')
 if term.nil?
   puts "Terminology not found"
 else
@@ -38,7 +38,7 @@ else
   puts "Failed to create term: #{term.error_messages.join(', ')}"
 end
 
-term2 = TheCity::Terminology.load_by_term('CG')
+term2 = TheCityAdmin::Terminology.load_by_term('CG')
 if term2.nil?
   puts "Terminology not found"
 else
@@ -52,7 +52,7 @@ else
   puts "Failed to create term: #{term2.error_messages.join(', ')}"
 end
 
-term3 = TheCity::Terminology.load_by_term('CG')
+term3 = TheCityAdmin::Terminology.load_by_term('CG')
 if term3.nil?
   puts "Terminology not found"
 else

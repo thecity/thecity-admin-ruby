@@ -13,8 +13,8 @@ describe 'WebHookList' do
 
   it 'should pass if web_hook list attribute is not specifed' do
     request_data = FactoryGirl.attributes_for(:web_hook_list).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    web_hook_list = TheCity::WebHookList.new
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    web_hook_list = TheCityAdmin::WebHookList.new
 
     web_hook_list.web_hooks.should == []    
   end
@@ -22,8 +22,8 @@ describe 'WebHookList' do
 
   it 'should pass if web_hook list is empty' do
     request_data = FactoryGirl.attributes_for(:web_hook_list, :web_hooks => []).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    web_hook_list = TheCity::WebHookList.new
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    web_hook_list = TheCityAdmin::WebHookList.new
 
     web_hook_list.web_hooks.should == []
   end
@@ -35,8 +35,8 @@ describe 'WebHookList' do
       :total_pages => 1,
       :web_hooks => [FactoryGirl.attributes_for(:web_hook)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    web_hook_list = TheCity::WebHookList.new({:page => 2})
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    web_hook_list = TheCityAdmin::WebHookList.new({:page => 2})
     web_hook_list.web_hooks.should == ["User::create"]
   end
 
@@ -47,8 +47,8 @@ describe 'WebHookList' do
       :total_pages => 1,
       :web_hooks => [FactoryGirl.attributes_for(:web_hook)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    web_hook_list = TheCity::WebHookList.new
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    web_hook_list = TheCityAdmin::WebHookList.new
 
     web_hooks = []
     web_hook_list.each { |web_hook| web_hooks << web_hook.name }
@@ -62,8 +62,8 @@ describe 'WebHookList' do
       :total_pages => 1,
       :web_hooks => [FactoryGirl.attributes_for(:web_hook)]
     }).to_json
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    web_hook_list = TheCity::WebHookList.new
+    TheCityAdmin.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
+    web_hook_list = TheCityAdmin::WebHookList.new
 
     web_hooks = web_hook_list.collect { |web_hook| web_hook.name }
     web_hook_list.web_hooks.should == ["User::create"]

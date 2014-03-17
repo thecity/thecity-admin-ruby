@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class GroupTagList < ApiList
 
@@ -21,7 +21,7 @@ module TheCity
     #    
     def initialize(options = {}) 
       @options = options
-      @options[:reader] = TheCity::GroupTagListReader.new(@options) if @options[:reader].nil?
+      @options[:reader] = TheCityAdmin::GroupTagListReader.new(@options) if @options[:reader].nil?
       @json_data = @options[:reader].load_feed 
 
       @total_entries = @json_data['total_entries']

@@ -1,7 +1,7 @@
 # *******************************************
 # This is a demo file to show usage.
 #
-# @package TheCity::Admin
+# @package TheCityAdmin::Admin
 # @authors Robbie Lieb <robbie@onthecity.org>, Wes Hays <wes@onthecity.org>
 # ******************************************* 
 
@@ -11,9 +11,9 @@ require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 require File.dirname(__FILE__) + '/city_keys.rb'
 include CityKeys
 
-TheCity::AdminApi.connect(KEY, TOKEN)
+TheCityAdmin::AdminApi.connect(KEY, TOKEN)
 
-group_list = TheCity::GroupList.new
+group_list = TheCityAdmin::GroupList.new
 
 group = group_list.first
 puts group.name
@@ -26,7 +26,7 @@ else
   puts "Addresses: #{group.addresses.size}"
 end
 
-address = TheCity::GroupAddress.new
+address = TheCityAdmin::GroupAddress.new
 address.group_id = group.id
 address.location_type = 'Work'
 address.street = '445 S. Virginia St'

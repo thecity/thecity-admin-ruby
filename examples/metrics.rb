@@ -1,7 +1,7 @@
 # *******************************************
 # This is a demo file to show usage.
 #
-# @package TheCity::Admin
+# @package TheCityAdmin::Admin
 # @authors Robbie Lieb <robbie@onthecity.org>, Wes Hays <wes@onthecity.org>
 # ******************************************* 
 
@@ -11,12 +11,12 @@ require File.dirname(__FILE__) + '/../lib/the_city_admin.rb'
 require File.dirname(__FILE__) + '/city_keys.rb'
 include CityKeys
 
-TheCity::AdminApi.connect(KEY, TOKEN)
+TheCityAdmin::AdminApi.connect(KEY, TOKEN)
 
 
 puts "------------------------------------"
 
-metric_list = TheCity::MetricList.new
+metric_list = TheCityAdmin::MetricList.new
 if metric_list.empty?
   puts "No metrics in list"
 else
@@ -24,7 +24,7 @@ else
 end
 
 
-metric = TheCity::Metric.new
+metric = TheCityAdmin::Metric.new
 metric.name = "CoolThing#{Time.now.to_i}"
 if metric.save
   puts "Metric created (#{metric.id})"
@@ -33,14 +33,14 @@ else
 end
 
 
-metric_list2 = TheCity::MetricList.new
+metric_list2 = TheCityAdmin::MetricList.new
 if metric_list2.empty?
   puts "No metrics in list"
 else
   puts "Metrics: #{metric_list2.count}"
 end
 
-metric2 = TheCity::Metric.load_by_id(metric.id)
+metric2 = TheCityAdmin::Metric.load_by_id(metric.id)
 if metric2.nil?
   puts "Metric not found"
 else
@@ -62,7 +62,7 @@ else
   puts "Unable to delete metric #{metric2.id}: #{metric2.error_messages.join(', ')}"
 end
 
-metric_list3 = TheCity::MetricList.new
+metric_list3 = TheCityAdmin::MetricList.new
 if metric_list3.empty?
   puts "No metrics in list"
 else

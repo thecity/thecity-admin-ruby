@@ -1,7 +1,7 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
     
-    factory :group, :class => TheCity::Group do
+    factory :group, :class => TheCityAdmin::Group do
       name "The Group"
       admin_url "http://church.onthecity.org/admin/groups/1445"
       created_at "2009-03-16T03:39:05-07:00"

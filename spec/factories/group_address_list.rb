@@ -1,7 +1,7 @@
-module TheCity
+module TheCityAdmin
   FactoryGirl.define do
   
-    factory :group_address_list, :class => TheCity::GroupAddressList do
+    factory :group_address_list, :class => TheCityAdmin::GroupAddressList do
       total_entries 0
       total_pages 0
       per_page 15

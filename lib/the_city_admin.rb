@@ -25,7 +25,7 @@ require File.dirname(__FILE__) + '/common.rb'
 
 
 # This class is meant to be a wrapper TheCity Admin API (OnTheCity.org).
-module TheCity
+module TheCityAdmin
 
   class AdminApi
     class << self

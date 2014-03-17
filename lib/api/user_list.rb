@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class UserList < ApiList
 
@@ -22,7 +22,7 @@ module TheCity
       @options = options.clone
       @options[:page] ||= 1
       @options[:per_page] ||= 200
-      @options[:reader] = TheCity::UserListReader.new(@options) if @options[:reader].nil?
+      @options[:reader] = TheCityAdmin::UserListReader.new(@options) if @options[:reader].nil?
       @json_data = @options[:reader].load_feed 
 
       @total_entries = @json_data['total_entries']

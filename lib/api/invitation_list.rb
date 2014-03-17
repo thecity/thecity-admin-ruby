@@ -1,4 +1,4 @@
-module TheCity
+module TheCityAdmin
 
   class InvitationList < ApiList
 
@@ -21,7 +21,7 @@ module TheCity
     #    
     def initialize(options = {}) 
       @options = options
-      @options[:reader] = TheCity::InvitationListReader.new(@options) if @options[:reader].nil?
+      @options[:reader] = TheCityAdmin::InvitationListReader.new(@options) if @options[:reader].nil?
       @json_data = @options[:reader].load_feed 
 
       @total_entries = @json_data['total_entries']
