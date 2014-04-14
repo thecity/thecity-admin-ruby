@@ -9,6 +9,6 @@ group :development, :test do
   gem 'pry'
   gem 'pry-nav'
   gem 'factory_girl'
-  gem 'simplecov', require: false
-  gem 'coveralls', require: false
+  gem 'simplecov', :require => false
+  gem 'coveralls', :require => false
 end
