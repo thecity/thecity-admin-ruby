@@ -19,7 +19,6 @@ require File.expand_path( File.dirname(__FILE__) + '/../lib/the_city_admin.rb')
 
 require 'rubygems'
 require 'rspec'
-require 'pry'
 require 'date'
 
 require 'factory_girl'
