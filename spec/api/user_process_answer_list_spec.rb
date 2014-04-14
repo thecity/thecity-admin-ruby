@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe 'UserProcessAnswerList' do
 
   before do
-    simulate_connection_to_server
+    #simulate_connection_to_server
   end
 
   after do

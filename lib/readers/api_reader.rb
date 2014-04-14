@@ -29,7 +29,7 @@ module TheCity
     # x-city-ratelimit-limit-by-account header, whichever is lower.
     def rate_limit
       if @headers
-        [@headers['x-city-ratelimit-limit-by-ip'].to_i, @headers['x-city-ratelimit-limit-by-account'].to_i].min
+        [@headers['X-City-RateLimit-Limit-By-Ip'].to_i, @headers['X-City-RateLimit-Limit-By-Account'].to_i].min
       end
     end
 
@@ -37,7 +37,7 @@ module TheCity
     # x-city-ratelimit-remaining-by-account header, whichever is lower.
     def rate_limit_remaining
       if @headers
-        [@headers['x-city-ratelimit-remaining-by-ip'].to_i, @headers['x-city-ratelimit-remaining-by-account'].to_i].min
+        [@headers['X-City-RateLimit-Remaining-By-Ip'].to_i, @headers['X-City-RateLimit-Remaining-By-Account'].to_i].min
       end
     end
 
