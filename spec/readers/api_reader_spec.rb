@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../spec_helper'
 describe TheCity::ApiReader do
 
   it "should include City headers" do
-    headers = "X-City-RateLimit-Limit-By-Ip: 2200\r\nX-City-RateLimit-Remaining-By-Ip: 2199\r\n"
+    headers = {'X-City-RateLimit-Limit-By-Ip' => '2200', 'X-City-RateLimit-Remaining-By-Ip' => '2199'}
     TheCity.stub(:admin_request).and_return(TheCityResponse.new(200, {}.to_json, headers))
     reader = TheCity::ApiReader.new
     reader.load_feed.should == {}
@@ -12,10 +12,8 @@ describe TheCity::ApiReader do
   end
 
   it "should include convenience methods for reading rate limit data" do
-    headers = ["X-City-RateLimit-Limit-By-Ip: 2000",
-               "X-City-RateLimit-Remaining-By-Ip: 1987",
-               "X-City-RateLimit-Limit-By-Account: 3000",
-               "X-City-RateLimit-Remaining-By-Account: 1561"].join("\r\n")
+    headers = {'X-City-RateLimit-Limit-By-Ip' => '2000', 'X-City-RateLimit-Remaining-By-Ip' => '1987',
+               'X-City-RateLimit-Limit-By-Account' => '3000', 'X-City-RateLimit-Remaining-By-Account' => '1561'}
     TheCity.stub(:admin_request).and_return(TheCityResponse.new(200, {}.to_json, headers))
     reader = TheCity::ApiReader.new
     reader.load_feed.should == {}

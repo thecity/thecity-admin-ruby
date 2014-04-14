@@ -1,3 +1,6 @@
+{<img src="https://travis-ci.org/thecity/thecity-admin-ruby.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/thecity/thecity-admin-ruby]
+{<img src="https://coveralls.io/repos/thecity/thecity-admin-ruby/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/thecity/thecity-admin-ruby]
+
 = The City Admin API
 
 This Ruby project is an API wrapper for TheCity Admin API (https://api.onthecity.org)

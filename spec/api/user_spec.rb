@@ -3,7 +3,7 @@ require File.join(Dir.pwd, 'spec', 'spec_helper')
 describe 'User' do
 
   before do
-    simulate_connection_to_server
+    ##simulate_connection_to_server
   end
 
   after do
@@ -19,7 +19,6 @@ describe 'User' do
     TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
 
     user_list = TheCity::UserList.new
-
     user = user_list[0]
     user.full_name.should == "Sammy Shepherd"
   end

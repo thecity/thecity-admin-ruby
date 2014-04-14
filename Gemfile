@@ -4,7 +4,11 @@ gem 'typhoeus', '0.6.6'
 gem 'json'
 
 group :development, :test do
+  gem 'rake'
   gem 'rspec'
-  gem 'debugger'
+  gem 'pry'
+  gem 'pry-nav'
   gem 'factory_girl'
+  gem 'simplecov', :require => false
+  gem 'coveralls', :require => false
 end

@@ -5,12 +5,21 @@
 # Link:: https://github.com/weshays/admin-api-ruby
 # Package:: TheCity::Admin
 
+require 'simplecov'
+require 'coveralls'
+Coveralls.wear!
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+    SimpleCov::Formatter::HTMLFormatter,
+    Coveralls::SimpleCov::Formatter
+]
 
 require File.expand_path( File.dirname(__FILE__) + '/../lib/the_city_admin.rb')
 
 require 'rubygems'
 require 'rspec'
-require 'ruby-debug'
+require 'pry'
+#require 'ruby-debug'
 require 'date'
 
 require 'factory_girl'
