@@ -1,10 +1,3 @@
-# Project::    TheCity Admin API 
-# File::       the_city.rb
-#
-# Author:: Wes Hays <weshays@gbdev.com> 
-# Link:: https://github.com/weshays/admin-api-ruby
-# Package:: TheCity::Admin
-
 require 'simplecov'
 require 'coveralls'
 Coveralls.wear!
@@ -20,6 +13,7 @@ require File.expand_path( File.dirname(__FILE__) + '/../lib/the_city_admin.rb')
 require 'rubygems'
 require 'rspec'
 require 'date'
+require 'pry'
 
 require 'factory_girl'
 Dir.glob(File.dirname(__FILE__) + "/factories/*").each { |f| require f }
@@ -28,7 +22,7 @@ Dir.glob(File.dirname(__FILE__) + "/factories/*").each { |f| require f }
 TheCityResponse = Struct.new(:code, :body, :headers)
 
 RSpec.configure do |config|
-  config.tty = true
+  #config.tty = true
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
 end
