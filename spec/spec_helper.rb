@@ -13,13 +13,13 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
     SimpleCov::Formatter::HTMLFormatter,
     Coveralls::SimpleCov::Formatter
 ]
+SimpleCov.start
 
 require File.expand_path( File.dirname(__FILE__) + '/../lib/the_city_admin.rb')
 
 require 'rubygems'
 require 'rspec'
 require 'pry'
-#require 'ruby-debug'
 require 'date'
 
 require 'factory_girl'
