@@ -4,6 +4,7 @@ gem 'typhoeus', '0.6.6'
 gem 'json'
 
 group :development, :test do
+  gem 'rake'
   gem 'rspec'
   gem 'pry'
   gem 'pry-nav'
