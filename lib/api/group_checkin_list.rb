@@ -9,7 +9,7 @@ module TheCity
     # @param options A hash of options for loading the list.
     # 
     # Options:
-    #   :group_id - The ID of the group to load the addresses for. (required)
+    #   :group_id - The ID of the group to load the checkins for. (required)
     #   :page - The page number to get.
     #   :reader - The Reader to use to load the data.
     #
@@ -33,7 +33,7 @@ module TheCity
     
     # Get the specified note.
     #
-    # @param index The index of the note to get.
+    # @param index The index of the checkin to get.
     #
     # @return [GroupCheckin]
     def [](index)
