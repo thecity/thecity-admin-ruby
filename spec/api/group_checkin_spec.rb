@@ -9,16 +9,4 @@ describe 'GroupCheckin' do
     group_checkin = TheCity::GroupCheckin.load_by_id(12345, 12345)
     group_checkin.should_not be_nil
   end
-
-  it 'loads by pager_number' do
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    group_checkin = TheCity::GroupCheckin.load_by_pager_number(12345, 12345)
-    group_checkin.should_not be_nil
-  end
-
-  it 'loads by callboard_number' do
-    TheCity.stub(:admin_request).and_return( TheCityResponse.new(200, request_data) )
-    group_checkin = TheCity::GroupCheckin.load_by_callboard_number(12345, 12345)
-    group_checkin.should_not be_nil
-  end
 end

@@ -40,33 +40,6 @@ module TheCity
     rescue
       nil
     end
-
-    # Loads the group_checkin by the specified pager_number.
-    #
-    # @param group_id The ID of the group to load. Must refer to a Checkin group.
-    # @param pager_number The pager_number of the group_checkin to load.
-    #
-    # Returns a new {GroupCheckin} object.
-    def self.load_by_pager_number(group_id, pager_number)
-      reader = GroupCheckinReader.new(group_id, pager_number, 'pager_number')
-      self.new(reader.load_feed)
-    rescue
-      nil
-    end
-
-    # Loads the group_checkin by the specified callboard_number.
-    #
-    # @param group_id The ID of the group to load. Must refer to a Checkin group.
-    # @param callboard_number The callboard_number of the group_checkin to load.
-    #
-    # Returns a new {GroupCheckin} object.
-    def self.load_by_callboard_number(group_id, callboard_number)
-      reader = GroupCheckinReader.new(group_id, callboard_number, 'callboard_number')
-      self.new(reader.load_feed)
-    rescue
-      nil
-    end
-    
   end
 
 end
