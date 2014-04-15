@@ -22,7 +22,7 @@ Dir.glob(File.dirname(__FILE__) + "/factories/*").each { |f| require f }
 TheCityResponse = Struct.new(:code, :body, :headers)
 
 RSpec.configure do |config|
-  #config.tty = true
+  config.tty = true
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
 end
