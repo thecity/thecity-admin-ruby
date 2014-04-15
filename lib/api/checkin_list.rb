@@ -28,34 +28,6 @@ module TheCity
       @per_page = @json_data['per_page']
       @current_page = @json_data['current_page']      
     end
-
-
-    # # Loads the checkin list by the specified pager number.
-    # #
-    # # @param pager_number The pager_number to filter by
-    # # @param options A hash of options, including page, include_checked_out, and under_checkin_group_id
-    # #
-    # # Returns a new {CheckinList} object.
-    # def self.by_pager_number(pager_number, options = {})
-    #   reader = CheckinListReader.new(options, nil, pager_number)
-    #   binding.pry
-    #   self.new(reader.load_feed)
-    # # rescue
-    # #   nil
-    # end
-    #
-    # # Loads the checkin list by the specified callboard number.
-    # #
-    # # @param pager_number The callboard_number to filter by
-    # # @param options A hash of options, including page, include_checked_out, and under_checkin_group_id
-    # #
-    # # Returns a new {CheckinList} object.
-    # def self.by_callboard_number(callboard_number, options = {})
-    #   reader = CheckinListReader.new(options, nil, nil, callboard_number)
-    #   self.new(reader.load_feed)
-    # rescue
-    #   nil
-    # end
     
     # Get the specified note.
     #
