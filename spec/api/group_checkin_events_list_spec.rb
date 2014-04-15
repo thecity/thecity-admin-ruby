@@ -86,8 +86,6 @@ describe 'GroupCheckinEventsList' do
     checkin_events_list.collect { |checkin_event| checkin_events << checkin_event.title }
     checkin_events.should == ["5 PM Service"]
   end
-
-
 end
 
 

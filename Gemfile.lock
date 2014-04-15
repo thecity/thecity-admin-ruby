@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    the-city-admin (0.7.0)
+      typhoeus (= 0.6.6)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -73,4 +79,5 @@ DEPENDENCIES
   rake
   rspec
   simplecov
+  the-city-admin!
   typhoeus (= 0.6.6)
