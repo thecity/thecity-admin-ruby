@@ -43,7 +43,7 @@ module TheCity
 
     # Loads the group_checkin by the specified pager_number.
     #
-    # @param group_id The ID of the group to load.
+    # @param group_id The ID of the group to load. Must refer to a Checkin group.
     # @param pager_number The pager_number of the group_checkin to load.
     #
     # Returns a new {GroupCheckin} object.
@@ -56,7 +56,7 @@ module TheCity
 
     # Loads the group_checkin by the specified callboard_number.
     #
-    # @param group_id The ID of the group to load.
+    # @param group_id The ID of the group to load. Must refer to a Checkin group.
     # @param callboard_number The callboard_number of the group_checkin to load.
     #
     # Returns a new {GroupCheckin} object.
