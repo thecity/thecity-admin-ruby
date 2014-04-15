@@ -11,7 +11,7 @@ describe 'UserAdminPrivilege' do
   end
 
 
-  it 'should pass if ....' 
+
 
 
 end

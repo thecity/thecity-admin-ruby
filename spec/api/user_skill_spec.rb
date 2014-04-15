@@ -11,7 +11,7 @@ describe 'UserSkill' do
   end
 
 
-  it 'should pass if ....' 
+
 
 
 end

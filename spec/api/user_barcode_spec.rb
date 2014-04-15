@@ -11,7 +11,7 @@ describe 'UserBarcode' do
   end
 
 
-  it 'should pass if ....' 
+
 
 
 end

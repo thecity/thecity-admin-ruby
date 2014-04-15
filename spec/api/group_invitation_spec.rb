@@ -10,10 +10,6 @@ describe 'GroupInvitation' do
 
   end
 
-
-  it 'should pass if ....'
-
-
 end
 
 

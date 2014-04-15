@@ -11,11 +11,11 @@ describe 'GroupRoleList' do
   end
 
 
-  it 'should pass if group role list attribute is not specifed' 
-  it 'should pass if group role list is empty'
-  it 'should return a valid list of group roles'
-  it 'should iterate using *each* method'
-  it 'should iterate using *collect* method'
+  # it 'should pass if group role list attribute is not specifed'
+  # it 'should pass if group role list is empty'
+  # it 'should return a valid list of group roles'
+  # it 'should iterate using *each* method'
+  # it 'should iterate using *collect* method'
 
 
 end
