@@ -4,6 +4,7 @@ module TheCity
 
     tc_attr_accessor :ending_at,
                      :group_id,
+                     :group_name,
                      :id,
                      :starting_at,
                      :title
