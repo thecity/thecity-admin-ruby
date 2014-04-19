@@ -8,6 +8,7 @@ module TheCity
       title '5 PM Service'
       starting_at '07/10/2012 12:00 AM (UTC)'
       ending_at '07/10/2012 01:30 AM (UTC)'
+      shadow_event_ids []
     end
   end
 end

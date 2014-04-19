@@ -7,7 +7,8 @@ module TheCity
                      :group_name,
                      :id,
                      :starting_at,
-                     :title
+                     :title,
+                     :shadow_event_ids
 
     # Constructor.
     #

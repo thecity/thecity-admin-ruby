@@ -11,6 +11,7 @@ module TheCity
     # Options:
     #   :group_id - The ID of the group to load the checkin events for. (required)
     #   :page - The page number to get.
+    #   :target_date - Date to pull checkin events for. Defaults to nearest checkin date
     #   :reader - The Reader to use to load the data.
     #
     #
@@ -28,6 +29,7 @@ module TheCity
       @total_pages = @json_data['total_pages']
       @per_page = @json_data['per_page']
       @current_page = @json_data['current_page']
+      @target_date = @json_data['target_date']
     end
 
 

@@ -6,6 +6,7 @@ module TheCity
       total_pages 0
       per_page 15
       current_page 1
+      target_date Date.today.strftime('%Y-%m-%d')
       #checkin_events {}
     end
 

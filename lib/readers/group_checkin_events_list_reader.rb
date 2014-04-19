@@ -19,7 +19,7 @@ module TheCity
     end
 
     def white_list_options(options)
-      white_list = [:page]
+      white_list = [:page, :target_date]
       options.clone.delete_if { |key, value| !white_list.include?(key) }
     end
 
