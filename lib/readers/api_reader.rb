@@ -16,6 +16,7 @@ module TheCity
       #   data = @cacher.get_data( @class_key )
       # else
         @url_data_params ||= {}
+        @url_data_params = stringify_array_params(@url_data_params)
         response = TheCity::admin_request(:get, @url_data_path, @url_data_params)
         data = JSON.parse(response.body)
         @headers = response.headers
@@ -39,6 +40,12 @@ module TheCity
       if @headers
         [@headers['X-City-RateLimit-Remaining-By-Ip'].to_i, @headers['X-City-RateLimit-Remaining-By-Account'].to_i].min
       end
+    end
+
+    private
+
+    def stringify_array_params(options)
+      options.each_key {|k| options[k] = "#{options[k]}" if options[k].is_a? Array}
     end
 
   end

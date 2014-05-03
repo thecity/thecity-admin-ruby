@@ -12,7 +12,6 @@ module TheCity
       #@class_key = "group_list_#{options[:page]}_{some_kind_of_md5_thing_here}"  
       @url_data_path = "/groups"
       @url_data_params = white_list_options(options)
-      
       # The object to store and load the cache.
       @cacher = cacher unless cacher.nil?    
     end
