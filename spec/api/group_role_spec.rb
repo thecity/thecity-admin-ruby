@@ -10,10 +10,6 @@ describe 'GroupRole' do
 
   end
 
-
-  it 'should pass if ....' 
-
-
 end
 
 

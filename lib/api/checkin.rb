@@ -26,7 +26,7 @@ module TheCity
     #
     # @param json_data (optional) JSON data of the Checkin.
     def initialize(json_data = nil)
-      @writer_object = CheckinWriter
+      #@writer_object = CheckinWriter
       initialize_from_json_object(json_data) unless json_data.nil?
     end
     

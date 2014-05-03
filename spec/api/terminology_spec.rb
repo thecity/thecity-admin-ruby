@@ -11,7 +11,7 @@ describe 'Terminology' do
   end
 
 
-  it 'should pass if ....' 
+
 
 
 end

@@ -11,7 +11,7 @@ describe 'UserNote' do
   end
 
 
-  it 'should pass if ....' 
+
 
 
 end

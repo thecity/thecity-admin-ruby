@@ -1,3 +1,10 @@
+PATH
+  remote: .
+  specs:
+    the-city-admin (0.7.1)
+      json
+      typhoeus (= 0.6.6)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -67,10 +74,9 @@ PLATFORMS
 DEPENDENCIES
   coveralls
   factory_girl
-  json
   pry
   pry-nav
   rake
   rspec
   simplecov
-  typhoeus (= 0.6.6)
+  the-city-admin!

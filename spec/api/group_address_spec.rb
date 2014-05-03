@@ -11,8 +11,7 @@ describe 'GroupAddress' do
   end
 
 
-  it 'should pass if ....' 
-
+  #
 
 end
 

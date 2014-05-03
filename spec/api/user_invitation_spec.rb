@@ -11,7 +11,7 @@ describe 'UserInvitation' do
   end
 
 
-  it 'should pass if ....'
+
 
 
 end

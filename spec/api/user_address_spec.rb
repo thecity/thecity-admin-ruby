@@ -11,7 +11,7 @@ describe 'UserAddress' do
   end
 
 
-  it 'should pass if ....' 
+
 
 
 end

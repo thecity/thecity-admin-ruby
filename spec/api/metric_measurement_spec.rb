@@ -11,7 +11,7 @@ describe 'MetricMeasurement' do
   end
 
 
-  it 'should pass if ....' 
+
 
 
 end

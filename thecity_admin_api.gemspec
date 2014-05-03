@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   PROJECT_GEM = 'the-city-admin'
-  PROJECT_GEM_VERSION = '0.7.0'
+  PROJECT_GEM_VERSION = '0.7.1'
   
   s.name = PROJECT_GEM
   s.version = PROJECT_GEM_VERSION
@@ -9,13 +9,14 @@ Gem::Specification.new do |s|
 
   s.homepage = 'https://github.com/thecity/thecity-admin-ruby'
   s.rubyforge_project = 'Project on www.github.com'
-  s.authors = ['Wes Hays']
-  s.email = 'wes@onthecity.org'
+  s.authors = ['Wes Hays', 'Jason Hagglund']
+  s.email = ['wes@onthecity.org', 'jasonh@onthecity.org']
 
-  s.summary = 'Ruby gem/plugin to interact with The City Admin API (https://api.OnTheCity.org).'
-  s.description = 'Ruby gem/plugin to interact with The City Admin API (https://api.OnTheCity.org). Checkout the project on github for more detail.'
+  s.summary = 'Ruby gem/plugin to interact with The City Admin API (https://api.onthecity.org).'
+  s.description = 'Ruby gem/plugin to interact with The City Admin API (https://api.onthecity.org). Check out the project on github for more detail.'
 
   s.add_dependency('typhoeus', '0.6.6')
+  s.add_dependency('json')
 
 
   s.files         = `git ls-files`.split("\n")

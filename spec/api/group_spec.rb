@@ -10,10 +10,6 @@ describe 'Group' do
 
   end
 
-
-  it 'should pass if ....' 
-
-
 end
 
 

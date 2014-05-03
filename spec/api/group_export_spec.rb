@@ -10,10 +10,6 @@ describe 'GroupExport' do
 
   end
 
-
-  it 'should pass if ....' 
-
-
 end
 
 

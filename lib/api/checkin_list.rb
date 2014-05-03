@@ -29,7 +29,6 @@ module TheCity
       @current_page = @json_data['current_page']      
     end
     
-    
     # Get the specified note.
     #
     # @param index The index of the checkin to get.
