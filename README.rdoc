@@ -45,7 +45,7 @@ Next you will need to initialize a connection
 
 This project is released under the MIT license (see LICENSE).
 
-This project is maintained by Wes Hays (https://github.com/weshays).
+This project is maintained by Wes Hays (https://github.com/weshays) and Jason Hagglund (https://github.com/TheMetalCode).
 
 
 == Contributors
