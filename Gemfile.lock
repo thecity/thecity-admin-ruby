@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    the-city-admin (0.7.0)
+    the-city-admin (0.7.1)
+      json
       typhoeus (= 0.6.6)
 
 GEM
@@ -73,11 +74,9 @@ PLATFORMS
 DEPENDENCIES
   coveralls
   factory_girl
-  json
   pry
   pry-nav
   rake
   rspec
   simplecov
   the-city-admin!
-  typhoeus (= 0.6.6)

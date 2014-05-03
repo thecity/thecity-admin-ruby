@@ -1,7 +1,5 @@
 source 'http://rubygems.org'
 
-gem 'typhoeus', '0.6.6'
-gem 'json'
 gemspec
 
 group :development, :test do
